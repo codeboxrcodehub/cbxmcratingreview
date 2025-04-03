@@ -1,0 +1,32 @@
+{
+  "name": "cbx/ratingreview",
+  "description": "CBX Multi Criteria Rating & Review System",
+  "type": "library",
+  "license": "MIT",
+  "config": {
+    "vendor-dir": "lib"
+  },
+  "require": {
+    "illuminate/database": "^8.83",
+    "illuminate/pagination": "^8.83",
+    "rakit/validation": "^1.4",
+    "soundasleep/html2text": "^2.1",
+    "pelago/emogrifier": "^7.0",
+    "enshrined/svg-sanitize": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "CBX\\MCRatingReview\\": "includes/"
+    },
+    "files": [
+      "includes/Helpers/cbxmcratingreview-functions.php",
+      "includes/Helpers/cbxmcratingreview-tpl-loader.php",
+      "includes/Helpers/CBXMCRatingReviewQuestionHelper.php",
+      "includes/Helpers/CBXMCRatingReviewEmailFunctions.php"
+    ]
+  },
+  "replace": {
+    "symfony/console": "*",
+    "symfony/translation": "*"
+  }
+}
