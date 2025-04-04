@@ -96,9 +96,6 @@ final class CBXMCRatingReview {
 		include_once __DIR__ . '/CBXMCRatingReviewEmails.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/Html2Text.php';
-
-		//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/classic/cbxmcratingreviewmrposts/class-cbxmcratingreviewmrposts-widget.php';    //most rated posts
-		//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/classic/cbxmcratingreviewlratings/class-cbxmcratingreviewlratings-widget.php';  //latest ratings
 	}//end method instance
 
 	/**
@@ -212,7 +209,7 @@ final class CBXMCRatingReview {
 		] );
 
 		//widget
-		//add_action( 'widgets_init', [ $public, 'init_register_widget' ] );
+		add_action( 'widgets_init', [ $public, 'init_register_widget' ] );
 
 		add_action( 'wp_enqueue_scripts', [ $public, 'enqueue_styles' ] );
 		add_action( 'wp_enqueue_scripts', [ $public, 'enqueue_scripts' ] );

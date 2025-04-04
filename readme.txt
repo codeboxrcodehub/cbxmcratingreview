@@ -3,7 +3,7 @@ Contributors: codeboxr, manchumahara
 Tags: rating, review, business review, rating feedback,
 Requires at least: 5.3
 Tested up to: 6.7.2
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -113,32 +113,13 @@ Pro addon: CBX Multi Criteria Rating & Review System myCred Points - Features
 
 
 == Screenshots ==
-1.  Admin - Admin menu after plugin activated
-2.  Admin - Rating log listing
-3.  Admin - Average log listing
-4.  Admin - Feedback log listing
-5. 	Admin - Comment log listing(Comment addon)
-6.  Admin - Comment feedback log listing(Comment addon)
-7.  Admin - Setting - General
-8. 	Admin - Setting - Email Template
-9. 	Admin - Setting - Review Alert Template
-10. Admin - Setting - Pages & Tools
-11. Admin - Setting - myCred(myCred addon)
-12. Admin - Setting - Attachments(pro addon)
-13. Admin - Setting - Feedbacks(pro addon)
-14. Admin - Setting - ECommerce/WooCommerce(pro addon)
-15. Admin - Setting - BuddyPress(Pro addon)
-16. Admin - Setting - Comments(Comment addon)
-17. Public - Rating average and Rating/review listing
-18. Public - Rating Form(With Pro addon's attachments)
-19. Public - Frontend dashboard
-20. Admin - Admin rating edit
-24. Admin - Form Listing
-25. Admin - Form edit - General tabs
-26. Admin - Form edit - Rating criterias
-27. Admin - Form edit - Questions builder
+
 
 == Changelog ==
+= 2.0.1 =
+* [fixed] Two Classic widgets were commented in code in last release, now fixed
+* [updated] Dashboard support page updated
+
 = 2.0.0 =
 * [new] Totally refreshed dashboard
 * [new] WordPress core V6.7.2 compatible

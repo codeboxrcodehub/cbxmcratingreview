@@ -79,7 +79,7 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                                         <div class="feature-card-header">
                                             <a href="<?php echo esc_url( $plugin_url ); ?>"
                                                target="_blank"> <img
-                                                        src="https://codeboxr.com/wp-content/uploads/productshots/11409-banner.webp"
+                                                        src="https://codeboxr.com/wp-content/uploads/productshots/14861-banner.webp"
                                                         alt="CBX Multi Criteria Rating & Review for WordPress"/> </a>
 
                                         </div>
@@ -98,16 +98,28 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                 <div class="cbx-backend-card dashboard-changelog">
                     <div class="header">
                         <div class="text">
-                            <h2><?php esc_html_e( 'CBX Multi Criteria Rating & Review Changelog', 'cbxmcratingreview' ); ?></h2>
+                            <h2><?php esc_html_e( 'Core Plugin Changelog', 'cbxmcratingreview' ); ?></h2>
                         </div>
                     </div>
                     <div class="content">
                         <div class="cbx-backend-settings-row">
                             <p>
+                                Version - 2.0.1
+                            </p>
+                            <ul>
+                                <li>[fixed] Two Classic widgets were commented in code in last release, now fixed</li>
+                                <li>[updated] Dashboard support page updated</li>
+                            </ul>
+                        </div>
+                        <div class="cbx-backend-settings-row">
+                            <p>
                                 Version - 2.0.0
                             </p>
                             <ul>
-                                <li>[updated] Total fresh new release</li>
+                                <li>[new] Totally refreshed dashboard</li>
+                                <li>[new] WordPress core V6.7.2 compatible</li>
+                                <li>[new] Plugin check plugin V1.4.0 compatible</li>
+                                <li>[new] Pro Addon plugin V2.0.0 compatible</li>
                             </ul>
                         </div>
                     </div>
@@ -115,17 +127,29 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                 <div class="cbx-backend-card dashboard-changelog">
                     <div class="header">
                         <div class="text">
-                            <h2><?php esc_html_e( 'CBX Multi Criteria Rating & Review Pro Changelog', 'cbxmcratingreview' ); ?></h2>
+                            <h2><?php esc_html_e( 'Pro Addon Changelog', 'cbxmcratingreview' ); ?></h2>
                         </div>
                     </div>
                     <div class="content">
                         <div class="cbx-backend-settings-row">
                             <div class="cbx-backend-settings-row">
                                 <p>
+                                    Version - 2.0.1
+                                </p>
+                                <ul>
+                                    <li>[updated] Style improvement for dashboard</li>
+                                    <li>[updated] Core plugin V2.0.1 released</li>
+                                </ul>
+                            </div>
+                            <div class="cbx-backend-settings-row">
+                                <p>
                                     Version - 2.0.0
                                 </p>
                                 <ul>
-                                    <li>[update] Whole revamp and fresh new release</li>
+                                    <li>[new] Totally refreshed dashboard</li>
+                                    <li>[new] WordPress core V6.7.2 compatible</li>
+                                    <li>[new] Plugin check plugin V1.4.0 compatible</li>
+                                    <li>[new] Core plugin V2.0.0 compatible</li>
                                 </ul>
                             </div>
                         </div>

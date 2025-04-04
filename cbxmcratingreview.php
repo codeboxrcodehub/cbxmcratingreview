@@ -15,7 +15,7 @@
  * Plugin Name:       CBX Multi Criteria Rating & Review
  * Plugin URI:        https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/
  * Description:       Multi Criteria Rating & Review System for WordPress
- * Version:           2.0.0
+ * Version:           2.0.1
  * Author:            Codeboxr
  * Author URI:        https://codeboxr.com
  * License:           GPL-2.0+
@@ -33,7 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 defined( 'CBXMCRATINGREVIEW_PLUGIN_NAME' ) or define( 'CBXMCRATINGREVIEW_PLUGIN_NAME', 'cbxmcratingreview' );
-defined( 'CBXMCRATINGREVIEW_PLUGIN_VERSION' ) or define( 'CBXMCRATINGREVIEW_PLUGIN_VERSION', '2.0.0' );
+defined( 'CBXMCRATINGREVIEW_PLUGIN_VERSION' ) or define( 'CBXMCRATINGREVIEW_PLUGIN_VERSION', '2.0.1' );
 defined( 'CBXMCRATINGREVIEW_BASE_NAME' ) or define( 'CBXMCRATINGREVIEW_BASE_NAME', plugin_basename( __FILE__ ) );
 defined( 'CBXMCRATINGREVIEW_ROOT_PATH' ) or define( 'CBXMCRATINGREVIEW_ROOT_PATH', plugin_dir_path( __FILE__ ) );
 defined( 'CBXMCRATINGREVIEW_ROOT_URL' ) or define( 'CBXMCRATINGREVIEW_ROOT_URL', plugin_dir_url( __FILE__ ) );

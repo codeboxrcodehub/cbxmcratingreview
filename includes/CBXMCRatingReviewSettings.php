@@ -195,10 +195,11 @@ class CBXMCRatingReviewSettings {
 
 		// creates our settings in the options table
 		foreach ( $this->settings_sections as $section ) {
+			//phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingDynamic
 			register_setting( $section['id'], $section['id'], [
 				$this,
 				'sanitize_options'
-			] ); //phpcs:ignore PluginCheck.CodeAnalysis.SettingSanitization.register_settingDynamic
+			] );
 		}
 	} //end admin_init
 

@@ -12,6 +12,5 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 ?>
-<div class="wrap cbx-chota cbxmcratingreview-page-wrapper cbxmcratingreview-gdashboard-wrapper"
-     id="cbxmcratingreview-gdashboard">
+<div class="wrap cbx-chota cbxmcratingreview-page-wrapper cbxmcratingreview-gdashboard-wrapper"   id="cbxmcratingreview-gdashboard">
 </div>
