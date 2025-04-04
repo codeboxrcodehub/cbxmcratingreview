@@ -116,11 +116,11 @@ jobs:
           echo -e "$release_notes" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV           
 
-      - name: Deploy WordPress.org Assets
-        uses: 10up/action-wordpress-plugin-asset-update@stable        
-        env:
-          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+      #- name: Deploy WordPress.org Assets
+      #  uses: 10up/action-wordpress-plugin-asset-update@stable              
+      #  env:
+      #    SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+      #    SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           
       - name: WordPress Plugin Deploy
         id: deploy
