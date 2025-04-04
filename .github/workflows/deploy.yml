@@ -117,9 +117,7 @@ jobs:
           echo "EOF" >> $GITHUB_ENV           
 
       - name: Deploy WordPress.org Assets
-        uses: 10up/action-wordpress-plugin-asset-update@stable
-        with:
-          slug: ${{ github.event.repository.name }}
+        uses: 10up/action-wordpress-plugin-asset-update@stable        
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
