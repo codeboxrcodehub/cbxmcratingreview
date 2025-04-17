@@ -341,7 +341,7 @@ class CBXMCRatingReviewAdminHelper {
 		$js_translations = array_merge_recursive( $common_js_translations, $tools_js_translations );
 
 		return apply_filters( 'cbxmcratingreview_dashboard_js_translation', $js_translations );
-	}//end function getAdminDashboardData
+	}//end function cbxmcratingreview_dashboard_js_translation
 
 	/**
 	 * get job dashboard data
@@ -359,7 +359,7 @@ class CBXMCRatingReviewAdminHelper {
 		} catch ( Exception ) {
 			return [];
 		}
-	}//end method user_roles
+	}//end method getAdminDashboardData
 
 	/**
 	 * All migration files(may include file names from other addon or 3rd party addons))

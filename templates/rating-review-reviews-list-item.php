@@ -152,10 +152,11 @@ do_action( 'cbxmcratingreview_review_list_item_before', $post_review );
 
 				$customQuestion = $form['custom_question'];
 
-				echo '<h3>' . esc_html__( 'Questions and Answers', 'cbxmcratingreview' ) . '</h3>';
+
+
+                $questions_answer_html = '';
 
 				foreach ( $customQuestion as $question_index => $question ) {
-
 					$field_type = isset( $question['type'] ) ? $question['type'] : '';
 					$enabled    = isset( $question['enabled'] ) ? intval( $question['enabled'] ) : 0;
 
@@ -165,18 +166,22 @@ do_action( 'cbxmcratingreview_review_list_item_before', $post_review );
 
 					$user_answer = isset( $questions[ $question_index ] ) ? $questions[ $question_index ] : '';
 
-
-					echo '<div class="cbxmcratingreview-form-field cbxmcratingreview_review_custom_question cbxmcratingreview_review_custom_question_' . esc_attr( $field_type ) . '" id="cbxmcratingreview_review_custom_question_' . intval( $question_index ) . '">';
+					$questions_answer_html .= '<div class="cbxmcratingreview-form-field cbxmcratingreview_review_custom_question cbxmcratingreview_review_custom_question_' . esc_attr( $field_type ) . '" id="cbxmcratingreview_review_custom_question_' . intval( $question_index ) . '">';
 
 					$form_question_format = $form_question_formats[ $field_type ];
 					$question_render      = $form_question_format['answer_renderer'];
 
 					if ( is_callable( $question_render ) ) {
-						echo call_user_func( $question_render, $question_index, $question, $user_answer ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						$questions_answer_html .= call_user_func( $question_render, $question_index, $question, $user_answer ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					}
 
-					echo '</div>';
+					$questions_answer_html .= '</div>';
 				}
+
+                if($questions_answer_html != ''){
+	                echo '<h3>' . esc_html__( 'Questions and Answers', 'cbxmcratingreview' ) . '</h3>';
+                    echo $questions_answer_html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                }
 			}
 			?>
 
@@ -184,8 +189,6 @@ do_action( 'cbxmcratingreview_review_list_item_before', $post_review );
 	<?php endif; ?>
 	<?php
 	do_action( 'cbxmcratingreview_review_list_item_after_comment', $post_review );
-
 	do_action( 'cbxmcratingreview_review_list_item_after', $post_review );
-
 	?>
 </div>

@@ -300,7 +300,7 @@ class CBXMCRatingReviewPublic {
 				'review_id' => 0,
 			], $atts, 'cbxmcratingreview_singlereview' );
 
-		$single_review_html = '<div class="cbx-chota">';
+		$single_review_html = '<div class="cbx-chota"><div class="container">';
 
 		if ( function_exists( 'cbxmcratingreview_singleReviewRender' ) ) {
 			//at first take from shortcode
@@ -330,7 +330,7 @@ class CBXMCRatingReviewPublic {
 			}
 		}
 
-		$single_review_html .= '</div>';
+		$single_review_html .= '</div></div>';
 
 		return $single_review_html;
 	}//end method singlereview_shortcode

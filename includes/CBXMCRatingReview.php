@@ -85,7 +85,7 @@ final class CBXMCRatingReview {
 		$this->define_public_hooks();
 	}//end of constructor
 
-/**
+	/**
 	 * Include necessary files
 	 *
 	 * @return void
@@ -96,7 +96,7 @@ final class CBXMCRatingReview {
 		include_once __DIR__ . '/CBXMCRatingReviewEmails.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/Html2Text.php';
-	}//end method instance
+	}//end method include_files
 
 	/**
 	 * Define common
@@ -157,6 +157,8 @@ final class CBXMCRatingReview {
 
 		//on user delete
 		add_action( 'delete_user', [ $plugin_admin, 'review_delete_after_delete_user' ] );
+
+		//save email settings
 		add_action( 'admin_init', [ $plugin_admin, 'save_email_setting' ] );
 
 		// update hooks
@@ -308,5 +310,5 @@ final class CBXMCRatingReview {
 	 */
 	public function mailer() {
 		return cbxmcratingreview_mailer();
-	}//end method define_public_hooks
+	}//end method mailer
 }// end class CBXMCRatingReview

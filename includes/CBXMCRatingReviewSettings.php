@@ -1191,7 +1191,7 @@ class CBXMCRatingReviewSettings {
             </div>
         </div>
 		<?php
-	}//end method get_field
+	}//end method show_forms
 
 	/**
 	 * Displays a multi-selectbox for a settings field

@@ -965,8 +965,6 @@ class CBXMCRatingReviewHelper {
 
 
 			if ( $load_more ) {
-				//include( apply_filters( 'cbxmcratingreview_tpl_rating-review-reviews-list', CBXMCRATINGREVIEW_ROOT_PATH . 'templates/rating-review-reviews-list.php' ) );
-
 				$post_reviews_html .= cbxmcratingreview_get_template_html( 'rating-review-reviews-list.php', [
 						'settings'     => $settings,
 						'post_reviews' => $post_reviews,
@@ -980,9 +978,6 @@ class CBXMCRatingReviewHelper {
 						$review_list_item_class = apply_filters( 'cbxmcratingreview_review_list_item_class', 'cbxmcratingreview_review_list_item' );
 
 						$post_reviews_html .= '<li id="cbxmcratingreview_review_list_item_' . intval( $post_review['id'] ) . '"  class="' . $review_list_item_class . '">';
-
-						//include( apply_filters( 'cbxmcratingreview_tpl_rating-review-reviews-list-item', CBXMCRATINGREVIEW_ROOT_PATH . 'templates/rating-review-reviews-list-item.php' ) );
-
 						$post_reviews_html .= cbxmcratingreview_get_template_html( 'rating-review-reviews-list-item.php', [
 								'settings'    => $settings,
 								'post_review' => $post_review,
@@ -1341,7 +1336,7 @@ class CBXMCRatingReviewHelper {
 		return $reviews->count();
 	}//end method totalReviewsCountByUser
 
-/**
+	/**
 	 * Total reviews count
 	 *
 	 * @param int/string $form_id
@@ -3285,7 +3280,7 @@ class CBXMCRatingReviewHelper {
 		} catch ( Exception $e ) {
 			return 0;
 		}
-	}//end method reviews_order_bys
+	}//end method getTotalReviewedPostCount
 
 	/**
 	 * log builder js translation list
@@ -3540,7 +3535,7 @@ class CBXMCRatingReviewHelper {
 		];
 
 		return $js_translations;
-	}// end function getWeeklyReviewCounts
+	}// end function common_js_translation
 
 	/**
 	 * dashboard menu list
@@ -3631,9 +3626,9 @@ class CBXMCRatingReviewHelper {
 			'next'    => esc_html__( 'Next', 'cbxmcratingreview' ),
 			'last'    => esc_html__( 'Last', 'cbxmcratingreview' )
 		];
-	} //end method common_js_translation
+	} //end method table_light_translation
 
-/**
+	/**
 	 *  Default criteria and stars
 	 *
 	 * @return mixed|void
@@ -3817,7 +3812,7 @@ class CBXMCRatingReviewHelper {
 	 */
 	public static function form_list() {
 		return RatingReviewForm::get()->pluck( 'name', 'id' );
-	}//end function getDailyReviewCounts
+	}//end function form_list
 
 	/**
 	 * get daily review count
@@ -3854,7 +3849,7 @@ class CBXMCRatingReviewHelper {
 		}
 
 		return $daily_totals;
-	}//end method userDisplayName
+	}//end method getDailyReviewCounts
 
 	/**
 	 * Get user display name
@@ -3927,7 +3922,7 @@ class CBXMCRatingReviewHelper {
 		CBXMCRatingReviewHelper::create_pages();
 
 		set_transient( 'cbxmcratingreview_activated_notice', 1 );
-	}//end method default_data_set
+	}//end method activate
 
 	/**
 	 * On plugin activate run migration

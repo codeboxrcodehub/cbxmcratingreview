@@ -38,9 +38,9 @@ class CBXMCRatingReviewMisc {
 	 */
 	public function load_mailer() {
 		cbxmcratingreview_mailer();
-	}//end method add_module_to_script
+	}//end method load_mailer
 
-/**
+	/**
 	 * Add module attribute to script loader
 	 *
 	 * @param $tag

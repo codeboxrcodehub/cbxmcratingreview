@@ -563,7 +563,7 @@ class CBXMCRatingReviewAdmin {
 		}
 
 		do_action( 'cbxmcratingreview_admin_pages', $this );
-	}//end method display_admin_dashboard_page
+	}//end method admin_pages
 
 	/**
 	 * Show admin dashboard
@@ -610,7 +610,7 @@ class CBXMCRatingReviewAdmin {
 		echo cbxmcratingreview_get_template_html( 'admin/tools.php' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}//end method admin_menu_display_emails
 
-/**
+	/**
 	 * Loads emails menu template
 	 *
 	 * @since 2.0.0
@@ -633,7 +633,7 @@ class CBXMCRatingReviewAdmin {
 		echo cbxmcratingreview_get_template_html( 'admin/email_manager.php', $template_data );//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}//end method display_admin_review_listing_page
 
-/**
+	/**
 	 * Admin review listing view
 	 */
 	public function display_admin_review_listing_page() {
@@ -739,7 +739,7 @@ class CBXMCRatingReviewAdmin {
 
 	//on publish review calculate avg
 
-/**
+	/**
 	 * Register the JavaScript for the admin area.
 	 *
 	 * @since    1.0.0
@@ -988,18 +988,35 @@ class CBXMCRatingReviewAdmin {
 		}
 
 		do_action( 'cbxmcratingreview_reg_admin_scripts' );
-	}//end method review_publish_adjust_avg
+	}//end method enqueue_scripts
+
+	/**
+	 * get job dashboard data
+	 *
+	 */
+	public static function getAdminDashboardData() {
+		try {
+			$data = [
+				'form_count'    => CBXMCRatingReviewHelper::getRatingForms_Count(),
+				'review_count'  => CBXMCRatingReviewHelper::totalReviewsCount(),
+				'post_reviewed' => CBXMCRatingReviewHelper::getTotalReviewedPostCount()
+			];
+
+			return $data;
+		} catch ( Exception ) {
+			return [];
+		}
+	}//end method getAdminDashboardData
 
 	//on unpublish review adjust avg
-
-public function review_publish_adjust_avg( $review_info ) {
+	public function review_publish_adjust_avg( $review_info ) {
 		//calculate avg
 		CBXMCRatingReviewHelper::calculatePostAvg( $review_info );
 	}//end method review_unpublish_adjust_avg
 
 	public function review_unpublish_adjust_avg( $review_info ) {
 		CBXMCRatingReviewHelper::adjustPostwAvg( $review_info );
-	}//end method review_delete_after
+	}//end method review_unpublish_adjust_avg
 
 	/**
 	 * Do some extra cleanup on after review delete
@@ -1010,7 +1027,7 @@ public function review_publish_adjust_avg( $review_info ) {
 		//adjust avg
 		CBXMCRatingReviewHelper::adjustPostwAvg( $review_info );
 
-	}//end method form_delete_after
+	}//end method review_delete_after
 
 	/**
 	 * After rating form delete
@@ -1023,7 +1040,7 @@ public function review_publish_adjust_avg( $review_info ) {
 		if ( $form_id > 0 ) {
 			RatingReviewLog::where( 'form_id', $form_id )->delete();
 		}
-	}//end method review_delete_after_delete_user
+	}//end method form_delete_after
 
 	/**
 	 * On user delete delete reviews

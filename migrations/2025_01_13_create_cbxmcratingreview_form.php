@@ -27,7 +27,8 @@ if ( ! class_exists( 'CreateCBXMcRatingReviewFormTable' ) ) {
 						$table->tinyInteger( 'status' );
 						$table->longtext( 'custom_criteria' );
 						$table->longtext( 'custom_question' );
-						$table->longtext( 'extrafields' )->default('');
+						//$table->longtext( 'extrafields' )->default('');
+						$table->longtext( 'extrafields' )->nullable();
 					} );
 				}
 			} catch ( \Exception $e ) {

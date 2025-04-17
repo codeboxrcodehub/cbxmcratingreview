@@ -104,6 +104,17 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                     <div class="content">
                         <div class="cbx-backend-settings-row">
                             <p>
+                                Version - 2.0.2
+                            </p>
+                            <ul>
+                                <li>[fixed] Form table creation bug fix for some specific mysql configuration</li>
+                                <li>[updated] Style improvement</li>
+                                <li>[updated] WordPress V6.8 Compatible</li>
+                                <li>[updated] Pro Addon plugin V2.0.2 released</li>
+                            </ul>
+                        </div>
+                        <div class="cbx-backend-settings-row">
+                            <p>
                                 Version - 2.0.1
                             </p>
                             <ul>
@@ -132,6 +143,16 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                     </div>
                     <div class="content">
                         <div class="cbx-backend-settings-row">
+                            <div class="cbx-backend-settings-row">
+                                <p>
+                                    Version - 2.0.2
+                                </p>
+                                <ul>
+                                    <li>[updated] Style improvement</li>
+                                    <li>[updated] WordPress V6.8 Compatible</li>
+                                    <li>[updated] Core plugin V2.0.2 released</li>
+                                </ul>
+                            </div>
                             <div class="cbx-backend-settings-row">
                                 <p>
                                     Version - 2.0.1
