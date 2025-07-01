@@ -1,6 +1,7 @@
 <?php
+// If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 //echo '<div class="cbx-chota"><div class="container"><div class="row"><div class="col-12">';

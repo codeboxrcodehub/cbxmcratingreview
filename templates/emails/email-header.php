@@ -15,8 +15,9 @@
  * @version 7.4.0
  */
 
+// If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 ?>

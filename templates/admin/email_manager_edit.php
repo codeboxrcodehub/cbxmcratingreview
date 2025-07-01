@@ -7,7 +7,10 @@
  * @package    cbxmcratingreview
  * @subpackage cbxmcratingreview/templates/admin
  */
-defined( 'ABSPATH' ) || exit;
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 ?>
 <?php
 $list_url = admin_url( 'admin.php?page=cbxmcratingreview-emails' );

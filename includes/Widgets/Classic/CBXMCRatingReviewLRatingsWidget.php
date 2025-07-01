@@ -1,14 +1,13 @@
 <?php
 //namespace CBX\MCRatingReview\Widgets\Classic;
 
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 use CBX\MCRatingReview\CBXMCRatingReviewSettings;
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-
-
-// Prevent direct file access
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 /**
  * Latest rating widget

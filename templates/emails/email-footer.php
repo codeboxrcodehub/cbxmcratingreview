@@ -15,7 +15,10 @@
  * @version 7.4.0
  */
 
-defined( 'ABSPATH' ) || exit;
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 ?>
 </div>
 </td>

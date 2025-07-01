@@ -11,12 +11,13 @@
  * @subpackage cbxmcratingreview/templates
  */
 
-if ( ! defined( 'WPINC' ) ) {
-	die;
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
 }
 ?>
 <?php
-$delete_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_delete' ) );
+$delete_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_delete_white' ) );
 ?>
 <span class="cbxmcratingreview_review_list_item_toolbar_item cbxmcratingreview_review_list_item_toolbar_item_deletebutton">
 	<a href="#" class="cbxmcratingreview-review-delete button error icon icon-only" data-busy="0"

@@ -15,7 +15,7 @@
  * Plugin Name:       CBX Multi Criteria Rating & Review
  * Plugin URI:        https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/
  * Description:       Multi Criteria Rating & Review System for WordPress
- * Version:           2.0.2
+ * Version:           2.0.4
  * Author:            Codeboxr
  * Author URI:        https://codeboxr.com
  * License:           GPL-2.0+
@@ -24,16 +24,16 @@
  * Domain Path:       /languages
  */
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
 }
+
+use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 
 defined( 'CBXMCRATINGREVIEW_PLUGIN_NAME' ) or define( 'CBXMCRATINGREVIEW_PLUGIN_NAME', 'cbxmcratingreview' );
-defined( 'CBXMCRATINGREVIEW_PLUGIN_VERSION' ) or define( 'CBXMCRATINGREVIEW_PLUGIN_VERSION', '2.0.2' );
+defined( 'CBXMCRATINGREVIEW_PLUGIN_VERSION' ) or define( 'CBXMCRATINGREVIEW_PLUGIN_VERSION', '2.0.4' );
 defined( 'CBXMCRATINGREVIEW_BASE_NAME' ) or define( 'CBXMCRATINGREVIEW_BASE_NAME', plugin_basename( __FILE__ ) );
 defined( 'CBXMCRATINGREVIEW_ROOT_PATH' ) or define( 'CBXMCRATINGREVIEW_ROOT_PATH', plugin_dir_path( __FILE__ ) );
 defined( 'CBXMCRATINGREVIEW_ROOT_URL' ) or define( 'CBXMCRATINGREVIEW_ROOT_URL', plugin_dir_url( __FILE__ ) );
@@ -43,6 +43,9 @@ defined( 'CBXMCRATINGREVIEW_RAND_MAX' ) or define( 'CBXMCRATINGREVIEW_RAND_MAX',
 defined( 'CBXMCRATINGREVIEW_COOKIE_EXPIRATION_14DAYS' ) or define( 'CBXMCRATINGREVIEW_COOKIE_EXPIRATION_14DAYS', time() + 1209600 ); //Expiration of 14 days.
 defined( 'CBXMCRATINGREVIEW_COOKIE_EXPIRATION_7DAYS' ) or define( 'CBXMCRATINGREVIEW_COOKIE_EXPIRATION_7DAYS', time() + 604800 ); //Expiration of 7 days.
 //defined( 'CBXMCRATINGREVIEW_COOKIE_NAME' ) or define( 'CBXMCRATINGREVIEW_COOKIE_NAME', 'cbrating-cookie-session' );
+
+defined( 'CBXMCRATINGREVIEW_PHP_MIN_VERSION' ) or define( 'CBXMCRATINGREVIEW_PHP_MIN_VERSION', '8.2' );
+defined( 'CBXMCRATINGREVIEW_WP_MIN_VERSION' ) or define( 'CBXMCRATINGREVIEW_WP_MIN_VERSION', '5.3' );
 
 defined( 'CBX_DEBUG' ) or define( 'CBX_DEBUG', false );
 defined( 'CBXMCRATINGREVIEW_DEV_MODE' ) or define( 'CBXMCRATINGREVIEW_DEV_MODE', CBX_DEBUG );
@@ -57,12 +60,12 @@ if ( ! class_exists( 'CBXMCRatingReview', false ) ) {
  *
  * @return bool
  */
-function cbxmcratingreview_compatible_wp_version( $version = '5.3' ) {
+function cbxmcratingreview_compatible_wp_version( $version = '' ) {
+	if($version == '') $version = CBXMCRATINGREVIEW_WP_MIN_VERSION;
+
 	if ( version_compare( $GLOBALS['wp_version'], $version, '<' ) ) {
 		return false;
 	}
-
-	// Add sanity checks for other version requirements here
 
 	return true;
 }//end function cbxmcratingreview_compatible_wp_version
@@ -72,8 +75,11 @@ function cbxmcratingreview_compatible_wp_version( $version = '5.3' ) {
  *
  * @return bool
  */
-function cbxmcratingreview_compatible_php_version( $version = '8.2' ) {
-	if ( version_compare( PHP_VERSION, $version, '<=' ) ) {
+function cbxmcratingreview_compatible_php_version( $version = '' ) {
+	if($version == '') $version = CBXMCRATINGREVIEW_PHP_MIN_VERSION;
+
+
+	if ( version_compare( PHP_VERSION, $version, '<' ) ) {
 		return false;
 	}
 
@@ -84,11 +90,31 @@ function cbxmcratingreview_compatible_php_version( $version = '8.2' ) {
  * The code that runs during plugin activation.
  */
 function activate_cbxmcratingreview() {
-	cbxmcratingreview_core();
+	$wp_version  = CBXMCRATINGREVIEW_WP_MIN_VERSION;
+	$php_version = CBXMCRATINGREVIEW_PHP_MIN_VERSION;
+	$activate_ok = true;
 
-	CBXMCRatingReviewHelper::load_orm();
+	if ( ! cbxmcratingreview_compatible_wp_version() ) {
+		$activate_ok = false;
+		deactivate_plugins( plugin_basename( __FILE__ ) );
 
-	CBXMCRatingReviewHelper::activate();
+		/* translators: WordPress version */
+		wp_die( sprintf( esc_html__( 'CBX Multi Criteria Rating & Review plugin requires WordPress %s or higher!', 'cbxmcratingreview' ), $wp_version ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	if ( ! cbxmcratingreview_compatible_php_version() ) {
+		$activate_ok = false;
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+
+		/* translators: PHP version */
+		wp_die( sprintf( esc_html__( 'CBX Multi Criteria Rating & Review plugin requires PHP %s or higher!', 'cbxmcratingreview' ), $php_version ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+
+	if($activate_ok){
+		cbxmcratingreview_core();
+		CBXMCRatingReviewHelper::load_orm();
+		CBXMCRatingReviewHelper::activate();
+	}
 }//end method activate_cbxmcratingreview
 
 /**

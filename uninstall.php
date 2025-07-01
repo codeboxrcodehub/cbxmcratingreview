@@ -1,4 +1,8 @@
 <?php
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\CBXMCRatingReviewUninstall;
 
@@ -22,7 +26,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * The code that runs during plugin uninstall.
  */
 function uninstall_cbxmcratingreview() {
-	require_once plugin_dir_path( __FILE__ ) . 'lib/autoload.php';
+	require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 	CBXMCRatingReviewUninstall::uninstall();
 }//end function uninstall_cbxmcratingreview
 

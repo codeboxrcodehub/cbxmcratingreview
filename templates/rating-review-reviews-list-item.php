@@ -1,4 +1,8 @@
 <?php
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
 use CBX\MCRatingReview\CBXMCRatingReviewSettings;
@@ -14,10 +18,6 @@ use CBX\MCRatingReview\CBXMCRatingReviewSettings;
  * @package    cbxmcratingreview
  * @subpackage cbxmcratingreview/templates
  */
-
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 ?>
 <?php
 $post_id    = absint( $post_review['post_id'] );

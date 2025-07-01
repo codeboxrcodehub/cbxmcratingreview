@@ -1,6 +1,10 @@
 <?php
-
 namespace CBX\MCRatingReview\Helpers;
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 
 use CBX\MCRatingReview\CBXMCRatingReviewSettings;
 use CBX\MCRatingReview\CBXMCRatingReviewPublic;
@@ -12,11 +16,6 @@ use Exception;
 use Illuminate\Database\QueryException;
 
 use Illuminate\Database\Capsule\Manager;
-
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 /**
  * Helper class

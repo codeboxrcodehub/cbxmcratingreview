@@ -1,10 +1,10 @@
 <?php
-
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-
+// If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 if ( ! class_exists( 'CBXMCRatingReviewReviewAdminAlertEmail', false ) ) :
 

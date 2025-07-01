@@ -1,4 +1,8 @@
 <?php
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\CBXMCRatingReviewHooks;
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
@@ -77,12 +81,16 @@ final class CBXMCRatingReview {
 		$this->version     = CBXMCRATINGREVIEW_PLUGIN_VERSION;
 		$this->plugin_name = CBXMCRATINGREVIEW_PLUGIN_NAME;
 
-		$this->include_files();
+		if ( cbxmcratingreview_compatible_php_version() ) {
+			$GLOBALS['cbxmcratingreview_loaded'] = true;
 
-
-		$this->define_common_hooks();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
+			$this->include_files();
+			$this->define_common_hooks();
+			$this->define_admin_hooks();
+			$this->define_public_hooks();
+		} else {
+			add_action( 'admin_notices', [ $this, 'php_version_notice' ] );
+		}		
 	}//end of constructor
 
 	/**
@@ -92,7 +100,7 @@ final class CBXMCRatingReview {
 	 * @since 2.0.0
 	 */
 	private function include_files() {
-		require_once __DIR__ . '/../lib/autoload.php';
+		require_once __DIR__ . '/../vendor/autoload.php';
 		include_once __DIR__ . '/CBXMCRatingReviewEmails.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/Html2Text.php';
@@ -311,4 +319,16 @@ final class CBXMCRatingReview {
 	public function mailer() {
 		return cbxmcratingreview_mailer();
 	}//end method mailer
+
+	/**
+	 * Show php version notice in dashboard
+	 *
+	 * @return void
+	 */
+	public function php_version_notice() {
+		echo '<div class="error"><p>';
+		/* Translators:  PHP Version */
+		echo sprintf(esc_html__( 'CBX Multi Criteria Rating & Review requires at least PHP %s. Please upgrade PHP to run CBX Multi Criteria Rating & Review.', 'cbxmcratingreview' ), esc_attr(CBXMCRATINGREVIEW_PHP_MIN_VERSION));
+		echo '</p></div>';
+	}//end method php_version_notice
 }// end class CBXMCRatingReview

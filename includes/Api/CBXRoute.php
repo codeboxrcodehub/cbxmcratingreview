@@ -1,6 +1,9 @@
 <?php
-
 namespace CBX\MCRatingReview\Api;
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use WP_Error;
 

@@ -15,8 +15,9 @@
  * @version 9.3.0
  */
 
+// If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit; // Exit if accessed directly.
 }
 
 $template_settings = get_option( 'cbxmcratingreview_email_tpl', [] );

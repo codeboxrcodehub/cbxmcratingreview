@@ -1,4 +1,8 @@
 <?php
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\CBXMCRatingReviewSettings;
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
@@ -34,13 +38,13 @@ $form_question_formats = CBXMCRatingReviewHelper::form_question_formats();
 ?>
 <div class="cbx-chota">
     <div class="cbxmcratingreviewmainwrap">
-        <div class="cbxmcratingreview-form-section">
+        <div class="cbxmcratingreview-form-section form-wrapper-500">
             <div class="cbxmcratingreview_global_msg"></div>
 
 			<?php
 			do_action( 'cbxmcratingreview_review_rating_form_before', $form_id, $post_id );
 			?>
-            <form class="cbxmcratingreview-form global_common_form form-wrapper-500" method="post"
+            <form class="cbxmcratingreview-form global_common_form " method="post"
                   enctype="multipart/form-data" data-busy="0"
                   data-form_id="<?php echo intval( $form_id ); ?>" data-postid="<?php echo intval( $post_id ); ?>">
 				<?php

@@ -1,13 +1,12 @@
 <?php
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
 use enshrined\svgSanitize\Sanitizer;
 use CBX\MCRatingReview\CBXMCRatingReviewSettings;
-
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 ?>
 <?php
 

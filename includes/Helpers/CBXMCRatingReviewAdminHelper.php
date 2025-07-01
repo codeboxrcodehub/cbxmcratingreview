@@ -1,7 +1,10 @@
 <?php
-
 namespace CBX\MCRatingReview\Helpers;
 
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\MigrationManage;
 use CBX\MCRatingReview\Models\RatingReviewLog;
@@ -16,13 +19,8 @@ use CBX\MCRatingReview\Models\RatingReviewLog;
  * @subpackage CBXMCRatingReview/includes
  */
 
-
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 ?>
-	<?php
+<?php
 
 class CBXMCRatingReviewAdminHelper {
 	/**

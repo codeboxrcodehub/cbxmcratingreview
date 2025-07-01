@@ -10,12 +10,13 @@
  * @package    cbxmcratingreview
  * @subpackage cbxmcratingreview/templates/widgets
  */
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 //post data needs to be in variable $data_posts
 ?>

@@ -1,6 +1,9 @@
 <?php
-
 namespace CBX\MCRatingReview;
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper;
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
@@ -459,14 +462,15 @@ class CBXMCRatingReviewPublic {
 
 
 		wp_register_style( 'awesome-notifications', $vendors_url_part . 'awesome-notifications/style.css', [], $ver );
-		wp_register_style( 'jquery-ui', $vendors_url_part . 'ui-lightness/jquery-ui.min.css', [], $ver );
+		//wp_register_style( 'jquery-ui', $vendors_url_part . 'ui-lightness/jquery-ui.min.css', [], $ver );
 		wp_register_style( 'jquery-cbxmcratingreview-raty', $css_url_part . 'jquery.cbxmcratingreview_raty.css', [], $ver, 'all' );
 
 
-		$ratingform_css_dep[] = 'jquery-ui';
+		//$ratingform_css_dep[] = 'jquery-ui';
 		$ratingform_css_dep[] = 'awesome-notifications';
 		$ratingform_css_dep[] = 'jquery-cbxmcratingreview-raty';
 
+		$common_css_dep[] = 'awesome-notifications';
 		$common_css_dep[] = 'jquery-cbxmcratingreview-raty';
 
 		$common_css_dep = apply_filters( 'cbxmcratingreview_common_css_dep', $common_css_dep );
@@ -515,23 +519,23 @@ class CBXMCRatingReviewPublic {
 		do_action( 'cbxmcratingreview_reg_scripts_before' );
 
 		//common for everywhere
-		wp_register_script( 'cbxmcratingreview-events', $js_url_vanila . 'cbxmcratingreview-events.js', [], $ver, true );
-		wp_register_script( 'jquery-cbxmcratingreview-raty', $js_url_vanila . 'jquery.cbxmcratingreview_raty.js', [ 'jquery' ], $ver, true );
+		wp_register_script( 'cbxmcratingreview-events', $js_url_vanila . 'cbxmcratingreview-events.js', [], $ver, $footer );
+		wp_register_script( 'jquery-cbxmcratingreview-raty', $js_url_vanila . 'jquery.cbxmcratingreview_raty.js', [ 'jquery' ], $ver, $footer );
 
 
-		wp_register_style( 'awesome-notifications', $vendors_url_part . 'awesome-notifications/style.css', [], $ver );
-		wp_register_script( 'jquery-validate', $js_url_vanila . 'jquery.validate.min.js', [ 'jquery' ], $ver, true );
+		wp_register_script( 'awesome-notifications', $vendors_url_part . 'awesome-notifications/script.js', [], $ver, $footer );
+		wp_register_script( 'jquery-validate', $js_url_vanila . 'jquery.validate.min.js', [ 'jquery' ], $ver, $footer );
 
 		$ratingform_js_dep[] = 'cbxmcratingreview-events';
 		$ratingform_js_dep[] = 'jquery';
-		$ratingform_js_dep[] = 'jquery-ui-datepicker';
+		//$ratingform_js_dep[] = 'jquery-ui-datepicker';
 		$ratingform_js_dep[] = 'jquery-cbxmcratingreview-raty';
 		$ratingform_js_dep[] = 'jquery-validate';
 		$ratingform_js_dep[] = 'awesome-notifications';
 
 		$ratingeditform_js_dep[] = 'cbxmcratingreview-events';
 		$ratingeditform_js_dep[] = 'jquery';
-		$ratingeditform_js_dep[] = 'jquery-ui-datepicker';
+		//$ratingeditform_js_dep[] = 'jquery-ui-datepicker';
 		$ratingeditform_js_dep[] = 'jquery-cbxmcratingreview-raty';
 		$ratingeditform_js_dep[] = 'jquery-validate';
 		$ratingeditform_js_dep[] = 'awesome-notifications';
@@ -539,6 +543,7 @@ class CBXMCRatingReviewPublic {
 
 		$common_js_dep[] = 'cbxmcratingreview-events';
 		$common_js_dep[] = 'jquery';
+		$common_js_dep[] = 'awesome-notifications';
 		$common_js_dep[] = 'jquery-cbxmcratingreview-raty';
 
 
@@ -546,7 +551,7 @@ class CBXMCRatingReviewPublic {
 
 		$common_js_dep = apply_filters( 'cbxmcratingreview_common_js_dep', $common_js_dep );
 
-		wp_register_script( 'cbxmcratingreview-public', $js_url_vanila . 'cbxmcratingreview-public.js', $common_js_dep, $ver, true );
+		wp_register_script( 'cbxmcratingreview-public', $js_url_vanila . 'cbxmcratingreview-public.js', $common_js_dep, $ver, $footer );
 
 		$ratingform_js_dep[]     = 'cbxmcratingreview-public';
 		$ratingeditform_js_dep[] = 'cbxmcratingreview-public';
@@ -554,8 +559,8 @@ class CBXMCRatingReviewPublic {
 		$ratingform_js_dep     = apply_filters( 'cbxmcratingreview_ratingform_js_dep', $ratingform_js_dep );
 		$ratingeditform_js_dep = apply_filters( 'cbxmcratingreview_editform_js_dep', $ratingeditform_js_dep );
 
-		wp_register_script( 'cbxmcratingreview-ratingform', $js_url_vanila . 'cbxmcratingreview-ratingform.js', $ratingform_js_dep, $ver, true );
-		wp_register_script( 'cbxmcratingreview-ratingeditform', $js_url_vanila . 'cbxmcratingreview-ratingform-frontedit.js', $ratingeditform_js_dep, $ver, true );
+		wp_register_script( 'cbxmcratingreview-ratingform', $js_url_vanila . 'cbxmcratingreview-ratingform.js', $ratingform_js_dep, $ver, $footer );
+		wp_register_script( 'cbxmcratingreview-ratingeditform', $js_url_vanila . 'cbxmcratingreview-ratingform-frontedit.js', $ratingeditform_js_dep, $ver, $footer);
 
 
 		// Localize the script with new data
@@ -644,7 +649,7 @@ class CBXMCRatingReviewPublic {
 
 
 		// Enqueue Quill JS
-		wp_enqueue_script( 'quill', 'https://cdn.quilljs.com/1.3.6/quill.min.js', [ 'jquery' ], $ver, true );
+		wp_enqueue_script( 'quill', 'https://cdn.quilljs.com/1.3.6/quill.min.js', [ 'jquery' ], $ver, $footer );
 
 		wp_localize_script( 'cbxmcratingreview-public', 'cbxmcratingreview_public', $cbxmcratingreview_public_common_js_vars );
 		wp_localize_script( 'cbxmcratingreview-ratingform', 'cbxmcratingreview_ratingform', $cbxmcratingreview_public_ratingform_js_vars );
@@ -652,7 +657,6 @@ class CBXMCRatingReviewPublic {
 
 
 		do_action( 'cbxmcratingreview_reg_scripts_after' );
-
 	}//end method enqueue_scripts
 
 
@@ -663,12 +667,14 @@ class CBXMCRatingReviewPublic {
 		do_action( 'cbxmcratingreview_enq_common_js_css_before' );
 
 		// enqueue styles
+		wp_enqueue_style( 'awesome-notifications' );
 		wp_enqueue_style( 'jquery-cbxmcratingreview-raty' );
 
 
 		// enqueue scripts
 		wp_enqueue_script( 'cbxmcratingreview-events' );
 		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'awesome-notifications' );
 		wp_enqueue_script( 'jquery-cbxmcratingreview-raty' );
 
 		do_action( 'cbxmcratingreview_enq_common_js_css' );
@@ -677,7 +683,6 @@ class CBXMCRatingReviewPublic {
 		wp_enqueue_script( 'cbxmcratingreview-public' );
 
 		do_action( 'cbxmcratingreview_enq_common_js_css_after' );
-
 	}//end method enqueue_common_js_css_rating
 
 	/**
@@ -689,7 +694,8 @@ class CBXMCRatingReviewPublic {
 		do_action( 'cbxmcratingreview_enq_ratingform_js_css_before' );
 
 		//enqueue styles
-		wp_enqueue_style( 'jquery-ui' );
+		//wp_enqueue_style( 'jquery-ui' );
+		wp_enqueue_style( 'awesome-notifications' );
 		wp_enqueue_style( 'jquery-cbxmcratingreview-raty' );
 
 
@@ -697,9 +703,10 @@ class CBXMCRatingReviewPublic {
 		wp_enqueue_script( 'cbxmcratingreview-events' );
 		wp_enqueue_script( 'jquery' );
 
-		wp_enqueue_script( 'jquery-ui-datepicker' );
+		//wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_enqueue_script( 'jquery-cbxmcratingreview-raty' );
 		wp_enqueue_script( 'jquery-validate' );
+		wp_enqueue_script( 'awesome-notifications' );
 
 
 		do_action( 'cbxmcratingreview_enq_ratingform_js_css' );
@@ -711,19 +718,18 @@ class CBXMCRatingReviewPublic {
 		wp_enqueue_script( 'cbxmcratingreview-ratingform' );
 
 		do_action( 'cbxmcratingreview_enq_ratingform_js_css_after' );
-
-	}
+	}//end method enqueue_ratingform_js_css_rating
 
 	/**
 	 * Add all js and css needed for review edit form
 	 */
 	public function enqueue_ratingeditform_js_css_rating() {
-
 		do_action( 'cbxmcratingreview_enq_ratingeditform_js_css_before' );
 
 
 		//enqueue styles
-		wp_enqueue_style( 'jquery-ui' );
+		//wp_enqueue_style( 'jquery-ui' );
+		wp_enqueue_style( 'awesome-notifications' );
 		wp_enqueue_style( 'jquery-cbxmcratingreview-raty' );
 
 
@@ -731,9 +737,10 @@ class CBXMCRatingReviewPublic {
 		wp_enqueue_script( 'cbxmcratingreview-events' );
 		wp_enqueue_script( 'jquery' );
 
-		wp_enqueue_script( 'jquery-ui-datepicker' );
+		//wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_enqueue_script( 'jquery-cbxmcratingreview-raty' );
 		wp_enqueue_script( 'jquery-validate' );
+		wp_enqueue_script( 'awesome-notifications' );
 
 
 		do_action( 'cbxmcratingreview_enq_ratingeditform_js_css' );
@@ -747,7 +754,7 @@ class CBXMCRatingReviewPublic {
 		wp_enqueue_script( 'cbxmcratingreview-ratingeditform' );
 
 		do_action( 'cbxmcratingreview_enq_ratingeditform_js_css_after' );
-	}
+	}//end method enqueue_ratingeditform_js_css_rating
 
 
 	/**

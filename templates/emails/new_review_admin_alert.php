@@ -6,8 +6,9 @@
  *
  */
 
+// If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit; // Exit if accessed directly.
 }
 
 do_action( 'cbxmcratingreview_email_header', $email_heading, $email ); ?>

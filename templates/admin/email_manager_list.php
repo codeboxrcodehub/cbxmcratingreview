@@ -7,7 +7,10 @@
  * @package    cbxmcratingreview
  * @subpackage cbxmcratingreview/templates/admin
  */
-defined( 'ABSPATH' ) || exit;
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 ?>
 <div class="section_header row">
     <div class="col-12 section_header_l">

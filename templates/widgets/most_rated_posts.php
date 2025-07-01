@@ -11,8 +11,9 @@
  * @subpackage cbxmcratingreview/templates/widgets
  */
 
-if ( ! defined( 'WPINC' ) ) {
-	die;
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
 }
 
 //post data needs to be in variable $data_posts

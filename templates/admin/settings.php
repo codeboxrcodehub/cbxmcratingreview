@@ -1,4 +1,8 @@
 <?php
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
 
@@ -14,9 +18,6 @@ use CBX\MCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
  * @subpackage cbxmcratingreview/templates/admin
  */
 
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
 
 $plugin_url = CBXMCRatingReviewAdminHelper::url_utmy( 'https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/' );
 $doc_url    = CBXMCRatingReviewAdminHelper::url_utmy( 'https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/' );

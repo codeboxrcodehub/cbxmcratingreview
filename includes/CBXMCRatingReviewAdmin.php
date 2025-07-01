@@ -1,6 +1,10 @@
 <?php
-
 namespace CBX\MCRatingReview;
+
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
 use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
@@ -679,7 +683,7 @@ class CBXMCRatingReviewAdmin {
 
 
 		$ratingforms_css_dep[] = 'sweetalert2';
-		$ratingforms_css_dep[] = 'wp-color-picker';
+		//$ratingforms_css_dep[] = 'wp-color-picker';
 
 		wp_register_style( 'cbxmcratingreview-builder', $css_url_part . 'cbxmcratingreview-builder.css', [],
 			$this->version, 'all' );
@@ -1154,7 +1158,7 @@ class CBXMCRatingReviewAdmin {
 
 
 		$pro_addon_version   = isset( $plugin_data['Version'] ) ? $plugin_data['Version'] : '';
-		$pro_current_version = '2.0.0';
+		$pro_current_version = '2.0.4';
 
 
 		if ( $pro_addon_version != '' && version_compare( $pro_addon_version, $pro_current_version, '<' ) ) {

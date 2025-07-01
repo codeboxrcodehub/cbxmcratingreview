@@ -1,6 +1,10 @@
 <?php
-
 namespace CBX\MCRatingReview\Controllers;
+
+// If this file is called directly, abort.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 use Exception;
 use CBX\MCRatingReview\MigrationManage;
