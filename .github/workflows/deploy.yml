@@ -126,10 +126,11 @@ jobs:
     needs: update-trunk
 
     steps:
-       - name: Install SVN
+      - name: Install SVN                # <--- This is the added fix
         run: |
           sudo apt-get update
           sudo apt-get install -y subversion
+
       - name: Tag from trunk
         run: |
           PLUGIN_SLUG="${{ github.event.repository.name }}"
