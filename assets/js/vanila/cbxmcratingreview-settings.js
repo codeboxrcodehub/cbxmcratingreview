@@ -129,7 +129,8 @@
                 .select2({
                     placeholder: $placeholder,
                     allowClear: $allow_clear ? true : false,
-                    theme: 'default select2-container--cbx',
+                    //theme: 'default select2-container--cbx',
+                    theme: 'default',
                     dropdownParent: $(element)
                 })
                 .on('select2:open', function () {
@@ -141,6 +142,11 @@
                 .on('select2:close', function () {
                     $('.select2-search__field').attr('placeholder', $placeholder);
                 });
+                /*.each(function () {
+                    // Add your custom class to the rendered container
+                    let select2Container = $(this).next('.select2-container--default');
+                    select2Container.addClass('select2-container--cbx');
+                });*/
 
             $element
                 .find('.select2-selection__rendered')

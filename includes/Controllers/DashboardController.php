@@ -39,7 +39,8 @@ class DashboardController {
 
 			$daily_review     = CBXMCRatingReviewHelper::getDailyReviewCounts( $year, $month );
 			$labels           = array_map( 'strval', array_keys( $daily_review ) );
-			$backgroundColors = array_map( fn() => sprintf( '#%06X', wp_rand( 0, 0xFFFFFF ) ), range( 1, 12 ) );
+			
+			//$backgroundColors = array_map( fn() => sprintf( '#%06X', wp_rand( 0, 0xFFFFFF ) ), range( 1, 12 ) );
 
 			// Prepare the chart data format
 			$dailyReviewData = [
@@ -47,7 +48,8 @@ class DashboardController {
 				'datasets' => [
 					[
 						'label'           => 'Review Count',
-						'backgroundColor' => $backgroundColors,
+						//'backgroundColor' => $backgroundColors,
+						'backgroundColor' => 'rgba(248, 121, 121, 0.5)',
 						'data'            => $daily_review
 					]
 				]

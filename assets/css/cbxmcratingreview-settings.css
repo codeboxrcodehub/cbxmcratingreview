@@ -49,8 +49,8 @@
 .cbx-chota .setting-form-wrap #setting-tabs-contents{flex:2}
 .cbx-chota .setting-form-wrap .setting-select-wrapper{width:100% !important;display:none}
 .cbx-chota .setting-form-wrap .setting-select-wrapper select{width:100% !important}
-.cbx-chota .setting-form-wrap .setting-select-wrapper .select2-container--cbx{width:100% !important;max-width:100% !important}
-@media screen and (max-width: 782px){.cbx-chota .setting-form-wrap .setting-tabs{display:none !important}.cbx-chota .setting-form-wrap .setting-select-wrapper{display:block !important}.cbx-chota .setting-form-wrap .setting-select-wrapper .select2-container--cbx{margin-top:20px}}
+.cbx-chota .setting-form-wrap .setting-select-wrapper .select2-container,.cbx-chota .setting-form-wrap .setting-select-wrapper .select2-container--cbx{width:100% !important;max-width:100% !important}
+@media screen and (max-width: 782px){.cbx-chota .setting-form-wrap .setting-tabs{display:none !important}.cbx-chota .setting-form-wrap .setting-select-wrapper{display:block !important}.cbx-chota .setting-form-wrap .setting-select-wrapper .select2-container,.cbx-chota .setting-form-wrap .setting-select-wrapper .select2-container--cbx{margin-top:20px}}
 .cbx-chota .cbx-export-import-wrapper{display:none}
 .cbx-chota .cbx-export-import-wrapper .cbx-export-import-inner{background:#fff;padding:20px;margin-bottom:20px;border-radius:7px;display:flex;justify-content:space-between;align-items:center}
 .cbx-chota .cbx-export-import-wrapper .cbx-export-import-inner h2{font-size:18px !important;margin:0}
