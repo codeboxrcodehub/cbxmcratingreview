@@ -41,13 +41,7 @@ jobs:
         run: |
           changelog_section_start="== Changelog =="
           readme_file="$readme_file"
-
-          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
-            plugin_version="${GITHUB_REF#refs/tags/}"
-          else
-            echo "::error::This workflow must be triggered by a tag push."
-            exit 1
-          fi
+          plugin_version="${GITHUB_REF#refs/tags/}"
 
           in_changelog=0
           found_version=0
@@ -72,9 +66,8 @@ jobs:
               break
             fi
 
-            if [[ $found_version -eq 1 ]] && echo "$line" | grep -qE '^\*'; then
+            if [[ $found_version -eq 1 ]]; then
               release_notes+="${line}\n"
-              continue
             fi
           done < "$readme_file"
 
@@ -83,16 +76,17 @@ jobs:
             exit 1
           fi
 
-          # Output in a format usable by later jobs
+          # Output for GitHub environment
           release_notes="${release_notes//'%'/'%25'}"
           release_notes="${release_notes//$'\n'/'%0A'}"
           release_notes="${release_notes//$'\r'/'%0D'}"
           echo "release_notes=$release_notes" >> $GITHUB_OUTPUT
 
   update-trunk:
-    name: Update trunk in WordPress SVN
+    name: Upload to trunk
     runs-on: ubuntu-latest
     needs: extract-release-notes
+
     steps:
       - uses: actions/checkout@v3
 
@@ -101,54 +95,72 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y subversion
 
-      - name: Deploy to trunk
-        uses: 10up/action-wordpress-plugin-deploy@stable
-        with:
-          skip-tags: true
-          generate-zip: false
+      - name: Deploy trunk manually
+        run: |
+          PLUGIN_SLUG="${{ github.event.repository.name }}"
+          VERSION="${GITHUB_REF#refs/tags/}"
+          SVN_URL="https://plugins.svn.wordpress.org/${PLUGIN_SLUG}"
+          SVN_DIR="$HOME/svn-${PLUGIN_SLUG}"
+
+          echo "Checking out SVN..."
+          svn checkout "$SVN_URL" "$SVN_DIR" --depth immediates
+          svn update "$SVN_DIR/trunk" --set-depth infinity
+
+          echo "Copying plugin files..."
+          rsync -a --exclude='.git*' --exclude='.github' --exclude='svn-*' ./ "$SVN_DIR/trunk/"
+
+          cd "$SVN_DIR/trunk"
+
+          echo "Adding all new files to SVN..."
+          svn add . --force --quiet
+
+          echo "Committing to trunk..."
+          svn commit -m "Update trunk for version ${VERSION}" \
+            --username "${SVN_USERNAME}" \
+            --password "${SVN_PASSWORD}" \
+            --non-interactive
 
   tag-release:
-    name: Tag SVN Release
+    name: Tag release in SVN
     runs-on: ubuntu-latest
     needs: update-trunk
+
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install SVN
+      - name: Tag from trunk
         run: |
-          sudo apt-get update
-          sudo apt-get install -y subversion
+          PLUGIN_SLUG="${{ github.event.repository.name }}"
+          VERSION="${GITHUB_REF#refs/tags/}"
+          SVN_URL="https://plugins.svn.wordpress.org/${PLUGIN_SLUG}"
+          SVN_DIR="$HOME/svn-${PLUGIN_SLUG}"
 
-      - name: Extract Plugin Version
-        id: version
-        run: |
-          echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          svn checkout "$SVN_URL" "$SVN_DIR" --depth immediates
+          svn update "$SVN_DIR/trunk" --set-depth infinity
 
-      - name: Deploy tag
-        uses: 10up/action-wordpress-plugin-deploy@stable
-        with:
-          skip-trunk: true
-          skip-assets: true
-          generate-zip: false
-          tag: ${{ steps.version.outputs.version }}
+          echo "Tagging version ${VERSION}..."
+          svn copy "$SVN_DIR/trunk" "$SVN_DIR/tags/${VERSION}" \
+            -m "Tagging version ${VERSION}" \
+            --username "${SVN_USERNAME}" \
+            --password "${SVN_PASSWORD}" \
+            --non-interactive
 
   github-release:
     name: Create GitHub Release
     runs-on: ubuntu-latest
     needs: [tag-release, extract-release-notes]
+
     steps:
       - uses: actions/checkout@v3
 
-      - name: Extract Plugin Version
+      - name: Extract Version
         id: version
         run: |
           echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
-      - name: Create ZIP Archive
+      - name: Create ZIP
         run: |
           zip -r "${{ github.event.repository.name }}.zip" . -x ".git/*" ".github/*"
 
-      - name: Publish GitHub Release
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.version }}
