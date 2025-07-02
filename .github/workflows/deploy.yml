@@ -126,7 +126,7 @@ jobs:
     needs: update-trunk
 
     steps:
-      - name: Install SVN                # <--- This is the added fix
+      - name: Install SVN
         run: |
           sudo apt-get update
           sudo apt-get install -y subversion
@@ -142,8 +142,11 @@ jobs:
           svn update "$SVN_DIR/trunk" --set-depth infinity
 
           echo "Tagging version ${VERSION}..."
-          svn copy "$SVN_DIR/trunk" "$SVN_DIR/tags/${VERSION}" \
-            -m "Tagging version ${VERSION}" \
+          svn copy "$SVN_DIR/trunk" "$SVN_DIR/tags/${VERSION}"
+
+          # Only use -m with svn commit, NOT with svn copy
+          svn commit -m "Tagging version ${VERSION}" \
+            "$SVN_DIR/tags/${VERSION}" \
             --username "${SVN_USERNAME}" \
             --password "${SVN_PASSWORD}" \
             --non-interactive
