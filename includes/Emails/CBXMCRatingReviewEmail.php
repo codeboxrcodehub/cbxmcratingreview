@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use Pelago\Emogrifier\CssInliner;
-use Pelago\Emogrifier\HtmlProcessor\CssToAttributeConverter;
-use Pelago\Emogrifier\HtmlProcessor\HtmlPruner;
+use CBXMCRatingReviewScoped\Pelago\Emogrifier\CssInliner;
+use CBXMCRatingReviewScoped\Pelago\Emogrifier\HtmlProcessor\CssToAttributeConverter;
+use CBXMCRatingReviewScoped\Pelago\Emogrifier\HtmlProcessor\HtmlPruner;
 
 if ( class_exists( 'CBXMCRatingReviewEmail', false ) ) {
 	return;
@@ -212,6 +212,7 @@ class CBXMCRatingReviewEmail {
 		$this->placeholders = array_merge(
 			array(
 				'{site_title}' => $this->get_blogname(),
+				'{sitename}' => $this->get_blogname(),
 				'{site_url}'   => wp_parse_url( home_url(), PHP_URL_HOST ),
 				'{site_link}'  => '<a href="' . wp_parse_url( home_url(), PHP_URL_HOST ) . '">' . $this->get_blogname() . '</a>',
 			),
@@ -716,7 +717,12 @@ class CBXMCRatingReviewEmail {
 			$css .= "\n";
 
 			ob_start();
-			echo cbxmcratingreview_get_template_html( 'emails/email-styles.php' );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			/* echo cbxmcratingreview_get_template_html( 'emails/email-styles.php' );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$css .= ob_get_clean(); */
+
+			$tpl_settings = get_option( 'cbxmcratingreview_email_tpl', [] );
+			$sel_template = $tpl_settings['selected_template'] ?? 'tpl-general';
+			echo cbxmcratingreview_get_template_html( 'email_templates/'. esc_attr($sel_template) .'/email-styles.php' );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			$css .= ob_get_clean();
 
 			/**
@@ -749,7 +755,14 @@ class CBXMCRatingReviewEmail {
 					//$logger->error( $e->getMessage(), array( 'source' => 'emogrifier' ) );
 				}
 			} else {
-				$content = '<style>' . $css . '</style>' . $content;
+				/* $content = '<style>' . $css . '</style>' . $content; */
+
+				$content = preg_replace(
+					'/(<head[^>]*>)/i',
+					'$1<style>' . $css . '</style>',
+					$content,
+					1
+				);
 			}
 		}
 

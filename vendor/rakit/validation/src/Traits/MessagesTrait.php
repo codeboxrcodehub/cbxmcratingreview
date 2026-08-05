@@ -1,13 +1,11 @@
 <?php
 
-namespace Rakit\Validation\Traits;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Traits;
 
 trait MessagesTrait
 {
-
     /** @var array */
     protected $messages = [];
-
     /**
      * Given $key and $message to set message
      *
@@ -19,7 +17,6 @@ trait MessagesTrait
     {
         $this->messages[$key] = $message;
     }
-
     /**
      * Given $messages and set multiple messages
      *
@@ -30,7 +27,6 @@ trait MessagesTrait
     {
         $this->messages = array_merge($this->messages, $messages);
     }
-
     /**
      * Given message from given $key
      *
@@ -41,7 +37,6 @@ trait MessagesTrait
     {
         return array_key_exists($key, $this->messages) ? $this->messages[$key] : $key;
     }
-
     /**
      * Get all $messages
      *

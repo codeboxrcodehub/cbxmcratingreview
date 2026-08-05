@@ -1,10 +1,9 @@
 <?php
 
-namespace Illuminate\Database\PDO;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\PDO;
 
-use Doctrine\DBAL\Driver\AbstractPostgreSQLDriver;
-use Illuminate\Database\PDO\Concerns\ConnectsToDatabase;
-
+use CBXMCRatingReviewScoped\Doctrine\DBAL\Driver\AbstractPostgreSQLDriver;
+use CBXMCRatingReviewScoped\Illuminate\Database\PDO\Concerns\ConnectsToDatabase;
 class PostgresDriver extends AbstractPostgreSQLDriver
 {
     use ConnectsToDatabase;

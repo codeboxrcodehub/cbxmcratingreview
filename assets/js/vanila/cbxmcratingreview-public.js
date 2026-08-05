@@ -60,6 +60,7 @@ function cbxmcratingreview_isURL(str) {
 }
 
 jQuery(document).ready(function ($) {
+    $('body').addClass('awn-popup-cbxmcratingreview');
 
     var cbxmcratingreview_public_awn_options = {
         labels: {

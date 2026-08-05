@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Pelago\Emogrifier\Utilities;
+declare (strict_types=1);
+namespace CBXMCRatingReviewScoped\Pelago\Emogrifier\Utilities;
 
 /**
  * When computing many array intersections using the same array, it is more efficient to use `array_flip()` first and
@@ -25,7 +24,6 @@ final class ArrayIntersector
      * @var array<array-key, array-key>
      */
     private $invertedArray;
-
     /**
      * Constructs the object with the array that will be reused for many intersection computations.
      *
@@ -35,7 +33,6 @@ final class ArrayIntersector
     {
         $this->invertedArray = \array_flip($array);
     }
-
     /**
      * Computes the intersection of `$array` and the array with which this object was constructed.
      *
@@ -49,9 +46,7 @@ final class ArrayIntersector
     public function intersectWith(array $array): array
     {
         $invertedArray = \array_flip($array);
-
         $invertedIntersection = \array_intersect_key($invertedArray, $this->invertedArray);
-
         return \array_flip($invertedIntersection);
     }
 }

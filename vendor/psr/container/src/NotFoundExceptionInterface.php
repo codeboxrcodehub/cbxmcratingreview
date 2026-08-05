@@ -1,6 +1,6 @@
 <?php
 
-namespace Psr\Container;
+namespace CBXMCRatingReviewScoped\Psr\Container;
 
 /**
  * No entry was found in the container.

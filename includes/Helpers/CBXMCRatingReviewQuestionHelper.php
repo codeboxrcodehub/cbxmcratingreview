@@ -1,5 +1,5 @@
 <?php
-namespace CBX\MCRatingReview\Helpers;
+namespace CBXMCRatingReview\Helpers;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {

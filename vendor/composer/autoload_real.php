@@ -22,8 +22,6 @@ class ComposerAutoloaderInit4ddf1c1daf6d679db34d2493427694ae
             return self::$loader;
         }
 
-        require __DIR__ . '/platform_check.php';
-
         spl_autoload_register(array('ComposerAutoloaderInit4ddf1c1daf6d679db34d2493427694ae', 'loadClassLoader'), true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(__DIR__));
         spl_autoload_unregister(array('ComposerAutoloaderInit4ddf1c1daf6d679db34d2493427694ae', 'loadClassLoader'));
@@ -31,6 +29,7 @@ class ComposerAutoloaderInit4ddf1c1daf6d679db34d2493427694ae
         require __DIR__ . '/autoload_static.php';
         call_user_func(\Composer\Autoload\ComposerStaticInit4ddf1c1daf6d679db34d2493427694ae::getInitializer($loader));
 
+        $loader->setClassMapAuthoritative(true);
         $loader->register(true);
 
         $filesToLoad = \Composer\Autoload\ComposerStaticInit4ddf1c1daf6d679db34d2493427694ae::$files;

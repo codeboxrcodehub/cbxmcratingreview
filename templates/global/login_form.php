@@ -3,6 +3,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 ?>
 
 <?php
@@ -54,6 +55,7 @@ if ( ! is_user_logged_in() ):
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '<div class="cbxmcratingreview_login_regi_box">' . $guest_html . '</div>'; /* translators: %1$s: Resume text , %2$s: Resume number  */
 endif;
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 ?>
 <script type="text/javascript">
     document.addEventListener('click', function (e) {

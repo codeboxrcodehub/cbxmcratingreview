@@ -1,11 +1,10 @@
 <?php
 
-namespace Sabberworm\CSS\Value;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Value;
 
-use Sabberworm\CSS\Parsing\ParserState;
-use Sabberworm\CSS\Parsing\UnexpectedEOFException;
-use Sabberworm\CSS\Parsing\UnexpectedTokenException;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\ParserState;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedEOFException;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedTokenException;
 /**
  * Support for `-webkit-calc` and `-moz-calc` is deprecated in version 8.8.0, and will be removed in version 9.0.0.
  */
@@ -17,14 +16,12 @@ class CalcFunction extends CSSFunction
      * @internal
      */
     const T_OPERAND = 1;
-
     /**
      * @var int
      *
      * @internal
      */
     const T_OPERATOR = 2;
-
     /**
      * @param ParserState $oParserState
      * @param bool $bIgnoreCase
@@ -36,7 +33,7 @@ class CalcFunction extends CSSFunction
      *
      * @internal since V8.8.0
      */
-    public static function parse(ParserState $oParserState, $bIgnoreCase = false)
+    public static function parse(ParserState $oParserState, $bIgnoreCase = \false)
     {
         $aOperators = ['+', '-', '*', '/'];
         $sFunction = $oParserState->parseIdentifier();
@@ -56,7 +53,6 @@ class CalcFunction extends CSSFunction
             if ($oParserState->isEnd() && $iNestingLevel === 0) {
                 break;
             }
-
             $oParserState->consumeWhiteSpace();
             if ($oParserState->comes('(')) {
                 $iNestingLevel++;
@@ -73,36 +69,16 @@ class CalcFunction extends CSSFunction
                 $oVal = Value::parsePrimitiveValue($oParserState);
                 $oCalcList->addListComponent($oVal);
                 $iLastComponentType = CalcFunction::T_OPERAND;
-            } else {
-                if (in_array($oParserState->peek(), $aOperators)) {
-                    if (($oParserState->comes('-') || $oParserState->comes('+'))) {
-                        if (
-                            $oParserState->peek(1, -1) != ' '
-                            || !($oParserState->comes('- ')
-                                || $oParserState->comes('+ '))
-                        ) {
-                            throw new UnexpectedTokenException(
-                                " {$oParserState->peek()} ",
-                                $oParserState->peek(1, -1) . $oParserState->peek(2),
-                                'literal',
-                                $oParserState->currentLine()
-                            );
-                        }
+            } else if (in_array($oParserState->peek(), $aOperators)) {
+                if ($oParserState->comes('-') || $oParserState->comes('+')) {
+                    if ($oParserState->peek(1, -1) != ' ' || !($oParserState->comes('- ') || $oParserState->comes('+ '))) {
+                        throw new UnexpectedTokenException(" {$oParserState->peek()} ", $oParserState->peek(1, -1) . $oParserState->peek(2), 'literal', $oParserState->currentLine());
                     }
-                    $oCalcList->addListComponent($oParserState->consume(1));
-                    $iLastComponentType = CalcFunction::T_OPERATOR;
-                } else {
-                    throw new UnexpectedTokenException(
-                        sprintf(
-                            'Next token was expected to be an operand of type %s. Instead "%s" was found.',
-                            implode(', ', $aOperators),
-                            $oParserState->peek()
-                        ),
-                        '',
-                        'custom',
-                        $oParserState->currentLine()
-                    );
                 }
+                $oCalcList->addListComponent($oParserState->consume(1));
+                $iLastComponentType = CalcFunction::T_OPERATOR;
+            } else {
+                throw new UnexpectedTokenException(sprintf('Next token was expected to be an operand of type %s. Instead "%s" was found.', implode(', ', $aOperators), $oParserState->peek()), '', 'custom', $oParserState->currentLine());
             }
             $oParserState->consumeWhiteSpace();
         }

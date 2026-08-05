@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Database\Eloquent;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\Eloquent;
 
 interface Scope
 {

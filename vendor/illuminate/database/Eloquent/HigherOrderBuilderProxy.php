@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Database\Eloquent;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\Eloquent;
 
 /**
  * @mixin \Illuminate\Database\Eloquent\Builder
@@ -13,14 +13,12 @@ class HigherOrderBuilderProxy
      * @var \Illuminate\Database\Eloquent\Builder
      */
     protected $builder;
-
     /**
      * The method being proxied.
      *
      * @var string
      */
     protected $method;
-
     /**
      * Create a new proxy instance.
      *
@@ -33,7 +31,6 @@ class HigherOrderBuilderProxy
         $this->method = $method;
         $this->builder = $builder;
     }
-
     /**
      * Proxy a scope call onto the query builder.
      *

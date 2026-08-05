@@ -1,15 +1,12 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class Json extends Rule
 {
-
     /** @var string */
     protected $message = "The :attribute must be a valid JSON string";
-
     /**
      * Check the $value is valid
      *
@@ -18,16 +15,13 @@ class Json extends Rule
      */
     public function check($value): bool
     {
-        if (! is_string($value) || empty($value)) {
-            return false;
+        if (!is_string($value) || empty($value)) {
+            return \false;
         }
-
         json_decode($value);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            return false;
+        if (json_last_error() !== \JSON_ERROR_NONE) {
+            return \false;
         }
-
-        return true;
+        return \true;
     }
 }

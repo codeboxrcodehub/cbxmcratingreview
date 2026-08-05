@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
 
 defined( 'ABSPATH' ) || exit;
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_v' ) );
 ?>
 <div class="wrap cbx-chota cbxmcratingreview-page-wrapper cbxmcratingreview-email-manager-wrapper"
@@ -100,3 +100,5 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
         </div>
     </div>
 </div>
+<?php 
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

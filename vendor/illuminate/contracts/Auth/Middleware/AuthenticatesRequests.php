@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\Auth\Middleware;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Auth\Middleware;
 
 interface AuthenticatesRequests
 {

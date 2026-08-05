@@ -1,37 +1,35 @@
 <?php
 
-namespace Sabberworm\CSS\Property;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Property;
 
-use Sabberworm\CSS\Comment\Comment;
-use Sabberworm\CSS\OutputFormat;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Comment\Comment;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Position\Position;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Position\Positionable;
 /**
  * `CSSNamespace` represents an `@namespace` rule.
  */
-class CSSNamespace implements AtRule
+class CSSNamespace implements AtRule, Positionable
 {
+    use Position;
     /**
      * @var string
      */
     private $mUrl;
-
     /**
      * @var string
      */
     private $sPrefix;
-
     /**
      * @var int
      */
     private $iLineNo;
-
     /**
      * @var array<array-key, Comment>
      *
      * @internal since 8.8.0
      */
     protected $aComments;
-
     /**
      * @param string $mUrl
      * @param string|null $sPrefix
@@ -41,18 +39,9 @@ class CSSNamespace implements AtRule
     {
         $this->mUrl = $mUrl;
         $this->sPrefix = $sPrefix;
-        $this->iLineNo = $iLineNo;
+        $this->setPosition($iLineNo);
         $this->aComments = [];
     }
-
-    /**
-     * @return int
-     */
-    public function getLineNo()
-    {
-        return $this->iLineNo;
-    }
-
     /**
      * @return string
      *
@@ -62,7 +51,6 @@ class CSSNamespace implements AtRule
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *
@@ -70,10 +58,8 @@ class CSSNamespace implements AtRule
      */
     public function render($oOutputFormat)
     {
-        return '@namespace ' . ($this->sPrefix === null ? '' : $this->sPrefix . ' ')
-            . $this->mUrl->render($oOutputFormat) . ';';
+        return '@namespace ' . ($this->sPrefix === null ? '' : $this->sPrefix . ' ') . $this->mUrl->render($oOutputFormat) . ';';
     }
-
     /**
      * @return string
      */
@@ -81,7 +67,6 @@ class CSSNamespace implements AtRule
     {
         return $this->mUrl;
     }
-
     /**
      * @return string|null
      */
@@ -89,7 +74,6 @@ class CSSNamespace implements AtRule
     {
         return $this->sPrefix;
     }
-
     /**
      * @param string $mUrl
      *
@@ -99,7 +83,6 @@ class CSSNamespace implements AtRule
     {
         $this->mUrl = $mUrl;
     }
-
     /**
      * @param string $sPrefix
      *
@@ -109,7 +92,6 @@ class CSSNamespace implements AtRule
     {
         $this->sPrefix = $sPrefix;
     }
-
     /**
      * @return string
      */
@@ -117,7 +99,6 @@ class CSSNamespace implements AtRule
     {
         return 'namespace';
     }
-
     /**
      * @return array<int, string>
      */
@@ -129,7 +110,6 @@ class CSSNamespace implements AtRule
         }
         return $aResult;
     }
-
     /**
      * @param array<array-key, Comment> $aComments
      *
@@ -139,7 +119,6 @@ class CSSNamespace implements AtRule
     {
         $this->aComments = array_merge($this->aComments, $aComments);
     }
-
     /**
      * @return array<array-key, Comment>
      */
@@ -147,7 +126,6 @@ class CSSNamespace implements AtRule
     {
         return $this->aComments;
     }
-
     /**
      * @param array<array-key, Comment> $aComments
      *

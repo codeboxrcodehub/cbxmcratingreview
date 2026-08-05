@@ -1,6 +1,6 @@
 <?php
 
-namespace Psr\SimpleCache;
+namespace CBXMCRatingReviewScoped\Psr\SimpleCache;
 
 /**
  * Exception interface for invalid cache arguments.

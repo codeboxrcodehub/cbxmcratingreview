@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules;
 
-use Doctrine\Inflector\WordInflector;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\WordInflector;
 
 use function preg_replace;
 

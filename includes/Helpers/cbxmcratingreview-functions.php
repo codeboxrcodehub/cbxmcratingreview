@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use enshrined\svgSanitize\Sanitizer;
-use CBX\MCRatingReview\CBXMCRatingReviewSettings;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReviewScoped\enshrined\svgSanitize\Sanitizer;
+use CBXMCRatingReview\CBXMCRatingReviewSettings;
 ?>
 <?php
 
@@ -465,15 +465,15 @@ function cbxmcratingreview_reviewDeleteButtonRender( $post_review = [] ) {
 }//end method cbxmcratingreview_reviewDeleteButtonRender
 
 
-if ( ! function_exists( 'getMonthlyReviewCounts' ) ) {
-	function getMonthlyReviewCounts( $year = null ) {
-		return CBXMCRatingReviewHelper::getMonthlyReviewCounts( $year );
+if ( ! function_exists( 'cbxmcratingreview_getMonthlyReviewCounts' ) ) {
+	function cbxmcratingreview_getMonthlyReviewCounts( $year = null ) {
+		return CBXMCRatingReviewHelper::cbxmcratingreview_getMonthlyReviewCounts( $year );
 	}//end method cbxmcratingreview_signature_get_sortable_keys
 }
 
-if ( ! function_exists( 'getWeeklyReviewCounts' ) ) {
-	function getWeeklyReviewCounts( $review_id = 0 ) {
-		return CBXMCRatingReviewHelper::getWeeklyReviewCounts( $review_id );
+if ( ! function_exists( 'cbxmcratingreview_getWeeklyReviewCounts' ) ) {
+	function cbxmcratingreview_getWeeklyReviewCounts( $review_id = 0 ) {
+		return CBXMCRatingReviewHelper::cbxmcratingreview_getWeeklyReviewCounts( $review_id );
 	}//end method cbxmcratingreview_signature_get_sortable_keys
 }
 
@@ -653,7 +653,7 @@ if ( ! function_exists( 'cbxmcratingreview_deprecated_function' ) ) {
 	 */
 	function cbxmcratingreview_deprecated_function( $function, $version, $replacement = null ) {
 		if ( defined( 'DOING_AJAX' ) ) {
-			do_action( 'deprecated_function_run', $function, $replacement, $version );
+			do_action( 'cbxmcratingreview_deprecated_function_run', $function, $replacement, $version );
 			$log_string = "The {$function} function is deprecated since version {$version}."; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			$log_string .= $replacement ? " Replace with {$replacement}." : '';               // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 

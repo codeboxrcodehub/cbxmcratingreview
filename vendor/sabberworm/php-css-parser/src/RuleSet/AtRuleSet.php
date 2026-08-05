@@ -1,10 +1,9 @@
 <?php
 
-namespace Sabberworm\CSS\RuleSet;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\RuleSet;
 
-use Sabberworm\CSS\OutputFormat;
-use Sabberworm\CSS\Property\AtRule;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Property\AtRule;
 /**
  * This class represents rule sets for generic at-rules which are not covered by specific classes, i.e., not
  * `@import`, `@charset` or `@media`.
@@ -17,12 +16,10 @@ class AtRuleSet extends RuleSet implements AtRule
      * @var string
      */
     private $sType;
-
     /**
      * @var string
      */
     private $sArgs;
-
     /**
      * @param string $sType
      * @param string $sArgs
@@ -34,7 +31,6 @@ class AtRuleSet extends RuleSet implements AtRule
         $this->sType = $sType;
         $this->sArgs = $sArgs;
     }
-
     /**
      * @return string
      */
@@ -42,7 +38,6 @@ class AtRuleSet extends RuleSet implements AtRule
     {
         return $this->sType;
     }
-
     /**
      * @return string
      */
@@ -50,7 +45,6 @@ class AtRuleSet extends RuleSet implements AtRule
     {
         return $this->sArgs;
     }
-
     /**
      * @return string
      *
@@ -60,7 +54,6 @@ class AtRuleSet extends RuleSet implements AtRule
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *
@@ -73,7 +66,7 @@ class AtRuleSet extends RuleSet implements AtRule
         if ($sArgs) {
             $sArgs = ' ' . $sArgs;
         }
-        $sResult .= "@{$this->sType}$sArgs{$oOutputFormat->spaceBeforeOpeningBrace()}{";
+        $sResult .= "@{$this->sType}{$sArgs}{$oOutputFormat->spaceBeforeOpeningBrace()}{";
         $sResult .= $this->renderRules($oOutputFormat);
         $sResult .= '}';
         return $sResult;

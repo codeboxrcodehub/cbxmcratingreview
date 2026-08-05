@@ -1,10 +1,9 @@
 <?php
 
-namespace Illuminate\Container;
+namespace CBXMCRatingReviewScoped\Illuminate\Container;
 
-use Illuminate\Contracts\Container\Container;
-use Illuminate\Contracts\Container\ContextualBindingBuilder as ContextualBindingBuilderContract;
-
+use CBXMCRatingReviewScoped\Illuminate\Contracts\Container\Container;
+use CBXMCRatingReviewScoped\Illuminate\Contracts\Container\ContextualBindingBuilder as ContextualBindingBuilderContract;
 class ContextualBindingBuilder implements ContextualBindingBuilderContract
 {
     /**
@@ -13,21 +12,18 @@ class ContextualBindingBuilder implements ContextualBindingBuilderContract
      * @var \Illuminate\Contracts\Container\Container
      */
     protected $container;
-
     /**
      * The concrete instance.
      *
      * @var string|array
      */
     protected $concrete;
-
     /**
      * The abstract target.
      *
      * @var string
      */
     protected $needs;
-
     /**
      * Create a new contextual binding builder.
      *
@@ -40,7 +36,6 @@ class ContextualBindingBuilder implements ContextualBindingBuilderContract
         $this->concrete = $concrete;
         $this->container = $container;
     }
-
     /**
      * Define the abstract target that depends on the context.
      *
@@ -50,10 +45,8 @@ class ContextualBindingBuilder implements ContextualBindingBuilderContract
     public function needs($abstract)
     {
         $this->needs = $abstract;
-
         return $this;
     }
-
     /**
      * Define the implementation for the contextual binding.
      *
@@ -66,7 +59,6 @@ class ContextualBindingBuilder implements ContextualBindingBuilderContract
             $this->container->addContextualBinding($concrete, $this->needs, $implementation);
         }
     }
-
     /**
      * Define tagged services to be used as the implementation for the contextual binding.
      *
@@ -77,11 +69,9 @@ class ContextualBindingBuilder implements ContextualBindingBuilderContract
     {
         $this->give(function ($container) use ($tag) {
             $taggedServices = $container->tagged($tag);
-
             return is_array($taggedServices) ? $taggedServices : iterator_to_array($taggedServices);
         });
     }
-
     /**
      * Specify the configuration item to bind as a primitive.
      *

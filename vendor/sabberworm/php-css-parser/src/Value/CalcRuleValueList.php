@@ -1,9 +1,8 @@
 <?php
 
-namespace Sabberworm\CSS\Value;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Value;
 
-use Sabberworm\CSS\OutputFormat;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
 class CalcRuleValueList extends RuleValueList
 {
     /**
@@ -13,7 +12,6 @@ class CalcRuleValueList extends RuleValueList
     {
         parent::__construct(',', $iLineNo);
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *

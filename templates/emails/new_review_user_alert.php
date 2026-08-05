@@ -12,17 +12,73 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 do_action( 'cbxmcratingreview_email_header', $email_heading, $email ); ?>
-    <p><?php echo esc_html__( 'Dear {review_user_name},', 'cbxmcratingreview' ); ?></p>
-    <p><?php echo esc_html__( 'We got a review for email address {review_user_email}.', 'cbxmcratingreview' ); ?></p>
+    <!-- User Review Notification Section -->
+    <div class="content-section">
+        <h2 class="heading">{email_heading}</h2>
+        <p class="message">
+            <?php echo esc_html__( 'Dear {review_user_name}', 'cbxmcratingreview' ); ?>,<br><br>
 
-    <h2><?php echo esc_html__( 'Review Details:', 'cbxmcratingreview' ); ?></h2>
+            <?php echo wp_kses(__( 'Thank you for submitting your review. We have successfully received your feedback associated with the email address <strong>{review_user_email}</strong>.', 'cbxmcratingreview' ), ['strong' => []]); ?>
+        </p>
+        <div class="form-summary-section">
+            <h3 class="form-summary-heading"><?php echo esc_html__( 'Review Details:', 'cbxmcratingreview' ); ?></h3>
+            <table role="presentation" class="form-summary-table" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="form-label" width="35%"><?php echo esc_html__( 'Rating:', 'cbxmcratingreview' ); ?></td>
+                    <td class="form-value">{review_score} / 5 ⭐</td>
+                </tr>
 
-    <p style='margin-bottom: 0;'><?php echo esc_html__( 'Rating: {review_score}', 'cbxmcratingreview' ); ?></p>
-    <p style='margin-bottom: 0;'><?php echo esc_html__( 'Title: {review_headline}', 'cbxmcratingreview' ); ?></p>
-    <p style='margin-bottom: 0;'><?php echo esc_html__( 'Review: {review_comment}', 'cbxmcratingreview' ); ?></p>
-    <p style='margin-bottom: 0;'><?php echo esc_html__( 'Review status: {review_status}', 'cbxmcratingreview' ); ?></p>
-    <p><?php echo esc_html__( 'Post: {post_link}', 'cbxmcratingreview' ); ?></p>
-    <p><?php echo esc_html__( 'We will check and get back to you soon. Thank you.', 'cbxmcratingreview' ); ?></p>
+                <tr>
+                    <td class="form-label"><?php echo esc_html__( 'Title:', 'cbxmcratingreview' ); ?>:</td>
+                    <td class="form-value">{review_headline}</td>
+                </tr>
+
+                <tr>
+                    <td class="form-label" style="vertical-align: top;"><?php echo esc_html__( 'Review:', 'cbxmcratingreview' ); ?></td>
+                    <td class="form-value">
+                        <p>{review_comment}</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="form-label"><?php echo esc_html__( 'Status:', 'cbxmcratingreview' ); ?></td>
+                    <td class="form-value">
+                        {review_status}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="form-label">Post:</td>
+                    <td class="form-value">
+                        {post_link}
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="form-summary-footer">
+                {review_date_human}
+            </div>
+        </div>
+
+
+        <p class="message">
+            <strong><?php esc_html_e( 'Next Steps:', 'cbxmcratingreview' ); ?></strong><br>
+            <?php esc_html_e('We appreciate you taking the time to share your experience with us. Our team will review your feedback carefully and follow up if necessary.', 'cbxmcratingreview'); ?>
+        </p>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="button-center">
+                    <a href="{post_url}" class="button"><?php esc_html_e('View Review', 'cbxmcratingreview'); ?></a>
+                    <!--                    <a href="https://yoursite.com/admin/reply" class="button button-secondary">Respond</a>-->
+                </td>
+            </tr>
+        </table>
+
+        <p class="message" style="margin-top:25px;">
+            <?php esc_html_e( 'Thank you', 'cbxmcratingreview' ); ?>,<br>
+        </p>
+    </div>
 <?php
 /**
  * Show user-defined additional content - this is set in each email's settings.

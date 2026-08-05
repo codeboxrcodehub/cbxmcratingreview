@@ -8,11 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace CBXMCRatingReviewScoped\Carbon;
 
-namespace Carbon;
-
-use Symfony\Component\Translation\MessageCatalogueInterface;
-
+use CBXMCRatingReviewScoped\Symfony\Component\Translation\MessageCatalogueInterface;
 /**
  * Mark translator using strong type from symfony/translation >= 6.
  */

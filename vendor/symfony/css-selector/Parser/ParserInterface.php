@@ -8,11 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser;
 
-namespace Symfony\Component\CssSelector\Parser;
-
-use Symfony\Component\CssSelector\Node\SelectorNode;
-
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Node\SelectorNode;
 /**
  * CSS selector parser interface.
  *

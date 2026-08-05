@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace CBXMCRatingReviewScoped\Pelago\Emogrifier\HtmlProcessor;
 
-namespace Pelago\Emogrifier\HtmlProcessor;
-
-use Pelago\Emogrifier\Utilities\DeclarationBlockParser;
-use Pelago\Emogrifier\Utilities\Preg;
-
+use CBXMCRatingReviewScoped\Pelago\Emogrifier\Utilities\DeclarationBlockParser;
+use CBXMCRatingReviewScoped\Pelago\Emogrifier\Utilities\Preg;
 /**
  * This HtmlProcessor can convert style HTML attributes to the corresponding other visual HTML attributes,
  * e.g. it converts style="width: 100px" to width="100".
@@ -25,26 +23,7 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
      *
      * @var array<string, array{attribute: string, nodes?: array<int, string>, values?: array<int, string>}>
      */
-    private $cssToHtmlMap = [
-        'background-color' => [
-            'attribute' => 'bgcolor',
-        ],
-        'text-align' => [
-            'attribute' => 'align',
-            'nodes' => ['p', 'div', 'td', 'th'],
-            'values' => ['left', 'right', 'center', 'justify'],
-        ],
-        'float' => [
-            'attribute' => 'align',
-            'nodes' => ['table', 'img'],
-            'values' => ['left', 'right'],
-        ],
-        'border-spacing' => [
-            'attribute' => 'cellspacing',
-            'nodes' => ['table'],
-        ],
-    ];
-
+    private $cssToHtmlMap = ['background-color' => ['attribute' => 'bgcolor'], 'text-align' => ['attribute' => 'align', 'nodes' => ['p', 'div', 'td', 'th'], 'values' => ['left', 'right', 'center', 'justify']], 'float' => ['attribute' => 'align', 'nodes' => ['table', 'img'], 'values' => ['left', 'right']], 'border-spacing' => ['attribute' => 'cellspacing', 'nodes' => ['table']]];
     /**
      * Maps the CSS from the style nodes to visual HTML attributes.
      *
@@ -58,10 +37,8 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
             $inlineStyleDeclarations = $declarationBlockParser->parse($node->getAttribute('style'));
             $this->mapCssToHtmlAttributes($inlineStyleDeclarations, $node);
         }
-
         return $this;
     }
-
     /**
      * Returns a list with all DOM nodes that have a style attribute.
      *
@@ -71,7 +48,6 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
     {
         return $this->getXPath()->query('//*[@style]');
     }
-
     /**
      * Applies $styles to $node.
      *
@@ -89,7 +65,6 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
             $this->mapCssToHtmlAttribute($property, $value, $node);
         }
     }
-
     /**
      * Tries to apply the CSS style to $node as an attribute.
      *
@@ -105,7 +80,6 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
             $this->mapComplexCssProperty($property, $value, $node);
         }
     }
-
     /**
      * Looks up the CSS property in the mapping table and maps it if it matches the conditions.
      *
@@ -118,20 +92,17 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
     private function mapSimpleCssProperty(string $property, string $value, \DOMElement $node): bool
     {
         if (!isset($this->cssToHtmlMap[$property])) {
-            return false;
+            return \false;
         }
-
         $mapping = $this->cssToHtmlMap[$property];
-        $nodesMatch = !isset($mapping['nodes']) || \in_array($node->nodeName, $mapping['nodes'], true);
-        $valuesMatch = !isset($mapping['values']) || \in_array($value, $mapping['values'], true);
+        $nodesMatch = !isset($mapping['nodes']) || \in_array($node->nodeName, $mapping['nodes'], \true);
+        $valuesMatch = !isset($mapping['values']) || \in_array($value, $mapping['values'], \true);
         $canBeMapped = $nodesMatch && $valuesMatch;
         if ($canBeMapped) {
             $node->setAttribute($mapping['attribute'], $value);
         }
-
         return $canBeMapped;
     }
-
     /**
      * Maps CSS properties that need special transformation to an HTML attribute.
      *
@@ -146,7 +117,7 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
                 $this->mapBackgroundProperty($node, $value);
                 break;
             case 'width':
-                // intentional fall-through
+            // intentional fall-through
             case 'height':
                 $this->mapWidthOrHeightProperty($node, $value, $property);
                 break;
@@ -159,7 +130,6 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
             default:
         }
     }
-
     /**
      * @param \DOMElement $node node to apply styles to
      * @param string $value the value of the style rule to map
@@ -173,11 +143,9 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
         if (\is_numeric($first[0]) || \strncmp($first, 'url', 3) === 0) {
             return;
         }
-
         // as this is not a position or image, assume it's a color
         $node->setAttribute('bgcolor', $first);
     }
-
     /**
      * @param \DOMElement $node node to apply styles to
      * @param string $value the value of the style rule to map
@@ -186,16 +154,13 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
     private function mapWidthOrHeightProperty(\DOMElement $node, string $value, string $property): void
     {
         $preg = new Preg();
-
         // only parse values in px and %, but not values like "auto"
-        if ($preg->match('/^(\\d+)(\\.(\\d+))?(px|%)$/', $value) === 0) {
+        if ($preg->match('/^(\d+)(\.(\d+))?(px|%)$/', $value) === 0) {
             return;
         }
-
         $number = $preg->replace('/[^0-9.%]/', '', $value);
         $node->setAttribute($property, $number);
     }
-
     /**
      * @param \DOMElement $node node to apply styles to
      * @param string $value the value of the style rule to map
@@ -205,13 +170,11 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
         if (!$this->isTableOrImageNode($node)) {
             return;
         }
-
         $margins = $this->parseCssShorthandValue($value);
         if ($margins['left'] === 'auto' && $margins['right'] === 'auto') {
             $node->setAttribute('align', 'center');
         }
     }
-
     /**
      * @param \DOMElement $node node to apply styles to
      * @param string $value the value of the style rule to map
@@ -221,12 +184,10 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
         if (!$this->isTableOrImageNode($node)) {
             return;
         }
-
         if ($value === 'none' || $value === '0') {
             $node->setAttribute('border', '0');
         }
     }
-
     /**
      * @param \DOMElement $node
      *
@@ -236,7 +197,6 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
     {
         return $node->nodeName === 'table' || $node->nodeName === 'img';
     }
-
     /**
      * Parses a shorthand CSS value and splits it into individual values.  For example: `padding: 0 auto;` - `0 auto` is
      * split into top: 0, left: auto, bottom: 0, right: auto.
@@ -248,14 +208,12 @@ final class CssToAttributeConverter extends AbstractHtmlProcessor
      */
     private function parseCssShorthandValue(string $value): array
     {
-        $values = (new Preg())->split('/\\s+/', $value);
-
+        $values = (new Preg())->split('/\s+/', $value);
         $css = [];
         $css['top'] = $values[0];
-        $css['right'] = (\count($values) > 1) ? $values[1] : $css['top'];
-        $css['bottom'] = (\count($values) > 2) ? $values[2] : $css['top'];
-        $css['left'] = (\count($values) > 3) ? $values[3] : $css['right'];
-
+        $css['right'] = \count($values) > 1 ? $values[1] : $css['top'];
+        $css['bottom'] = \count($values) > 2 ? $values[2] : $css['top'];
+        $css['left'] = \count($values) > 3 ? $values[3] : $css['right'];
         return $css;
     }
 }

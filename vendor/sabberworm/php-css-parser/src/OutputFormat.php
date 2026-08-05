@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabberworm\CSS;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS;
 
 /**
  * Extending this class is deprecated in version 8.8.0; it will be made `final` in version 9.0.0.
@@ -18,7 +18,6 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sStringQuotingType = '"';
-
     /**
      * Output RGB colors in hash notation if possible
      *
@@ -26,8 +25,7 @@ class OutputFormat
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
-    public $bRGBHashNotation = true;
-
+    public $bRGBHashNotation = \true;
     /**
      * Declaration format
      *
@@ -37,8 +35,7 @@ class OutputFormat
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
-    public $bSemicolonAfterLastRule = true;
-
+    public $bSemicolonAfterLastRule = \true;
     /**
      * Spacing
      * Note that these strings are not sanity-checked: the value should only consist of whitespace
@@ -50,49 +47,42 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceAfterRuleName = ' ';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceBeforeRules = '';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceAfterRules = '';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceBetweenRules = '';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceBeforeBlocks = '';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceAfterBlocks = '';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceBetweenBlocks = "\n";
-
     /**
      * Content injected in and around at-rule blocks.
      *
@@ -101,14 +91,12 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sBeforeAtRuleBlock = '';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sAfterAtRuleBlock = '';
-
     /**
      * This is what’s printed before and after the comma if a declaration block contains multiple selectors.
      *
@@ -117,14 +105,12 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceBeforeSelectorSeparator = '';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceAfterSelectorSeparator = ' ';
-
     /**
      * This is what’s inserted before the separator in value lists, by default.
      *
@@ -136,7 +122,6 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceBeforeListArgumentSeparator = '';
-
     /**
      * Keys are separators (e.g. `,`).  Values are the space sequence to insert, or an empty string.
      *
@@ -145,7 +130,6 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $aSpaceBeforeListArgumentSeparators = [];
-
     /**
      * This is what’s inserted after the separator in value lists, by default.
      *
@@ -157,7 +141,6 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceAfterListArgumentSeparator = '';
-
     /**
      * Keys are separators (e.g. `,`).  Values are the space sequence to insert, or an empty string.
      *
@@ -166,14 +149,12 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $aSpaceAfterListArgumentSeparators = [];
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sSpaceBeforeOpeningBrace = ' ';
-
     /**
      * Content injected in and around declaration blocks.
      *
@@ -182,21 +163,18 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sBeforeDeclarationBlock = '';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sAfterDeclarationBlockSelectors = '';
-
     /**
      * @var string
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sAfterDeclarationBlock = '';
-
     /**
      * Indentation character(s) per level. Only applicable if newlines are used in any of the spacing settings.
      *
@@ -205,7 +183,6 @@ class OutputFormat
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sIndentation = "\t";
-
     /**
      * Output exceptions.
      *
@@ -213,8 +190,7 @@ class OutputFormat
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
-    public $bIgnoreExceptions = false;
-
+    public $bIgnoreExceptions = \false;
     /**
      * Render comments for lists and RuleSets
      *
@@ -222,30 +198,25 @@ class OutputFormat
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
-    public $bRenderComments = false;
-
+    public $bRenderComments = \false;
     /**
      * @var OutputFormatter|null
      */
     private $oFormatter = null;
-
     /**
      * @var OutputFormat|null
      */
     private $oNextLevelFormat = null;
-
     /**
      * @var int
      */
     private $iIndentationLevel = 0;
-
     /**
      * @internal since V8.8.0. Use the factory methods `create()`, `createCompact()`, or `createPretty()` instead.
      */
     public function __construct()
     {
     }
-
     /**
      * @param string $sName
      *
@@ -258,13 +229,12 @@ class OutputFormat
         $aVarPrefixes = ['a', 's', 'm', 'b', 'f', 'o', 'c', 'i'];
         foreach ($aVarPrefixes as $sPrefix) {
             $sFieldName = $sPrefix . ucfirst($sName);
-            if (isset($this->$sFieldName)) {
-                return $this->$sFieldName;
+            if (isset($this->{$sFieldName})) {
+                return $this->{$sFieldName};
             }
         }
         return null;
     }
-
     /**
      * @param array<array-key, string>|string $aNames
      * @param mixed $mValue
@@ -276,23 +246,18 @@ class OutputFormat
     public function set($aNames, $mValue)
     {
         $aVarPrefixes = ['a', 's', 'm', 'b', 'f', 'o', 'c', 'i'];
-        if (is_string($aNames) && strpos($aNames, '*') !== false) {
-            $aNames =
-                [
-                    str_replace('*', 'Before', $aNames),
-                    str_replace('*', 'Between', $aNames),
-                    str_replace('*', 'After', $aNames),
-                ];
+        if (is_string($aNames) && strpos($aNames, '*') !== \false) {
+            $aNames = [str_replace('*', 'Before', $aNames), str_replace('*', 'Between', $aNames), str_replace('*', 'After', $aNames)];
         } elseif (!is_array($aNames)) {
             $aNames = [$aNames];
         }
         foreach ($aVarPrefixes as $sPrefix) {
-            $bDidReplace = false;
+            $bDidReplace = \false;
             foreach ($aNames as $sName) {
                 $sFieldName = $sPrefix . ucfirst($sName);
-                if (isset($this->$sFieldName)) {
-                    $this->$sFieldName = $mValue;
-                    $bDidReplace = true;
+                if (isset($this->{$sFieldName})) {
+                    $this->{$sFieldName} = $mValue;
+                    $bDidReplace = \true;
                 }
             }
             if ($bDidReplace) {
@@ -300,9 +265,8 @@ class OutputFormat
             }
         }
         // Break the chain so the user knows this option is invalid
-        return false;
+        return \false;
     }
-
     /**
      * @param string $sMethodName
      * @param array<array-key, mixed> $aArguments
@@ -324,7 +288,6 @@ class OutputFormat
             throw new \Exception('Unknown OutputFormat method called: ' . $sMethodName);
         }
     }
-
     /**
      * @param int $iNumber
      *
@@ -334,7 +297,6 @@ class OutputFormat
     {
         return $this->setIndentation(str_repeat("\t", $iNumber));
     }
-
     /**
      * @param int $iNumber
      *
@@ -344,7 +306,6 @@ class OutputFormat
     {
         return $this->setIndentation(str_repeat(" ", $iNumber));
     }
-
     /**
      * @return OutputFormat
      *
@@ -359,15 +320,13 @@ class OutputFormat
         }
         return $this->oNextLevelFormat;
     }
-
     /**
      * @return void
      */
     public function beLenient()
     {
-        $this->bIgnoreExceptions = true;
+        $this->bIgnoreExceptions = \true;
     }
-
     /**
      * @return OutputFormatter
      *
@@ -378,10 +337,8 @@ class OutputFormat
         if ($this->oFormatter === null) {
             $this->oFormatter = new OutputFormatter($this);
         }
-
         return $this->oFormatter;
     }
-
     /**
      * @return int
      *
@@ -391,7 +348,6 @@ class OutputFormat
     {
         return $this->iIndentationLevel;
     }
-
     /**
      * Creates an instance of this class without any particular formatting settings.
      *
@@ -401,7 +357,6 @@ class OutputFormat
     {
         return new OutputFormat();
     }
-
     /**
      * Creates an instance of this class with a preset for compact formatting.
      *
@@ -410,15 +365,9 @@ class OutputFormat
     public static function createCompact()
     {
         $format = self::create();
-        $format->set('Space*Rules', "")
-            ->set('Space*Blocks', "")
-            ->setSpaceAfterRuleName('')
-            ->setSpaceBeforeOpeningBrace('')
-            ->setSpaceAfterSelectorSeparator('')
-            ->setRenderComments(false);
+        $format->set('Space*Rules', "")->set('Space*Blocks', "")->setSpaceAfterRuleName('')->setSpaceBeforeOpeningBrace('')->setSpaceAfterSelectorSeparator('')->setRenderComments(\false);
         return $format;
     }
-
     /**
      * Creates an instance of this class with a preset for pretty formatting.
      *
@@ -427,11 +376,7 @@ class OutputFormat
     public static function createPretty()
     {
         $format = self::create();
-        $format->set('Space*Rules', "\n")
-            ->set('Space*Blocks', "\n")
-            ->setSpaceBetweenBlocks("\n\n")
-            ->set('SpaceAfterListArgumentSeparators', [',' => ' '])
-            ->setRenderComments(true);
+        $format->set('Space*Rules', "\n")->set('Space*Blocks', "\n")->setSpaceBetweenBlocks("\n\n")->set('SpaceAfterListArgumentSeparators', [',' => ' '])->setRenderComments(\true);
         return $format;
     }
 }

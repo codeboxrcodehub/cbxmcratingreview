@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\Database\Events;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Database\Events;
 
 interface MigrationEvent
 {

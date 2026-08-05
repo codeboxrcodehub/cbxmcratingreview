@@ -1,12 +1,11 @@
 <?php
 
-namespace Sabberworm\CSS\Value;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Value;
 
-use Sabberworm\CSS\OutputFormat;
-use Sabberworm\CSS\Parsing\ParserState;
-use Sabberworm\CSS\Parsing\UnexpectedEOFException;
-use Sabberworm\CSS\Parsing\UnexpectedTokenException;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\ParserState;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedEOFException;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedTokenException;
 class LineName extends ValueList
 {
     /**
@@ -17,7 +16,6 @@ class LineName extends ValueList
     {
         parent::__construct($aComponents, ' ', $iLineNo);
     }
-
     /**
      * @return LineName
      *
@@ -48,7 +46,6 @@ class LineName extends ValueList
         $oParserState->consume(']');
         return new LineName($aNames, $oParserState->currentLine());
     }
-
     /**
      * @return string
      *
@@ -58,7 +55,6 @@ class LineName extends ValueList
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *

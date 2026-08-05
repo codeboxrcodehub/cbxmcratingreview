@@ -17,7 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <?php
 $post_id    = intval( $post_review['post_id'] );
-$post_title = get_the_title( $post_id );
 
 
 ?>

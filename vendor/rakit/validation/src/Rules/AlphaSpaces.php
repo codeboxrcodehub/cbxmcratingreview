@@ -1,15 +1,12 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class AlphaSpaces extends Rule
 {
-
     /** @var string */
     protected $message = "The :attribute may only allows alphabet and spaces";
-
     /**
      * Check the $value is valid
      *
@@ -18,10 +15,9 @@ class AlphaSpaces extends Rule
      */
     public function check($value): bool
     {
-        if (! is_string($value)) {
-            return false;
+        if (!is_string($value)) {
+            return \false;
         }
-
         return preg_match('/^[\pL\pM\s]+$/u', $value) > 0;
     }
 }

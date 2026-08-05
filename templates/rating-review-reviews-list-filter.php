@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <?php
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $enable_positive_critical = intval( $settings->get_field( 'enable_positive_critical', 'cbxmcratingreview_common_config', 1 ) );
 
 $all_reviews_link = get_permalink();
@@ -82,4 +82,5 @@ $style = ( $total_reviews == 0 ) ? ' display: none;' : '';
     </div>
 </div>
 <div class="clearfix cbxmcratingreview_clearfix clear"></div>
-
+<?php 
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

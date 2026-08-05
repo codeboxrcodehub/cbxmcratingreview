@@ -8,11 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Carbon\Exceptions;
+namespace CBXMCRatingReviewScoped\Carbon\Exceptions;
 
 use Throwable;
-
 class BadComparisonUnitException extends UnitException
 {
     /**
@@ -21,7 +19,6 @@ class BadComparisonUnitException extends UnitException
      * @var string
      */
     protected $unit;
-
     /**
      * Constructor.
      *
@@ -32,10 +29,8 @@ class BadComparisonUnitException extends UnitException
     public function __construct($unit, $code = 0, ?Throwable $previous = null)
     {
         $this->unit = $unit;
-
-        parent::__construct("Bad comparison unit: '$unit'", $code, $previous);
+        parent::__construct("Bad comparison unit: '{$unit}'", $code, $previous);
     }
-
     /**
      * Get the unit.
      *

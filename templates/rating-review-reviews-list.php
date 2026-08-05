@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 do_action( 'cbxmcratingreview_review_list_before', $post_reviews );
 ?>
     <div class="cbx-chota">
@@ -51,3 +52,4 @@ do_action( 'cbxmcratingreview_review_list_before', $post_reviews );
 
 <?php
 do_action( 'cbxmcratingreview_review_list_after', $post_reviews );
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

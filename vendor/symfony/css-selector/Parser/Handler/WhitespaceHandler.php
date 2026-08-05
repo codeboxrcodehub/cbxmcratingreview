@@ -8,13 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\Handler;
 
-namespace Symfony\Component\CssSelector\Parser\Handler;
-
-use Symfony\Component\CssSelector\Parser\Reader;
-use Symfony\Component\CssSelector\Parser\Token;
-use Symfony\Component\CssSelector\Parser\TokenStream;
-
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\Reader;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\Token;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\TokenStream;
 /**
  * CSS selector whitespace handler.
  *
@@ -30,14 +28,11 @@ class WhitespaceHandler implements HandlerInterface
     public function handle(Reader $reader, TokenStream $stream): bool
     {
         $match = $reader->findPattern('~^[ \t\r\n\f]+~');
-
-        if (false === $match) {
-            return false;
+        if (\false === $match) {
+            return \false;
         }
-
         $stream->push(new Token(Token::TYPE_WHITESPACE, $match[0], $reader->getPosition()));
         $reader->moveForward(\strlen($match[0]));
-
-        return true;
+        return \true;
     }
 }

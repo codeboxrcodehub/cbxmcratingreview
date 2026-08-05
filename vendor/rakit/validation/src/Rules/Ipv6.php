@@ -1,15 +1,12 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class Ipv6 extends Rule
 {
-
     /** @var string */
     protected $message = "The :attribute is not valid IPv6 Address";
-
     /**
      * Check the $value is valid
      *
@@ -18,6 +15,6 @@ class Ipv6 extends Rule
      */
     public function check($value): bool
     {
-        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) !== false;
+        return filter_var($value, \FILTER_VALIDATE_IP, \FILTER_FLAG_IPV6) !== \false;
     }
 }

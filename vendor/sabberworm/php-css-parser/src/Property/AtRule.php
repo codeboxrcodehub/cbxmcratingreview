@@ -1,10 +1,9 @@
 <?php
 
-namespace Sabberworm\CSS\Property;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Property;
 
-use Sabberworm\CSS\Comment\Commentable;
-use Sabberworm\CSS\Renderable;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Comment\Commentable;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Renderable;
 interface AtRule extends Renderable, Commentable
 {
     /**
@@ -16,7 +15,6 @@ interface AtRule extends Renderable, Commentable
      * @internal since 8.5.2
      */
     const BLOCK_RULES = 'media/document/supports/region-style/font-feature-values';
-
     /**
      * … and more font-specific ones (to be used inside font-feature-values)
      *
@@ -25,12 +23,10 @@ interface AtRule extends Renderable, Commentable
      * @internal since 8.5.2
      */
     const SET_RULES = 'font-face/counter-style/page/swash/styleset/annotation';
-
     /**
      * @return string|null
      */
     public function atRuleName();
-
     /**
      * @return string|null
      */

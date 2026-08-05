@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Support\Facades;
+namespace CBXMCRatingReviewScoped\Illuminate\Support\Facades;
 
 /**
  * @method static bool supported(string $key, string $cipher)

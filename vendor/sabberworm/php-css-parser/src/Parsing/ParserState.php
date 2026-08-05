@@ -1,10 +1,9 @@
 <?php
 
-namespace Sabberworm\CSS\Parsing;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing;
 
-use Sabberworm\CSS\Comment\Comment;
-use Sabberworm\CSS\Settings;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Comment\Comment;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Settings;
 /**
  * @internal since 8.7.0
  */
@@ -16,44 +15,36 @@ class ParserState
      * @internal since 8.5.2
      */
     const EOF = null;
-
     /**
      * @var Settings
      */
     private $oParserSettings;
-
     /**
      * @var string
      */
     private $sText;
-
     /**
      * @var array<int, string>
      */
     private $aText;
-
     /**
      * @var int
      */
     private $iCurrentPosition;
-
     /**
      * will only be used if the CSS does not contain an `@charset` declaration
      *
      * @var string
      */
     private $sCharset;
-
     /**
      * @var int
      */
     private $iLength;
-
     /**
      * @var int
      */
     private $iLineNo;
-
     /**
      * @param string $sText the complete CSS as text (i.e., usually the contents of a CSS file)
      * @param int $iLineNo
@@ -66,7 +57,6 @@ class ParserState
         $this->iLineNo = $iLineNo;
         $this->setCharset($this->oParserSettings->sDefaultCharset);
     }
-
     /**
      * Sets the charset to be used if the CSS does not contain an `@charset` declaration.
      *
@@ -82,7 +72,6 @@ class ParserState
             $this->iLength = count($this->aText);
         }
     }
-
     /**
      * Returns the charset that is used if the CSS does not contain an `@charset` declaration.
      *
@@ -92,7 +81,6 @@ class ParserState
     {
         return $this->sCharset;
     }
-
     /**
      * @return int
      */
@@ -100,7 +88,6 @@ class ParserState
     {
         return $this->iLineNo;
     }
-
     /**
      * @return int
      */
@@ -108,7 +95,6 @@ class ParserState
     {
         return $this->iCurrentPosition;
     }
-
     /**
      * @return Settings
      */
@@ -116,7 +102,6 @@ class ParserState
     {
         return $this->oParserSettings;
     }
-
     /**
      * @return \Sabberworm\CSS\Parsing\Anchor
      */
@@ -124,7 +109,6 @@ class ParserState
     {
         return new Anchor($this->iCurrentPosition, $this);
     }
-
     /**
      * @param int $iPosition
      *
@@ -134,7 +118,6 @@ class ParserState
     {
         $this->iCurrentPosition = $iPosition;
     }
-
     /**
      * @param bool $bIgnoreCase
      *
@@ -144,17 +127,17 @@ class ParserState
      *
      * @internal since V8.8.0
      */
-    public function parseIdentifier($bIgnoreCase = true)
+    public function parseIdentifier($bIgnoreCase = \true)
     {
         if ($this->isEnd()) {
             throw new UnexpectedEOFException('', '', 'identifier', $this->iLineNo);
         }
-        $sResult = $this->parseCharacter(true);
+        $sResult = $this->parseCharacter(\true);
         if ($sResult === null) {
             throw new UnexpectedTokenException($sResult, $this->peek(5), 'identifier', $this->iLineNo);
         }
         $sCharacter = null;
-        while (!$this->isEnd() && ($sCharacter = $this->parseCharacter(true)) !== null) {
+        while (!$this->isEnd() && ($sCharacter = $this->parseCharacter(\true)) !== null) {
             if (preg_match('/[a-zA-Z0-9\x{00A0}-\x{FFFF}_-]/Sux', $sCharacter)) {
                 $sResult .= $sCharacter;
             } else {
@@ -166,7 +149,6 @@ class ParserState
         }
         return $sResult;
     }
-
     /**
      * @param bool $bIsForIdentifier
      *
@@ -180,10 +162,7 @@ class ParserState
     public function parseCharacter($bIsForIdentifier)
     {
         if ($this->peek() === '\\') {
-            if (
-                $bIsForIdentifier && $this->oParserSettings->bLenientParsing
-                && ($this->comes('\0') || $this->comes('\9'))
-            ) {
+            if ($bIsForIdentifier && $this->oParserSettings->bLenientParsing && ($this->comes('\0') || $this->comes('\9'))) {
                 // Non-strings can contain \0 or \9 which is an IE hack supported in lenient parsing.
                 return null;
             }
@@ -197,8 +176,8 @@ class ParserState
             $sUnicode = $this->consumeExpression('/^[0-9a-fA-F]{1,6}/u', 6);
             if ($this->strlen($sUnicode) < 6) {
                 // Consume whitespace after incomplete unicode escape
-                if (preg_match('/\\s/isSu', $this->peek())) {
-                    if ($this->comes('\r\n')) {
+                if (preg_match('/\s/isSu', $this->peek())) {
+                    if ($this->comes('CBXMCRatingReviewScoped\r\n')) {
                         $this->consume(2);
                     } else {
                         $this->consume(1);
@@ -216,14 +195,7 @@ class ParserState
         if ($bIsForIdentifier) {
             $peek = ord($this->peek());
             // Ranges: a-z A-Z 0-9 - _
-            if (
-                ($peek >= 97 && $peek <= 122)
-                || ($peek >= 65 && $peek <= 90)
-                || ($peek >= 48 && $peek <= 57)
-                || ($peek === 45)
-                || ($peek === 95)
-                || ($peek > 0xa1)
-            ) {
+            if ($peek >= 97 && $peek <= 122 || $peek >= 65 && $peek <= 90 || $peek >= 48 && $peek <= 57 || $peek === 45 || $peek === 95 || $peek > 0xa1) {
                 return $this->consume(1);
             }
         } else {
@@ -231,7 +203,6 @@ class ParserState
         }
         return null;
     }
-
     /**
      * @return array<int, Comment>|void
      *
@@ -242,7 +213,7 @@ class ParserState
     {
         $aComments = [];
         do {
-            while (preg_match('/\\s/isSu', $this->peek()) === 1) {
+            while (preg_match('/\s/isSu', $this->peek()) === 1) {
                 $this->consume(1);
             }
             if ($this->oParserSettings->bLenientParsing) {
@@ -255,27 +226,23 @@ class ParserState
             } else {
                 $oComment = $this->consumeComment();
             }
-            if ($oComment !== false) {
+            if ($oComment !== \false) {
                 $aComments[] = $oComment;
             }
-        } while ($oComment !== false);
+        } while ($oComment !== \false);
         return $aComments;
     }
-
     /**
      * @param string $sString
      * @param bool $bCaseInsensitive
      *
      * @return bool
      */
-    public function comes($sString, $bCaseInsensitive = false)
+    public function comes($sString, $bCaseInsensitive = \false)
     {
         $sPeek = $this->peek(strlen($sString));
-        return ($sPeek == '')
-            ? false
-            : $this->streql($sPeek, $sString, $bCaseInsensitive);
+        return $sPeek == '' ? \false : $this->streql($sPeek, $sString, $bCaseInsensitive);
     }
-
     /**
      * @param int $iLength
      * @param int $iOffset
@@ -290,7 +257,6 @@ class ParserState
         }
         return $this->substr($iOffset, $iLength);
     }
-
     /**
      * @param int $mValue
      *
@@ -321,7 +287,6 @@ class ParserState
             return $sResult;
         }
     }
-
     /**
      * @param string $mExpression
      * @param int|null $iMaxLength
@@ -335,18 +300,17 @@ class ParserState
     {
         $aMatches = null;
         $sInput = $iMaxLength !== null ? $this->peek($iMaxLength) : $this->inputLeft();
-        if (preg_match($mExpression, $sInput, $aMatches, PREG_OFFSET_CAPTURE) === 1) {
+        if (preg_match($mExpression, $sInput, $aMatches, \PREG_OFFSET_CAPTURE) === 1) {
             return $this->consume($aMatches[0][0]);
         }
         throw new UnexpectedTokenException($mExpression, $this->peek(5), 'expression', $this->iLineNo);
     }
-
     /**
      * @return Comment|false
      */
     public function consumeComment()
     {
-        $mComment = false;
+        $mComment = \false;
         if ($this->comes('/*')) {
             $iLineNo = $this->iLineNo;
             $this->consume(1);
@@ -359,15 +323,12 @@ class ParserState
                 }
             }
         }
-
-        if ($mComment !== false) {
+        if ($mComment !== \false) {
             // We skip the * which was included in the comment.
             return new Comment(substr($mComment, 1), $iLineNo);
         }
-
         return $mComment;
     }
-
     /**
      * @return bool
      */
@@ -375,7 +336,6 @@ class ParserState
     {
         return $this->iCurrentPosition >= $this->iLength;
     }
-
     /**
      * @param array<array-key, string>|string $aEnd
      * @param string $bIncludeEnd
@@ -387,12 +347,11 @@ class ParserState
      * @throws UnexpectedEOFException
      * @throws UnexpectedTokenException
      */
-    public function consumeUntil($aEnd, $bIncludeEnd = false, $consumeEnd = false, array &$comments = [])
+    public function consumeUntil($aEnd, $bIncludeEnd = \false, $consumeEnd = \false, array &$comments = [])
     {
         $aEnd = is_array($aEnd) ? $aEnd : [$aEnd];
         $out = '';
         $start = $this->iCurrentPosition;
-
         while (!$this->isEnd()) {
             $char = $this->consume(1);
             if (in_array($char, $aEnd)) {
@@ -408,20 +367,12 @@ class ParserState
                 $comments[] = $comment;
             }
         }
-
         if (in_array(self::EOF, $aEnd)) {
             return $out;
         }
-
         $this->iCurrentPosition = $start;
-        throw new UnexpectedEOFException(
-            'One of ("' . implode('","', $aEnd) . '")',
-            $this->peek(5),
-            'search',
-            $this->iLineNo
-        );
+        throw new UnexpectedEOFException('One of ("' . implode('","', $aEnd) . '")', $this->peek(5), 'search', $this->iLineNo);
     }
-
     /**
      * @return string
      */
@@ -429,7 +380,6 @@ class ParserState
     {
         return $this->substr($this->iCurrentPosition, -1);
     }
-
     /**
      * @param string $sString1
      * @param string $sString2
@@ -437,7 +387,7 @@ class ParserState
      *
      * @return bool
      */
-    public function streql($sString1, $sString2, $bCaseInsensitive = true)
+    public function streql($sString1, $sString2, $bCaseInsensitive = \true)
     {
         if ($bCaseInsensitive) {
             return $this->strtolower($sString1) === $this->strtolower($sString2);
@@ -445,7 +395,6 @@ class ParserState
             return $sString1 === $sString2;
         }
     }
-
     /**
      * @param int $iAmount
      *
@@ -455,7 +404,6 @@ class ParserState
     {
         $this->iCurrentPosition -= $iAmount;
     }
-
     /**
      * @param string $sString
      *
@@ -469,7 +417,6 @@ class ParserState
             return strlen($sString);
         }
     }
-
     /**
      * @param int $iStart
      * @param int $iLength
@@ -492,7 +439,6 @@ class ParserState
         }
         return $sResult;
     }
-
     /**
      * @param string $sString
      *
@@ -506,7 +452,6 @@ class ParserState
             return strtolower($sString);
         }
     }
-
     /**
      * @param string $sString
      *
@@ -516,7 +461,7 @@ class ParserState
     {
         if ($this->oParserSettings->bMultibyteSupport) {
             if ($this->streql($this->sCharset, 'utf-8')) {
-                return preg_split('//u', $sString, -1, PREG_SPLIT_NO_EMPTY);
+                return preg_split('//u', $sString, -1, \PREG_SPLIT_NO_EMPTY);
             } else {
                 $iLength = mb_strlen($sString, $this->sCharset);
                 $aResult = [];
@@ -525,15 +470,12 @@ class ParserState
                 }
                 return $aResult;
             }
+        } else if ($sString === '') {
+            return [];
         } else {
-            if ($sString === '') {
-                return [];
-            } else {
-                return str_split($sString);
-            }
+            return str_split($sString);
         }
     }
-
     /**
      * @param string $sString
      * @param string $sNeedle

@@ -1,19 +1,15 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class Required extends Rule
 {
     use Traits\FileTrait;
-
     /** @var bool */
-    protected $implicit = true;
-
+    protected $implicit = \true;
     /** @var string */
     protected $message = "The :attribute is required";
-
     /**
      * Check the $value is valid
      *
@@ -23,11 +19,9 @@ class Required extends Rule
     public function check($value): bool
     {
         $this->setAttributeAsRequired();
-
         if ($this->attribute and $this->attribute->hasRule('uploaded_file')) {
-            return $this->isValueFromUploadedFiles($value) and $value['error'] != UPLOAD_ERR_NO_FILE;
+            return $this->isValueFromUploadedFiles($value) and $value['error'] != \UPLOAD_ERR_NO_FILE;
         }
-
         if (is_string($value)) {
             return mb_strlen(trim($value), 'UTF-8') > 0;
         }
@@ -36,7 +30,6 @@ class Required extends Rule
         }
         return !is_null($value);
     }
-
     /**
      * Set attribute is required if $this->attribute is set
      *
@@ -45,7 +38,7 @@ class Required extends Rule
     protected function setAttributeAsRequired()
     {
         if ($this->attribute) {
-            $this->attribute->setRequired(true);
+            $this->attribute->setRequired(\true);
         }
     }
 }

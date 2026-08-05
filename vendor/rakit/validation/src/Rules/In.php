@@ -1,19 +1,15 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Helper;
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Helper;
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class In extends Rule
 {
-
     /** @var string */
     protected $message = "The :attribute only allows :allowed_values";
-
     /** @var bool */
-    protected $strict = false;
-
+    protected $strict = \false;
     /**
      * Given $params and assign the $this->params
      *
@@ -28,18 +24,16 @@ class In extends Rule
         $this->params['allowed_values'] = $params;
         return $this;
     }
-
     /**
      * Set strict value
      *
      * @param bool $strict
      * @return void
      */
-    public function strict(bool $strict = true)
+    public function strict(bool $strict = \true)
     {
         $this->strict = $strict;
     }
-
     /**
      * Check $value is existed
      *
@@ -49,13 +43,10 @@ class In extends Rule
     public function check($value): bool
     {
         $this->requireParameters(['allowed_values']);
-
         $allowedValues = $this->parameter('allowed_values');
-
         $or = $this->validation ? $this->validation->getTranslation('or') : 'or';
         $allowedValuesText = Helper::join(Helper::wraps($allowedValues, "'"), ', ', ", {$or} ");
         $this->setParameterText('allowed_values', $allowedValuesText);
-
         return in_array($value, $allowedValues, $this->strict);
     }
 }

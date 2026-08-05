@@ -1,9 +1,8 @@
 <?php
 
-namespace Illuminate\Database;
+namespace CBXMCRatingReviewScoped\Illuminate\Database;
 
 use RuntimeException;
-
 class RecordsNotFoundException extends RuntimeException
 {
     //

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabberworm\CSS\Property;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Property;
 
 /**
  * Class representing a single CSS selector. Selectors have to be split by the comma prior to being passed into this
@@ -33,7 +33,6 @@ class Selector
             |empty|contains
         ))
         /ix';
-
     /**
      * regexp for specificity calculations
      *
@@ -48,7 +47,6 @@ class Selector
             after|before|first-letter|first-line|selection
         ))
         /ix';
-
     /**
      * regexp for specificity calculations
      *
@@ -65,17 +63,14 @@ class Selector
             )*
         )$
         /ux';
-
     /**
      * @var string
      */
     private $sSelector;
-
     /**
      * @var int|null
      */
     private $iSpecificity;
-
     /**
      * @param string $sSelector
      *
@@ -87,19 +82,17 @@ class Selector
     {
         return preg_match(static::SELECTOR_VALIDATION_RX, $sSelector);
     }
-
     /**
      * @param string $sSelector
      * @param bool $bCalculateSpecificity @deprecated since V8.8.0, will be removed in V9.0.0
      */
-    public function __construct($sSelector, $bCalculateSpecificity = false)
+    public function __construct($sSelector, $bCalculateSpecificity = \false)
     {
         $this->setSelector($sSelector);
         if ($bCalculateSpecificity) {
             $this->getSpecificity();
         }
     }
-
     /**
      * @return string
      */
@@ -107,7 +100,6 @@ class Selector
     {
         return $this->sSelector;
     }
-
     /**
      * @param string $sSelector
      *
@@ -118,7 +110,6 @@ class Selector
         $this->sSelector = trim($sSelector);
         $this->iSpecificity = null;
     }
-
     /**
      * @return string
      *
@@ -128,7 +119,6 @@ class Selector
     {
         return $this->getSelector();
     }
-
     /**
      * @return int
      */
@@ -141,7 +131,7 @@ class Selector
             $b = substr_count($this->sSelector, '#');
             $c = preg_match_all(self::NON_ID_ATTRIBUTES_AND_PSEUDO_CLASSES_RX, $this->sSelector, $aMatches);
             $d = preg_match_all(self::ELEMENTS_AND_PSEUDO_ELEMENTS_RX, $this->sSelector, $aMatches);
-            $this->iSpecificity = ($a * 1000) + ($b * 100) + ($c * 10) + $d;
+            $this->iSpecificity = $a * 1000 + $b * 100 + $c * 10 + $d;
         }
         return $this->iSpecificity;
     }

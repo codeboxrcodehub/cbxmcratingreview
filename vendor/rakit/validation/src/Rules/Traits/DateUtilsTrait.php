@@ -1,12 +1,10 @@
 <?php
 
-namespace Rakit\Validation\Rules\Traits;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules\Traits;
 
 use Exception;
-
 trait DateUtilsTrait
 {
-
     /**
      * Check the $date is valid
      *
@@ -15,9 +13,8 @@ trait DateUtilsTrait
      */
     protected function isValidDate(string $date): bool
     {
-        return (strtotime($date) !== false);
+        return strtotime($date) !== \false;
     }
-
     /**
      * Throw exception
      *
@@ -29,7 +26,6 @@ trait DateUtilsTrait
         // phpcs:ignore
         return new Exception("Expected a valid date, got '{$value}' instead. 2016-12-08, 2016-12-02 14:58, tomorrow are considered valid dates");
     }
-
     /**
      * Given $date and get the time stamp
      *

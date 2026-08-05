@@ -1,9 +1,8 @@
 <?php
 
-namespace Illuminate\Contracts\Filesystem;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Filesystem;
 
 use Exception;
-
 class FileExistsException extends Exception
 {
     //

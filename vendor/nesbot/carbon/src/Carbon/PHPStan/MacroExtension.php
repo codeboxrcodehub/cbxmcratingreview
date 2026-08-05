@@ -8,17 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace CBXMCRatingReviewScoped\Carbon\PHPStan;
 
-namespace Carbon\PHPStan;
-
-use PHPStan\Reflection\Assertions;
-use PHPStan\Reflection\ClassReflection;
-use PHPStan\Reflection\MethodReflection;
-use PHPStan\Reflection\MethodsClassReflectionExtension;
-use PHPStan\Reflection\Php\PhpMethodReflectionFactory;
-use PHPStan\Reflection\ReflectionProvider;
-use PHPStan\Type\TypehintHelper;
-
+use CBXMCRatingReviewScoped\PHPStan\Reflection\Assertions;
+use CBXMCRatingReviewScoped\PHPStan\Reflection\ClassReflection;
+use CBXMCRatingReviewScoped\PHPStan\Reflection\MethodReflection;
+use CBXMCRatingReviewScoped\PHPStan\Reflection\MethodsClassReflectionExtension;
+use CBXMCRatingReviewScoped\PHPStan\Reflection\Php\PhpMethodReflectionFactory;
+use CBXMCRatingReviewScoped\PHPStan\Reflection\ReflectionProvider;
+use CBXMCRatingReviewScoped\PHPStan\Type\TypehintHelper;
 /**
  * Class MacroExtension.
  *
@@ -30,26 +28,21 @@ final class MacroExtension implements MethodsClassReflectionExtension
      * @var PhpMethodReflectionFactory
      */
     protected $methodReflectionFactory;
-
     /**
      * @var MacroScanner
      */
     protected $scanner;
-
     /**
      * Extension constructor.
      *
      * @param PhpMethodReflectionFactory $methodReflectionFactory
      * @param ReflectionProvider         $reflectionProvider
      */
-    public function __construct(
-        PhpMethodReflectionFactory $methodReflectionFactory,
-        ReflectionProvider $reflectionProvider
-    ) {
+    public function __construct(PhpMethodReflectionFactory $methodReflectionFactory, ReflectionProvider $reflectionProvider)
+    {
         $this->scanner = new MacroScanner($reflectionProvider);
         $this->methodReflectionFactory = $methodReflectionFactory;
     }
-
     /**
      * {@inheritdoc}
      */
@@ -57,7 +50,6 @@ final class MacroExtension implements MethodsClassReflectionExtension
     {
         return $this->scanner->hasMethod($classReflection->getName(), $methodName);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -65,24 +57,6 @@ final class MacroExtension implements MethodsClassReflectionExtension
     {
         $builtinMacro = $this->scanner->getMethod($classReflection->getName(), $methodName);
         $supportAssertions = class_exists(Assertions::class);
-
-        return $this->methodReflectionFactory->create(
-            $classReflection,
-            null,
-            $builtinMacro,
-            $classReflection->getActiveTemplateTypeMap(),
-            [],
-            TypehintHelper::decideTypeFromReflection($builtinMacro->getReturnType()),
-            null,
-            null,
-            $builtinMacro->isDeprecated()->yes(),
-            $builtinMacro->isInternal(),
-            $builtinMacro->isFinal(),
-            $supportAssertions ? null : $builtinMacro->getDocComment(),
-            $supportAssertions ? Assertions::createEmpty() : null,
-            null,
-            $builtinMacro->getDocComment(),
-            []
-        );
+        return $this->methodReflectionFactory->create($classReflection, null, $builtinMacro, $classReflection->getActiveTemplateTypeMap(), [], TypehintHelper::decideTypeFromReflection($builtinMacro->getReturnType()), null, null, $builtinMacro->isDeprecated()->yes(), $builtinMacro->isInternal(), $builtinMacro->isFinal(), $supportAssertions ? null : $builtinMacro->getDocComment(), $supportAssertions ? Assertions::createEmpty() : null, null, $builtinMacro->getDocComment(), []);
     }
 }

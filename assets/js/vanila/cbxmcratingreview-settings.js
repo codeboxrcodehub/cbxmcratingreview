@@ -1,6 +1,10 @@
 (function ($) {
     'use strict';
 
+    function cbxmcratingreview_isEmptyOrUndefined(val) {
+        return val === undefined || val === null || val === '';
+    }//end method cbxmcratingreview_isEmptyOrUndefined
+
     //var cbxmcratingreview_setting_awn_options = null ;
 
     $(document).ready(function () {
@@ -131,7 +135,7 @@
                     allowClear: $allow_clear ? true : false,
                     //theme: 'default select2-container--cbx',
                     theme: 'default',
-                    dropdownParent: $(element)
+                    dropdownParent: $element
                 })
                 .on('select2:open', function () {
                     $('.select2-search__field').attr(
@@ -239,24 +243,36 @@
             $('.setting-select-nav').trigger('change');
         }
 
+
         $('.wpsa-browse').on('click', function (event) {
             event.preventDefault();
 
             var self = $(this);
 
             // Create the media frame.
-            var file_frame = (wp.media.frames.file_frame = wp.media({
+            var file_frame = wp.media.frames.file_frame = wp.media({
                 title: self.data('uploader_title'),
                 button: {
-                    text: self.data('uploader_button_text'),
+                    text: self.data('uploader_button_text')
                 },
-                multiple: false,
-            }));
+                multiple: false
+            });
 
             file_frame.on('select', function () {
+                // var attachment = file_frame.state().get('selection').first().toJSON();
+                //
+                // self.prev('.wpsa-url').val(attachment.url);
+
                 var attachment = file_frame.state().get('selection').first().toJSON();
 
-                self.prev('.wpsa-url').val(attachment.url);
+                var picker_wrapper = self.closest('.cbxchota-setting_input_file_wrap');
+
+                picker_wrapper.find('.wpsa-url').val(attachment.url);
+                picker_wrapper.find('.cbxchota-setting_marker_preview').css({
+                    'background-image': 'url("' + attachment.url + '")'
+                }).removeClass('cbxchota-setting_marker_hide');
+                picker_wrapper.find('.cbxchota-setting_trash').removeClass('cbxchota-setting_trash_hide');
+                picker_wrapper.find('.cbxchota-setting_filepicker_btn').addClass('cbxchota-setting_filepicked').removeClass('cbxchota-setting_left_space');
             });
 
             // Finally, open the modal

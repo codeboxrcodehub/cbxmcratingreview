@@ -1,11 +1,12 @@
 <?php
 
-namespace Sabberworm\CSS\Property;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Property;
 
-use Sabberworm\CSS\Comment\Comment;
-use Sabberworm\CSS\OutputFormat;
-use Sabberworm\CSS\Value\CSSString;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Comment\Comment;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Position\Position;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Position\Positionable;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Value\CSSString;
 /**
  * Class representing an `@charset` rule.
  *
@@ -14,27 +15,25 @@ use Sabberworm\CSS\Value\CSSString;
  * - May only appear at the very top of a Document’s contents.
  * - Must not appear more than once.
  */
-class Charset implements AtRule
+class Charset implements AtRule, Positionable
 {
+    use Position;
     /**
      * @var CSSString
      */
     private $oCharset;
-
     /**
      * @var int
      *
      * @internal since 8.8.0
      */
     protected $iLineNo;
-
     /**
      * @var array<array-key, Comment>
      *
      * @internal since 8.8.0
      */
     protected $aComments;
-
     /**
      * @param CSSString $oCharset
      * @param int $iLineNo
@@ -42,18 +41,9 @@ class Charset implements AtRule
     public function __construct(CSSString $oCharset, $iLineNo = 0)
     {
         $this->oCharset = $oCharset;
-        $this->iLineNo = $iLineNo;
+        $this->setPosition($iLineNo);
         $this->aComments = [];
     }
-
-    /**
-     * @return int
-     */
-    public function getLineNo()
-    {
-        return $this->iLineNo;
-    }
-
     /**
      * @param string|CSSString $oCharset
      *
@@ -64,7 +54,6 @@ class Charset implements AtRule
         $sCharset = $sCharset instanceof CSSString ? $sCharset : new CSSString($sCharset);
         $this->oCharset = $sCharset;
     }
-
     /**
      * @return string
      */
@@ -72,7 +61,6 @@ class Charset implements AtRule
     {
         return $this->oCharset->getString();
     }
-
     /**
      * @return string
      *
@@ -82,7 +70,6 @@ class Charset implements AtRule
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *
@@ -92,7 +79,6 @@ class Charset implements AtRule
     {
         return "{$oOutputFormat->comments($this)}@charset {$this->oCharset->render($oOutputFormat)};";
     }
-
     /**
      * @return string
      */
@@ -100,7 +86,6 @@ class Charset implements AtRule
     {
         return 'charset';
     }
-
     /**
      * @return string
      */
@@ -108,7 +93,6 @@ class Charset implements AtRule
     {
         return $this->oCharset;
     }
-
     /**
      * @param array<array-key, Comment> $aComments
      *
@@ -118,7 +102,6 @@ class Charset implements AtRule
     {
         $this->aComments = array_merge($this->aComments, $aComments);
     }
-
     /**
      * @return array<array-key, Comment>
      */
@@ -126,7 +109,6 @@ class Charset implements AtRule
     {
         return $this->aComments;
     }
-
     /**
      * @param array<array-key, Comment> $aComments
      *

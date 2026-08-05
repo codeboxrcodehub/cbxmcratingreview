@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use Soundasleep\Html2Text;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReviewScoped\Soundasleep\Html2Text;
 
 
 if ( ! class_exists( 'CBXMCRatingReviewReviewUserAlertEmail', false ) ) :
@@ -34,7 +34,9 @@ if ( ! class_exists( 'CBXMCRatingReviewReviewUserAlertEmail', false ) ) :
 				'{review_status}'     => '',
 				'{post_link}'         => '', // html
 				'{review_user_name}'  => '',
-				'{review_user_email}' => ''
+				'{review_user_email}' => '',
+				'{email_heading}' 	  => '',
+				'{post_url}' 	  	  => '',
 			];
 
 			// Triggers for this email.
@@ -163,8 +165,11 @@ if ( ! class_exists( 'CBXMCRatingReviewReviewUserAlertEmail', false ) ) :
 				$this->placeholders['{review_status}']   = $modification_status;
 
 				$this->placeholders['{post_link}']         = $post_url_link;
+				$this->placeholders['{post_url}']          = $post_url;
 				$this->placeholders['{review_user_email}'] = $new_review_info['user_email'];
 				$this->placeholders['{review_user_name}']  = $new_review_info['display_name'];
+
+				$this->placeholders['{email_heading}'] = $this->get_default_heading();
 
 				$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(),
 					$this->get_attachments() );

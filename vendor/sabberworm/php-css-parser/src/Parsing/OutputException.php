@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabberworm\CSS\Parsing;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing;
 
 /**
  * Thrown if the CSS parser attempts to print something invalid.

@@ -1,21 +1,21 @@
 <?php
-namespace CBX\MCRatingReview\Controllers;
+namespace CBXMCRatingReview\Controllers;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Models\RatingReviewLogAvg;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Models\RatingReviewLogAvg;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 use Exception;
 use WP_REST_Request;
 use WP_REST_Response;
-use Illuminate\Database\QueryException;
-use Rakit\Validation\Validator;
+use CBXMCRatingReviewScoped\Illuminate\Database\QueryException;
+use CBXMCRatingReviewScoped\Rakit\Validation\Validator;
 
-use CBX\MCRatingReview\CBXMCRatingReviewSettings;
+use CBXMCRatingReview\CBXMCRatingReviewSettings;
 
 /**
  * Class Avg Log Controller

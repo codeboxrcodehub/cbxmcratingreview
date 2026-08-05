@@ -1,9 +1,8 @@
 <?php
 
-namespace Illuminate\Database\Query\Processors;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\Query\Processors;
 
-use Illuminate\Database\Query\Builder;
-
+use CBXMCRatingReviewScoped\Illuminate\Database\Query\Builder;
 class PostgresProcessor extends Processor
 {
     /**
@@ -18,18 +17,12 @@ class PostgresProcessor extends Processor
     public function processInsertGetId(Builder $query, $sql, $values, $sequence = null)
     {
         $connection = $query->getConnection();
-
         $connection->recordsHaveBeenModified();
-
         $result = $connection->selectFromWriteConnection($sql, $values)[0];
-
         $sequence = $sequence ?: 'id';
-
         $id = is_object($result) ? $result->{$sequence} : $result[$sequence];
-
         return is_numeric($id) ? (int) $id : $id;
     }
-
     /**
      * Process the results of a column listing query.
      *

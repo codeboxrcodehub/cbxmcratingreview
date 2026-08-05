@@ -17,7 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $delete_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_delete_white' ) );
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 ?>
 <span class="cbxmcratingreview_review_list_item_toolbar_item cbxmcratingreview_review_list_item_toolbar_item_deletebutton">
 	<a href="#" class="cbxmcratingreview-review-delete button error icon icon-only" data-busy="0"

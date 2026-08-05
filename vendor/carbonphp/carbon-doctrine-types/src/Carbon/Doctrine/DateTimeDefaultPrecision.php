@@ -1,13 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Carbon\Doctrine;
+declare (strict_types=1);
+namespace CBXMCRatingReviewScoped\Carbon\Doctrine;
 
 class DateTimeDefaultPrecision
 {
     private static $precision = 6;
-
     /**
      * Change the default Doctrine datetime and datetime_immutable precision.
      *
@@ -17,7 +15,6 @@ class DateTimeDefaultPrecision
     {
         self::$precision = $precision;
     }
-
     /**
      * Get the default Doctrine datetime and datetime_immutable precision.
      *

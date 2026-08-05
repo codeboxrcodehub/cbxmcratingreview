@@ -1,11 +1,10 @@
 <?php
 
-namespace Illuminate\Support\Facades;
+namespace CBXMCRatingReviewScoped\Illuminate\Support\Facades;
 
-use Illuminate\Contracts\Bus\Dispatcher as BusDispatcherContract;
-use Illuminate\Foundation\Bus\PendingChain;
-use Illuminate\Support\Testing\Fakes\BusFake;
-
+use CBXMCRatingReviewScoped\Illuminate\Contracts\Bus\Dispatcher as BusDispatcherContract;
+use CBXMCRatingReviewScoped\Illuminate\Foundation\Bus\PendingChain;
+use CBXMCRatingReviewScoped\Illuminate\Support\Testing\Fakes\BusFake;
 /**
  * @method static \Illuminate\Bus\Batch|null findBatch(string $batchId)
  * @method static \Illuminate\Bus\PendingBatch batch(array|mixed $jobs)
@@ -44,10 +43,8 @@ class Bus extends Facade
     public static function fake($jobsToFake = [])
     {
         static::swap($fake = new BusFake(static::getFacadeRoot(), $jobsToFake));
-
         return $fake;
     }
-
     /**
      * Dispatch the given chain of jobs.
      *
@@ -57,11 +54,8 @@ class Bus extends Facade
     public static function dispatchChain($jobs)
     {
         $jobs = is_array($jobs) ? $jobs : func_get_args();
-
-        return (new PendingChain(array_shift($jobs), $jobs))
-                    ->dispatch();
+        return (new PendingChain(array_shift($jobs), $jobs))->dispatch();
     }
-
     /**
      * Get the registered name of the component.
      *

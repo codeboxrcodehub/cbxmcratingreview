@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\Mail;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Mail;
 
 interface Factory
 {

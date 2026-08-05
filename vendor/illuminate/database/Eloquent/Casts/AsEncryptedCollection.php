@@ -1,12 +1,11 @@
 <?php
 
-namespace Illuminate\Database\Eloquent\Casts;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\Eloquent\Casts;
 
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Crypt;
-
+use CBXMCRatingReviewScoped\Illuminate\Contracts\Database\Eloquent\Castable;
+use CBXMCRatingReviewScoped\Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use CBXMCRatingReviewScoped\Illuminate\Support\Collection;
+use CBXMCRatingReviewScoped\Illuminate\Support\Facades\Crypt;
 class AsEncryptedCollection implements Castable
 {
     /**
@@ -22,18 +21,15 @@ class AsEncryptedCollection implements Castable
             public function get($model, $key, $value, $attributes)
             {
                 if (isset($attributes[$key])) {
-                    return new Collection(json_decode(Crypt::decryptString($attributes[$key]), true));
+                    return new Collection(json_decode(Crypt::decryptString($attributes[$key]), \true));
                 }
-
                 return null;
             }
-
             public function set($model, $key, $value, $attributes)
             {
-                if (! is_null($value)) {
+                if (!is_null($value)) {
                     return [$key => Crypt::encryptString(json_encode($value))];
                 }
-
                 return null;
             }
         };

@@ -1,13 +1,12 @@
 <?php
 
-namespace Sabberworm\CSS\Value;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Value;
 
-use Sabberworm\CSS\OutputFormat;
-use Sabberworm\CSS\Parsing\ParserState;
-use Sabberworm\CSS\Parsing\SourceException;
-use Sabberworm\CSS\Parsing\UnexpectedEOFException;
-use Sabberworm\CSS\Parsing\UnexpectedTokenException;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\ParserState;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\SourceException;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedEOFException;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedTokenException;
 /**
  * This class represents URLs in CSS. `URL`s always output in `URL("")` notation.
  */
@@ -17,7 +16,6 @@ class URL extends PrimitiveValue
      * @var CSSString
      */
     private $oURL;
-
     /**
      * @param int $iLineNo
      */
@@ -26,7 +24,6 @@ class URL extends PrimitiveValue
         parent::__construct($iLineNo);
         $this->oURL = $oURL;
     }
-
     /**
      * @return URL
      *
@@ -41,7 +38,7 @@ class URL extends PrimitiveValue
         $oAnchor = $oParserState->anchor();
         $sIdentifier = '';
         for ($i = 0; $i < 3; $i++) {
-            $sChar = $oParserState->parseCharacter(true);
+            $sChar = $oParserState->parseCharacter(\true);
             if ($sChar === null) {
                 break;
             }
@@ -62,7 +59,6 @@ class URL extends PrimitiveValue
         }
         return $oResult;
     }
-
     /**
      * @return void
      */
@@ -70,7 +66,6 @@ class URL extends PrimitiveValue
     {
         $this->oURL = $oURL;
     }
-
     /**
      * @return CSSString
      */
@@ -78,7 +73,6 @@ class URL extends PrimitiveValue
     {
         return $this->oURL;
     }
-
     /**
      * @return string
      *
@@ -88,7 +82,6 @@ class URL extends PrimitiveValue
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *

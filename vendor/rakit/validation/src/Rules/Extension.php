@@ -1,17 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Helper;
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Helper;
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class Extension extends Rule
 {
-    
     /** @var string */
     protected $message = "The :attribute must be a :allowed_extensions file";
-
-     /**
+    /**
      * Given $params and assign the $this->params
      *
      * @param array $params
@@ -25,7 +22,6 @@ class Extension extends Rule
         $this->params['allowed_extensions'] = $params;
         return $this;
     }
-    
     /**
      * Check the $value is valid
      *
@@ -39,12 +35,10 @@ class Extension extends Rule
         foreach ($allowedExtensions as $key => $ext) {
             $allowedExtensions[$key] = ltrim($ext, '.');
         }
-
         $or = $this->validation ? $this->validation->getTranslation('or') : 'or';
         $allowedExtensionsText = Helper::join(Helper::wraps($allowedExtensions, ".", ""), ', ', ", {$or} ");
         $this->setParameterText('allowed_extensions', $allowedExtensionsText);
-
-        $ext = strtolower(pathinfo($value, PATHINFO_EXTENSION));
-        return ($ext && in_array($ext, $allowedExtensions)) ? true : false;
+        $ext = strtolower(pathinfo($value, \PATHINFO_EXTENSION));
+        return $ext && in_array($ext, $allowedExtensions) ? \true : \false;
     }
 }

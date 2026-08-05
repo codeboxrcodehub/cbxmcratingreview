@@ -8,13 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\Shortcut;
 
-namespace Symfony\Component\CssSelector\Parser\Shortcut;
-
-use Symfony\Component\CssSelector\Node\ElementNode;
-use Symfony\Component\CssSelector\Node\SelectorNode;
-use Symfony\Component\CssSelector\Parser\ParserInterface;
-
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Node\ElementNode;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Node\SelectorNode;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\ParserInterface;
 /**
  * CSS selector element parser shortcut.
  *
@@ -38,7 +36,6 @@ class ElementParser implements ParserInterface
         if (preg_match('/^(?:([a-z]++)\|)?([\w-]++|\*)$/i', trim($source), $matches)) {
             return [new SelectorNode(new ElementNode($matches[1] ?: null, $matches[2]))];
         }
-
         return [];
     }
 }

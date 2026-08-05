@@ -4,13 +4,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\CBXMCRatingReviewHooks;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use CBX\MCRatingReview\MigrationManage;
-use CBX\MCRatingReview\CBXMCRatingReviewMisc;
-use CBX\MCRatingReview\Api\CBXRoute;
-use CBX\MCRatingReview\CBXMCRatingReviewPublic;
-use CBX\MCRatingReview\CBXMCRatingReviewAdmin;
+//use CBXMCRatingReview\CBXMCRatingReviewHooks;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\MigrationManage;
+use CBXMCRatingReview\CBXMCRatingReviewMisc;
+use CBXMCRatingReview\Api\CBXRoute;
+use CBXMCRatingReview\CBXMCRatingReviewPublic;
+use CBXMCRatingReview\CBXMCRatingReviewAdmin;
 
 /**
  * The file that defines the core plugin class
@@ -103,7 +103,7 @@ final class CBXMCRatingReview {
 		require_once __DIR__ . '/../vendor/autoload.php';
 		include_once __DIR__ . '/CBXMCRatingReviewEmails.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/Html2Text.php';
+		//require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/Html2Text.php';
 	}//end method include_files
 
 	/**
@@ -117,7 +117,7 @@ final class CBXMCRatingReview {
 		$route  = new CBXRoute();
 
 		add_action( 'init', [ $helper, 'load_orm' ] );
-		add_action( 'init', [ $misc, 'load_plugin_textdomain' ] );
+		//add_action( 'init', [ $misc, 'load_plugin_textdomain' ] );
 		add_action( 'init', [ $misc, 'load_mailer' ] );
 
 		add_action( 'rest_api_init', [ $route, 'init' ] );
@@ -164,7 +164,8 @@ final class CBXMCRatingReview {
 		add_action( 'cbxmcratingreview_form_delete_after', [ $plugin_admin, 'form_delete_after' ] );
 
 		//on user delete
-		add_action( 'delete_user', [ $plugin_admin, 'review_delete_after_delete_user' ] );
+		//add_action( 'delete_user', [ $plugin_admin, 'review_delete_after_delete_user' ] );
+		add_action( 'deleted_user', [ $plugin_admin, 'review_delete_after_delete_user' ] );
 
 		//save email settings
 		add_action( 'admin_init', [ $plugin_admin, 'save_email_setting' ] );
@@ -331,4 +332,4 @@ final class CBXMCRatingReview {
 		echo sprintf(esc_html__( 'CBX Multi Criteria Rating & Review requires at least PHP %s. Please upgrade PHP to run CBX Multi Criteria Rating & Review.', 'cbxmcratingreview' ), esc_attr(CBXMCRATINGREVIEW_PHP_MIN_VERSION));
 		echo '</p></div>';
 	}//end method php_version_notice
-}// end class CBXMCRatingReview
+}//end class CBXMCRatingReview

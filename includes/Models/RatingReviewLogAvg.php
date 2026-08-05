@@ -1,12 +1,12 @@
 <?php
-namespace CBX\MCRatingReview\Models;
+namespace CBXMCRatingReview\Models;
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReviewScoped\Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
  * Avg rating log model
@@ -41,7 +41,7 @@ class RatingReviewLogAvg extends Eloquent {
 		do_action( 'cbxmcratingreview_log_avg_delete_before', $this->id, $form );
 
 		$delete = parent::delete();
-		if ( $delete ) {
+		if ( $delete) {
 			do_action( 'cbxmcratingreview_log_avg_delete_after', $this->id, $form );
 		} else {
 			do_action( 'cbxmcratingreview_log_avg_delete_failed', $this->id, $form );

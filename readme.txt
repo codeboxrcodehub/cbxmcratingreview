@@ -1,9 +1,9 @@
 === CBX Multi Criteria Rating & Review ===
 Contributors: codeboxr, manchumahara
 Tags: rating, review, business review, rating feedback,
-Requires at least: 5.3
-Tested up to: 6.8
-Stable tag: 2.0.4
+Requires at least: 6.9
+Tested up to: 7.0
+Stable tag: 2.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,12 +11,12 @@ Multi Criteria Rating and Review for WordPress with Multi Forms, Question bank a
 
 == Description ==
 
-This is full featured multi criteria rating system. Our target was creating a rating system something like amazon but inside wordpress eco system. The plugin is coded thinking developers in mind so that it can be extended as need. Plugin is packed with necessary shortcodes, widgets, easy templates system, custom and easy php functions, huge settings.
+CBX Multi Criteria Rating & Review gives you powerful, flexible tools to collect detailed user feedback on any post, page, or product. Create custom rating criteria, boost credibility, and display rich reviews that go beyond basic stars—all seamlessly integrated into your WordPress site.
 
 
 ### CBX Multi Criteria Rating & Review by [Codeboxr](https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/)
 
->📋 [Documentation](https://codeboxr.com/doc/cbxmcratingreview-doc/) | 🌟 [Upgrade to PRO](https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/) |  👨‍💻 [Free Support](https://wordpress.org/support/plugin/cbxmcratingreview/) | 🤴 [Pro Support](https://codeboxr.com/contact-us) | 📱 [Contact](https://codeboxr.com/contact-us/)
+>📋 [Documentation](https://codeboxr.com/doc/cbxmcratingreview-doc/) | 🌟 [Upgrade to PRO](https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/) |  👨‍💻 [Free Support](https://wordpress.org/support/plugin/cbxmcratingreview/) | 📱 [Free Support](https://wordpress.org/support/plugin/cbxmcratingreview/) | 🤴 [Pro Support](https://codeboxr.com/contact-us)
 
 
 **If you think any necessary feature is missing contact with us, we will add in new release. Best way to check the feature is install the free core version in any dev site and explore**
@@ -116,6 +116,14 @@ Pro addon: CBX Multi Criteria Rating & Review System myCred Points - Features
 
 
 == Changelog ==
+= 2.0.5 =
+* [updated] Misc improvements, bug fixes and style updated
+* [updated] Plugin check error fixed
+* [updated] Pro Addon plugin V2.0.5 released
+* [improvements] Plugin check 1.9 compatible
+* [improvements] WordPress Core 6.9.4 compatible
+* [new] Pro addon now supports automatic update [check setting]
+
 = 2.0.4 =
 * [updated] PHP version compatibility check updated
 * [fixed] PHP file direct access check issue checked for all files

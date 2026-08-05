@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 
 if ( ! class_exists( 'CBXMCRatingReviewReviewStatusUpdateUserEmail', false ) ) :
@@ -169,9 +169,15 @@ if ( ! class_exists( 'CBXMCRatingReviewReviewStatusUpdateUserEmail', false ) ) :
 				$this->placeholders['{review_comment}']  = $new_review_info['comment'];
 				$this->placeholders['{review_status}']   = $modification_status;
 
+				$this->placeholders['{review_date_human}'] = CBXMCRatingReviewHelper::get_humanize_date( $new_review_info['date_created'] );
+
 				$this->placeholders['{post_link}']         = $post_url_link;
+				$this->placeholders['{post_url}']  			= $post_url;
+
 				$this->placeholders['{review_user_email}'] = $new_review_info['user_email'];
 				$this->placeholders['{review_user_name}']  = $new_review_info['display_name'];
+
+				$this->placeholders['{email_heading}'] = $this->get_default_heading();
 
 				$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(),
 					$this->get_attachments() );

@@ -1,9 +1,8 @@
 <?php
 
-namespace Illuminate\Support\Facades;
+namespace CBXMCRatingReviewScoped\Illuminate\Support\Facades;
 
-use Illuminate\Http\Client\Factory;
-
+use CBXMCRatingReviewScoped\Illuminate\Http\Client\Factory;
 /**
  * @method static \GuzzleHttp\Promise\PromiseInterface response($body = null, $status = 200, $headers = [])
  * @method static \Illuminate\Http\Client\Factory fake($callback = null)

@@ -1,26 +1,20 @@
 <?php
 
-namespace Sabberworm\CSS\Comment;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Comment;
 
-use Sabberworm\CSS\OutputFormat;
-use Sabberworm\CSS\Renderable;
-
-class Comment implements Renderable
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Renderable;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Position\Position;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Position\Positionable;
+class Comment implements Positionable, Renderable
 {
-    /**
-     * @var int
-     *
-     * @internal since 8.8.0
-     */
-    protected $iLineNo;
-
+    use Position;
     /**
      * @var string
      *
      * @internal since 8.8.0
      */
     protected $sComment;
-
     /**
      * @param string $sComment
      * @param int $iLineNo
@@ -28,9 +22,8 @@ class Comment implements Renderable
     public function __construct($sComment = '', $iLineNo = 0)
     {
         $this->sComment = $sComment;
-        $this->iLineNo = $iLineNo;
+        $this->setPosition($iLineNo);
     }
-
     /**
      * @return string
      */
@@ -38,15 +31,6 @@ class Comment implements Renderable
     {
         return $this->sComment;
     }
-
-    /**
-     * @return int
-     */
-    public function getLineNo()
-    {
-        return $this->iLineNo;
-    }
-
     /**
      * @param string $sComment
      *
@@ -56,7 +40,6 @@ class Comment implements Renderable
     {
         $this->sComment = $sComment;
     }
-
     /**
      * @return string
      *
@@ -66,7 +49,6 @@ class Comment implements Renderable
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *

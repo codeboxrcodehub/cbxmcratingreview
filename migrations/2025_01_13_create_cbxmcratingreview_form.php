@@ -4,17 +4,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use Illuminate\Database\Capsule\Manager as Capsule;
+use CBXMCRatingReviewScoped\Illuminate\Database\Capsule\Manager as Capsule;
 
 
-if ( ! class_exists( 'CreateCBXMcRatingReviewFormTable' ) ) {
+if ( ! class_exists( 'CBXMcRatingReviewCreateFormTable' ) ) {
 	/**
 	 * Common migration class for migration table and other tables(codeboxr's plugin or 3rd party if anyone use)
 	 *
-	 * Class CreateCBXMcRatingReviewFormTable
+	 * Class CBXMcRatingReviewCreateFormTable
 	 * @since 1.0.0
 	 */
-	class CreateCBXMcRatingReviewFormTable {
+	class CBXMcRatingReviewCreateFormTable {
 
 		/**
 		 * Run migrations
@@ -25,6 +25,7 @@ if ( ! class_exists( 'CreateCBXMcRatingReviewFormTable' ) ) {
 			//migrations table create if not exists
 			try {
 				if ( ! Capsule::schema()->hasTable( 'cbxmcratingreview_form' ) ) {
+					//phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 					Capsule::schema()->create( 'cbxmcratingreview_form', function ( $table ) {
 						$table->increments( 'id' );
 						$table->string( 'name' );
@@ -34,6 +35,7 @@ if ( ! class_exists( 'CreateCBXMcRatingReviewFormTable' ) ) {
 						//$table->longtext( 'extrafields' )->default('');
 						$table->longtext( 'extrafields' )->nullable();
 					} );
+					//phpcs:enable
 				}
 			} catch ( \Exception $e ) {
 				if ( function_exists( 'write_log' ) ) {
@@ -59,12 +61,12 @@ if ( ! class_exists( 'CreateCBXMcRatingReviewFormTable' ) ) {
 			}
 		}//end method down
 
-	}//end class CreateCBXMcRatingReviewFormTable
+	}//end class CBXMcRatingReviewCreateFormTable
 }
 
 
 if ( isset( $action ) && $action == 'up' ) {
-	CreateCBXMcRatingReviewFormTable::up();
+	CBXMcRatingReviewCreateFormTable::up();
 } elseif ( isset( $action ) && $action == 'drop' ) {
-	CreateCBXMcRatingReviewFormTable::down();
+	CBXMcRatingReviewCreateFormTable::down();
 }

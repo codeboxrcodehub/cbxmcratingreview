@@ -1,13 +1,13 @@
 <?php
-namespace CBX\MCRatingReview\Helpers;
+namespace CBXMCRatingReview\Helpers;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\MigrationManage;
-use CBX\MCRatingReview\Models\RatingReviewLog;
+use CBXMCRatingReview\MigrationManage;
+use CBXMCRatingReview\Models\RatingReviewLog;
 
 /**
  * The helper functionality of the plugin admin sides
@@ -354,7 +354,7 @@ class CBXMCRatingReviewAdminHelper {
 			];
 
 			return $data;
-		} catch ( Exception ) {
+		} catch ( \Exception $e ) {
 			return [];
 		}
 	}//end method getAdminDashboardData

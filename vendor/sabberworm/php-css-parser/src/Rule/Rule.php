@@ -1,63 +1,48 @@
 <?php
 
-namespace Sabberworm\CSS\Rule;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Rule;
 
-use Sabberworm\CSS\Comment\Comment;
-use Sabberworm\CSS\Comment\Commentable;
-use Sabberworm\CSS\OutputFormat;
-use Sabberworm\CSS\Parsing\ParserState;
-use Sabberworm\CSS\Parsing\UnexpectedEOFException;
-use Sabberworm\CSS\Parsing\UnexpectedTokenException;
-use Sabberworm\CSS\Renderable;
-use Sabberworm\CSS\Value\RuleValueList;
-use Sabberworm\CSS\Value\Value;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Comment\Comment;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Comment\Commentable;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\CSSElement;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\ParserState;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedEOFException;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedTokenException;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Position\Position;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Position\Positionable;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Value\RuleValueList;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Value\Value;
 /**
  * `Rule`s just have a string key (the rule) and a 'Value'.
  *
  * In CSS, `Rule`s are expressed as follows: “key: value[0][0] value[0][1], value[1][0] value[1][1];”
  */
-class Rule implements Renderable, Commentable
+class Rule implements Commentable, CSSElement, Positionable
 {
+    use Position;
     /**
      * @var string
      */
     private $sRule;
-
     /**
      * @var RuleValueList|string|null
      */
     private $mValue;
-
     /**
      * @var bool
      */
     private $bIsImportant;
-
     /**
      * @var array<int, int>
      */
     private $aIeHack;
-
-    /**
-     * @var int
-     */
-    protected $iLineNo;
-
-    /**
-     * @var int
-     *
-     * @internal since 8.8.0
-     */
-    protected $iColNo;
-
     /**
      * @var array<array-key, Comment>
      *
      * @internal since 8.8.0
      */
     protected $aComments;
-
     /**
      * @param string $sRule
      * @param int $iLineNo
@@ -67,13 +52,11 @@ class Rule implements Renderable, Commentable
     {
         $this->sRule = $sRule;
         $this->mValue = null;
-        $this->bIsImportant = false;
+        $this->bIsImportant = \false;
         $this->aIeHack = [];
-        $this->iLineNo = $iLineNo;
-        $this->iColNo = $iColNo;
+        $this->setPosition($iLineNo, $iColNo);
         $this->aComments = [];
     }
-
     /**
      * @param array<int, Comment> $commentsBeforeRule
      *
@@ -87,11 +70,7 @@ class Rule implements Renderable, Commentable
     public static function parse(ParserState $oParserState, $commentsBeforeRule = [])
     {
         $aComments = \array_merge($commentsBeforeRule, $oParserState->consumeWhiteSpace());
-        $oRule = new Rule(
-            $oParserState->parseIdentifier(!$oParserState->comes("--")),
-            $oParserState->currentLine(),
-            $oParserState->currentColumn()
-        );
+        $oRule = new Rule($oParserState->parseIdentifier(!$oParserState->comes("--")), $oParserState->currentLine(), $oParserState->currentColumn());
         $oRule->setComments($aComments);
         $oRule->addComments($oParserState->consumeWhiteSpace());
         $oParserState->consume(':');
@@ -109,16 +88,14 @@ class Rule implements Renderable, Commentable
             $oParserState->consume('!');
             $oParserState->consumeWhiteSpace();
             $oParserState->consume('important');
-            $oRule->setIsImportant(true);
+            $oRule->setIsImportant(\true);
         }
         $oParserState->consumeWhiteSpace();
         while ($oParserState->comes(';')) {
             $oParserState->consume(';');
         }
-
         return $oRule;
     }
-
     /**
      * Returns a list of delimiters (or separators).
      * The first item is the innermost separator (or, put another way, the highest-precedence operator).
@@ -133,7 +110,6 @@ class Rule implements Renderable, Commentable
         if (preg_match('/^font($|-)/', $sRule)) {
             return [',', '/', ' '];
         }
-
         switch ($sRule) {
             case 'src':
                 return [' ', ','];
@@ -141,35 +117,6 @@ class Rule implements Renderable, Commentable
                 return [',', ' ', '/'];
         }
     }
-
-    /**
-     * @return int
-     */
-    public function getLineNo()
-    {
-        return $this->iLineNo;
-    }
-
-    /**
-     * @return int
-     */
-    public function getColNo()
-    {
-        return $this->iColNo;
-    }
-
-    /**
-     * @param int $iLine
-     * @param int $iColumn
-     *
-     * @return void
-     */
-    public function setPosition($iLine, $iColumn)
-    {
-        $this->iColNo = $iColumn;
-        $this->iLineNo = $iLine;
-    }
-
     /**
      * @param string $sRule
      *
@@ -179,7 +126,6 @@ class Rule implements Renderable, Commentable
     {
         $this->sRule = $sRule;
     }
-
     /**
      * @return string
      */
@@ -187,7 +133,6 @@ class Rule implements Renderable, Commentable
     {
         return $this->sRule;
     }
-
     /**
      * @return RuleValueList|string|null
      */
@@ -195,7 +140,6 @@ class Rule implements Renderable, Commentable
     {
         return $this->mValue;
     }
-
     /**
      * @param RuleValueList|string|null $mValue
      *
@@ -205,7 +149,6 @@ class Rule implements Renderable, Commentable
     {
         $this->mValue = $mValue;
     }
-
     /**
      * @param array<array-key, array<array-key, RuleValueList>> $aSpaceSeparatedValues
      *
@@ -247,7 +190,6 @@ class Rule implements Renderable, Commentable
         $this->mValue = $oSpaceSeparatedList;
         return $oSpaceSeparatedList;
     }
-
     /**
      * @return array<int, array<int, RuleValueList>>
      *
@@ -278,7 +220,6 @@ class Rule implements Renderable, Commentable
         }
         return $aResult;
     }
-
     /**
      * Adds a value to the existing value. Value will be appended if a `RuleValueList` exists of the given type.
      * Otherwise, the existing value will be wrapped by one.
@@ -295,7 +236,7 @@ class Rule implements Renderable, Commentable
         }
         if (!$this->mValue instanceof RuleValueList || $this->mValue->getListSeparator() !== $sType) {
             $mCurrentValue = $this->mValue;
-            $this->mValue = new RuleValueList($sType, $this->iLineNo);
+            $this->mValue = new RuleValueList($sType, $this->getLineNumber());
             if ($mCurrentValue) {
                 $this->mValue->addListComponent($mCurrentValue);
             }
@@ -304,7 +245,6 @@ class Rule implements Renderable, Commentable
             $this->mValue->addListComponent($mValueItem);
         }
     }
-
     /**
      * @param int $iModifier
      *
@@ -316,7 +256,6 @@ class Rule implements Renderable, Commentable
     {
         $this->aIeHack[] = $iModifier;
     }
-
     /**
      * @param array<int, int> $aModifiers
      *
@@ -328,7 +267,6 @@ class Rule implements Renderable, Commentable
     {
         $this->aIeHack = $aModifiers;
     }
-
     /**
      * @return array<int, int>
      *
@@ -338,7 +276,6 @@ class Rule implements Renderable, Commentable
     {
         return $this->aIeHack;
     }
-
     /**
      * @param bool $bIsImportant
      *
@@ -348,7 +285,6 @@ class Rule implements Renderable, Commentable
     {
         $this->bIsImportant = $bIsImportant;
     }
-
     /**
      * @return bool
      */
@@ -356,7 +292,6 @@ class Rule implements Renderable, Commentable
     {
         return $this->bIsImportant;
     }
-
     /**
      * @return string
      *
@@ -366,7 +301,6 @@ class Rule implements Renderable, Commentable
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *
@@ -375,7 +309,8 @@ class Rule implements Renderable, Commentable
     public function render($oOutputFormat)
     {
         $sResult = "{$oOutputFormat->comments($this)}{$this->sRule}:{$oOutputFormat->spaceAfterRuleName()}";
-        if ($this->mValue instanceof Value) { // Can also be a ValueList
+        if ($this->mValue instanceof Value) {
+            // Can also be a ValueList
             $sResult .= $this->mValue->render($oOutputFormat);
         } else {
             $sResult .= $this->mValue;
@@ -389,7 +324,6 @@ class Rule implements Renderable, Commentable
         $sResult .= ';';
         return $sResult;
     }
-
     /**
      * @param array<array-key, Comment> $aComments
      *
@@ -399,7 +333,6 @@ class Rule implements Renderable, Commentable
     {
         $this->aComments = array_merge($this->aComments, $aComments);
     }
-
     /**
      * @return array<array-key, Comment>
      */
@@ -407,7 +340,6 @@ class Rule implements Renderable, Commentable
     {
         return $this->aComments;
     }
-
     /**
      * @param array<array-key, Comment> $aComments
      *

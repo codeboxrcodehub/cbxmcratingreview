@@ -1,15 +1,12 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class Numeric extends Rule
 {
-
     /** @var string */
     protected $message = "The :attribute must be numeric";
-
     /**
      * Check the $value is valid
      *

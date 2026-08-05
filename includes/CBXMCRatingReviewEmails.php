@@ -86,11 +86,20 @@ class CBXMCRatingReviewEmails {
 	 * @param mixed $email_heading Heading for the email.
 	 */
 	public function email_header( $email_heading ) {
-		$template_settings = get_option( 'cbxmcratingreview_email_tpl' );
+		/* $template_settings = get_option( 'cbxmcratingreview_email_tpl' );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo cbxmcratingreview_get_template_html( 'emails/email-header.php', [
 			'email_heading'     => $email_heading,
 			'template_settings' => $template_settings
+		] ); */
+
+		$tpl_settings      = get_option( 'cbxmcratingreview_email_tpl', [] );
+		$selected_template = isset( $tpl_settings['selected_template'] ) ? $tpl_settings['selected_template'] : 'tpl-general';
+
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo cbxmcratingreview_get_template_html( 'email_templates/' . $selected_template . '/email-header.php', [
+			'email_heading'     => $email_heading,
+			'template_settings' => $tpl_settings
 		] );
 	}//end method email_header
 
@@ -98,9 +107,17 @@ class CBXMCRatingReviewEmails {
 	 * Get the email footer.
 	 */
 	public function email_footer() {
-		$template_settings = get_option( 'cbxmcratingreview_email_tpl' );
+		/* $template_settings = get_option( 'cbxmcratingreview_email_tpl' );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo cbxmcratingreview_get_template_html( 'emails/email-footer.php', [ 'template_settings' => $template_settings ] );
+		echo cbxmcratingreview_get_template_html( 'emails/email-footer.php', [ 'template_settings' => $template_settings ] ); */
+
+		$tpl_settings = get_option( 'cbxmcratingreview_email_tpl', [] );
+		$selected_tpl = isset( $tpl_settings['selected_template'] ) ? $tpl_settings['selected_template'] : 'tpl-general';
+
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo cbxmcratingreview_get_template_html( 'email_templates/' . esc_attr( $selected_tpl ) . '/email-footer.php', [
+			'template_settings' => $tpl_settings
+		] );
 	}//end method email_footer
 
 	/**

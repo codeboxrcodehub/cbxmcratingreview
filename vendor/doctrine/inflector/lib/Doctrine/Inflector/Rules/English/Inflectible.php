@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules\English;
 
-use Doctrine\Inflector\Rules\Pattern;
-use Doctrine\Inflector\Rules\Substitution;
-use Doctrine\Inflector\Rules\Transformation;
-use Doctrine\Inflector\Rules\Word;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\Pattern;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\Substitution;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\Transformation;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\Word;
 
 class Inflectible
 {

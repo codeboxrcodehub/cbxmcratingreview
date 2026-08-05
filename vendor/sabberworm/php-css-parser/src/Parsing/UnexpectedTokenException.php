@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabberworm\CSS\Parsing;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing;
 
 /**
  * Thrown if the CSS parser encounters a token it did not expect.
@@ -11,19 +11,16 @@ class UnexpectedTokenException extends SourceException
      * @var string
      */
     private $sExpected;
-
     /**
      * @var string
      */
     private $sFound;
-
     /**
      * Possible values: literal, identifier, count, expression, search
      *
      * @var string
      */
     private $sMatchType;
-
     /**
      * @param string $sExpected
      * @param string $sFound
@@ -43,9 +40,8 @@ class UnexpectedTokenException extends SourceException
         } elseif ($this->sMatchType === 'identifier') {
             $sMessage = "Identifier expected. Got “{$sFound}”";
         } elseif ($this->sMatchType === 'custom') {
-            $sMessage = trim("$sExpected $sFound");
+            $sMessage = trim("{$sExpected} {$sFound}");
         }
-
         parent::__construct($sMessage, $iLineNo);
     }
 }

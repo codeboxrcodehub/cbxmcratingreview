@@ -1,10 +1,9 @@
 <?php
 
-namespace Illuminate\Database\Eloquent\Factories;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\Eloquent\Factories;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
-
+use CBXMCRatingReviewScoped\Illuminate\Database\Eloquent\Model;
+use CBXMCRatingReviewScoped\Illuminate\Support\Collection;
 class BelongsToManyRelationship
 {
     /**
@@ -13,21 +12,18 @@ class BelongsToManyRelationship
      * @var \Illuminate\Database\Eloquent\Factories\Factory|\Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model
      */
     protected $factory;
-
     /**
      * The pivot attributes / attribute resolver.
      *
      * @var callable|array
      */
     protected $pivot;
-
     /**
      * The relationship name.
      *
      * @var string
      */
     protected $relationship;
-
     /**
      * Create a new attached relationship definition.
      *
@@ -42,7 +38,6 @@ class BelongsToManyRelationship
         $this->pivot = $pivot;
         $this->relationship = $relationship;
     }
-
     /**
      * Create the attached relationship for the given model.
      *
@@ -52,10 +47,7 @@ class BelongsToManyRelationship
     public function createFor(Model $model)
     {
         Collection::wrap($this->factory instanceof Factory ? $this->factory->create([], $model) : $this->factory)->each(function ($attachable) use ($model) {
-            $model->{$this->relationship}()->attach(
-                $attachable,
-                is_callable($this->pivot) ? call_user_func($this->pivot, $model) : $this->pivot
-            );
+            $model->{$this->relationship}()->attach($attachable, is_callable($this->pivot) ? call_user_func($this->pivot, $model) : $this->pivot);
         });
     }
 }

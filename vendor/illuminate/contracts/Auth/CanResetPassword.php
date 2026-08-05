@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\Auth;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Auth;
 
 interface CanResetPassword
 {
@@ -10,7 +10,6 @@ interface CanResetPassword
      * @return string
      */
     public function getEmailForPasswordReset();
-
     /**
      * Send the password reset notification.
      *

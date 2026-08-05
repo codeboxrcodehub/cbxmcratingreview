@@ -1,13 +1,11 @@
 <?php
 
-namespace Rakit\Validation\Traits;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Traits;
 
 trait TranslationsTrait
 {
-
     /** @var array */
     protected $translations = [];
-
     /**
      * Given $key and $translation to set translation
      *
@@ -19,7 +17,6 @@ trait TranslationsTrait
     {
         $this->translations[$key] = $translation;
     }
-
     /**
      * Given $translations and set multiple translations
      *
@@ -30,7 +27,6 @@ trait TranslationsTrait
     {
         $this->translations = array_merge($this->translations, $translations);
     }
-
     /**
      * Given translation from given $key
      *
@@ -41,7 +37,6 @@ trait TranslationsTrait
     {
         return array_key_exists($key, $this->translations) ? $this->translations[$key] : $key;
     }
-
     /**
      * Get all $translations
      *

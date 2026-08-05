@@ -1,5 +1,5 @@
 <?php
-namespace CBX\MCRatingReview\Controllers;
+namespace CBXMCRatingReview\Controllers;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -7,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Exception;
-use CBX\MCRatingReview\MigrationManage;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
+use CBXMCRatingReview\MigrationManage;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
 
 /**
  * Dashboard controller for miscellaneous tasks

@@ -1,12 +1,12 @@
 <?php
-namespace CBX\MCRatingReview\Models;
+namespace CBXMCRatingReview\Models;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use CBXMCRatingReviewScoped\Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Migrations extends Eloquent {
 

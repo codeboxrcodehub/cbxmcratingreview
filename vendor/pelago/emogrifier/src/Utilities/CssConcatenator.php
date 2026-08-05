@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Pelago\Emogrifier\Utilities;
+declare (strict_types=1);
+namespace CBXMCRatingReviewScoped\Pelago\Emogrifier\Utilities;
 
 /**
  * Facilitates building a CSS string by appending rule blocks one at a time, checking whether the media query,
@@ -58,7 +57,6 @@ final class CssConcatenator
      * }>
      */
     private $mediaRules = [];
-
     /**
      * Appends a declaration block to the CSS.
      *
@@ -72,19 +70,15 @@ final class CssConcatenator
     public function append(array $selectors, string $declarationsBlock, string $media = ''): void
     {
         $selectorsAsKeys = \array_flip($selectors);
-
         $mediaRule = $this->getOrCreateMediaRuleToAppendTo($media);
         $ruleBlocks = $mediaRule->ruleBlocks;
         $lastRuleBlock = \end($ruleBlocks);
-
-        $hasSameDeclarationsAsLastRule = \is_object($lastRuleBlock)
-            && $declarationsBlock === $lastRuleBlock->declarationsBlock;
+        $hasSameDeclarationsAsLastRule = \is_object($lastRuleBlock) && $declarationsBlock === $lastRuleBlock->declarationsBlock;
         if ($hasSameDeclarationsAsLastRule) {
             $lastRuleBlock->selectorsAsKeys += $selectorsAsKeys;
         } else {
             $lastRuleBlockSelectors = \is_object($lastRuleBlock) ? $lastRuleBlock->selectorsAsKeys : [];
-            $hasSameSelectorsAsLastRule = \is_object($lastRuleBlock)
-                && self::hasEquivalentSelectors($selectorsAsKeys, $lastRuleBlockSelectors);
+            $hasSameSelectorsAsLastRule = \is_object($lastRuleBlock) && self::hasEquivalentSelectors($selectorsAsKeys, $lastRuleBlockSelectors);
             if ($hasSameSelectorsAsLastRule) {
                 $lastDeclarationsBlockWithoutSemicolon = \rtrim(\rtrim($lastRuleBlock->declarationsBlock), ';');
                 $lastRuleBlock->declarationsBlock = $lastDeclarationsBlockWithoutSemicolon . ';' . $declarationsBlock;
@@ -93,7 +87,6 @@ final class CssConcatenator
             }
         }
     }
-
     /**
      * @return string
      */
@@ -101,7 +94,6 @@ final class CssConcatenator
     {
         return \implode('', \array_map([self::class, 'getMediaRuleCss'], $this->mediaRules));
     }
-
     /**
      * @param string $media The media query for rules to be appended, e.g. "@media screen and (max-width:639px)",
      *        or an empty string if none.
@@ -120,15 +112,10 @@ final class CssConcatenator
         if (\is_object($lastMediaRule) && $media === $lastMediaRule->media) {
             return $lastMediaRule;
         }
-
-        $newMediaRule = (object) [
-            'media' => $media,
-            'ruleBlocks' => [],
-        ];
+        $newMediaRule = (object) ['media' => $media, 'ruleBlocks' => []];
         $this->mediaRules[] = $newMediaRule;
         return $newMediaRule;
     }
-
     /**
      * Tests if two sets of selectors are equivalent (i.e. the same selectors, possibly in a different order).
      *
@@ -140,10 +127,8 @@ final class CssConcatenator
      */
     private static function hasEquivalentSelectors(array $selectorsAsKeys1, array $selectorsAsKeys2): bool
     {
-        return \count($selectorsAsKeys1) === \count($selectorsAsKeys2)
-            && \count($selectorsAsKeys1) === \count($selectorsAsKeys1 + $selectorsAsKeys2);
+        return \count($selectorsAsKeys1) === \count($selectorsAsKeys2) && \count($selectorsAsKeys1) === \count($selectorsAsKeys1 + $selectorsAsKeys2);
     }
-
     /**
      * @param object{
      *          media: string,
@@ -165,7 +150,6 @@ final class CssConcatenator
         }
         return $css;
     }
-
     /**
      * @param object{selectorsAsKeys: array<string, array-key>, declarationsBlock: string} $ruleBlock
      *

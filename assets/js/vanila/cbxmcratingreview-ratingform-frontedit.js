@@ -2,7 +2,8 @@
 
 	//dom ready
 	jQuery(document).ready(function ($) {
-
+		$('body').addClass('awn-popup-cbxscratingreview');
+		
 		//apply rating edit form
 		$('.cbxmcratingreviewmainwrap').each(function (index, element) {
 			var $wrapper = $(element);

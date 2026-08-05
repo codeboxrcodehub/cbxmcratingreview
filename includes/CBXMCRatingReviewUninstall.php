@@ -1,12 +1,12 @@
 <?php
-namespace CBX\MCRatingReview;
+namespace CBXMCRatingReview;
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use CBX\MCRatingReview\CBXMCRatingReviewSettings;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\CBXMCRatingReviewSettings;
 
 /**
  * Fired during plugin uninstall
@@ -95,9 +95,9 @@ class CBXMCRatingReviewUninstall {
 			//delete tables
 			$table_names = CBXMCRatingReviewHelper::getAllDBTablesList();
 
-			$table_names['comment']      = $wpdb->prefix . 'cbxmcratingreviewcomment';
-			$table_names['comment_feed'] = $wpdb->prefix . 'cbxmcratingreviewcomment_feedback';
-			$table_names['feedback']     = $wpdb->prefix . 'cbxmcratingreview_feedback';
+			$table_names['comment']      = esc_sql( $wpdb->prefix . 'cbxmcratingreviewcomment' );
+			$table_names['comment_feed'] = esc_sql( $wpdb->prefix . 'cbxmcratingreviewcomment_feedback' );
+			$table_names['feedback']     = esc_sql( $wpdb->prefix . 'cbxmcratingreview_feedback');
 
 			if ( is_array( $table_names ) && sizeof( $table_names ) > 0 ) {
 				do_action( 'cbxmcratingreview_plugin_tables_deleted_before', $table_names );
@@ -105,7 +105,7 @@ class CBXMCRatingReviewUninstall {
 				global $wpdb;
 
 				foreach ( $table_names as $table_name ) {
-					//phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					//phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
 					$query_result = $wpdb->query( "DROP TABLE IF EXISTS {$table_name}" );
 				}
 

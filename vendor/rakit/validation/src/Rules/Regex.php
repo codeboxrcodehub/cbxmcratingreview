@@ -1,18 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class Regex extends Rule
 {
-
     /** @var string */
     protected $message = "The :attribute is not valid format";
-
     /** @var array */
     protected $fillableParams = ['regex'];
-
     /**
      * Check the $value is valid
      *

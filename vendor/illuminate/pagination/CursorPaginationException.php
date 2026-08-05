@@ -1,9 +1,8 @@
 <?php
 
-namespace Illuminate\Pagination;
+namespace CBXMCRatingReviewScoped\Illuminate\Pagination;
 
 use RuntimeException;
-
 /**
  * @deprecated Will be removed in a future Laravel version.
  */

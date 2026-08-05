@@ -1,13 +1,11 @@
 <?php
-//namespace CBX\MCRatingReview\Widgets\Classic;
-
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\CBXMCRatingReviewSettings;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
+
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 
 /**
@@ -17,26 +15,12 @@ use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
  */
 class CBXMCRatingReviewMRPostsWidget extends WP_Widget {
 
-	/**
-	 *
-	 * Unique identifier for your widget.
-	 *
-	 *
-	 * The variable name is used as the text domain when internationalizing strings
-	 * of text. Its value should match the Text Domain file header in the main
-	 * widget file.
-	 *
-	 * @since    1.0.0
-	 *
-	 * @var      string
-	 */
 	protected $widget_slug = 'cbxmcratingreviewmrposts-widget'; //main parent plugin's language file
 
 
-	/**
-	 * Specifies the classname and description, instantiates the widget,
-	 * loads localization files, and includes necessary stylesheets and JavaScript.
-	 */
+    /**
+     * Constructor
+     */
 	public function __construct() {
 
 		parent::__construct(
@@ -50,20 +34,15 @@ class CBXMCRatingReviewMRPostsWidget extends WP_Widget {
 
 	} // end constructor
 
-	/**
-	 * Return the widget slug.
-	 *
-	 * @return    Plugin slug variable.
-	 * @since    1.0.0
-	 *
-	 */
+    /**
+     * Widget Slug
+     *
+     * @return mixed|string
+     */
 	public function get_widget_slug() {
 		return $this->widget_slug;
 	}//end method get_widget_slug
 
-	/*--------------------------------------------------*/
-	/* Widget API Functions
-	/*--------------------------------------------------*/
 
 	/**
 	 * Outputs the content of the widget.
@@ -92,16 +71,16 @@ class CBXMCRatingReviewMRPostsWidget extends WP_Widget {
 		$instance = apply_filters( 'cbxmcratingreviewmrposts_widget_instance_display', $instance );
 
 		$arr            = [];
-		$arr['scope']   = 'widget';
-		$arr['form_id'] = isset( $instance['form_id'] ) ? absint( $instance['form_id'] ) : 0;
-		$arr['limit']   = isset( $instance['limit'] ) ? absint( $instance['limit'] ) : 10;
-		$arr['order']   = isset( $instance['order'] ) ? sanitize_text_field( wp_unslash( $instance['order'] ) ) : 'DESC';
-		$arr['orderby'] = isset( $instance['orderby'] ) ? sanitize_text_field( wp_unslash( $instance['orderby'] ) ) : 'avg_rating'; //avg_rating, total_count, post_id
-		$arr['type']    = isset( $instance['type'] ) ? sanitize_text_field( wp_unslash( $instance['type'] ) ) : 'post';
-		$arr['title']   = isset( $instance['title'] ) ? sanitize_text_field( wp_unslash( $instance['title'] ) ) : '';
+        $arr['form_id'] = isset( $instance['form_id'] ) ? absint( $instance['form_id'] ) : 0;
+        $arr['limit']   = isset( $instance['limit'] ) ? absint( $instance['limit'] ) : 10;
+        $arr['order']   = isset( $instance['order'] ) ? sanitize_text_field( wp_unslash( $instance['order'] ) ) : 'DESC';
+        $arr['orderby'] = isset( $instance['orderby'] ) ? sanitize_text_field( wp_unslash( $instance['orderby'] ) ) : 'avg_rating'; //avg_rating, total_count, post_id
+        $arr['type']    = isset( $instance['type'] ) ? sanitize_text_field( wp_unslash( $instance['type'] ) ) : 'post';
+        $arr['title']   = isset( $instance['title'] ) ? sanitize_text_field( wp_unslash( $instance['title'] ) ) : '';
+        $arr['scope']   = 'widget';
 
 
-		$attr_html = '';
+        $attr_html = '';
 		foreach ( $arr as $key => $value ) {
 			$attr_html .= ' ' . $key . '="' . esc_attr( $value ) . '" ';
 		}
@@ -124,8 +103,8 @@ class CBXMCRatingReviewMRPostsWidget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 
-		$instance['title']   = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( wp_unslash( $new_instance['title'] ) ) : '';
-		$instance['form_id'] = absint( $new_instance['form_id'] );
+        $instance['form_id'] = absint( $new_instance['form_id'] );
+        $instance['title']   = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( wp_unslash( $new_instance['title'] ) ) : '';
 		$instance['limit']   = absint( $new_instance['limit'] );
 		$instance['order']   = sanitize_text_field( wp_unslash( $new_instance['order'] ) );
 		$instance['orderby'] = sanitize_text_field( wp_unslash( $new_instance['orderby'] ) );

@@ -1,19 +1,15 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class Before extends Rule
 {
     use Traits\DateUtilsTrait;
-
     /** @var string */
     protected $message = "The :attribute must be a date before :time.";
-
     /** @var array */
     protected $fillableParams = ['time'];
-
     /**
      * Check the $value is valid
      *
@@ -25,15 +21,12 @@ class Before extends Rule
     {
         $this->requireParameters($this->fillableParams);
         $time = $this->parameter('time');
-
         if (!$this->isValidDate($value)) {
             throw $this->throwException($value);
         }
-
         if (!$this->isValidDate($time)) {
             throw $this->throwException($time);
         }
-
         return $this->getTimeStamp($time) > $this->getTimeStamp($value);
     }
 }

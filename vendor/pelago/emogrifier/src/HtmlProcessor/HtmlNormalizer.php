@@ -1,8 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Pelago\Emogrifier\HtmlProcessor;
+declare (strict_types=1);
+namespace CBXMCRatingReviewScoped\Pelago\Emogrifier\HtmlProcessor;
 
 /**
  * Normalizes HTML:
@@ -11,4 +10,6 @@ namespace Pelago\Emogrifier\HtmlProcessor;
  * - add HEAD and BODY elements (if they are missing)
  * - reformat the HTML
  */
-final class HtmlNormalizer extends AbstractHtmlProcessor {}
+final class HtmlNormalizer extends AbstractHtmlProcessor
+{
+}

@@ -15,7 +15,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 //post data needs to be in variable $data_posts
 ?>
 <div class="cbxmcratingreviewmrposts_wrapper">
@@ -56,5 +56,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     </ul>
 	<?php
 	do_action( 'cbxmcratingreviewmrposts_list_after' );
+	// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	?>
 </div>

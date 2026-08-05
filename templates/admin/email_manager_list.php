@@ -11,11 +11,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 ?>
 <div class="section_header row">
     <div class="col-12 section_header_l">
         <h2><?php esc_html_e( 'Email notifications', 'cbxmcratingreview' ); ?></h2>
-        <p><?php esc_html_e( 'Here are the list of all the email notification send from this accounting system. Please note that, few notification may sent from background without any setting based on the type of not.', 'cbxmcratingreview' ); ?></p>
+        <p><?php esc_html_e( 'Here are the list of available email notifications. Please note that, few notification may sent from background without any setting based on the type of not.', 'cbxmcratingreview' ); ?></p>
     </div>
     <!--                        <div class="col-6 section_header_r"></div>-->
 </div>
@@ -81,3 +82,5 @@ if ( ! defined( 'ABSPATH' ) ) {
         </tbody>
     </table>
 </div>
+<?php 
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

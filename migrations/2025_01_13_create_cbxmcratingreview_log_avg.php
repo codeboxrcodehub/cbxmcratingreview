@@ -3,17 +3,17 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-use Illuminate\Database\Capsule\Manager as Capsule;
+use CBXMCRatingReviewScoped\Illuminate\Database\Capsule\Manager as Capsule;
 
 
-if ( ! class_exists( 'CreateCBXMcRatingReviewAvgLogTable' ) ) {
+if ( ! class_exists( 'CBXMcRatingReviewCreateAvgLogTable' ) ) {
 	/**
 	 * Common migration class for migration table and other tables(codeboxr's plugin or 3rd party if anyone use)
 	 *
-	 * Class CreateCBXMcRatingReviewAvgLogTable
+	 * Class CBXMcRatingReviewCreateAvgLogTable
 	 * @since 1.0.0
 	 */
-	class CreateCBXMcRatingReviewAvgLogTable {
+	class CBXMcRatingReviewCreateAvgLogTable {
 
 		/**
 		 * Run migrations
@@ -61,12 +61,12 @@ if ( ! class_exists( 'CreateCBXMcRatingReviewAvgLogTable' ) ) {
 			}
 		}//end method down
 
-	}//end class CreateCBXMcRatingReviewAvgLogTable
+	}//end class CBXMcRatingReviewCreateAvgLogTable
 }
 
 
 if ( isset( $action ) && $action == 'up' ) {
-	CreateCBXMcRatingReviewAvgLogTable::up();
+	CBXMcRatingReviewCreateAvgLogTable::up();
 } elseif ( isset( $action ) && $action == 'drop' ) {
-	CreateCBXMcRatingReviewAvgLogTable::down();
+	CBXMcRatingReviewCreateAvgLogTable::down();
 }

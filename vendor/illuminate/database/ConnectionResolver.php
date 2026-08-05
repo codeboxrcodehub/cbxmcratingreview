@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Database;
+namespace CBXMCRatingReviewScoped\Illuminate\Database;
 
 class ConnectionResolver implements ConnectionResolverInterface
 {
@@ -10,14 +10,12 @@ class ConnectionResolver implements ConnectionResolverInterface
      * @var array
      */
     protected $connections = [];
-
     /**
      * The default connection name.
      *
      * @var string
      */
     protected $default;
-
     /**
      * Create a new connection resolver instance.
      *
@@ -30,7 +28,6 @@ class ConnectionResolver implements ConnectionResolverInterface
             $this->addConnection($name, $connection);
         }
     }
-
     /**
      * Get a database connection instance.
      *
@@ -42,10 +39,8 @@ class ConnectionResolver implements ConnectionResolverInterface
         if (is_null($name)) {
             $name = $this->getDefaultConnection();
         }
-
         return $this->connections[$name];
     }
-
     /**
      * Add a connection to the resolver.
      *
@@ -57,7 +52,6 @@ class ConnectionResolver implements ConnectionResolverInterface
     {
         $this->connections[$name] = $connection;
     }
-
     /**
      * Check if a connection has been registered.
      *
@@ -68,7 +62,6 @@ class ConnectionResolver implements ConnectionResolverInterface
     {
         return isset($this->connections[$name]);
     }
-
     /**
      * Get the default connection name.
      *
@@ -78,7 +71,6 @@ class ConnectionResolver implements ConnectionResolverInterface
     {
         return $this->default;
     }
-
     /**
      * Set the default connection name.
      *

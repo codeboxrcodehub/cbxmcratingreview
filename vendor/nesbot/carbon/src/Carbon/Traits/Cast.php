@@ -8,12 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace CBXMCRatingReviewScoped\Carbon\Traits;
 
-namespace Carbon\Traits;
-
-use Carbon\Exceptions\InvalidCastException;
+use CBXMCRatingReviewScoped\Carbon\Exceptions\InvalidCastException;
 use DateTimeInterface;
-
 /**
  * Trait Cast.
  *
@@ -31,13 +29,11 @@ trait Cast
     public function cast(string $className)
     {
         if (!method_exists($className, 'instance')) {
-            if (is_a($className, DateTimeInterface::class, true)) {
+            if (is_a($className, DateTimeInterface::class, \true)) {
                 return new $className($this->rawFormat('Y-m-d H:i:s.u'), $this->getTimezone());
             }
-
-            throw new InvalidCastException("$className has not the instance() method needed to cast the date.");
+            throw new InvalidCastException("{$className} has not the instance() method needed to cast the date.");
         }
-
         return $className::instance($this);
     }
 }

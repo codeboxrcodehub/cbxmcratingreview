@@ -1,15 +1,12 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class Email extends Rule
 {
-
     /** @var string */
     protected $message = "The :attribute is not valid email";
-
     /**
      * Check $value is valid
      *
@@ -18,6 +15,6 @@ class Email extends Rule
      */
     public function check($value): bool
     {
-        return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
+        return filter_var($value, \FILTER_VALIDATE_EMAIL) !== \false;
     }
 }

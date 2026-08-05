@@ -1,12 +1,14 @@
 <?php
-namespace CBX\MCRatingReview;
+
+namespace CBXMCRatingReview;
+
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 /**
  * The public-facing functionality of the plugin.
@@ -277,7 +279,7 @@ class CBXMCRatingReviewPublic {
 		} else {
 			$guest_login_form = esc_attr( $settings->get_field( 'guest_login_form', 'cbxmcratingreview_common_config', 'wordpress' ) );
 
-			if ( $guest_login_form != 'off' ) {
+			if ( $guest_login_form !== 'off' ) {
 				wp_enqueue_style( 'cbxmcratingreview-public' );
 				$output .= cbxmcratingreview_get_template_html( 'rating-review-dashboard-guest.php', [
 					'settings' => $settings,
@@ -359,8 +361,8 @@ class CBXMCRatingReviewPublic {
 		$atts = array_change_key_case( (array) $atts, CASE_LOWER );
 		$atts = shortcode_atts(
 			[
+				'form_id' => 0,  //if form id is given then only reviews for that form wil show
 				'title'   => '', //default empty
-				'form_id' => 0, //if form id is given then only reviews for that form wil show
 				'scope'   => 'shortcode',
 				'limit'   => 10,
 				'orderby' => 'avg_rating', //avg_rating, total_count, post_id
@@ -368,8 +370,8 @@ class CBXMCRatingReviewPublic {
 				'type'    => 'post'
 			], $atts, 'cbxmcratingreviewmrposts' );
 
-		$scope    = ( isset( $atts['scope'] ) && $atts['scope'] != '' ) ? sanitize_text_field( wp_unslash( $atts['scope'] ) ) : 'shortcode';
 		$form_id  = isset( $atts['form_id'] ) ? absint( $atts['form_id'] ) : 0;
+		$scope    = ( isset( $atts['scope'] ) && $atts['scope'] != '' ) ? sanitize_text_field( wp_unslash( $atts['scope'] ) ) : 'shortcode';
 		$limit    = isset( $atts['limit'] ) ? absint( $atts['limit'] ) : 10;
 		$order_by = isset( $atts['orderby'] ) ? sanitize_text_field( wp_unslash( $atts['orderby'] ) ) : 'avg_rating';
 		$order    = isset( $atts['order'] ) ? sanitize_text_field( wp_unslash( $atts['order'] ) ) : 'DESC';
@@ -381,16 +383,16 @@ class CBXMCRatingReviewPublic {
 		$data_posts = cbxmcratingreview_most_rated_posts( $form_id, $limit, $order_by, $order, $type ); //variable name $data_posts  is important for template files
 
 		return cbxmcratingreview_get_template_html( 'widgets/most_rated_posts.php', [
-				'title'      => $title,
 				'form_id'    => $form_id,
+				'title'      => $title,
+				'scope'      => $scope,
+				'data_posts' => $data_posts,
+				'limit'      => $limit,
 				'orderby'    => $order_by,
 				'order'      => $order,
-				'settings'   => $settings,
-				'data_posts' => $data_posts,
-				'scope'      => $scope,
-				'limit'      => $limit,
 				'type'       => $type,
-				'atts'       => $atts
+				'atts'       => $atts,
+				'settings'   => $settings,
 			]
 		);
 	}//end method cbxmcratingreviewmrposts_shortcode
@@ -405,7 +407,7 @@ class CBXMCRatingReviewPublic {
 		$atts = shortcode_atts(
 			[
 				'title'   => '', //default empty
-				'form_id' => 0, //if form id is given then only reviews for that form wil show
+				'form_id' => 0,  //if form id is given then only reviews for that form wil show
 				'scope'   => 'shortcode',
 				'limit'   => 10,
 				'orderby' => 'id', //id, score, post_id
@@ -413,30 +415,37 @@ class CBXMCRatingReviewPublic {
 				'type'    => 'post'
 			], $atts, 'cbxmcratingreviewlratings' );
 
-		$scope    = ( isset( $atts['scope'] ) && $atts['scope'] != '' ) ? sanitize_text_field( wp_unslash( $atts['scope'] ) ) : 'shortcode';
 		$form_id  = isset( $atts['form_id'] ) ? absint( $atts['form_id'] ) : 0;
+		$scope    = ( isset( $atts['scope'] ) && $atts['scope'] != '' ) ? sanitize_text_field( wp_unslash( $atts['scope'] ) ) : 'shortcode';
 		$limit    = isset( $atts['limit'] ) ? absint( $atts['limit'] ) : 10;
 		$order_by = isset( $atts['orderby'] ) ? sanitize_text_field( wp_unslash( $atts['orderby'] ) ) : 'id'; //id, score, post_id
 		$order    = isset( $atts['order'] ) ? sanitize_text_field( wp_unslash( $atts['order'] ) ) : 'DESC';
 		$type     = isset( $atts['type'] ) ? sanitize_text_field( wp_unslash( $atts['type'] ) ) : 'post';
 		$title    = isset( $atts['title'] ) ? sanitize_text_field( wp_unslash( $atts['title'] ) ) : '';
 
+		if ( ! in_array( $order, [ 'DESC', 'ASC' ] ) ) {
+			$order = 'DESC';
+		}
+
+		if ( ! in_array( $order_by, [ 'id, score, post_id' ] ) ) {
+			$order_by = 'id';
+		}
 
 		cbxmcratingreview_AddJsCss();
 
 		$data_posts = cbxmcratingreview_lastest_ratings( $form_id, $limit, $order_by, $order, $type ); //variable name $data_posts  is important for template files
 
 		return cbxmcratingreview_get_template_html( 'widgets/latest_ratings.php', [
-				'title'      => $title,
 				'form_id'    => $form_id,
+				'data_posts' => $data_posts,
+				'title'      => $title,
+				'scope'      => $scope,
 				'orderby'    => $order_by,
 				'order'      => $order,
-				'settings'   => $settings,
-				'data_posts' => $data_posts,
-				'scope'      => $scope,
 				'limit'      => $limit,
 				'type'       => $type,
-				'atts'       => $atts
+				'atts'       => $atts,
+				'settings'   => $settings
 			]
 		);
 	}//end method cbxmcratingreviewlratings_shortcode
@@ -493,7 +502,7 @@ class CBXMCRatingReviewPublic {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+		//$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 		$settings = $this->settings;
 		$ver      = $this->version;
@@ -524,18 +533,16 @@ class CBXMCRatingReviewPublic {
 
 
 		wp_register_script( 'awesome-notifications', $vendors_url_part . 'awesome-notifications/script.js', [], $ver, $footer );
-		wp_register_script( 'jquery-validate', $js_url_vanila . 'jquery.validate.min.js', [ 'jquery' ], $ver, $footer );
+		wp_register_script( 'jquery-validate', $vendors_url_part . 'jquery-validate/jquery.validate.min.js', [ 'jquery' ], $ver, $footer );
 
 		$ratingform_js_dep[] = 'cbxmcratingreview-events';
 		$ratingform_js_dep[] = 'jquery';
-		//$ratingform_js_dep[] = 'jquery-ui-datepicker';
 		$ratingform_js_dep[] = 'jquery-cbxmcratingreview-raty';
 		$ratingform_js_dep[] = 'jquery-validate';
 		$ratingform_js_dep[] = 'awesome-notifications';
 
 		$ratingeditform_js_dep[] = 'cbxmcratingreview-events';
 		$ratingeditform_js_dep[] = 'jquery';
-		//$ratingeditform_js_dep[] = 'jquery-ui-datepicker';
 		$ratingeditform_js_dep[] = 'jquery-cbxmcratingreview-raty';
 		$ratingeditform_js_dep[] = 'jquery-validate';
 		$ratingeditform_js_dep[] = 'awesome-notifications';
@@ -560,91 +567,98 @@ class CBXMCRatingReviewPublic {
 		$ratingeditform_js_dep = apply_filters( 'cbxmcratingreview_editform_js_dep', $ratingeditform_js_dep );
 
 		wp_register_script( 'cbxmcratingreview-ratingform', $js_url_vanila . 'cbxmcratingreview-ratingform.js', $ratingform_js_dep, $ver, $footer );
-		wp_register_script( 'cbxmcratingreview-ratingeditform', $js_url_vanila . 'cbxmcratingreview-ratingform-frontedit.js', $ratingeditform_js_dep, $ver, $footer);
+		wp_register_script( 'cbxmcratingreview-ratingeditform', $js_url_vanila . 'cbxmcratingreview-ratingform-frontedit.js', $ratingeditform_js_dep, $ver, $footer );
 
 
 		// Localize the script with new data
+
 		$cbxmcratingreview_public_ratingform_js_vars = apply_filters( 'cbxmcratingreview_public_ratingform_js_vars', [
 			'ajaxurl'                  => admin_url( 'admin-ajax.php' ),
 			'nonce'                    => wp_create_nonce( 'cbxmcratingreview' ),
 			'rating'                   => [
 				'half_rating' => $half_rating,
-				'cancelHint'  => esc_html__( 'Cancel this rating!', 'cbxmcratingreview' ),
+				'cancelHint'  => htmlspecialchars_decode( esc_html__( 'Cancel this rating!', 'cbxmcratingreview' ) ),
 				'hints'       => CBXMCRatingReviewHelper::ratingHints(),
-				'noRatedMsg'  => esc_html__( 'Not rated yet!', 'cbxmcratingreview' ),
-				'img_path'    => apply_filters( 'cbxmcratingreview_star_image_url', CBXMCRATINGREVIEW_ROOT_URL . 'assets/images/stars/' )
+				'noRatedMsg'  => htmlspecialchars_decode( esc_html__( 'Not rated yet!', 'cbxmcratingreview' ) ),
+				'img_path'    => apply_filters( 'cbxmcratingreview_star_image_url', esc_url( CBXMCRATINGREVIEW_ROOT_URL ) . 'assets/images/stars/' )
 			],
 			'validation'               => [
-				'required'                        => esc_html__( 'This field is required.', 'cbxmcratingreview' ),
-				'remote'                          => esc_html__( 'Please fix this field.', 'cbxmcratingreview' ),
-				'email'                           => esc_html__( 'Please enter a valid email address.', 'cbxmcratingreview' ),
-				'url'                             => esc_html__( 'Please enter a valid URL.', 'cbxmcratingreview' ),
-				'date'                            => esc_html__( 'Please enter a valid date.', 'cbxmcratingreview' ),
-				'dateISO'                         => esc_html__( 'Please enter a valid date ( ISO ).', 'cbxmcratingreview' ),
-				'number'                          => esc_html__( 'Please enter a valid number.', 'cbxmcratingreview' ),
-				'digits'                          => esc_html__( 'Please enter only digits.', 'cbxmcratingreview' ),
-				'equalTo'                         => esc_html__( 'Please enter the same value again.', 'cbxmcratingreview' ),
-				'maxlength'                       => esc_html__( 'Please enter no more than {0} characters.', 'cbxmcratingreview' ),
-				'minlength'                       => esc_html__( 'Please enter at least {0} characters.', 'cbxmcratingreview' ),
-				'rangelength'                     => esc_html__( 'Please enter a value between {0} and {1} characters long.', 'cbxmcratingreview' ),
-				'range'                           => esc_html__( 'Please enter a value between {0} and {1}.', 'cbxmcratingreview' ),
-				'max'                             => esc_html__( 'Please enter a value less than or equal to {0}.', 'cbxmcratingreview' ),
-				'min'                             => esc_html__( 'Please enter a value greater than or equal to {0}.', 'cbxmcratingreview' ),
-				'recaptcha'                       => esc_html__( 'Please check the captcha.', 'cbxmcratingreview' ),
-				'cbxmcratingreview_multicheckbox' => esc_html__( 'Please select at least one option', 'cbxmcratingreview' ),
-				'form_invalid'                    => esc_html__( 'Rating/review form is not valid, please check all fields', 'cbxmcratingreview' )
+				'required'                        => htmlspecialchars_decode( esc_html__( 'This field is required.', 'cbxmcratingreview' ) ),
+				'remote'                          => htmlspecialchars_decode( esc_html__( 'Please fix this field.', 'cbxmcratingreview' ) ),
+				'email'                           => htmlspecialchars_decode( esc_html__( 'Please enter a valid email address.', 'cbxmcratingreview' ) ),
+				'url'                             => htmlspecialchars_decode( esc_html__( 'Please enter a valid URL.', 'cbxmcratingreview' ) ),
+				'date'                            => htmlspecialchars_decode( esc_html__( 'Please enter a valid date.', 'cbxmcratingreview' ) ),
+				'dateISO'                         => htmlspecialchars_decode( esc_html__( 'Please enter a valid date ( ISO ).', 'cbxmcratingreview' ) ),
+				'number'                          => htmlspecialchars_decode( esc_html__( 'Please enter a valid number.', 'cbxmcratingreview' ) ),
+				'digits'                          => htmlspecialchars_decode( esc_html__( 'Please enter only digits.', 'cbxmcratingreview' ) ),
+				'equalTo'                         => htmlspecialchars_decode( esc_html__( 'Please enter the same value again.', 'cbxmcratingreview' ) ),
+				'maxlength'                       => htmlspecialchars_decode( esc_html__( 'Please enter no more than {0} characters.', 'cbxmcratingreview' ) ),
+				'minlength'                       => htmlspecialchars_decode( esc_html__( 'Please enter at least {0} characters.', 'cbxmcratingreview' ) ),
+				'rangelength'                     => htmlspecialchars_decode( esc_html__( 'Please enter a value between {0} and {1} characters long.', 'cbxmcratingreview' ) ),
+				'range'                           => htmlspecialchars_decode( esc_html__( 'Please enter a value between {0} and {1}.', 'cbxmcratingreview' ) ),
+				'max'                             => htmlspecialchars_decode( esc_html__( 'Please enter a value less than or equal to {0}.', 'cbxmcratingreview' ) ),
+				'min'                             => htmlspecialchars_decode( esc_html__( 'Please enter a value greater than or equal to {0}.', 'cbxmcratingreview' ) ),
+				'recaptcha'                       => htmlspecialchars_decode( esc_html__( 'Please check the captcha.', 'cbxmcratingreview' ) ),
+				'cbxmcratingreview_multicheckbox' => htmlspecialchars_decode( esc_html__( 'Please select at least one option', 'cbxmcratingreview' ) ),
+				'form_invalid'                    => htmlspecialchars_decode( esc_html__( 'Rating/review form is not valid, please check all fields', 'cbxmcratingreview' ) )
 			],
-			'are_you_sure_global'      => esc_html__( 'Are you sure?', 'cbxmcratingreview' ),
-			'are_you_sure_delete_desc' => esc_html__( 'Once you delete, it\'s gone forever. You can not revert it back.', 'cbxmcratingreview' ),
+			'are_you_sure_global'      => htmlspecialchars_decode( esc_html__( 'Are you sure?', 'cbxmcratingreview' ) ),
+			'are_you_sure_delete_desc' => htmlspecialchars_decode( esc_html__( 'Once you delete, it\'s gone forever. You can not revert it back.', 'cbxmcratingreview' ) ),
 			'awn_options'              => [
-				'tip'           => esc_html__( 'Tip', 'cbxmcratingreview' ),
-				'info'          => esc_html__( 'Info', 'cbxmcratingreview' ),
-				'success'       => esc_html__( 'Success', 'cbxmcratingreview' ),
-				'warning'       => esc_html__( 'Attention', 'cbxmcratingreview' ),
-				'alert'         => esc_html__( 'Error', 'cbxmcratingreview' ),
-				'async'         => esc_html__( 'Loading', 'cbxmcratingreview' ),
-				'confirm'       => esc_html__( 'Confirmation', 'cbxmcratingreview' ),
-				'confirmOk'     => esc_html__( 'OK', 'cbxmcratingreview' ),
-				'confirmCancel' => esc_html__( 'Cancel', 'cbxmcratingreview' )
+				'tip'           => htmlspecialchars_decode( esc_html__( 'Tip', 'cbxmcratingreview' ) ),
+				'info'          => htmlspecialchars_decode( esc_html__( 'Info', 'cbxmcratingreview' ) ),
+				'success'       => htmlspecialchars_decode( esc_html__( 'Success', 'cbxmcratingreview' ) ),
+				'warning'       => htmlspecialchars_decode( esc_html__( 'Attention', 'cbxmcratingreview' ) ),
+				'alert'         => htmlspecialchars_decode( esc_html__( 'Error', 'cbxmcratingreview' ) ),
+				'async'         => htmlspecialchars_decode( esc_html__( 'Loading', 'cbxmcratingreview' ) ),
+				'confirm'       => htmlspecialchars_decode( esc_html__( 'Confirmation', 'cbxmcratingreview' ) ),
+				'confirmOk'     => htmlspecialchars_decode( esc_html__( 'OK', 'cbxmcratingreview' ) ),
+				'confirmCancel' => htmlspecialchars_decode( esc_html__( 'Cancel', 'cbxmcratingreview' ) )
 			],
 			'review_common_config'     => [
 				'require_headline' => $require_headline,
 				'require_comment'  => $require_comment,
 			],
-			'sort_text'                => esc_html__( 'Drag and Sort', 'cbxmcratingreview' ),
+			'sort_text'                => htmlspecialchars_decode( esc_html__( 'Drag and Sort', 'cbxmcratingreview' ) ),
 			'forms'                    => []
 		] );
 
 		$cbxmcratingreview_public_common_js_vars = apply_filters( 'cbxmcratingreview_public_common_js_vars', [
 			'ajaxurl'                  => admin_url( 'admin-ajax.php' ),
 			'nonce'                    => wp_create_nonce( 'cbxmcratingreview' ),
-			'are_you_sure_global'      => esc_html__( 'Are you sure?', 'cbxmcratingreview' ),
-			'are_you_sure_delete_desc' => esc_html__( 'Once you delete, it\'s gone forever. You can not revert it back.', 'cbxmcratingreview' ),
+			'are_you_sure_global'      => htmlspecialchars_decode( esc_html__( 'Are you sure?', 'cbxmcratingreview' ) ),
+			'are_you_sure_delete_desc' => htmlspecialchars_decode( esc_html__( 'Once you delete, it\'s gone forever. You can not revert it back.', 'cbxmcratingreview' ) ),
 			'awn_options'              => [
-				'tip'           => esc_html__( 'Tip', 'cbxmcratingreview' ),
-				'info'          => esc_html__( 'Info', 'cbxmcratingreview' ),
-				'success'       => esc_html__( 'Success', 'cbxmcratingreview' ),
-				'warning'       => esc_html__( 'Attention', 'cbxmcratingreview' ),
-				'alert'         => esc_html__( 'Error', 'cbxmcratingreview' ),
-				'async'         => esc_html__( 'Loading', 'cbxmcratingreview' ),
-				'confirm'       => esc_html__( 'Confirmation', 'cbxmcratingreview' ),
-				'confirmOk'     => esc_html__( 'OK', 'cbxmcratingreview' ),
-				'confirmCancel' => esc_html__( 'Cancel', 'cbxmcratingreview' )
+				'tip'           => htmlspecialchars_decode( esc_html__( 'Tip', 'cbxmcratingreview' ) ),
+				'info'          => htmlspecialchars_decode( esc_html__( 'Info', 'cbxmcratingreview' ) ),
+				'success'       => htmlspecialchars_decode( esc_html__( 'Success', 'cbxmcratingreview' ) ),
+				'warning'       => htmlspecialchars_decode( esc_html__( 'Attention', 'cbxmcratingreview' ) ),
+				'alert'         => htmlspecialchars_decode( esc_html__( 'Error', 'cbxmcratingreview' ) ),
+				'async'         => htmlspecialchars_decode( esc_html__( 'Loading', 'cbxmcratingreview' ) ),
+				'confirm'       => htmlspecialchars_decode( esc_html__( 'Confirmation', 'cbxmcratingreview' ) ),
+				'confirmOk'     => htmlspecialchars_decode( esc_html__( 'OK', 'cbxmcratingreview' ) ),
+				'confirmCancel' => htmlspecialchars_decode( esc_html__( 'Cancel', 'cbxmcratingreview' ) )
 			],
 			'rating'                   => [
 				'half_rating' => $half_rating,
-				'cancelHint'  => esc_html__( 'Cancel this rating!', 'cbxmcratingreview' ),
+				'cancelHint'  => htmlspecialchars_decode( esc_html__( 'Cancel this rating!', 'cbxmcratingreview' ) ),
 				'hints'       => CBXMCRatingReviewHelper::ratingHints(),
-				'noRatedMsg'  => esc_html__( 'Not rated yet!', 'cbxmcratingreview' ),
-				'img_path'    => apply_filters( 'cbxmcratingreview_star_image_url', CBXMCRATINGREVIEW_ROOT_URL . 'assets/images/stars/' )
+				'noRatedMsg'  => htmlspecialchars_decode( esc_html__( 'Not rated yet!', 'cbxmcratingreview' ) ),
+				'img_path'    => apply_filters( 'cbxmcratingreview_star_image_url', esc_url( CBXMCRATINGREVIEW_ROOT_URL ) . 'assets/images/stars/' )
 			],
-			'no_reviews_found_html'    => '<li class="' . apply_filters( 'cbxmcratingreview_review_list_item_class_notfound_class', 'cbxmcratingreview_review_list_item cbxmcratingreview_review_list_item_notfound' ) . '"><p class="no_reviews_found">' . esc_html__( 'No reviews yet!', 'cbxmcratingreview' ) . '</p>
-				</li>',
-			'load_more_text'           => esc_html__( 'Load More', 'cbxmcratingreview' ),
-			'load_more_busy_text'      => esc_html__( 'Loading next page ...', 'cbxmcratingreview' ),
-			'delete_confirm'           => esc_html__( 'Are you sure to delete your review, this processs can not be undone ?', 'cbxmcratingreview' ),
-			'delete_text'              => esc_html__( 'Delete', 'cbxmcratingreview' ),
-			'delete_error'             => esc_html__( 'Sorry! delete failed!', 'cbxmcratingreview' ),
+			// For 'no_reviews_found_html', we need to be careful as it's an HTML string.
+			// If esc_html__ is already used for the text inside, that's generally good.
+			// htmlspecialchars_decode would only be needed if the *entire* HTML string
+			// was already HTML-encoded. Given the structure, applying it directly to
+			// esc_html__ is correct.
+			'no_reviews_found_html'    => '<li class="' . apply_filters( 'cbxmcratingreview_review_list_item_class_notfound_class', 'cbxmcratingreview_review_list_item cbxmcratingreview_review_list_item_notfound' ) . '"><p class="no_reviews_found">' . htmlspecialchars_decode( esc_html__( 'No reviews yet!', 'cbxmcratingreview' ) ) . '</p>
+       </li>',
+			'no_reviews_found'         => htmlspecialchars_decode( esc_html__( 'No reviews yet!', 'cbxmcratingreview' ) ),
+			'load_more_text'           => htmlspecialchars_decode( esc_html__( 'Load More', 'cbxmcratingreview' ) ),
+			'load_more_busy_text'      => htmlspecialchars_decode( esc_html__( 'Loading next page ...', 'cbxmcratingreview' ) ),
+			'delete_confirm'           => htmlspecialchars_decode( esc_html__( 'Are you sure to delete your review, this processs can not be undone ?', 'cbxmcratingreview' ) ),
+			'delete_text'              => htmlspecialchars_decode( esc_html__( 'Delete', 'cbxmcratingreview' ) ),
+			'delete_error'             => htmlspecialchars_decode( esc_html__( 'Sorry! delete failed!', 'cbxmcratingreview' ) ),
 		] );
 
 
@@ -763,16 +777,16 @@ class CBXMCRatingReviewPublic {
 	public function post_more_reviews_ajax_load() {
 		check_ajax_referer( 'cbxmcratingreview', 'security' );
 
-		$form_id  = isset( $_POST['form_id'] ) ? intval( $_POST['form_id'] ) : 0;
-		$post_id  = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$per_page = isset( $_POST['perpage'] ) ? intval( $_POST['perpage'] ) : 0;
-		$page     = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
+		$form_id  = isset( $_POST['form_id'] ) ? absint( $_POST['form_id'] ) : 0;
+		$post_id  = isset( $_POST['post_id'] ) ? absint( $_POST['post_id'] ) : 0;
+		$per_page = isset( $_POST['perpage'] ) ? absint( $_POST['perpage'] ) : 0;
+		$page     = isset( $_POST['page'] ) ? absint( $_POST['page'] ) : 1;
 		$order_by = isset( $_POST['orderby'] ) ? sanitize_text_field( wp_unslash( $_POST['orderby'] ) ) : 'id';
 		$order    = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : 'DESC';
 		//$status  = isset( $_POST['status'] ) ? esc_attr( $_POST['status'] ) : ''; //this should be 1 for current regular implementation
 		$score = isset( $_POST['score'] ) ? sanitize_text_field( wp_unslash( $_POST['score'] ) ) : '';
 
-		$load_more = isset( $_POST['load_more'] ) ? intval( $_POST['load_more'] ) : 0;
+		$load_more = isset( $_POST['load_more'] ) ? absint( $_POST['load_more'] ) : 0;
 		//$show_filter   = isset( $_POST['show_filter'] ) ? intval( $_POST['show_filter'] ) : 0;
 
 		//filter must be set false
@@ -789,10 +803,10 @@ class CBXMCRatingReviewPublic {
 	public function post_filter_reviews_ajax_load() {
 		check_ajax_referer( 'cbxmcratingreview', 'security' );
 
-		$form_id  = isset( $_POST['form_id'] ) ? intval( $_POST['form_id'] ) : 0;
-		$post_id  = isset( $_POST['post_id'] ) ? intval( $_POST['post_id'] ) : 0;
-		$per_page = isset( $_POST['perpage'] ) ? intval( $_POST['perpage'] ) : 0;
-		$page     = isset( $_POST['page'] ) ? intval( $_POST['page'] ) : 1;
+		$form_id  = isset( $_POST['form_id'] ) ? absint( $_POST['form_id'] ) : 0;
+		$post_id  = isset( $_POST['post_id'] ) ? absint( $_POST['post_id'] ) : 0;
+		$per_page = isset( $_POST['perpage'] ) ? absint( $_POST['perpage'] ) : 0;
+		$page     = isset( $_POST['page'] ) ? absint( $_POST['page'] ) : 1;
 		$order_by = isset( $_POST['orderby'] ) ? sanitize_text_field( wp_unslash( $_POST['orderby'] ) ) : 'id';
 		$order    = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : 'DESC';
 		$score    = isset( $_POST['score'] ) ? sanitize_text_field( wp_unslash( $_POST['score'] ) ) : '';
@@ -846,7 +860,7 @@ class CBXMCRatingReviewPublic {
 		$success_msg_class = $success_msg_info = '';
 
 
-		$user_id = intval( get_current_user_id() );
+		$user_id = absint( get_current_user_id() );
 		if ( is_user_logged_in() ) {
 			$post_id = isset( $submit_data['post_id'] ) ? absint( $submit_data['post_id'] ) : 0;
 			$form_id = isset( $submit_data['form_id'] ) ? absint( $submit_data['form_id'] ) : 0;
@@ -952,25 +966,25 @@ class CBXMCRatingReviewPublic {
 						if ( isset( $questions[ $question_index ] ) ) {
 							$answer = $questions[ $question_index ];
 
-							if ( $field_type == 'text' || $field_type == 'textarea' || $field_type == 'number' || ( $field_type == 'select' && $multiple == 0 ) ) {
+							if ( $field_type === 'text' || $field_type === 'textarea' || $field_type === 'number' || ( $field_type === 'select' && $multiple === 0 ) ) {
 								if ( $required && $answer == '' ) {
 									/* translators: %s: Question Title  */
 									$validation_errors['cbxmcratingreview_questions_error'][ $question_index ] = sprintf( wp_kses( __( 'Sorry! Question <strong>%s</strong> is blank but required. Please check and try again.', 'cbxmcratingreview' ), [ 'strong' => [] ] ), $title );
 								}
-							} elseif ( $field_type == 'select' && $multiple ) {
+							} elseif ( $field_type === 'select' && $multiple ) {
 								if ( $required && sizeof( array_filter( $answer, [
-										'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+										'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 										'arrayFilterRemoveEmpty'
 									] ) ) == 0 ) {
 									/* translators: %s: Question Title  */
 									$validation_errors['cbxmcratingreview_questions_error'][ $question_index ] = sprintf( wp_kses( __( 'Sorry! Question <strong>%s</strong> is not answered but required. Please check and try again.', 'cbxmcratingreview' ), [ 'strong' => [] ] ), $title );
 								}
-							} elseif ( $field_type == 'checkbox' ) {
+							} elseif ( $field_type === 'checkbox' ) {
 
-							} elseif ( $field_type == 'multicheckbox' ) {
+							} elseif ( $field_type === 'multicheckbox' ) {
 
 								if ( $required && sizeof( array_filter( $answer, [
-										'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+										'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 										'arrayFilterRemoveEmpty'
 									] ) ) == 0 ) {
 									/* translators: %s: Question Title  */
@@ -982,7 +996,7 @@ class CBXMCRatingReviewPublic {
 							//now store the answer
 							if ( is_array( $answer ) ) {
 								$answer = maybe_serialize( array_filter( $answer, [
-									'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+									'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 									'arrayFilterRemoveEmpty'
 								] ) );
 							}
@@ -1024,7 +1038,7 @@ class CBXMCRatingReviewPublic {
 
 			global $wpdb;
 
-			$table_rating_log = $wpdb->prefix . 'cbxmcratingreview_log';
+			$table_rating_log = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log' );
 
 			$user_rated_before = cbxmcratingreview_isPostRatedByUser( $form_id, $post_id, $user_id );
 
@@ -1138,7 +1152,6 @@ class CBXMCRatingReviewPublic {
 					$response_data_arr = apply_filters( 'cbxmcratingreview_review_entry_response_data', $response_data_arr, $form_id, $post_id, $submit_data, $review_info );
 
 					do_action( 'cbxmcratingreview_review_entry_success', $form_id, $post_id, $submit_data, $review_info );
-
 				}
 			} else {
 				$success_msg_class = 'warning';
@@ -1225,10 +1238,10 @@ class CBXMCRatingReviewPublic {
 			$review_info = cbxmcratingreview_singleReview( $review_id );
 
 			global $wpdb;
-			$table_cbxmcratingreview_review = $wpdb->prefix . 'cbxmcratingreview_log';
+			$table_cbxmcratingreview_review = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log' );
 			do_action( 'cbxmcratingreview_review_delete_before', $review_info );
 
-			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 			$delete_status = $wpdb->query( $wpdb->prepare( "DELETE FROM $table_cbxmcratingreview_review WHERE id=%d AND user_id=%d", $review_id, $user_id ) );
 
 			if ( $delete_status !== false ) {

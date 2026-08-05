@@ -1,6 +1,6 @@
 <?php
 
-namespace Rakit\Validation\Rules\Interfaces;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules\Interfaces;
 
 interface ModifyValue
 {

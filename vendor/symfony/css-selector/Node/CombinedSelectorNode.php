@@ -8,8 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Symfony\Component\CssSelector\Node;
+namespace CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Node;
 
 /**
  * Represents a combined node.
@@ -23,37 +22,28 @@ namespace Symfony\Component\CssSelector\Node;
  */
 class CombinedSelectorNode extends AbstractNode
 {
-    public function __construct(
-        private NodeInterface $selector,
-        private string $combinator,
-        private NodeInterface $subSelector,
-    ) {
+    public function __construct(private NodeInterface $selector, private string $combinator, private NodeInterface $subSelector)
+    {
     }
-
     public function getSelector(): NodeInterface
     {
         return $this->selector;
     }
-
     public function getCombinator(): string
     {
         return $this->combinator;
     }
-
     public function getSubSelector(): NodeInterface
     {
         return $this->subSelector;
     }
-
     public function getSpecificity(): Specificity
     {
         return $this->selector->getSpecificity()->plus($this->subSelector->getSpecificity());
     }
-
     public function __toString(): string
     {
         $combinator = ' ' === $this->combinator ? '<followed>' : $this->combinator;
-
         return \sprintf('%s[%s %s %s]', $this->getNodeName(), $this->selector, $combinator, $this->subSelector);
     }
 }

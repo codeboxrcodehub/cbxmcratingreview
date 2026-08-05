@@ -1,10 +1,9 @@
 <?php
 
-namespace Illuminate\Container;
+namespace CBXMCRatingReviewScoped\Illuminate\Container;
 
 use Exception;
-use Psr\Container\NotFoundExceptionInterface;
-
+use CBXMCRatingReviewScoped\Psr\Container\NotFoundExceptionInterface;
 class EntryNotFoundException extends Exception implements NotFoundExceptionInterface
 {
     //

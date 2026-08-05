@@ -1,13 +1,12 @@
 <?php
 
-namespace Sabberworm\CSS\Value;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Value;
 
-use Sabberworm\CSS\OutputFormat;
-use Sabberworm\CSS\Parsing\ParserState;
-use Sabberworm\CSS\Parsing\SourceException;
-use Sabberworm\CSS\Parsing\UnexpectedEOFException;
-use Sabberworm\CSS\Parsing\UnexpectedTokenException;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\ParserState;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\SourceException;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedEOFException;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\UnexpectedTokenException;
 /**
  * This class is a wrapper for quoted strings to distinguish them from keywords.
  *
@@ -19,7 +18,6 @@ class CSSString extends PrimitiveValue
      * @var string
      */
     private $sString;
-
     /**
      * @param string $sString
      * @param int $iLineNo
@@ -29,7 +27,6 @@ class CSSString extends PrimitiveValue
         $this->sString = $sString;
         parent::__construct($iLineNo);
     }
-
     /**
      * @return CSSString
      *
@@ -55,17 +52,14 @@ class CSSString extends PrimitiveValue
         $sContent = null;
         if ($sQuote === null) {
             // Unquoted strings end in whitespace or with braces, brackets, parentheses
-            while (!preg_match('/[\\s{}()<>\\[\\]]/isu', $oParserState->peek())) {
-                $sResult .= $oParserState->parseCharacter(false);
+            while (!preg_match('/[\s{}()<>\[\]]/isu', $oParserState->peek())) {
+                $sResult .= $oParserState->parseCharacter(\false);
             }
         } else {
             while (!$oParserState->comes($sQuote)) {
-                $sContent = $oParserState->parseCharacter(false);
+                $sContent = $oParserState->parseCharacter(\false);
                 if ($sContent === null) {
-                    throw new SourceException(
-                        "Non-well-formed quoted string {$oParserState->peek(3)}",
-                        $oParserState->currentLine()
-                    );
+                    throw new SourceException("Non-well-formed quoted string {$oParserState->peek(3)}", $oParserState->currentLine());
                 }
                 $sResult .= $sContent;
             }
@@ -73,7 +67,6 @@ class CSSString extends PrimitiveValue
         }
         return new CSSString($sResult, $oParserState->currentLine());
     }
-
     /**
      * @param string $sString
      *
@@ -83,7 +76,6 @@ class CSSString extends PrimitiveValue
     {
         $this->sString = $sString;
     }
-
     /**
      * @return string
      */
@@ -91,7 +83,6 @@ class CSSString extends PrimitiveValue
     {
         return $this->sString;
     }
-
     /**
      * @return string
      *
@@ -101,7 +92,6 @@ class CSSString extends PrimitiveValue
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *

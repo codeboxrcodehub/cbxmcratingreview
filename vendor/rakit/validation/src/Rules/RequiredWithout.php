@@ -1,17 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class RequiredWithout extends Required
 {
     /** @var bool */
-    protected $implicit = true;
-
+    protected $implicit = \true;
     /** @var string */
     protected $message = "The :attribute is required";
-
     /**
      * Given $params and assign $this->params
      *
@@ -23,7 +20,6 @@ class RequiredWithout extends Required
         $this->params['fields'] = $params;
         return $this;
     }
-
     /**
      * Check the $value is valid
      *
@@ -36,14 +32,12 @@ class RequiredWithout extends Required
         $fields = $this->parameter('fields');
         $validator = $this->validation->getValidator();
         $requiredValidator = $validator('required');
-
         foreach ($fields as $field) {
             if (!$this->validation->hasValue($field)) {
                 $this->setAttributeAsRequired();
                 return $requiredValidator->check($value, []);
             }
         }
-
-        return true;
+        return \true;
     }
 }

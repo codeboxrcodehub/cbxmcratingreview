@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabberworm\CSS;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS;
 
 /**
  * Parser settings class.
@@ -20,7 +20,6 @@ class Settings
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $bMultibyteSupport;
-
     /**
      * The default charset for the CSS if no `@charset` declaration is found. Defaults to utf-8.
      *
@@ -29,7 +28,6 @@ class Settings
      * @internal since 8.8.0, will be made private in 9.0.0
      */
     public $sDefaultCharset = 'utf-8';
-
     /**
      * Whether the parser silently ignore invalid rules instead of choking on them.
      *
@@ -37,13 +35,11 @@ class Settings
      *
      * @internal since 8.8.0, will be made private in 9.0.0
      */
-    public $bLenientParsing = true;
-
+    public $bLenientParsing = \true;
     private function __construct()
     {
         $this->bMultibyteSupport = extension_loaded('mbstring');
     }
-
     /**
      * @return self new instance
      */
@@ -51,7 +47,6 @@ class Settings
     {
         return new Settings();
     }
-
     /**
      * Enables/disables multi-byte string support.
      *
@@ -62,12 +57,11 @@ class Settings
      *
      * @return self fluent interface
      */
-    public function withMultibyteSupport($bMultibyteSupport = true)
+    public function withMultibyteSupport($bMultibyteSupport = \true)
     {
         $this->bMultibyteSupport = $bMultibyteSupport;
         return $this;
     }
-
     /**
      * Sets the charset to be used if the CSS does not contain an `@charset` declaration.
      *
@@ -80,7 +74,6 @@ class Settings
         $this->sDefaultCharset = $sDefaultCharset;
         return $this;
     }
-
     /**
      * Configures whether the parser should silently ignore invalid rules.
      *
@@ -88,12 +81,11 @@ class Settings
      *
      * @return self fluent interface
      */
-    public function withLenientParsing($bLenientParsing = true)
+    public function withLenientParsing($bLenientParsing = \true)
     {
         $this->bLenientParsing = $bLenientParsing;
         return $this;
     }
-
     /**
      * Configures the parser to choke on invalid rules.
      *
@@ -101,6 +93,6 @@ class Settings
      */
     public function beStrict()
     {
-        return $this->withLenientParsing(false);
+        return $this->withLenientParsing(\false);
     }
 }

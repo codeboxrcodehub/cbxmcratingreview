@@ -1,5 +1,5 @@
 {
-    "name": "pelago/emogrifier",
+    "name": "pelago\/emogrifier",
     "description": "Converts CSS styles into inline style attributes in your HTML code",
     "license": "MIT",
     "keywords": [
@@ -13,7 +13,7 @@
             "email": "github@oliverklee.de"
         },
         {
-            "name": "Zoli Szabó",
+            "name": "Zoli Szab\u00f3",
             "email": "zoli.szabo+github@gmail.com"
         },
         {
@@ -31,41 +31,41 @@
             "name": "Jaime Prado"
         }
     ],
-    "homepage": "https://www.myintervals.com/emogrifier.php",
+    "homepage": "https:\/\/www.myintervals.com\/emogrifier.php",
     "support": {
-        "issues": "https://github.com/MyIntervals/emogrifier/issues",
-        "source": "https://github.com/MyIntervals/emogrifier"
+        "issues": "https:\/\/github.com\/MyIntervals\/emogrifier\/issues",
+        "source": "https:\/\/github.com\/MyIntervals\/emogrifier"
     },
     "require": {
         "php": "~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
         "ext-dom": "*",
         "ext-libxml": "*",
-        "sabberworm/php-css-parser": "^8.7.0",
-        "symfony/css-selector": "^4.4.23 || ^5.4.0 || ^6.0.0 || ^7.0.0"
+        "sabberworm\/php-css-parser": "^8.7.0",
+        "symfony\/css-selector": "^4.4.23 || ^5.4.0 || ^6.0.0 || ^7.0.0"
     },
     "require-dev": {
-        "php-parallel-lint/php-parallel-lint": "1.4.0",
-        "phpstan/extension-installer": "1.4.3",
-        "phpstan/phpstan": "1.12.7",
-        "phpstan/phpstan-phpunit": "1.4.0",
-        "phpstan/phpstan-strict-rules": "1.6.1",
-        "phpunit/phpunit": "9.6.21",
-        "rawr/cross-data-providers": "2.4.0"
+        "php-parallel-lint\/php-parallel-lint": "1.4.0",
+        "phpstan\/extension-installer": "1.4.3",
+        "phpstan\/phpstan": "1.12.7",
+        "phpstan\/phpstan-phpunit": "1.4.0",
+        "phpstan\/phpstan-strict-rules": "1.6.1",
+        "phpunit\/phpunit": "9.6.21",
+        "rawr\/cross-data-providers": "2.4.0"
     },
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Pelago\\Emogrifier\\": "src/"
+            "CBXMCRatingReviewScoped\\Pelago\\Emogrifier\\": "src\/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Pelago\\Emogrifier\\Tests\\": "tests/"
+            "CBXMCRatingReviewScoped\\Pelago\\Emogrifier\\Tests\\": "tests\/"
         }
     },
     "config": {
         "allow-plugins": {
-            "phpstan/extension-installer": true
+            "phpstan\/extension-installer": true
         },
         "preferred-install": {
             "*": "dist"
@@ -82,13 +82,13 @@
             "@ci:static",
             "@ci:dynamic"
         ],
-        "ci:composer:normalize": "\"./.phive/composer-normalize\" --dry-run",
+        "ci:composer:normalize": "\".\/.phive\/composer-normalize\" --dry-run",
         "ci:dynamic": [
             "@ci:tests"
         ],
-        "ci:php:fixer": "\"./.phive/php-cs-fixer\" --config=config/php-cs-fixer.php fix --dry-run -v --show-progress=dots config/ src/ tests/",
+        "ci:php:fixer": "\".\/.phive\/php-cs-fixer\" --config=config\/php-cs-fixer.php fix --dry-run -v --show-progress=dots config\/ src\/ tests\/",
         "ci:php:lint": "parallel-lint config src tests",
-        "ci:php:md": "\"./.phive/phpmd\" src text config/phpmd.xml",
+        "ci:php:md": "\".\/.phive\/phpmd\" src text config\/phpmd.xml",
         "ci:php:stan": "phpstan --no-progress  --error-format=github",
         "ci:static": [
             "@ci:composer:normalize",
@@ -103,8 +103,8 @@
         "ci:tests:coverage": "phpunit --do-not-cache-result --coverage-clover=coverage.xml",
         "ci:tests:sof": "phpunit --stop-on-failure --do-not-cache-result",
         "ci:tests:unit": "phpunit --do-not-cache-result",
-        "composer:normalize": "\"./.phive/composer-normalize\" --no-check-lock",
-        "php:fix": "\"./.phive/php-cs-fixer\" --config=config/php-cs-fixer.php fix config/ src/ tests/",
+        "composer:normalize": "\".\/.phive\/composer-normalize\" --no-check-lock",
+        "php:fix": "\".\/.phive\/php-cs-fixer\" --config=config\/php-cs-fixer.php fix config\/ src\/ tests\/",
         "php:version": "@php -v | grep -Po 'PHP\\s++\\K(?:\\d++\\.)*+\\d++(?:-\\w++)?+'",
         "phpstan:baseline": "phpstan --generate-baseline --allow-empty-baseline"
     },

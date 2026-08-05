@@ -1,9 +1,8 @@
 <?php
 
-namespace Psr\Clock;
+namespace CBXMCRatingReviewScoped\Psr\Clock;
 
 use DateTimeImmutable;
-
 interface ClockInterface
 {
     /**

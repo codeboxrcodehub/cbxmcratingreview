@@ -1,9 +1,8 @@
 <?php
 
-namespace Sabberworm\CSS\Value;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Value;
 
-use Sabberworm\CSS\OutputFormat;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
 /**
  * A `ValueList` represents a lists of `Value`s, separated by some separation character
  * (mostly `,`, whitespace, or `/`).
@@ -18,14 +17,12 @@ abstract class ValueList extends Value
      * @internal since 8.8.0
      */
     protected $aComponents;
-
     /**
      * @var string
      *
      * @internal since 8.8.0
      */
     protected $sSeparator;
-
     /**
      * phpcs:ignore Generic.Files.LineLength
      * @param array<int, RuleValueList|CSSFunction|CSSString|LineName|Size|URL|string>|RuleValueList|CSSFunction|CSSString|LineName|Size|URL|string $aComponents
@@ -41,7 +38,6 @@ abstract class ValueList extends Value
         $this->aComponents = $aComponents;
         $this->sSeparator = $sSeparator;
     }
-
     /**
      * @param RuleValueList|CSSFunction|CSSString|LineName|Size|URL|string $mComponent
      *
@@ -51,7 +47,6 @@ abstract class ValueList extends Value
     {
         $this->aComponents[] = $mComponent;
     }
-
     /**
      * @return array<int, RuleValueList|CSSFunction|CSSString|LineName|Size|URL|string>
      */
@@ -59,7 +54,6 @@ abstract class ValueList extends Value
     {
         return $this->aComponents;
     }
-
     /**
      * @param array<int, RuleValueList|CSSFunction|CSSString|LineName|Size|URL|string> $aComponents
      *
@@ -69,7 +63,6 @@ abstract class ValueList extends Value
     {
         $this->aComponents = $aComponents;
     }
-
     /**
      * @return string
      */
@@ -77,7 +70,6 @@ abstract class ValueList extends Value
     {
         return $this->sSeparator;
     }
-
     /**
      * @param string $sSeparator
      *
@@ -87,7 +79,6 @@ abstract class ValueList extends Value
     {
         $this->sSeparator = $sSeparator;
     }
-
     /**
      * @return string
      *
@@ -97,7 +88,6 @@ abstract class ValueList extends Value
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *
@@ -105,10 +95,6 @@ abstract class ValueList extends Value
      */
     public function render($oOutputFormat)
     {
-        return $oOutputFormat->implode(
-            $oOutputFormat->spaceBeforeListArgumentSeparator($this->sSeparator) . $this->sSeparator
-            . $oOutputFormat->spaceAfterListArgumentSeparator($this->sSeparator),
-            $this->aComponents
-        );
+        return $oOutputFormat->implode($oOutputFormat->spaceBeforeListArgumentSeparator($this->sSeparator) . $this->sSeparator . $oOutputFormat->spaceAfterListArgumentSeparator($this->sSeparator), $this->aComponents);
     }
 }

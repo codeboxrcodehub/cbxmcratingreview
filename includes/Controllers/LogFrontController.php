@@ -1,21 +1,21 @@
 <?php
-namespace CBX\MCRatingReview\Controllers;
+namespace CBXMCRatingReview\Controllers;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Models\RatingReviewLog;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Models\RatingReviewLog;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 use Exception;
 use WP_REST_Request;
 use WP_REST_Response;
-use Illuminate\Database\QueryException;
-use Rakit\Validation\Validator;
+use CBXMCRatingReviewScoped\Illuminate\Database\QueryException;
+use CBXMCRatingReviewScoped\Rakit\Validation\Validator;
 
-use CBX\MCRatingReview\CBXMCRatingReviewSettings;
+use CBXMCRatingReview\CBXMCRatingReviewSettings;
 
 /**
  * Class Log Front Controller
@@ -337,7 +337,7 @@ class LogFrontController {
 							} elseif ( $field_type == 'select' && $multiple ) {
 
 								if ( $required && sizeof( array_filter( $answer, [
-										'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+										'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 										'arrayFilterRemoveEmpty'
 									] ) ) == 0 ) {
 									/* translators: %s: Form Field Title label  */
@@ -348,7 +348,7 @@ class LogFrontController {
 
 							} elseif ( $field_type == 'multicheckbox' ) {
 								if ( $required && sizeof( array_filter( $answer, [
-										'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+										'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 										'arrayFilterRemoveEmpty'
 									] ) ) == 0 ) {
 									/* translators: %s: Form Field Title label  */
@@ -361,7 +361,7 @@ class LogFrontController {
 							//now store the answer
 							if ( is_array( $answer ) ) {
 								$answer = maybe_serialize( array_filter( $answer, [
-									'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+									'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 									'arrayFilterRemoveEmpty'
 								] ) );
 							}

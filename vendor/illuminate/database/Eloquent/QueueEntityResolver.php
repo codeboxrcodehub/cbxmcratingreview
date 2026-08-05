@@ -1,10 +1,9 @@
 <?php
 
-namespace Illuminate\Database\Eloquent;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\Eloquent;
 
-use Illuminate\Contracts\Queue\EntityNotFoundException;
-use Illuminate\Contracts\Queue\EntityResolver as EntityResolverContract;
-
+use CBXMCRatingReviewScoped\Illuminate\Contracts\Queue\EntityNotFoundException;
+use CBXMCRatingReviewScoped\Illuminate\Contracts\Queue\EntityResolver as EntityResolverContract;
 class QueueEntityResolver implements EntityResolverContract
 {
     /**
@@ -18,12 +17,10 @@ class QueueEntityResolver implements EntityResolverContract
      */
     public function resolve($type, $id)
     {
-        $instance = (new $type)->find($id);
-
+        $instance = (new $type())->find($id);
         if ($instance) {
             return $instance;
         }
-
         throw new EntityNotFoundException($type, $id);
     }
 }

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 if ( ! class_exists( 'CBXMCRatingReviewReviewAdminAlertEmail', false ) ) :
 
@@ -32,7 +32,9 @@ if ( ! class_exists( 'CBXMCRatingReviewReviewAdminAlertEmail', false ) ) :
 				'{review_comment}'  => '',
 				'{review_status}'   => '',
 				'{post_link}'       => '', // html
-				'{review_edit_url}' => '' // html
+				'{review_edit_url}' => '', // text
+				'{review_edit_link}' => '', // html
+				'{review_date_human}' => ''
 			];
 
 			// Triggers for this email.
@@ -170,8 +172,13 @@ if ( ! class_exists( 'CBXMCRatingReviewReviewAdminAlertEmail', false ) ) :
 				$this->placeholders['{review_comment}']  = $new_review_info['comment'];
 				$this->placeholders['{review_status}']   = $modification_status;
 
-				$this->placeholders['review_edit_url'] = $review_edit_url_link;
+				$this->placeholders['{review_edit_url}'] = $review_edit_url;
+				$this->placeholders['{review_edit_link}'] = $review_edit_url_link;
 				$this->placeholders['{post_link}']     = $post_url_link;
+
+				$this->placeholders['{review_date_human}'] = CBXMCRatingReviewHelper::get_humanize_date( $new_review_info['date_created'] );
+
+				$this->placeholders['{email_heading}']    = $this->get_default_heading();
 
 				$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(),
 					$this->get_attachments() );
@@ -195,7 +202,7 @@ if ( ! class_exists( 'CBXMCRatingReviewReviewAdminAlertEmail', false ) ) :
 		 * @since  3.1.0
 		 */
 		public function get_default_heading() {
-			return esc_html__( 'New Review added', 'cbxmcratingreview' );
+			return esc_html__( 'New Review Submitted', 'cbxmcratingreview' );
 		}//end method get_default_heading
 
 		/**

@@ -10,8 +10,8 @@ return array(
     '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     'a4a119a56e50fbb293281d9a48007e0e' => $vendorDir . '/symfony/polyfill-php80/bootstrap.php',
     '72579e7bd17821bb1321b87411366eae' => $vendorDir . '/illuminate/support/helpers.php',
-    '295ae5912a2716b9c41edbde326a26c7' => $baseDir . '/includes/Helpers/cbxmcratingreview-functions.php',
-    '3db0f3bb7d52f16a00b4c939a99dfcc7' => $baseDir . '/includes/Helpers/cbxmcratingreview-tpl-loader.php',
-    'ec4b387ee06631571a50211b4aa6b044' => $baseDir . '/includes/Helpers/CBXMCRatingReviewQuestionHelper.php',
-    '9b1ae303aebb38c640a025ab79ef72e2' => $baseDir . '/includes/Helpers/CBXMCRatingReviewEmailFunctions.php',
+    'e83bca8170df18f7cb669f3b23353bbd' => $baseDir . '/includes/Helpers/cbxmcratingreview-functions.php',
+    'd1a39fe3c28902df76bfe4cf3dc480c0' => $baseDir . '/includes/Helpers/cbxmcratingreview-tpl-loader.php',
+    'ad79ba99a24784d5b3ad18f043d899e4' => $baseDir . '/includes/Helpers/CBXMCRatingReviewQuestionHelper.php',
+    '588741fcb57df47633e620464ad3d288' => $baseDir . '/includes/Helpers/CBXMCRatingReviewEmailFunctions.php',
 );

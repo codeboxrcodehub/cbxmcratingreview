@@ -1,6 +1,6 @@
 <?php
 
-namespace Sabberworm\CSS\Comment;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\Comment;
 
 interface Commentable
 {
@@ -10,12 +10,10 @@ interface Commentable
      * @return void
      */
     public function addComments(array $aComments);
-
     /**
      * @return array<array-key, Comment>
      */
     public function getComments();
-
     /**
      * @param array<array-key, Comment> $aComments
      *

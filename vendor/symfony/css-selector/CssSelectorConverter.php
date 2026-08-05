@@ -8,16 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace CBXMCRatingReviewScoped\Symfony\Component\CssSelector;
 
-namespace Symfony\Component\CssSelector;
-
-use Symfony\Component\CssSelector\Parser\Shortcut\ClassParser;
-use Symfony\Component\CssSelector\Parser\Shortcut\ElementParser;
-use Symfony\Component\CssSelector\Parser\Shortcut\EmptyStringParser;
-use Symfony\Component\CssSelector\Parser\Shortcut\HashParser;
-use Symfony\Component\CssSelector\XPath\Extension\HtmlExtension;
-use Symfony\Component\CssSelector\XPath\Translator;
-
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\Shortcut\ClassParser;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\Shortcut\ElementParser;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\Shortcut\EmptyStringParser;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser\Shortcut\HashParser;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\XPath\Extension\HtmlExtension;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\XPath\Translator;
 /**
  * CssSelectorConverter is the main entry point of the component and can convert CSS
  * selectors to XPath expressions.
@@ -26,34 +24,25 @@ use Symfony\Component\CssSelector\XPath\Translator;
  */
 class CssSelectorConverter
 {
+    public static int $maxCachedItems = 1024;
     private Translator $translator;
     private array $cache;
-
     private static array $xmlCache = [];
     private static array $htmlCache = [];
-
     /**
      * @param bool $html Whether HTML support should be enabled. Disable it for XML documents
      */
-    public function __construct(bool $html = true)
+    public function __construct(bool $html = \true)
     {
         $this->translator = new Translator();
-
         if ($html) {
             $this->translator->registerExtension(new HtmlExtension($this->translator));
-            $this->cache = &self::$htmlCache;
+            $this->cache =& self::$htmlCache;
         } else {
-            $this->cache = &self::$xmlCache;
+            $this->cache =& self::$xmlCache;
         }
-
-        $this->translator
-            ->registerParserShortcut(new EmptyStringParser())
-            ->registerParserShortcut(new ElementParser())
-            ->registerParserShortcut(new ClassParser())
-            ->registerParserShortcut(new HashParser())
-        ;
+        $this->translator->registerParserShortcut(new EmptyStringParser())->registerParserShortcut(new ElementParser())->registerParserShortcut(new ClassParser())->registerParserShortcut(new HashParser());
     }
-
     /**
      * Translates a CSS expression to its XPath equivalent.
      *
@@ -62,6 +51,17 @@ class CssSelectorConverter
      */
     public function toXPath(string $cssExpr, string $prefix = 'descendant-or-self::'): string
     {
-        return $this->cache[$prefix][$cssExpr] ??= $this->translator->cssToXPath($cssExpr, $prefix);
+        $cacheKey = $prefix . "\x00" . $cssExpr;
+        if (isset($this->cache[$cacheKey])) {
+            // Move the item last in cache (LRU)
+            $value = $this->cache[$cacheKey];
+            unset($this->cache[$cacheKey]);
+            return $this->cache[$cacheKey] = $value;
+        }
+        if (\count($this->cache) >= self::$maxCachedItems) {
+            // Evict the oldest entry
+            unset($this->cache[array_key_first($this->cache)]);
+        }
+        return $this->cache[$cacheKey] = $this->translator->cssToXPath($cssExpr, $prefix);
     }
 }

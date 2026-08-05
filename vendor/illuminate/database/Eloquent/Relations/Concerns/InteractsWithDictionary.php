@@ -1,10 +1,9 @@
 <?php
 
-namespace Illuminate\Database\Eloquent\Relations\Concerns;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\Eloquent\Relations\Concerns;
 
 use BackedEnum;
-use Doctrine\Instantiator\Exception\InvalidArgumentException;
-
+use CBXMCRatingReviewScoped\Doctrine\Instantiator\Exception\InvalidArgumentException;
 trait InteractsWithDictionary
 {
     /**
@@ -21,15 +20,11 @@ trait InteractsWithDictionary
             if (method_exists($attribute, '__toString')) {
                 return $attribute->__toString();
             }
-
-            if (function_exists('enum_exists') &&
-                $attribute instanceof BackedEnum) {
+            if (function_exists('enum_exists') && $attribute instanceof BackedEnum) {
                 return $attribute->value;
             }
-
             throw new InvalidArgumentException('Model attribute value is an object but does not have a __toString method.');
         }
-
         return $attribute;
     }
 }

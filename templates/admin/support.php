@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 ?>
 <?php
 $plugin_url = CBXMCRatingReviewHelper::url_utmy( 'https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/' );
@@ -79,7 +79,7 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                                         <div class="feature-card-header">
                                             <a href="<?php echo esc_url( $plugin_url ); ?>"
                                                target="_blank"> <img
-                                                        src="https://codeboxr.com/wp-content/uploads/productshots/14861-banner.webp"
+                                                        src="<?php echo esc_url( CBXMCRATINGREVIEW_ROOT_URL . 'assets/images/14861-profile.png' ); ?>"
                                                         alt="CBX Multi Criteria Rating & Review for WordPress"/> </a>
 
                                         </div>
@@ -95,6 +95,36 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                         </div>
                     </div>
                 </div>
+                <div class="cbx-backend-card dashboard-hrm-erp">
+                    <div class="header">
+                        <div class="text">
+                            <h2><?php esc_html_e( 'New Plugins: HRM & ERP ', 'cbxmcratingreview' ); ?></h2>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="cbx-backend-settings-row">
+                            <h3>ERP solutions inside WordPress</h3>
+                            <ul>
+                                <li>
+                                    <a rel="external" target="_blank" href="https://comforterp.com/product/comfort-accounting-accounting-solution-for-wordpress">Comfort
+                                        Accounting</a></li>
+                                <li>
+                                    <a rel="external" target="_blank" href="https://comforterp.com/product/comfort-inventory-and-invoice-complete-invoice-plugin-for-wordpress">Comfort
+                                        Inventory & Invoice</a></li>
+                            </ul>
+                            <div style="margin-bottom: 20px;"></div>
+                            <h3>Complete Job Board Solution</h3>
+                            <ul>
+                                <li><a rel="external" target="_blank" href="https://comforthrm.com/product/comfort-resume-wordpress-resume-builder-plugin">Comfort
+                                        Resume</a></li>
+                                <li><a rel="external" target="_blank" href="https://comforthrm.com/product/comfort-job-wordpress-job-board-plugin">Comfort
+                                        Job Board</a></li>
+                                <li><a rel="external" target="_blank" href="https://comforthrm.com/product/comfort-job-application-plugin-for-wordpress">Comfort
+                                        Job Application</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <div class="cbx-backend-card dashboard-changelog">
                     <div class="header">
                         <div class="text">
@@ -102,37 +132,43 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                         </div>
                     </div>
                     <div class="content">
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 2.0.4
-                            </p>
-                            <ul>
-                                <li>[updated] PHP version compatibility check updated</li>
-                                <li>[fixed] PHP file direct access check issue checked for all files</li>
-                                <li>[updated] Style improved</li>
-                                <li>[fixed] Js loading logic improved</li>
-                                <li>[updated] Pro Addon plugin V2.0.4 released</li>
-                            </ul>
-                        </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 2.0.2
-                            </p>
-                            <ul>
-                                <li>[fixed] Form table creation bug fix for some specific mysql configuration</li>
-                                <li>[updated] Style improvement</li>
-                                <li>[updated] WordPress V6.8 Compatible</li>
-                                <li>[updated] Pro Addon plugin V2.0.2 released</li>
-                            </ul>
-                        </div>
-                        <div class="cbx-backend-settings-row">
-                            <p>
-                                Version - 2.0.1
-                            </p>
-                            <ul>
-                                <li>[fixed] Two Classic widgets were commented in code in last release, now fixed</li>
-                                <li>[updated] Dashboard support page updated</li>
-                            </ul>
+                        <div class="releases">
+                            <div class="release">
+                                <h3>Version 2.0.5</h3>
+
+                                <ul>
+                                    <li class="updated">Misc improvements, bug fixes and style updates.</li>
+                                    <li class="fixed">Plugin check error fixed.</li>
+                                    <li class="updated">Pro Addon Plugin v2.0.5 released.</li>
+                                    <li class="improvements">Plugin Check v1.9 compatibility added.</li>
+                                    <li class="compatibility">WordPress Core 6.9.4 compatible.</li>
+                                    <li class="new">Automatic updates are now supported for the Pro Addon. Check the plugin settings to enable.</li>
+                                </ul>
+                            </div>
+
+                            <div class="release">
+                                <h3>Version 2.0.4</h3>
+
+                                <ul>
+                                    <li class="updated">PHP version compatibility check updated.</li>
+                                    <li class="fixed">PHP direct access protection added to all files.</li>
+                                    <li class="improvements">Style improvements.</li>
+                                    <li class="improvements">JavaScript loading logic improved.</li>
+                                    <li class="updated">Pro Addon Plugin v2.0.4 released.</li>
+                                </ul>
+                            </div>
+
+                            <div class="release">
+                                <h3>Version 2.0.2</h3>
+
+                                <ul>
+                                    <li class="fixed">Fixed form table creation issue affecting some MySQL configurations.</li>
+                                    <li class="improvements">Style improvements.</li>
+                                    <li class="compatibility">WordPress 6.8 compatible.</li>
+                                    <li class="updated">Pro Addon Plugin v2.0.2 released.</li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -144,78 +180,34 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                     </div>
                     <div class="content">
                         <div class="cbx-backend-settings-row">
-                            <div class="cbx-backend-settings-row">
-                                <p>
-                                    Version - 2.0.4
-                                </p>
-                                <ul>
-                                    <li>[updated] Style improved</li>
-                                    <li>[fixed] Js loading logic improved</li>
-                                    <li>[fixed] PHP file direct access check issue checked for all files</li>
-                                    <li>[updated] Core plugin V2.0.4 released</li>
-                                </ul>
-                            </div>
-                            <div class="cbx-backend-settings-row">
-                                <p>
-                                    Version - 2.0.2
-                                </p>
-                                <ul>
-                                    <li>[updated] Style improvement</li>
-                                    <li>[updated] WordPress V6.8 Compatible</li>
-                                    <li>[updated] Core plugin V2.0.2 released</li>
-                                </ul>
-                            </div>
-                            <div class="cbx-backend-settings-row">
-                                <p>
-                                    Version - 2.0.1
-                                </p>
-                                <ul>
-                                    <li>[updated] Style improvement for dashboard</li>
-                                    <li>[updated] Core plugin V2.0.1 released</li>
-                                </ul>
+                            <div class="releases">
+                                <div class="release">
+                                    <h3>Version - 2.0.5</h3>
+                                    <ul>
+                                        <li class="updated">[updated] Plugin check error fixed</li>
+                                        <li class="updated">[updated] Core plugin V2.0.5 released</li>
+                                        <li class="updated">[updated] WordPress V6.9.4 Compatible</li>
+                                    </ul>
+                                </div>
+                                <div class="release">
+                                    <h3>Version - 2.0.4</h3>
+                                    <ul>
+                                        <li class="updated">[updated] Style improved</li>
+                                        <li class="fixed">[fixed] Js loading logic improved</li>
+                                        <li class="fixed">[fixed] PHP file direct access check issue checked for all files</li>
+                                        <li class="updated">[updated] Core plugin V2.0.4 released</li>
+                                    </ul>
+                                </div>
+                                <div class="release">
+                                    <h3>Version - 2.0.2</h3>
+                                    <ul>
+                                        <li class="updated">[updated] Style improvement</li>
+                                        <li class="updated">[updated] WordPress V6.8 Compatible</li>
+                                        <li class="updated">[updated] Core plugin V2.0.2 released</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="cbx-backend-card dashboard-wp-plugin">
-                    <div class="header">
-                        <div class="text">
-                            <h2><?php esc_html_e( 'Other WordPress Plugins', 'cbxmcratingreview' ); ?></h2>
-                        </div>
-                    </div>
-                    <div class="content">
-						<?php
-
-						include_once( ABSPATH . WPINC . '/feed.php' );
-						if ( function_exists( 'fetch_feed' ) ) {
-							$feed = fetch_feed( 'https://codeboxr.com/product_cat/wordpress/feed/' );
-							if ( ! is_wp_error( $feed ) ) : $feed->init();
-								$feed->set_output_encoding( 'UTF-8' );   // this is the encoding parameter, and can be left unchanged in almost every case
-								$feed->handle_content_type();            // this double-checks the encoding type
-								$feed->set_cache_duration( 21600 );      // 21,600 seconds is six hours
-								$limit = $feed->get_item_quantity( 20 ); // fetches the 18 most recent RSS feed stories
-								$items = $feed->get_items( 0, $limit );  // this sets the limit and array for parsing the feed
-
-								$blocks = array_slice( $items, 0, 20 );
-
-
-								foreach ( $blocks as $block ) {
-									$url = $block->get_permalink();
-									$url = CBXMCRatingReviewHelper::url_utmy( $url ); ?>
-                                    <div class="cbx-backend-settings-row">
-                                        <a href="<?php echo esc_url( $url ) ?>" target="_blank">
-                                            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                <defs/>
-                                                <path d="M16.4 9.1L12.2 5c-.3-.3-.7-.3-1-.2s-.6.5-.6.9v1.7H4.2c-.5 0-.9.4-.9.9v3.4c0 .2.1.5.3.7.2.2.4.3.7.3h6.4v1.7c0 .4.2.7.6.9.4.1.8.1 1-.2l4.1-4.2c.4-.5.4-1.3 0-1.8z"
-                                                      fill="currentColor"/>
-                                            </svg>
-											<?php echo esc_attr( $block->get_title() ); ?></a>
-                                    </div>
-									<?php
-								}//end foreach
-							endif;
-						}
-						?>
                     </div>
                 </div>
             </div>
@@ -279,7 +271,47 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
                         </div>
                     </div>
                 </div>
+                <div class="cbx-backend-card dashboard-wp-plugin">
+                    <div class="header">
+                        <div class="text">
+                            <h2><?php esc_html_e( 'Other WordPress Plugins', 'cbxmcratingreview' ); ?></h2>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <?php
 
+                        include_once( ABSPATH . WPINC . '/feed.php' );
+                        if ( function_exists( 'fetch_feed' ) ) {
+                            $feed = fetch_feed( 'https://codeboxr.com/product_cat/wordpress/feed/' );
+                            if ( ! is_wp_error( $feed ) ) : $feed->init();
+                                $feed->set_output_encoding( 'UTF-8' );   // this is the encoding parameter, and can be left unchanged in almost every case
+                                $feed->handle_content_type();            // this double-checks the encoding type
+                                $feed->set_cache_duration( 21600 );      // 21,600 seconds is six hours
+                                $limit = $feed->get_item_quantity( 20 ); // fetches the 18 most recent RSS feed stories
+                                $items = $feed->get_items( 0, $limit );  // this sets the limit and array for parsing the feed
+
+                                $blocks = array_slice( $items, 0, 20 );
+
+
+                                foreach ( $blocks as $block ) {
+                                    $url = $block->get_permalink();
+                                    $url = CBXMCRatingReviewHelper::url_utmy( $url ); ?>
+                                    <div class="cbx-backend-settings-row">
+                                        <a href="<?php echo esc_url( $url ) ?>" target="_blank">
+                                            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <defs/>
+                                                <path d="M16.4 9.1L12.2 5c-.3-.3-.7-.3-1-.2s-.6.5-.6.9v1.7H4.2c-.5 0-.9.4-.9.9v3.4c0 .2.1.5.3.7.2.2.4.3.7.3h6.4v1.7c0 .4.2.7.6.9.4.1.8.1 1-.2l4.1-4.2c.4-.5.4-1.3 0-1.8z"
+                                                      fill="currentColor"/>
+                                            </svg>
+                                            <?php echo esc_attr( $block->get_title() ); ?></a>
+                                    </div>
+                                    <?php
+                                }//end foreach
+                            endif;
+                        }
+                        ?>
+                    </div>
+                </div>
                 <div class="cbx-backend-card dashboard-wp-plugin">
                     <div class="header">
                         <div class="text">
@@ -315,3 +347,5 @@ $more_v_svg = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_more_
         </div>
     </div>
 </div>
+<?php 
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

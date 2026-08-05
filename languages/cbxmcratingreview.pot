@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CBX Multi Criteria Rating & Review\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-04 18:13+0000\n"
+"POT-Creation-Date: 2026-08-05 12:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,47 +16,47 @@ msgstr ""
 "X-Loco-Version: 2.7.1; wp-6.7.1\n"
 "X-Domain: cbxmcratingreview"
 
-#: templates/widgets/latest_ratings.php:52
+#: templates/widgets/latest_ratings.php:53
 msgid " rated "
 msgstr ""
 
-#: templates/rating-review-avg-rating.php:32
-#: templates/rating-review-details-avg-rating.php:44
-#: templates/rating-review-details-avg-rating.php:115
+#: templates/rating-review-avg-rating.php:33
+#: templates/rating-review-details-avg-rating.php:45
+#: templates/rating-review-details-avg-rating.php:116
 msgid " Review"
 msgstr ""
 
 #. %1$s: Review text , %2$s: Review text
-#: templates/rating-review-avg-rating.php:49
-#: templates/rating-review-details-avg-rating.php:64
+#: templates/rating-review-avg-rating.php:50
+#: templates/rating-review-details-avg-rating.php:65
 #, php-format
 msgid "%1$s %%, %2$s Reviews"
 msgstr ""
 
 #. %d: form delete fail count
-#: includes/Controllers/FormController.php:195
+#: includes/Controllers/FormController.php:199
 msgid "%d form(s) can`t be deleted as they may have dependency."
 msgstr ""
 
 #. %d: form successfully deleted count
-#: includes/Controllers/FormController.php:189
+#: includes/Controllers/FormController.php:193
 msgid "%d form(s) deleted successfully. "
 msgstr ""
 
 #. %d: log delete fail count
-#: includes/Controllers/AvgLogController.php:155
-#: includes/Controllers/LogController.php:227
+#: includes/Controllers/AvgLogController.php:159
+#: includes/Controllers/LogController.php:231
 msgid "%d log(s) can`t be deleted as they may have dependency."
 msgstr ""
 
 #. %d: log successfully deleted count
-#: includes/Controllers/AvgLogController.php:149
-#: includes/Controllers/LogController.php:221
+#: includes/Controllers/AvgLogController.php:153
+#: includes/Controllers/LogController.php:225
 msgid "%d log(s) deleted successfully. "
 msgstr ""
 
 #. %s: How many days
-#: includes/Helpers/CBXMCRatingReviewHelper.php:207
+#: includes/Helpers/CBXMCRatingReviewHelper.php:221
 #, php-format
 msgid "%s days ago"
 msgstr ""
@@ -68,13 +68,13 @@ msgid "%s does not exist."
 msgstr ""
 
 #. %s: How many minutes
-#: includes/Helpers/CBXMCRatingReviewHelper.php:193
+#: includes/Helpers/CBXMCRatingReviewHelper.php:207
 #, php-format
 msgid "%s minutes ago"
 msgstr ""
 
 #. %s: star count
-#: templates/rating-review-reviews-list-filter.php:48
+#: templates/rating-review-reviews-list-filter.php:50
 #, php-format
 msgid "%s star"
 msgid_plural "%s stars"
@@ -82,54 +82,54 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. %s: How many weeks
-#: includes/Helpers/CBXMCRatingReviewHelper.php:211
+#: includes/Helpers/CBXMCRatingReviewHelper.php:225
 #, php-format
 msgid "%s weeks ago"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3050
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3103
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3061
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3114
 msgid "(Default)"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:196
+#: includes/Helpers/CBXMCRatingReviewHelper.php:210
 msgid "1 hour ago"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:189
+#: includes/Helpers/CBXMCRatingReviewHelper.php:203
 msgid "1 minute ago"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:346
+#: includes/Helpers/CBXMCRatingReviewHelper.php:360
 msgid "1 or above"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:347
+#: includes/Helpers/CBXMCRatingReviewHelper.php:361
 msgid "2 or above"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:348
+#: includes/Helpers/CBXMCRatingReviewHelper.php:362
 msgid "3 or above"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:349
+#: includes/Helpers/CBXMCRatingReviewHelper.php:363
 msgid "4 or above"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:350
+#: includes/Helpers/CBXMCRatingReviewHelper.php:364
 msgid "5"
 msgstr ""
 
 #. %1$s: Post Title , %2$s: Post Url
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:160
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:162
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:155
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:162
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:163
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:158
 #, php-format
 msgid "<a href=\"%1$s\">%2$s</a>"
 msgstr ""
 
 #. translators:translators: %s: plugin setting url for licence
-#: includes/CBXMCRatingReviewAdmin.php:1149
+#: includes/CBXMCRatingReviewAdmin.php:1147
 #, php-format
 msgid ""
 "<strong>Note:</strong> CBX Multi Criteria Rating & Review Pro Addon is "
@@ -140,203 +140,189 @@ msgid ""
 "this plugin needs to upgrade to %2$s or later.</strong>"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:15
-msgid "A new review is made."
+#: templates/emails/new_review_admin_alert.php:22
+msgid ""
+"A new review has been submitted on your website and is now available for "
+"your attention."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3497
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3508
 msgid "Action"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:194
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3417
-#: templates/admin/email_manager_list.php:27
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:192
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3428
+#: templates/admin/email_manager_list.php:31
 msgid "Actions"
 msgstr ""
 
-#: includes/CBXMCRatingReviewSettings.php:988
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:120
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3319
+#: includes/CBXMCRatingReviewSettings.php:980
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:118
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3330
 msgid "Add New"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:276
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:87
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:87
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:80
+#: includes/Emails/CBXMCRatingReviewEmail.php:277
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:89
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:88
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:83
 msgid "Additional content"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:55
+#: templates/rating-review-reviews-list-filter.php:57
 msgid "All Critical"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:54
+#: templates/rating-review-reviews-list-filter.php:56
 msgid "All Positive"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:44
+#: templates/rating-review-reviews-list-filter.php:46
 msgid "All Stars"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:176
+#: includes/CBXMCRatingReviewAdmin.php:182
 msgid "Allow Half Rating"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:165
+#: includes/CBXMCRatingReviewAdmin.php:171
 msgid "Allow Review Delete"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:166
+#: includes/CBXMCRatingReviewAdmin.php:172
 msgid "Allow user delete review from frontend"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:640
+#: includes/CBXMCRatingReviewPublic.php:659
 msgid "Are you sure to delete your review, this processs can not be undone ?"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:811
+#: includes/CBXMCRatingReviewAdmin.php:792
 msgid "Are you sure to remove all steps?"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:809
+#: includes/CBXMCRatingReviewAdmin.php:790
 msgid "Are you sure to remove this step?"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:815
-#: includes/CBXMCRatingReviewPublic.php:592
-#: includes/CBXMCRatingReviewPublic.php:616
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3498
+#: includes/CBXMCRatingReviewAdmin.php:796
+#: includes/CBXMCRatingReviewPublic.php:605
+#: includes/CBXMCRatingReviewPublic.php:629
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3509
 msgid "Are you sure?"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3419
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3430
 msgid "Article"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:206
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:188
 msgid "Article ID"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:75
+#: templates/rating-review-reviews-list-filter.php:77
 msgid "ASC"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:218
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:222
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:200
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:201
 msgid "Ascending"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3507
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3518
 msgid "Attachment"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:841
-#: includes/CBXMCRatingReviewPublic.php:598
-#: includes/CBXMCRatingReviewPublic.php:622
+#: includes/CBXMCRatingReviewAdmin.php:822
+#: includes/CBXMCRatingReviewPublic.php:611
+#: includes/CBXMCRatingReviewPublic.php:635
 msgid "Attention"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:149
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3372
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:147
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3383
 msgid "Auto Integration"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:150
-#: includes/Helpers/CBXMCRatingReviewHelper.php:773
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3373
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:148
+#: includes/Helpers/CBXMCRatingReviewHelper.php:787
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3384
 msgid "Auto Integration for Post Type"
 msgstr ""
 
 #. %s: list of placeholders
-#: includes/Emails/CBXMCRatingReviewEmail.php:251
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:53
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:53
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:54
+#: includes/Emails/CBXMCRatingReviewEmail.php:252
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:55
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:54
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:57
 #, php-format
 msgid "Available placeholders: %s"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3421
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3432
 msgid "Average"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:76
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3576
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:74
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3587
 msgid "Average Log Manager"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:507
+#: includes/CBXMCRatingReviewAdmin.php:488
 msgid "Average Ratings"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:208
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:187
 msgid "Avg Rating"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3510
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3521
 msgid "Back"
 msgstr ""
 
-#: templates/admin/email_manager_edit.php:34
+#: templates/admin/email_manager_edit.php:38
 msgid "Back to list"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:345
-msgid "Background Color"
-msgstr ""
-
-#: includes/Helpers/CBXMCRatingReviewHelper.php:289
-#: includes/Helpers/CBXMCRatingReviewHelper.php:307
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3651
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3672
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3693
+#: includes/Helpers/CBXMCRatingReviewHelper.php:303
+#: includes/Helpers/CBXMCRatingReviewHelper.php:321
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3662
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3683
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3704
 msgid "Bad"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:338
-msgid "Base Color"
-msgstr ""
-
-#: includes/Emails/CBXMCRatingReviewEmail.php:318
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:133
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:133
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:126
+#: includes/Emails/CBXMCRatingReviewEmail.php:319
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:135
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:134
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:129
 msgid "BCC"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:310
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3660
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3681
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3702
+#: includes/Helpers/CBXMCRatingReviewHelper.php:324
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3671
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3692
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3713
 msgid "Best"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:352
-msgid "Body Background Color"
-msgstr ""
-
-#: includes/CBXMCRatingReviewAdmin.php:359
-msgid "Body Text Color"
-msgstr ""
-
-#: includes/Helpers/CBXMCRatingReviewHelper.php:127
+#: includes/Helpers/CBXMCRatingReviewHelper.php:141
 msgid "Built in post types"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:825
-#: includes/CBXMCRatingReviewAdmin.php:846
-#: includes/CBXMCRatingReviewPublic.php:603
-#: includes/CBXMCRatingReviewPublic.php:627
+#: includes/CBXMCRatingReviewAdmin.php:806
+#: includes/CBXMCRatingReviewAdmin.php:827
+#: includes/CBXMCRatingReviewPublic.php:616
+#: includes/CBXMCRatingReviewPublic.php:640
 msgid "Cancel"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:830
+#: includes/CBXMCRatingReviewAdmin.php:811
 msgid "cancel and close"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:567
-#: includes/CBXMCRatingReviewPublic.php:631
+#: includes/CBXMCRatingReviewPublic.php:580
+#: includes/CBXMCRatingReviewPublic.php:644
 msgid "Cancel this rating!"
 msgstr ""
 
@@ -348,24 +334,45 @@ msgstr ""
 msgid "CBX Multi Criteria Rating & Review for WordPress"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:506
+#. PHP version
+#: cbxmcratingreview.php:110
+#, php-format
+msgid "CBX Multi Criteria Rating & Review plugin requires PHP %s or higher!"
+msgstr ""
+
+#. WordPress version
+#: cbxmcratingreview.php:102
+#, php-format
+msgid ""
+"CBX Multi Criteria Rating & Review plugin requires WordPress %s or higher!"
+msgstr ""
+
+#. PHP Version
+#: includes/CBXMCRatingReview.php:332
+#, php-format
+msgid ""
+"CBX Multi Criteria Rating & Review requires at least PHP %s. Please upgrade "
+"PHP to run CBX Multi Criteria Rating & Review."
+msgstr ""
+
+#: includes/CBXMCRatingReviewAdmin.php:487
 msgid "CBX Multi Criteria Rating & Review: Average Log Manager"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:533 templates/admin/email_manager.php:29
+#: includes/CBXMCRatingReviewAdmin.php:514 templates/admin/email_manager.php:34
 msgid "CBX Multi Criteria Rating & Review: Email Manager"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:484
-#: includes/CBXMCRatingReviewAdmin.php:495
+#: includes/CBXMCRatingReviewAdmin.php:465
+#: includes/CBXMCRatingReviewAdmin.php:476
 msgid "CBX Multi Criteria Rating & Review: Log Manager"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:515
+#: includes/CBXMCRatingReviewAdmin.php:496
 msgid "CBX Multi Criteria Rating & Review: Rating Form Listing"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:525 templates/admin/settings.php:41
+#: includes/CBXMCRatingReviewAdmin.php:506 templates/admin/settings.php:42
 msgid "CBX Multi Criteria Rating & Review: Setting"
 msgstr ""
 
@@ -373,135 +380,137 @@ msgstr ""
 msgid "CBX Multi Criteria Rating & Review: Support & Docs"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:543
+#: includes/CBXMCRatingReviewAdmin.php:524
 msgid "CBX Multi Criteria Rating & Review: Tools"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:42
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:26
 msgid "CBXMCRR: Latest Ratings"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:44
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:28
 msgid "CBXMCRR: Most Rated Posts"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:310
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:124
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:124
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:117
+#: includes/Emails/CBXMCRatingReviewEmail.php:311
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:126
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:125
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:120
 msgid "CC"
 msgstr ""
 
 #. 1. Plugin setting url 2. Documentation link
-#: includes/CBXMCRatingReviewAdmin.php:1216
-#: includes/CBXMCRatingReviewAdmin.php:1237
-#: includes/CBXMCRatingReviewMisc.php:119
-#: includes/CBXMCRatingReviewMisc.php:140
+#: includes/CBXMCRatingReviewAdmin.php:1214
+#: includes/CBXMCRatingReviewAdmin.php:1235
 #, php-format
 msgid ""
-"Check <a style=\"color:#005ae0 !important; font-weight: bold;\" "
-"href=\"%1$s\">Plugin Setting</a> | <a style=\"color:#005ae0 !important; font-"
+"Check <a style=\"color:#5d5dff !important; font-weight: bold;\" "
+"href=\"%1$s\">Plugin Setting</a> | <a style=\"color:#5d5dff !important; font-"
 "weight: bold;\" href=\"%2$s\" target=\"_blank\">Documentation</a>"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:272
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:270
 msgid "Check All"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3018
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3029
 msgid "Checkbox"
 msgstr ""
 
-#: includes/CBXMCRatingReviewSettings.php:871
+#: includes/CBXMCRatingReviewSettings.php:863
 msgid "Choose Color"
 msgstr ""
 
-#: includes/CBXMCRatingReviewSettings.php:840
+#: includes/CBXMCRatingReviewSettings.php:816
 msgid "Choose File"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:727
-#: includes/Helpers/CBXMCRatingReviewHelper.php:778
+#: includes/Helpers/CBXMCRatingReviewHelper.php:741
+#: includes/Helpers/CBXMCRatingReviewHelper.php:792
 msgid "Choose post type(s)..."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:739
-#: includes/Helpers/CBXMCRatingReviewHelper.php:752
+#: includes/Helpers/CBXMCRatingReviewHelper.php:753
+#: includes/Helpers/CBXMCRatingReviewHelper.php:766
 msgid "Choose User Group ..."
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:287
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:99
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:99
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:92
+#: includes/Emails/CBXMCRatingReviewEmail.php:288
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:101
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:100
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:95
 msgid "Choose which format of email to send."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:826
+#: includes/Helpers/CBXMCRatingReviewHelper.php:4244
+msgid "Clean Template"
+msgstr ""
+
+#: includes/CBXMCRatingReviewAdmin.php:807
 msgid "Clear"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:831
+#: includes/CBXMCRatingReviewAdmin.php:812
 msgid "clear and close"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3476
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3487
 msgid "Click to clone"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3456
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3467
 msgid "Click to close"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3488
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3499
 msgid "Click to Configure"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:806
+#: includes/CBXMCRatingReviewAdmin.php:787
 msgid "Click to copy"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3484
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3495
 msgid "Click to delete"
 msgstr ""
 
-#: templates/rating-review-review-delete-button.php:25
-#: templates/rating-review-review-delete-button.php:26
+#: templates/rating-review-review-delete-button.php:28
+#: templates/rating-review-review-delete-button.php:29
 msgid "Click to delete this review"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3480
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3491
 msgid "Click to edit"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3464
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3475
 msgid "Click to reset"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3460
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3471
 msgid "Click to search"
 msgstr ""
 
-#: includes/CBXMCRatingReviewSettings.php:301
+#: includes/CBXMCRatingReviewSettings.php:303
 msgid "Click to show hide"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3472
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3483
 msgid "Click to view"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3477
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3488
 msgid "Clone"
 msgstr ""
 
-#: includes/CBXMCRatingReview.php:292 includes/CBXMCRatingReviewEmails.php:68
-#: includes/CBXMCRatingReviewSettings.php:60
+#: includes/CBXMCRatingReview.php:303 includes/CBXMCRatingReviewEmails.php:71
+#: includes/CBXMCRatingReviewSettings.php:63
 msgid "Cloning is forbidden."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:132
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3347
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3457
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:130
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3358
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3468
 msgid "Close"
 msgstr ""
 
@@ -509,66 +518,66 @@ msgstr ""
 msgid "Codeboxr"
 msgstr ""
 
-#: templates/admin/support.php:264
+#: templates/admin/support.php:304
 msgid "Codeboxr News Updates"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:832
+#: includes/CBXMCRatingReviewAdmin.php:813
 msgid "color input field"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:820
+#: includes/CBXMCRatingReviewAdmin.php:801
 msgid "color picker dialog"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:833
+#: includes/CBXMCRatingReviewAdmin.php:814
 msgid "color selection area"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:822
+#: includes/CBXMCRatingReviewAdmin.php:803
 msgid "color swatch"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3468
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3479
 msgid "Column Filter"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3337
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3348
 msgid "Comment"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:229
+#: includes/CBXMCRatingReviewAdmin.php:235
 msgid "Comment Required"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3489
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3500
 msgid "Configure"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:844
-#: includes/CBXMCRatingReviewPublic.php:601
-#: includes/CBXMCRatingReviewPublic.php:625
+#: includes/CBXMCRatingReviewAdmin.php:825
+#: includes/CBXMCRatingReviewPublic.php:614
+#: includes/CBXMCRatingReviewPublic.php:638
 msgid "Confirmation"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:181
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3404
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:179
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3415
 msgid "Controls"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:805
+#: includes/CBXMCRatingReviewAdmin.php:786
 msgid "Copied"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:807
+#: includes/CBXMCRatingReviewAdmin.php:788
 msgid "Copied to clipboard"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:804
+#: includes/CBXMCRatingReviewAdmin.php:785
 msgid "Copy"
 msgstr ""
 
-#: templates/admin/support.php:101
+#: templates/admin/support.php:126
 msgid "Core Plugin Changelog"
 msgstr ""
 
@@ -576,26 +585,26 @@ msgstr ""
 msgid "Core Plugin Support"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3321
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3332
 msgid "Created"
 msgstr ""
 
 #. %s: Criteria label
-#: includes/Controllers/FormController.php:352
+#: includes/Controllers/FormController.php:356
 #, php-format
 msgid "Criteria \"%s\" must have at least one star"
 msgstr ""
 
 #. %s: Criteria ID
 #. %d: Criteria id
-#: templates/rating-review-details-avg-rating.php:89
-#: templates/rating-review-form.php:61
-#: templates/rating-review-reviews-list-item.php:104
-#: includes/Controllers/FormController.php:327
+#: templates/rating-review-details-avg-rating.php:90
+#: templates/rating-review-form.php:65
+#: templates/rating-review-reviews-list-item.php:105
+#: includes/Controllers/FormController.php:331
 msgid "Criteria %d"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:1265
+#: includes/CBXMCRatingReviewAdmin.php:1263
 msgid ""
 "Current version of CBX Multi Criteria Rating & Review Comment Addon is not "
 "compatible with core CBX Multi Criteria Rating & Review but it's been merged "
@@ -603,7 +612,7 @@ msgid ""
 "deactivate."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:1276
+#: includes/CBXMCRatingReviewAdmin.php:1274
 msgid ""
 "Current version of CBX Multi Criteria Rating & Review myCred Addon is not "
 "compatible with core CBX Multi Criteria Rating & Review but it's been merged "
@@ -611,137 +620,135 @@ msgid ""
 "deactivate."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:1254
+#: includes/CBXMCRatingReviewAdmin.php:1252
 msgid ""
 "Current version of CBX Multi Criteria Rating & Review Pro Addon is not "
 "compatible with core CBX Multi Criteria Rating & Review. CBX Multi Criteria "
 "Rating & Review Pro Addon is forced deactivate."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:138
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3361
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:136
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3372
 msgid "Custom Criteria"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:139
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3362
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:137
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3373
 msgid "Custom Criterias"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:140
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3363
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:138
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3374
 msgid "Custom Questions"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:562
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3558
+#: includes/CBXMCRatingReviewAdmin.php:543
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3569
 msgid "Dashboard"
 msgstr ""
 
-#: templates/admin/email_manager.php:46
+#: templates/admin/email_manager.php:51
 msgid "Dashboard Menu"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:312
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:310
 msgid "Dashboard Overview"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:134
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3351
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:132
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3362
 msgid "Date"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3359
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3370
 msgid "Date Range"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3349
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3360
 msgid "DateTime"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:14
-msgid "Dear Admin,"
+#: templates/emails/new_review_admin_alert.php:21
+msgid "Dear Admin"
 msgstr ""
 
-#: templates/emails/new_review_user_alert.php:14
-#: templates/emails/review_status_change.php:14
-msgid "Dear {review_user_name},"
+#: templates/emails/new_review_user_alert.php:19
+#: templates/emails/review_status_change.php:19
+msgid "Dear {review_user_name}"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:293
+#: includes/CBXMCRatingReviewAdmin.php:299
 msgid ""
 "Default guest user is shown wordpress core login form. Pro addon helps to "
 "integrate 3rd party plugins like woocommerce, restrict content pro etc."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:261
+#: includes/CBXMCRatingReviewAdmin.php:267
 msgid "Default number of reviews per page in pagination"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:156
+#: includes/CBXMCRatingReviewAdmin.php:162
 msgid "Default Rating Form"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:188
+#: includes/CBXMCRatingReviewAdmin.php:194
 msgid "Default Review Status"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:641
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3485
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3500
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3505
+#: includes/CBXMCRatingReviewPublic.php:660
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3496
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3511
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3516
 msgid "Delete"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3494
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3505
 msgid "Delete All"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:434
+#: includes/CBXMCRatingReviewAdmin.php:415
 msgid ""
 "Delete Global Config data and custom table created by this plugin on "
 "uninstall."
 msgstr ""
 
-#: templates/rating-review-review-delete-button.php:28
+#: templates/rating-review-review-delete-button.php:31
 msgid "Delete Review"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:73
+#: templates/rating-review-reviews-list-filter.php:75
 msgid "DESC"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:220
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:224
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:202
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:203
 msgid "Descending"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3352
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3363
 msgid "Description"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:142
-#: includes/Helpers/CBXMCRatingReviewHelper.php:331
-#: includes/Helpers/CBXMCRatingReviewHelper.php:684
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3365
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:140
+#: includes/Helpers/CBXMCRatingReviewHelper.php:345
+#: includes/Helpers/CBXMCRatingReviewHelper.php:698
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3376
 msgid "Disabled"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:192
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:194
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:174
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:173
 msgid "Display Limit:"
 msgstr ""
 
-#: templates/global/login_form.php:21
+#: templates/global/login_form.php:23
 msgid ""
 "Do you have account, <a role=\"button\" class=\"guest-login-trigger "
 "cbxmcratingreview-guest-login-trigger\" href=\"#\">please login</a>"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:1311
-#: includes/CBXMCRatingReviewAdmin.php:1312
-#: includes/CBXMCRatingReviewMisc.php:181
-#: includes/CBXMCRatingReviewMisc.php:182
+#: includes/CBXMCRatingReviewAdmin.php:1305
+#: includes/CBXMCRatingReviewAdmin.php:1306
 msgid "Documentation"
 msgstr ""
 
@@ -749,430 +756,425 @@ msgstr ""
 msgid "Documentation & User Guide"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:4217
+#: includes/Helpers/CBXMCRatingReviewHelper.php:4229
 msgid "Don't show login form, show default login url"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:280
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:278
 msgid "Done"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:609
+#: includes/CBXMCRatingReviewPublic.php:622
 msgid "Drag and Sort"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3017
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3028
 msgid "Dropdown"
 msgstr ""
 
-#: includes/CBXMCRatingReviewSettings.php:708
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:125
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:331
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3338
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3481
-#: templates/admin/email_manager_list.php:73
+#: includes/CBXMCRatingReviewSettings.php:681
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:123
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:329
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3349
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3492
+#: templates/admin/email_manager_list.php:77
 msgid "Edit"
 msgstr ""
 
-#: templates/admin/email_manager_edit.php:18
+#: templates/admin/email_manager_edit.php:22
 msgid "Edit notifications"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3317
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3328
 msgid "Edit Review"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3326
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3337
 msgid "Edit Your Rating Experience"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:314
-#: includes/Emails/CBXMCRatingReviewEmail.php:322
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:67
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:129
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:138
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:129
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:138
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:122
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:131
+#: includes/Emails/CBXMCRatingReviewEmail.php:315
+#: includes/Emails/CBXMCRatingReviewEmail.php:323
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:69
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:131
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:140
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:130
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:139
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:125
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:134
 msgid "Email"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:268
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:79
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:79
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:72
+#: includes/Emails/CBXMCRatingReviewEmail.php:269
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:81
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:80
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:75
 msgid "Email heading"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:272
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:83
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:83
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:76
+#: includes/Emails/CBXMCRatingReviewEmail.php:273
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:85
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:84
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:79
 msgid "Email heading here"
 msgstr ""
 
-#: templates/admin/email_manager_list.php:14
+#: templates/admin/email_manager_list.php:18
 msgid "Email notifications"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:321
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:136
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:136
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:129
+#: includes/Emails/CBXMCRatingReviewEmail.php:322
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:138
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:137
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:132
 msgid "Email Recipient(s) as BCC. Put multiple as comma."
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:313
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:127
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:127
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:120
+#: includes/Emails/CBXMCRatingReviewEmail.php:314
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:129
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:128
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:123
 msgid "Email Recipient(s) as CC. Put multiple as comma."
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:66
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:68
 msgid "Email Recipient(s). Put multiple as comma."
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:329
+#: includes/Emails/CBXMCRatingReviewEmail.php:330
 msgid ""
 "Email reply to. If empty then will be used from <strong>From Email</strong>."
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:297
-#: includes/Emails/CBXMCRatingReviewEmail.php:305
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:109
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:118
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:109
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:118
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:102
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:111
+#: includes/Emails/CBXMCRatingReviewEmail.php:298
+#: includes/Emails/CBXMCRatingReviewEmail.php:306
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:111
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:120
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:110
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:119
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:105
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:114
 msgid ""
 "Email sent from name. Put empty to set this from WordPress core or via any "
 "smtp plugin."
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:264
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:75
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:75
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:68
+#: includes/Emails/CBXMCRatingReviewEmail.php:265
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:77
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:76
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:71
 msgid "Email subject here"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:117
-#: includes/CBXMCRatingReviewAdmin.php:316
+#: includes/CBXMCRatingReviewAdmin.php:121
+#: includes/CBXMCRatingReviewAdmin.php:322
+#: includes/CBXMCRatingReviewAdmin.php:328
 msgid "Email Template"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:285
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:97
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:97
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:90
+#: includes/Emails/CBXMCRatingReviewEmail.php:286
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:99
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:98
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:93
 msgid "Email type"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:534
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3604
+#: includes/CBXMCRatingReviewAdmin.php:515
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3615
 msgid "Emails"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:148
-#: includes/Helpers/CBXMCRatingReviewHelper.php:762
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3371
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:146
+#: includes/Helpers/CBXMCRatingReviewHelper.php:776
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3382
 msgid "Enable Auto Integration"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:172
-#: includes/Helpers/CBXMCRatingReviewHelper.php:811
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3395
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:170
+#: includes/Helpers/CBXMCRatingReviewHelper.php:825
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3406
 msgid "Enable disable for archive pages, related with auto integration."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:170
-#: includes/Helpers/CBXMCRatingReviewHelper.php:798
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3393
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:168
+#: includes/Helpers/CBXMCRatingReviewHelper.php:812
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3404
 msgid "Enable disable for home/frontpage, related with auto integration."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:168
-#: includes/Helpers/CBXMCRatingReviewHelper.php:785
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3391
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:166
+#: includes/Helpers/CBXMCRatingReviewHelper.php:799
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3402
 msgid ""
 "Enable disable for single article(post, page or any custom post type), "
 "related with auto integration."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:157
-#: includes/Helpers/CBXMCRatingReviewHelper.php:678
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3380
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:155
+#: includes/Helpers/CBXMCRatingReviewHelper.php:692
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3391
 msgid "Enable disable the form"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:241
+#: includes/CBXMCRatingReviewAdmin.php:247
 msgid "Enable Positive/Critical Score"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:242
+#: includes/CBXMCRatingReviewAdmin.php:248
 msgid "Enable positivive or critial score functionality"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:155
-#: includes/Helpers/CBXMCRatingReviewHelper.php:823
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3378
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:153
+#: includes/Helpers/CBXMCRatingReviewHelper.php:837
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3389
 msgid "Enable Question"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:832
+#: includes/Helpers/CBXMCRatingReviewHelper.php:846
 msgid "Enable question field is missing or value must be 0 or 1"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:174
-#: includes/Helpers/CBXMCRatingReviewHelper.php:824
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3397
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:172
+#: includes/Helpers/CBXMCRatingReviewHelper.php:838
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3408
 msgid "Enable Question with Rating"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:256
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:59
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:59
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:60
+#: includes/Emails/CBXMCRatingReviewEmail.php:257
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:61
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:60
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:63
 msgid "Enable this email notification"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:774
+#: includes/Helpers/CBXMCRatingReviewHelper.php:788
 msgid ""
 "Enable which post types will have auto integration features. Please note "
 "that selected post types should be within the post types selected for "
 "<strong>Post Type Support</strong>"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:166
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3389
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:164
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3400
 msgid ""
 "Enable which post types will have auto integration features. Please note "
 "that selected post types should be within the post types selected for Post "
 "Type Support"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:254
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:57
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:57
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:58
+#: includes/Emails/CBXMCRatingReviewEmail.php:255
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:59
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:58
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:61
 msgid "Enable/Disable"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:164
-#: includes/Helpers/CBXMCRatingReviewHelper.php:763
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3387
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:162
+#: includes/Helpers/CBXMCRatingReviewHelper.php:777
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3398
 msgid ""
 "Enable/disable auto integration, ie, add average rating before post content "
 "in archive, in details article mode add average rating information before "
 "content, rating form & review listing after content"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:141
-#: includes/Helpers/CBXMCRatingReviewHelper.php:332
-#: includes/Helpers/CBXMCRatingReviewHelper.php:683
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3364
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:139
+#: includes/Helpers/CBXMCRatingReviewHelper.php:346
+#: includes/Helpers/CBXMCRatingReviewHelper.php:697
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3375
 msgid "Enabled"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:842
-#: includes/CBXMCRatingReviewPublic.php:599
-#: includes/CBXMCRatingReviewPublic.php:623
+#: includes/CBXMCRatingReviewAdmin.php:823
+#: includes/CBXMCRatingReviewPublic.php:612
+#: includes/CBXMCRatingReviewPublic.php:636
 msgid "Error"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:667
+#: includes/Helpers/CBXMCRatingReviewHelper.php:681
 msgid "Example Rating Form"
 msgstr ""
 
-#: templates/admin/email_manager_edit.php:46
+#: templates/admin/email_manager_edit.php:50
 msgid "Field"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:183
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3406
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:181
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3417
 msgid "Field Preview"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:182
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3405
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:180
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3416
 msgid "Field Type"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3469
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3480
 msgid "Filter"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3629
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3640
 msgid "First"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:271
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:269
 msgid ""
 "Following option values created by this plugin(including addon) from "
 "WordPress core option table"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:330
+#: includes/CBXMCRatingReviewAdmin.php:342
 msgid "Footer Text"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:366
-msgid "Footer Text Color"
-msgstr ""
-
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:122
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:314
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3329
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:120
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:312
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3340
 msgid "Form"
 msgstr ""
 
-#: includes/Controllers/FormController.php:477
+#: includes/Controllers/FormController.php:481
 msgid "Form Created"
 msgstr ""
 
-#: includes/Controllers/FormController.php:159
+#: includes/Controllers/FormController.php:163
 msgid "Form id is required."
 msgstr ""
 
-#: includes/Controllers/FormController.php:132
+#: includes/Controllers/FormController.php:136
 msgid "Form Not Found"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:677
+#: includes/Helpers/CBXMCRatingReviewHelper.php:691
 msgid "Form Status"
 msgstr ""
 
-#: includes/Controllers/FormController.php:87
+#: includes/Controllers/FormController.php:91
 msgid "Form table does not exist. Please check the database structure."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:664
+#: includes/Helpers/CBXMCRatingReviewHelper.php:678
 msgid "Form Title"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:672
+#: includes/Helpers/CBXMCRatingReviewHelper.php:686
 msgid "Form title missing or empty, maximum length 500, minimum length 5"
 msgstr ""
 
-#: includes/Controllers/FormController.php:467
+#: includes/Controllers/FormController.php:471
 msgid "Form Updated"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:316
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:314
 msgid "form(s) created"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:127
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:315
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3340
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:125
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:313
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3351
 msgid "Forms"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:1304
-#: includes/CBXMCRatingReviewAdmin.php:1305
-#: includes/CBXMCRatingReviewMisc.php:174
-#: includes/CBXMCRatingReviewMisc.php:175
+#: includes/CBXMCRatingReviewAdmin.php:1298
+#: includes/CBXMCRatingReviewAdmin.php:1299
 msgid "Free Support"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:302
-#: includes/Emails/CBXMCRatingReviewEmail.php:306
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:115
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:120
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:115
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:120
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:108
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:113
+#: includes/Emails/CBXMCRatingReviewEmail.php:303
+#: includes/Emails/CBXMCRatingReviewEmail.php:307
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:117
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:122
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:116
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:121
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:111
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:116
 msgid "From Email"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:294
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:106
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:106
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:99
+#: includes/Emails/CBXMCRatingReviewEmail.php:295
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:108
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:107
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:102
 msgid "From Name"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:298
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:111
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:111
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:104
+#: includes/Emails/CBXMCRatingReviewEmail.php:299
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:113
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:112
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:107
 msgid "From name"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:415
+#: includes/CBXMCRatingReviewAdmin.php:396
 msgid "Frontend Single Review View Page"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:424
+#: includes/CBXMCRatingReviewAdmin.php:405
 msgid "Frontend User Dashboard"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:22
-msgid "Further action"
-msgstr ""
-
-#: includes/CBXMCRatingReviewAdmin.php:113
+#: includes/CBXMCRatingReviewAdmin.php:117
 msgid "General"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:137
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3360
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:135
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3371
 msgid "General Fields"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:150
+#: includes/CBXMCRatingReviewAdmin.php:156
 msgid "General Settings"
+msgstr ""
+
+#: includes/Helpers/CBXMCRatingReviewHelper.php:4243
+msgid "General Template"
 msgstr ""
 
 #: templates/admin/support.php:71
 msgid "Get Free & Pro Addons"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:848
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3595
+#: includes/CBXMCRatingReviewAdmin.php:829
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3606
 msgid "Global Settings"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3504
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3515
 msgid "Go to page "
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:292
-#: includes/Helpers/CBXMCRatingReviewHelper.php:309
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3657
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3678
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3699
+#: includes/Helpers/CBXMCRatingReviewHelper.php:306
+#: includes/Helpers/CBXMCRatingReviewHelper.php:323
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3668
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3689
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3710
 msgid "Good"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:293
+#: includes/Helpers/CBXMCRatingReviewHelper.php:307
 msgid "Gorgeous"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:230
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:248
-#: includes/Helpers/CBXMCRatingReviewHelper.php:862
-#: includes/Helpers/CBXMCRatingReviewHelper.php:877
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:228
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:246
+#: includes/Helpers/CBXMCRatingReviewHelper.php:876
+#: includes/Helpers/CBXMCRatingReviewHelper.php:891
 msgid "Guest"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:292
+#: includes/CBXMCRatingReviewAdmin.php:298
 msgid "Guest User Login Form"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:322
+#: includes/CBXMCRatingReviewAdmin.php:336
 msgid "Header Image"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3336
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3347
 msgid "Headline"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:207
+#: includes/CBXMCRatingReviewAdmin.php:213
 msgid "Headline Required"
 msgstr ""
 
@@ -1180,20 +1182,20 @@ msgstr ""
 msgid "Help & Supports"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:554
-#: includes/CBXMCRatingReviewAdmin.php:555
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3613
+#: includes/CBXMCRatingReviewAdmin.php:535
+#: includes/CBXMCRatingReviewAdmin.php:536
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3624
 msgid "Helps & Updates"
 msgstr ""
 
-#: templates/admin/email_manager_list.php:15
+#: templates/admin/email_manager_list.php:19
 msgid ""
-"Here are the list of all the email notification send from this accounting "
-"system. Please note that, few notification may sent from background without "
-"any setting based on the type of not."
+"Here are the list of available email notifications. Please note that, few "
+"notification may sent from background without any setting based on the type "
+"of not."
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:384
+#: includes/Emails/CBXMCRatingReviewEmail.php:385
 msgid "HTML"
 msgstr ""
 
@@ -1206,237 +1208,243 @@ msgid ""
 "https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:834
+#: includes/CBXMCRatingReviewAdmin.php:815
 msgid "hue selection slider"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3496
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3507
 msgid "ID"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:177
+#: includes/CBXMCRatingReviewAdmin.php:183
 msgid ""
 "If half rating enabled, user can rate .5, 1.5, 2.5, 3.5, 4.5 with regular 1, "
 "2,3,4,5 values."
 msgstr ""
 
+#: templates/emails/review_status_change.php:67
+msgid ""
+"If you have any questions regarding this update or believe this change was "
+"made in error, please contact our support team for assistance."
+msgstr ""
+
 #. %s: How many hours
-#: includes/Helpers/CBXMCRatingReviewHelper.php:234
+#: includes/Helpers/CBXMCRatingReviewHelper.php:248
 #, php-format
 msgid "in %s hours"
 msgstr ""
 
 #. %s: How many minutes
-#: includes/Helpers/CBXMCRatingReviewHelper.php:227
+#: includes/Helpers/CBXMCRatingReviewHelper.php:241
 #, php-format
 msgid "in %s minutes"
 msgstr ""
 
 #. %s: How many weeks
-#: includes/Helpers/CBXMCRatingReviewHelper.php:248
+#: includes/Helpers/CBXMCRatingReviewHelper.php:262
 #, php-format
 msgid "in %s weeks"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:223
+#: includes/Helpers/CBXMCRatingReviewHelper.php:237
 msgid "in a minute"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:230
+#: includes/Helpers/CBXMCRatingReviewHelper.php:244
 msgid "in an hour"
 msgstr ""
 
 #. 1: Success count 2. Fail count
-#: includes/Controllers/AvgLogController.php:171
-#: includes/Controllers/FormController.php:211
-#: includes/Controllers/LogController.php:243
+#: includes/Controllers/AvgLogController.php:175
+#: includes/Controllers/FormController.php:215
+#: includes/Controllers/LogController.php:247
 #, php-format
 msgid "Incomplete deletion. %1$d successfully and %2$d failed"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:839
-#: includes/CBXMCRatingReviewPublic.php:596
-#: includes/CBXMCRatingReviewPublic.php:620
+#: includes/CBXMCRatingReviewAdmin.php:820
+#: includes/CBXMCRatingReviewPublic.php:609
+#: includes/CBXMCRatingReviewPublic.php:633
 msgid "Info"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:192
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3415
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:190
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3426
 msgid "Info: Unlimited Question available in pro version."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:230
+#: includes/CBXMCRatingReviewAdmin.php:236
 msgid "Is comment mandatory to write a review?"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:208
+#: includes/CBXMCRatingReviewAdmin.php:214
 msgid "Is headline mandatory to write a review?"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:1103
+#: includes/CBXMCRatingReviewPublic.php:1124
 msgid "It will be published after admin approval and you will be notified."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:186
+#: includes/Helpers/CBXMCRatingReviewHelper.php:200
 msgid "just now"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:123
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3333
-#: templates/admin/email_manager_edit.php:45
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:121
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3344
+#: templates/admin/email_manager_edit.php:49
 msgid "Label"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3632
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3643
 msgid "Last"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:214
+#: includes/Helpers/CBXMCRatingReviewHelper.php:228
 msgid "last month"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3322
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3333
 msgid "Last Update"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3323
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3334
 msgid "Last Update By"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:83
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:143
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:65
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:126
 msgid "Latest Ratings"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:45
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:29
 msgid "Latest Ratings as per different filter"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:326
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:324
 msgid "Latest Reviews"
 msgstr ""
 
-#: includes/Controllers/FormController.php:80
+#: includes/Controllers/FormController.php:84
 msgid "List of forms"
 msgstr ""
 
-#: includes/Controllers/AvgLogController.php:72
+#: includes/Controllers/AvgLogController.php:76
 msgid "List of log average"
 msgstr ""
 
-#: includes/Controllers/LogController.php:96
-#: includes/Controllers/LogFrontController.php:95
+#: includes/Controllers/LogController.php:100
+#: includes/Controllers/LogFrontController.php:99
 msgid "List of logs"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:638
+#: includes/CBXMCRatingReviewPublic.php:657
 msgid "Load More"
 msgstr ""
 
-#: templates/rating-review-reviews-list-more.php:19
+#: templates/rating-review-reviews-list-more.php:20
 msgid "Load more"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:843
-#: includes/CBXMCRatingReviewPublic.php:600
-#: includes/CBXMCRatingReviewPublic.php:624
+#: includes/CBXMCRatingReviewAdmin.php:824
+#: includes/CBXMCRatingReviewPublic.php:613
+#: includes/CBXMCRatingReviewPublic.php:637
 msgid "Loading"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:639
+#: includes/CBXMCRatingReviewPublic.php:658
 msgid "Loading next page ..."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3628
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3639
 msgid "Loading..."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3332
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3343
 msgid "Log"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3342
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3353
 msgid "Log Average"
 msgstr ""
 
-#: includes/Controllers/AvgLogController.php:119
-#: includes/Controllers/LogController.php:191
+#: includes/Controllers/AvgLogController.php:123
+#: includes/Controllers/LogController.php:195
 msgid "Log id is required."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:60
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:58
 msgid "Log Manager"
 msgstr ""
 
-#: includes/Controllers/LogController.php:159
-#: includes/Controllers/LogFrontController.php:163
+#: includes/Controllers/LogController.php:163
+#: includes/Controllers/LogFrontController.php:167
 msgid "Log Not Found"
 msgstr ""
 
-#: includes/Controllers/AvgLogController.php:79
-#: includes/Controllers/LogController.php:103
-#: includes/Controllers/LogFrontController.php:102
+#: includes/Controllers/AvgLogController.php:83
+#: includes/Controllers/LogController.php:107
+#: includes/Controllers/LogFrontController.php:106
 msgid "Log table does not exist. Please check the database structure."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3341
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3352
 msgid "Logs"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:75
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:73
 msgid "Manage Average Log"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:59
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:57
 msgid "Manage Log"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:67
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:65
 msgid "Manage Review Form"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:83
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:81
 msgid "Manage Settings"
 msgstr ""
 
-#: includes/Controllers/DashboardController.php:181
+#: includes/Controllers/DashboardController.php:187
 msgid "Migrated successfully"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:284
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:282
 msgid "Migration File Name"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:282
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:280
 msgid "Migration Files"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3418
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3429
 msgid "Modified"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:329
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:327
 msgid "Monthly Review Submission Overview"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:83
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:144
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:62
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:123
 msgid "Most Rated Posts"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:47
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:31
 msgid "Most rated posts as per different filter widget"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:64
+#: templates/rating-review-reviews-list-filter.php:66
 msgid "Most Recent"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:330
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:328
 msgid "Most recent reviews"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3019
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3030
 msgid "Multi Checkbox"
 msgstr ""
 
@@ -1444,36 +1452,39 @@ msgstr ""
 msgid "Multi Criteria Rating & Review System for WordPress"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:385
+#: includes/Emails/CBXMCRatingReviewEmail.php:386
 msgid "Multipart"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:279
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:91
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:91
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:84
+#: includes/Emails/CBXMCRatingReviewEmail.php:280
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:93
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:92
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:87
 msgid "N/A"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3358
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3369
 msgid "N\\A"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:121
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3328
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:119
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3339
 msgid "Name"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:281
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:279
 msgid "Need to migrate"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:190
+#: templates/admin/support.php:101
+msgid "New Plugins: HRM & ERP "
+msgstr ""
+
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:196
 msgid "New Review"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:188
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:198
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:195
 msgid "New Review added"
 msgstr ""
 
@@ -1481,436 +1492,446 @@ msgstr ""
 msgid "New review admin email alert"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:180
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:186
 msgid "New Review Notification"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:24
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:205
+msgid "New Review Submitted"
+msgstr ""
+
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:25
 msgid "New review user email alert"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3631
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3642
 msgid "Next"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:251
+#: includes/Helpers/CBXMCRatingReviewHelper.php:265
 msgid "next month"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:244
+#: templates/emails/new_review_admin_alert.php:68
+#: templates/emails/new_review_user_alert.php:66
+#: templates/emails/review_status_change.php:66
+msgid "Next Steps:"
+msgstr ""
+
+#: includes/Helpers/CBXMCRatingReviewHelper.php:258
 msgid "next week"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:171
-#: includes/CBXMCRatingReviewAdmin.php:183
-#: includes/CBXMCRatingReviewAdmin.php:202
-#: includes/CBXMCRatingReviewAdmin.php:213
-#: includes/CBXMCRatingReviewAdmin.php:224
-#: includes/CBXMCRatingReviewAdmin.php:235
-#: includes/CBXMCRatingReviewAdmin.php:247
-#: includes/CBXMCRatingReviewAdmin.php:273
-#: includes/CBXMCRatingReviewAdmin.php:307
-#: includes/CBXMCRatingReviewAdmin.php:438
-#: includes/CBXMCRatingReviewAdmin.php:814
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:188
-#: includes/Helpers/CBXMCRatingReviewHelper.php:791
-#: includes/Helpers/CBXMCRatingReviewHelper.php:804
-#: includes/Helpers/CBXMCRatingReviewHelper.php:817
-#: includes/Helpers/CBXMCRatingReviewHelper.php:830
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3411
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:201
+#: includes/CBXMCRatingReviewAdmin.php:177
+#: includes/CBXMCRatingReviewAdmin.php:189
+#: includes/CBXMCRatingReviewAdmin.php:208
+#: includes/CBXMCRatingReviewAdmin.php:219
+#: includes/CBXMCRatingReviewAdmin.php:230
+#: includes/CBXMCRatingReviewAdmin.php:241
+#: includes/CBXMCRatingReviewAdmin.php:253
+#: includes/CBXMCRatingReviewAdmin.php:279
+#: includes/CBXMCRatingReviewAdmin.php:313
+#: includes/CBXMCRatingReviewAdmin.php:419
+#: includes/CBXMCRatingReviewAdmin.php:795
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:186
+#: includes/Helpers/CBXMCRatingReviewHelper.php:805
+#: includes/Helpers/CBXMCRatingReviewHelper.php:818
+#: includes/Helpers/CBXMCRatingReviewHelper.php:831
+#: includes/Helpers/CBXMCRatingReviewHelper.php:844
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3422
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:200
 msgid "No"
 msgstr ""
 
 #. %s: Registration Link
-#: templates/global/login_form.php:44
+#: templates/global/login_form.php:46
 #, php-format
 msgid "No account yet? <a href=\"%s\">Register</a>"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:334
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:332
 msgid "No comments found"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:333
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:331
 msgid "No feedbacks found"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:136
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:134
 msgid "No Form found"
 msgstr ""
 
-#: templates/widgets/most_rated_posts.php:52
+#: templates/widgets/most_rated_posts.php:53
 msgid "No items found"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3357
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3368
 msgid "No Log found"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:332
-#: templates/widgets/latest_ratings.php:64
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:330
+#: templates/widgets/latest_ratings.php:65
 msgid "No reviews found"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:636
-#: templates/rating-review-reviews-list.php:40
-#: includes/Helpers/CBXMCRatingReviewHelper.php:998
+#: includes/CBXMCRatingReviewPublic.php:654
+#: includes/CBXMCRatingReviewPublic.php:656
+#: templates/rating-review-reviews-list.php:43
+#: includes/Helpers/CBXMCRatingReviewHelper.php:1007
 msgid "No reviews yet!"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:308
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3654
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3675
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3696
+#: includes/Helpers/CBXMCRatingReviewHelper.php:322
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3665
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3686
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3707
 msgid "Not Bad"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:569
-#: includes/CBXMCRatingReviewPublic.php:633
+#: includes/CBXMCRatingReviewPublic.php:582
+#: includes/CBXMCRatingReviewPublic.php:646
 msgid "Not rated yet!"
 msgstr ""
 
-#: templates/admin/email_manager_list.php:20
+#: templates/admin/email_manager_list.php:24
 msgid "Notification list"
 msgstr ""
 
 #. %s: Notification Name
-#: templates/admin/email_manager_edit.php:32
+#: templates/admin/email_manager_edit.php:36
 #, php-format
 msgid "Notification Name: %s"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:181
+#: includes/Helpers/CBXMCRatingReviewHelper.php:195
 msgid "now"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3015
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3026
 msgid "Number"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3502
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3513
 msgid "of"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:768
+#: includes/Helpers/CBXMCRatingReviewHelper.php:782
 msgid "Off"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:845
-#: includes/CBXMCRatingReviewPublic.php:602
-#: includes/CBXMCRatingReviewPublic.php:626
+#: includes/CBXMCRatingReviewAdmin.php:826
+#: includes/CBXMCRatingReviewPublic.php:615
+#: includes/CBXMCRatingReviewPublic.php:639
 msgid "OK"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:767
+#: includes/Helpers/CBXMCRatingReviewHelper.php:781
 msgid "On"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:433
+#: includes/CBXMCRatingReviewAdmin.php:414
 msgid "On Uninstall delete plugin data"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:816
-#: includes/CBXMCRatingReviewPublic.php:593
-#: includes/CBXMCRatingReviewPublic.php:617
+#: includes/CBXMCRatingReviewAdmin.php:797
+#: includes/CBXMCRatingReviewPublic.php:606
+#: includes/CBXMCRatingReviewPublic.php:630
 msgid "Once you delete, it's gone forever. You can not revert it back."
 msgstr ""
 
-#: templates/rating-review-form.php:90
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3324
+#: templates/rating-review-form.php:94
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3335
 msgid "One line review"
 msgstr ""
 
-#: includes/Controllers/FormController.php:432
+#: includes/Controllers/FormController.php:436
 msgid "One of your question title or option title field is empty"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2940
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2962
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2986
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2951
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2973
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2997
 msgid "Option 0"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2941
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2963
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2987
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2952
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2974
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2998
 msgid "Option 1"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2942
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2964
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2988
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2953
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2975
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2999
 msgid "Option 2"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2943
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2965
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2989
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2954
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2976
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3000
 msgid "Option 3"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2944
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2966
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2990
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2955
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2977
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3001
 msgid "Option 4"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:275
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:273
 msgid "Option ID"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:274
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:272
 msgid "Option Name"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:126
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3339
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:124
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3350
 msgid "Options"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:69
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:213
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:217
+#: templates/rating-review-reviews-list-filter.php:71
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:195
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:196
 msgid "Order"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:60
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:202
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:204
+#: templates/rating-review-reviews-list-filter.php:62
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:184
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:183
 msgid "Order By"
 msgstr ""
 
-#: templates/admin/support.php:161
+#: templates/admin/support.php:263
 msgid "Other WordPress Plugins"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:4031
+#: includes/Helpers/CBXMCRatingReviewHelper.php:4042
 msgctxt "Page slug"
 msgid "multireview-dashboard"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:4026
+#: includes/Helpers/CBXMCRatingReviewHelper.php:4037
 msgctxt "Page slug"
 msgid "multireview-view"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:4027
+#: includes/Helpers/CBXMCRatingReviewHelper.php:4038
 msgctxt "Page title"
 msgid "Review"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:4032
+#: includes/Helpers/CBXMCRatingReviewHelper.php:4043
 msgctxt "Page title"
 msgid "Review Dashboard"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:121
-#: includes/CBXMCRatingReviewAdmin.php:409
+#: includes/CBXMCRatingReviewAdmin.php:125
+#: includes/CBXMCRatingReviewAdmin.php:390
 msgid "Pages & Tools"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3804
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3815
 msgid "Pending"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3353
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3364
 msgid "Placeholder"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:191
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3414
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:189
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3425
 msgid "Placeholder Text"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:381
+#: includes/Emails/CBXMCRatingReviewEmail.php:382
 msgid "Plain text"
 msgstr ""
 
 #. %1$s: Login Link
-#: templates/global/login_url.php:8
+#: templates/global/login_url.php:9
 #, php-format
 msgid "Please <a href=\"%1$s\">login</a> to access."
 msgstr ""
 
-#: templates/rating-review-form.php:135
+#: templates/rating-review-form.php:139
 msgid "Please answer following questions"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:24
-msgid ""
-"Please check &amp; do necessary steps and give feedback to client. Thank you."
-msgstr ""
-
-#: includes/CBXMCRatingReviewPublic.php:588
+#: includes/CBXMCRatingReviewPublic.php:601
 msgid "Please check the captcha."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:157
+#: includes/CBXMCRatingReviewAdmin.php:163
 msgid "Please choose default rating form. "
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:578
+#: includes/CBXMCRatingReviewPublic.php:591
 msgid "Please enter a valid date ( ISO )."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:577
+#: includes/CBXMCRatingReviewPublic.php:590
 msgid "Please enter a valid date."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:575
+#: includes/CBXMCRatingReviewPublic.php:588
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:579
+#: includes/CBXMCRatingReviewPublic.php:592
 msgid "Please enter a valid number."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:576
+#: includes/CBXMCRatingReviewPublic.php:589
 msgid "Please enter a valid URL."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:584
+#: includes/CBXMCRatingReviewPublic.php:597
 msgid "Please enter a value between {0} and {1} characters long."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:585
+#: includes/CBXMCRatingReviewPublic.php:598
 msgid "Please enter a value between {0} and {1}."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:587
+#: includes/CBXMCRatingReviewPublic.php:600
 msgid "Please enter a value greater than or equal to {0}."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:586
+#: includes/CBXMCRatingReviewPublic.php:599
 msgid "Please enter a value less than or equal to {0}."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:583
+#: includes/CBXMCRatingReviewPublic.php:596
 msgid "Please enter at least {0} characters."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:582
+#: includes/CBXMCRatingReviewPublic.php:595
 msgid "Please enter no more than {0} characters."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:580
+#: includes/CBXMCRatingReviewPublic.php:593
 msgid "Please enter only digits."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:581
+#: includes/CBXMCRatingReviewPublic.php:594
 msgid "Please enter the same value again."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:574
+#: includes/CBXMCRatingReviewPublic.php:587
 msgid "Please fix this field."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:379
-#: includes/CBXMCRatingReviewAdmin.php:381
-#: includes/CBXMCRatingReviewAdmin.php:383
+#: includes/CBXMCRatingReviewAdmin.php:356
+#: includes/CBXMCRatingReviewAdmin.php:358
+#: includes/CBXMCRatingReviewAdmin.php:360
 msgid ""
 "Please note, selected page doesn't have the shortcode. Please edit the page "
 "and add the shortcode."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:1001
-#: includes/Controllers/LogController.php:452
-#: includes/Controllers/LogFrontController.php:382
+#: includes/CBXMCRatingReviewPublic.php:1022
+#: includes/Controllers/LogController.php:456
+#: includes/Controllers/LogFrontController.php:386
 msgid "Please provide review"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:997
-#: includes/Controllers/LogController.php:448
-#: includes/Controllers/LogFrontController.php:378
+#: includes/CBXMCRatingReviewPublic.php:1018
+#: includes/Controllers/LogController.php:452
+#: includes/Controllers/LogFrontController.php:382
 msgid "Please provide title"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:791
-#: includes/CBXMCRatingReviewSettings.php:611
-#: includes/CBXMCRatingReviewSettings.php:612
-#: includes/CBXMCRatingReviewSettings.php:719
+#: templates/emails/new_review_admin_alert.php:69
+msgid ""
+"Please review the submission, take any necessary action if required, and "
+"follow up with the customer/user where appropriate."
+msgstr ""
+
+#: includes/CBXMCRatingReviewAdmin.php:772
+#: includes/CBXMCRatingReviewSettings.php:586
+#: includes/CBXMCRatingReviewSettings.php:587
+#: includes/CBXMCRatingReviewSettings.php:692
 msgid "Please Select"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:406
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:405
 msgid "Please select"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:589
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:277
+#: includes/CBXMCRatingReviewPublic.php:602
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:275
 msgid "Please select at least one option"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:290
+#: includes/Helpers/CBXMCRatingReviewHelper.php:304
 msgid "Poor"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:252
+#: includes/CBXMCRatingReviewAdmin.php:258
 msgid "Positve Review Score value"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:323
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3330
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:321
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3341
 msgid "Post"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:207
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:186
 msgid "Post ID"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:362
+#: includes/Helpers/CBXMCRatingReviewHelper.php:376
 msgid "Post rating avg"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:320
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:318
 msgid "Post Reviewed "
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:363
+#: includes/Helpers/CBXMCRatingReviewHelper.php:377
 msgid "Post total Rating/reviews count"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:228
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:232
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:210
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:211
 msgid "Post Type"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:730
-#: includes/Helpers/CBXMCRatingReviewHelper.php:780
+#: includes/Helpers/CBXMCRatingReviewHelper.php:744
+#: includes/Helpers/CBXMCRatingReviewHelper.php:794
 msgid "Post type is missing or at least one post type must be selected"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:143
-#: includes/Helpers/CBXMCRatingReviewHelper.php:722
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3366
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:141
+#: includes/Helpers/CBXMCRatingReviewHelper.php:736
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3377
 msgid "Post Type Support"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:119
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3316
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:117
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3327
 msgid "Post Types"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:321
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:319
 msgid "post(s) reviewed"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:21
-#: templates/emails/new_review_user_alert.php:23
-#: templates/emails/review_status_change.php:21
-msgid "Post: {post_link}"
+#: templates/emails/new_review_admin_alert.php:54
+msgid "Post:"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3509
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3520
 msgid "Posted"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3630
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3641
 msgid "Prev"
 msgstr ""
 
-#: templates/admin/support.php:130
+#: templates/admin/support.php:166
 msgid "Pro Addon Changelog"
 msgstr ""
 
@@ -1918,432 +1939,428 @@ msgstr ""
 msgid "Pro Addon Support"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3805
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3816
 msgid "Published"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:56
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:99
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:149
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:201
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:278
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:354
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:457
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:55
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:98
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:148
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:200
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:277
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:353
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:456
 msgid "Q:"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:195
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:193
 msgid "Question"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:176
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3399
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:174
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3410
 msgid "Questions"
 msgstr ""
 
-#: templates/rating-review-reviews-list-item.php:155
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3327
+#: templates/rating-review-reviews-list-item.php:183
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3338
 msgid "Questions and Answers"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:177
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3400
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:175
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3411
 msgid ""
 "Questions are optional. Each question can be set enabled or disabled, "
 "required. Multiple types of questions including Radio, Checkbox, Text, "
 "Textarea and more."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:179
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3402
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:177
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3413
 msgid "Questions Title"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:313
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:311
 msgid "Quick information of important components"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:328
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:326
 msgid "Quick overview of monthly review submissions."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3016
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3027
 msgid "Radio"
 msgstr ""
 
-#: templates/rating-review-form.php:50
+#: templates/rating-review-form.php:54
 msgid "Rate Your Experience"
 msgstr ""
 
 #. %s: Score
-#: templates/rating-review-reviews-list-item.php:82
+#: templates/rating-review-reviews-list-item.php:83
 #, php-format
 msgid "Rated %s out of 5"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:485
+#: includes/CBXMCRatingReviewAdmin.php:466
 msgid "Rating & Review"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3356
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3575
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3367
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3586
 msgid "Rating & Review : Average Log Manager"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:311
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3557
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:309
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3568
 msgid "Rating & Review : Dashboard"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3603
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3614
 msgid "Rating & Review : Emails"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3594
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3605
 msgid "Rating & Review : Global Settings"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3612
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3623
 msgid "Rating & Review : Helps & Updates"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:135
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:133
 msgid "Rating & Review : Rating Form Manager"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3584
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3595
 msgid "Rating & Review : Rating Forms"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3354
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3566
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3365
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3577
 msgid "Rating & Review : Review Manager"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:209
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:188
 msgid "Rating Count"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:668
+#: includes/Helpers/CBXMCRatingReviewHelper.php:682
 msgid "Rating Form Name"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:396
+#: includes/Helpers/CBXMCRatingReviewHelper.php:410
 msgid "Rating Form Table"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:516
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3585
+#: includes/CBXMCRatingReviewAdmin.php:497
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3596
 msgid "Rating Forms"
 msgstr ""
 
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:205
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:187
 msgid "Rating ID"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3355
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3366
 msgid "Rating Log Manager"
 msgstr ""
 
-#: templates/rating-review-form.php:72
+#: templates/rating-review-form.php:76
 msgid "Rating missing!"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:66
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:207
+#: templates/rating-review-reviews-list-filter.php:68
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:189
 msgid "Rating Score"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:590
+#: includes/CBXMCRatingReviewPublic.php:603
 msgid "Rating/review form is not valid, please check all fields"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:17
-#: templates/emails/new_review_user_alert.php:19
-#: templates/emails/review_status_change.php:17
-msgid "Rating: {review_score}"
+#: templates/emails/new_review_admin_alert.php:30
+#: templates/emails/new_review_user_alert.php:27
+#: templates/emails/review_status_change.php:27
+msgid "Rating:"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:63
-#: templates/admin/email_manager_list.php:26
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:65
+#: templates/admin/email_manager_list.php:30
 msgid "Recipient(s)"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:291
+#: includes/Helpers/CBXMCRatingReviewHelper.php:305
 msgid "Regular"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:326
+#: includes/Emails/CBXMCRatingReviewEmail.php:327
 msgid "Reply To"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:330
+#: includes/Emails/CBXMCRatingReviewEmail.php:331
 msgid "Reply to email"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:787
+#: includes/CBXMCRatingReviewAdmin.php:768
 msgid "Request failed, please reload the page."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:189
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3412
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:187
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3423
 msgid "Required Question ?"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3465
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3476
 msgid "Reset"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:276
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:274
 msgid "Reset Data"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:278
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:276
 msgid "Reset option data"
 msgstr ""
 
-#: templates/rating-review-avg-rating.php:32
-#: templates/rating-review-details-avg-rating.php:44
-#: templates/rating-review-details-avg-rating.php:115
-#: templates/rating-review-reviews-list-item.php:141
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:317
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3318
-#: templates/widgets/most_rated_posts.php:42
-#: templates/widgets/most_rated_posts.php:42
+#: templates/rating-review-avg-rating.php:33
+#: templates/rating-review-details-avg-rating.php:45
+#: templates/rating-review-details-avg-rating.php:116
+#: templates/rating-review-reviews-list-item.php:142
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:315
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3329
+#: templates/widgets/most_rated_posts.php:43
+#: templates/widgets/most_rated_posts.php:43
 msgid "Review"
 msgid_plural "Reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:398
+#: includes/Helpers/CBXMCRatingReviewHelper.php:412
 msgid "Review Avg Table"
 msgstr ""
 
 #. %s: Review Date
-#: templates/rating-review-reviews-list-item.php:66
+#: templates/rating-review-reviews-list-item.php:67
 #, php-format
 msgid "Review Created on: %s "
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:1207
+#: templates/emails/new_review_admin_alert.php:75
+msgid "Review Dashboard"
+msgstr ""
+
+#: includes/CBXMCRatingReviewPublic.php:1227
 msgid "Review delete is not possible. Please contact site authority."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:1233
+#: includes/CBXMCRatingReviewPublic.php:1253
 msgid "Review deleted failed!"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:1231
+#: includes/CBXMCRatingReviewPublic.php:1251
 msgid "Review deleted successfully!"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:16
-#: templates/emails/new_review_user_alert.php:17
-#: templates/emails/review_status_change.php:16
+#: templates/emails/new_review_admin_alert.php:26
+#: templates/emails/new_review_user_alert.php:24
+#: templates/emails/review_status_change.php:24
 msgid "Review Details:"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:68
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:66
 msgid "Review Form Manager"
 msgstr ""
 
-#: templates/rating-review-form.php:85
+#: templates/rating-review-form.php:89
 msgid "Review Headline"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:1209
+#: includes/CBXMCRatingReviewPublic.php:1229
 msgid "Review id is invalid"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:397
+#: includes/Helpers/CBXMCRatingReviewHelper.php:411
 msgid "Review Log Table"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:496
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3567
+#: includes/CBXMCRatingReviewAdmin.php:477
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3578
 msgid "Review Manager"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:187
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:194
 msgid "Review Status Change Notification"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:23
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:24
 msgid "Review status change notification"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:197
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:204
 msgid "Review Status Changed"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:20
-#: templates/emails/new_review_user_alert.php:22
-#: templates/emails/review_status_change.php:20
-msgid "Review status: {review_status}"
-msgstr ""
-
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:327
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:325
 msgid "Review Submission Overview"
 msgstr ""
 
-#: includes/Controllers/LogController.php:516
-#: includes/Controllers/LogFrontController.php:446
+#: includes/Controllers/LogController.php:520
+#: includes/Controllers/LogFrontController.php:450
 msgid "Review updated successfully"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:325
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:323
 msgid "review(s) submitted"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:19
-#: templates/emails/new_review_user_alert.php:21
-#: templates/emails/review_status_change.php:19
-msgid "Review: {review_comment}"
+#: templates/emails/new_review_admin_alert.php:40
+#: templates/emails/new_review_user_alert.php:37
+#: templates/emails/review_status_change.php:37
+msgid "Review:"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:320
+#: includes/CBXMCRatingReviewPublic.php:325
 msgid "Reviewed"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3320
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3331
 msgid "Reviewed By"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:1307
-#: includes/CBXMCRatingReviewAdmin.php:1308
-#: includes/CBXMCRatingReviewMisc.php:177
-#: includes/CBXMCRatingReviewMisc.php:178
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:318
+#: includes/CBXMCRatingReviewAdmin.php:1301
+#: includes/CBXMCRatingReviewAdmin.php:1302
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:316
 msgid "Reviews"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:260
+#: includes/CBXMCRatingReviewAdmin.php:266
 msgid "Reviews Per Page"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:319
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:317
 msgid "reviews submitted"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3503
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3514
 msgid "Row count "
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:283
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:281
 msgid "Run Migration"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2920
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2931
 msgid "Sample Checkbox Question"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2934
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2945
 msgid "Sample Multi Checkbox Question"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2887
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2898
 msgid "Sample Multiline Question"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2902
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2913
 msgid "Sample Number Field Question"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:185
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3408
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3719
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:183
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3419
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3730
 msgid "Sample Question Title"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2956
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2967
 msgid "Sample Radio Question"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2978
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2989
 msgid "Sample Select Question"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2872
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2883
 msgid "Sample Single line Question"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:824
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3511
+#: includes/CBXMCRatingReviewAdmin.php:805
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3522
 msgid "Save"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:829
+#: includes/CBXMCRatingReviewAdmin.php:810
 msgid "save and close"
 msgstr ""
 
-#: templates/admin/email_manager_edit.php:107
+#: templates/admin/email_manager_edit.php:111
 msgid "Save Changes"
 msgstr ""
 
-#: includes/CBXMCRatingReviewSettings.php:1180 templates/admin/settings.php:52
+#: includes/CBXMCRatingReviewSettings.php:1172 templates/admin/settings.php:53
 msgid "Save Settings"
 msgstr ""
 
-#: templates/rating-review-reviews-list-filter.php:41
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:322
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3335
+#: templates/rating-review-reviews-list-filter.php:43
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:320
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3346
 msgid "Score"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:130
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3345
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3461
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:128
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3356
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3472
 msgid "Search"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:794
+#: includes/CBXMCRatingReviewAdmin.php:775
 msgid "Search here"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:792
+#: includes/CBXMCRatingReviewAdmin.php:773
 msgid "Search..."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:1080
+#: includes/CBXMCRatingReviewAdmin.php:1078
 msgid "Security check failed!"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:161
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:173
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:175
+#: includes/CBXMCRatingReviewAdmin.php:167
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:155
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:154
 msgid "Select Form"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3493
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3504
 msgid "Select form"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:253
+#: includes/CBXMCRatingReviewAdmin.php:259
 msgid "Select minimum score value for a positive review"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2812
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2823
 msgid "Select page"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:416
+#: includes/CBXMCRatingReviewAdmin.php:397
 msgid ""
 "Select page which will show the single review dynamically. That page must "
 "have the shortcode <code>[cbxmcratingreview_singlereview]</code>."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:425
+#: includes/CBXMCRatingReviewAdmin.php:406
 msgid ""
 "Select page which will show the the logged in user's dashboard to manage "
 "rating and reviews. That page must have the shortcode <code>"
 "[cbxmcratingreview_userdashboard]</code>."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3492
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3503
 msgid "Select status"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:835
+#: includes/CBXMCRatingReviewAdmin.php:816
 msgid "selection slider"
 msgstr ""
 
@@ -2351,167 +2368,166 @@ msgstr ""
 msgid "Sends notification to admin on review created by user/customer."
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:24
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:25
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:25
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:26
 msgid "Sends notification to user on review creation."
 msgstr ""
 
-#: includes/Controllers/FormController.php:448
+#: includes/Controllers/FormController.php:452
 msgid "Server error"
 msgstr ""
 
-#: includes/Controllers/DashboardController.php:143
+#: includes/Controllers/DashboardController.php:149
 msgid "Setting options reset successfully"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:90
-#: includes/CBXMCRatingReviewAdmin.php:526
-#: includes/CBXMCRatingReviewMisc.php:23
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:84
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2794
+#: includes/CBXMCRatingReviewAdmin.php:94
+#: includes/CBXMCRatingReviewAdmin.php:507
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:82
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2805
 msgid "Settings"
 msgstr ""
 
 #. %s: review link
 #. %s: review user dashboard link
-#: includes/CBXMCRatingReviewAdmin.php:391
-#: includes/CBXMCRatingReviewAdmin.php:401
+#: includes/CBXMCRatingReviewAdmin.php:369
+#: includes/CBXMCRatingReviewAdmin.php:381
 msgid "Shortcode detected on the selected page."
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:218
+#: includes/CBXMCRatingReviewAdmin.php:224
 msgid "Show Comment"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:268
+#: includes/CBXMCRatingReviewAdmin.php:274
 msgid "Show filter box in review listing"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:196
+#: includes/CBXMCRatingReviewAdmin.php:202
 msgid "Show Headline"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:4218
+#: includes/Helpers/CBXMCRatingReviewHelper.php:4230
 msgid "Show nothing!"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:154
-#: includes/Helpers/CBXMCRatingReviewHelper.php:810
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3377
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:152
+#: includes/Helpers/CBXMCRatingReviewHelper.php:824
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3388
 msgid "Show on Archives"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:153
-#: includes/Helpers/CBXMCRatingReviewHelper.php:797
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3376
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:151
+#: includes/Helpers/CBXMCRatingReviewHelper.php:811
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3387
 msgid "Show on Home/Frontpage"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:152
-#: includes/Helpers/CBXMCRatingReviewHelper.php:784
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3375
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:150
+#: includes/Helpers/CBXMCRatingReviewHelper.php:798
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3386
 msgid "Show on Single"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:190
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3413
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:188
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3424
 msgid "Show Question"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:300
+#: includes/CBXMCRatingReviewAdmin.php:306
 msgid "Show Register link to guest"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:301
+#: includes/CBXMCRatingReviewAdmin.php:307
 msgid ""
 "Show register link to guest, depends on if registration is enabled in "
 "wordpress core"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:267
+#: includes/CBXMCRatingReviewAdmin.php:273
 msgid "Show Review Filter"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:279
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:277
 msgid "Show/Hide"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:219
+#: includes/CBXMCRatingReviewAdmin.php:225
 msgid "Show/hide comment in rating form"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:197
+#: includes/CBXMCRatingReviewAdmin.php:203
 msgid "Show/hide review headline in rating form"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3501
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3512
 msgid "Showing "
 msgstr ""
 
-#: includes/Controllers/AvgLogController.php:84
-#: includes/Controllers/AvgLogController.php:90
-#: includes/Controllers/FormController.php:92
-#: includes/Controllers/FormController.php:98
-#: includes/Controllers/LogController.php:108
-#: includes/Controllers/LogController.php:114
+#: includes/Controllers/AvgLogController.php:88
+#: includes/Controllers/AvgLogController.php:94
+#: includes/Controllers/FormController.php:96
+#: includes/Controllers/FormController.php:102
+#: includes/Controllers/LogController.php:112
+#: includes/Controllers/LogController.php:118
 msgid "Something Went Wrong. Please try again later."
 msgstr ""
 
-#: includes/Controllers/LogFrontController.php:107
+#: includes/Controllers/LogFrontController.php:111
 msgid "Something Went Wrong. Please try again later1."
 msgstr ""
 
-#: includes/Controllers/LogFrontController.php:113
+#: includes/Controllers/LogFrontController.php:117
 msgid "Something Went Wrong. Please try again later2."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:642
+#: includes/CBXMCRatingReviewPublic.php:661
 msgid "Sorry! delete failed!"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:868
-#: includes/Controllers/LogController.php:322
-#: includes/Controllers/LogFrontController.php:252
+#: includes/CBXMCRatingReviewPublic.php:889
+#: includes/Controllers/LogController.php:326
+#: includes/Controllers/LogFrontController.php:256
 msgid "Sorry! Invalid post. Please check and try again."
 msgstr ""
 
 #. %s: Criteria Label
 #. %s: Criteria label
-#: includes/CBXMCRatingReviewPublic.php:913
-#: includes/CBXMCRatingReviewPublic.php:918
-#: includes/Controllers/LogController.php:360
-#: includes/Controllers/LogController.php:365
-#: includes/Controllers/LogFrontController.php:290
-#: includes/Controllers/LogFrontController.php:295
+#: includes/CBXMCRatingReviewPublic.php:934
+#: includes/CBXMCRatingReviewPublic.php:939
+#: includes/Controllers/LogController.php:364
+#: includes/Controllers/LogController.php:369
+#: includes/Controllers/LogFrontController.php:294
+#: includes/Controllers/LogFrontController.php:299
 #, php-format
 msgid ""
 "Sorry! Invalid rating score for criteria <strong>%s</strong>. Please check "
 "and try again."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:925
-#: includes/Controllers/LogController.php:371
-#: includes/Controllers/LogFrontController.php:301
+#: includes/CBXMCRatingReviewPublic.php:946
+#: includes/Controllers/LogController.php:375
+#: includes/Controllers/LogFrontController.php:305
 msgid ""
 "Sorry! Invalid rating score or no rating selected. Please check and try "
 "again."
 msgstr ""
 
-#: includes/Controllers/LogController.php:311
-#: includes/Controllers/LogFrontController.php:241
+#: includes/Controllers/LogController.php:315
+#: includes/Controllers/LogFrontController.php:245
 msgid "Sorry! Invalid review id. Please check and try again."
 msgstr ""
 
-#: includes/Controllers/LogController.php:316
-#: includes/Controllers/LogFrontController.php:246
+#: includes/Controllers/LogController.php:320
+#: includes/Controllers/LogFrontController.php:250
 msgid "Sorry! Invalid review. Please check and try again."
 msgstr ""
 
 #. %s: Question Title
 #. %s: Form Field Title label
-#: includes/CBXMCRatingReviewPublic.php:951
-#: includes/Controllers/LogController.php:400
-#: includes/Controllers/LogFrontController.php:330
+#: includes/CBXMCRatingReviewPublic.php:972
+#: includes/Controllers/LogController.php:404
+#: includes/Controllers/LogFrontController.php:334
 #, php-format
 msgid ""
 "Sorry! Question <strong>%s</strong> is blank but required. Please check and "
@@ -2520,532 +2536,523 @@ msgstr ""
 
 #. %s: Question Title
 #. %s: Form Field Title label
-#: includes/CBXMCRatingReviewPublic.php:959
-#: includes/CBXMCRatingReviewPublic.php:970
-#: includes/CBXMCRatingReviewPublic.php:986
-#: includes/Controllers/LogController.php:410
-#: includes/Controllers/LogController.php:421
-#: includes/Controllers/LogController.php:438
-#: includes/Controllers/LogFrontController.php:340
-#: includes/Controllers/LogFrontController.php:351
-#: includes/Controllers/LogFrontController.php:368
+#: includes/CBXMCRatingReviewPublic.php:980
+#: includes/CBXMCRatingReviewPublic.php:991
+#: includes/CBXMCRatingReviewPublic.php:1007
+#: includes/Controllers/LogController.php:414
+#: includes/Controllers/LogController.php:425
+#: includes/Controllers/LogController.php:442
+#: includes/Controllers/LogFrontController.php:344
+#: includes/Controllers/LogFrontController.php:355
+#: includes/Controllers/LogFrontController.php:372
 #, php-format
 msgid ""
 "Sorry! Question <strong>%s</strong> is not answered but required. Please "
 "check and try again."
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:1138
+#: includes/CBXMCRatingReviewPublic.php:1158
 msgid "Sorry! You already rated this or multiple reviews is not possible."
 msgstr ""
 
-#: includes/Controllers/FormController.php:264
+#: includes/Controllers/FormController.php:268
 msgid "Sorry, in free version only one form can be created"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:1116
+#: includes/CBXMCRatingReviewAdmin.php:1114
 msgid "Sorry, invalid email id"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:329
+#: includes/CBXMCRatingReviewPublic.php:334
 msgid "Sorry, review not found or unpublished"
 msgstr ""
 
-#: includes/Controllers/DashboardController.php:120
-#: includes/Controllers/DashboardController.php:172
+#: includes/Controllers/DashboardController.php:126
+#: includes/Controllers/DashboardController.php:178
 msgid "Sorry, you don't have enough permission!"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3807
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3818
 msgid "Spam"
 msgstr ""
 
 #. %d: Star Count
 #. %d: star count
-#: includes/Helpers/CBXMCRatingReviewHelper.php:618
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3139
+#: includes/Helpers/CBXMCRatingReviewHelper.php:632
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3150
 msgid "Star %d"
 msgstr ""
 
-#: templates/rating-review-avg-rating.php:51
-#: templates/rating-review-details-avg-rating.php:66
+#: templates/rating-review-avg-rating.php:52
+#: templates/rating-review-details-avg-rating.php:67
 msgid "Stars"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:285
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3506
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:283
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3517
 msgid "Status"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:260
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:71
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:71
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:64
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:129
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3344
+#: templates/emails/new_review_admin_alert.php:47
+#: templates/emails/new_review_user_alert.php:44
+#: templates/emails/review_status_change.php:44
+msgid "Status:"
+msgstr ""
+
+#: includes/Emails/CBXMCRatingReviewEmail.php:261
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:73
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:72
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:67
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:127
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3355
 msgid "Subject"
 msgstr ""
 
-#: templates/rating-review-form.php:152
+#: templates/rating-review-form.php:156
 msgid "Submit your review"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:840
-#: includes/CBXMCRatingReviewPublic.php:597
-#: includes/CBXMCRatingReviewPublic.php:621
+#: includes/CBXMCRatingReviewAdmin.php:821
+#: includes/CBXMCRatingReviewPublic.php:610
+#: includes/CBXMCRatingReviewPublic.php:634
 msgid "Success"
 msgstr ""
 
-#: templates/admin/email_manager_list.php:70
+#: templates/admin/email_manager_list.php:74
 msgid "System User/Guest"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:186
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3013
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3409
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:184
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3024
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3420
 msgid "Text"
 msgstr ""
 
-#: includes/Emails/CBXMCRatingReviewEmail.php:277
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:88
-#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:88
-#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:81
+#: includes/Emails/CBXMCRatingReviewEmail.php:278
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:90
+#: includes/Emails/CBXMCRatingReviewReviewStatusUpdateUserEmail.php:89
+#: includes/Emails/CBXMCRatingReviewReviewUserAlertEmail.php:84
 msgid "Text to appear below the main email content."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3014
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3025
 msgid "Textarea"
 msgstr ""
 
+#: templates/emails/new_review_admin_alert.php:81
+#: templates/emails/new_review_user_alert.php:79
+#: templates/emails/review_status_change.php:79
+msgid "Thank you"
+msgstr ""
+
+#: templates/emails/new_review_user_alert.php:21
+msgid ""
+"Thank you for submitting your review. We have successfully received your "
+"feedback associated with the email address <strong>{review_user_email}"
+"</strong>."
+msgstr ""
+
 #. %s: avg score
-#: includes/CBXMCRatingReviewPublic.php:1100
+#: includes/CBXMCRatingReviewPublic.php:1121
 #, php-format
 msgid "Thank you for your rating and review. You rated avg %s"
 msgstr ""
 
-#: templates/emails/review_status_change.php:22
-msgid "Thank you."
-msgstr ""
-
-#. %s: bookmark core plugin version
-#: includes/CBXMCRatingReviewAdmin.php:1213
-#: includes/CBXMCRatingReviewMisc.php:116
+#. %s: core plugin version
+#: includes/CBXMCRatingReviewAdmin.php:1211
 #, php-format
 msgid ""
 "Thanks for installing/deactivating <strong>CBX Multi Criteria Rating & "
 "Review</strong> V%s - Codeboxr Team"
 msgstr ""
 
-#. %s: bookmark core plugin version
-#: includes/CBXMCRatingReviewAdmin.php:1234
-#: includes/CBXMCRatingReviewMisc.php:137
+#. %s: core plugin version
+#: includes/CBXMCRatingReviewAdmin.php:1232
 #, php-format
 msgid ""
 "Thanks for upgrading <strong>CBX Multi Criteria Rating & Review</strong> V%s "
 ", enjoy the new features and bug fixes - Codeboxr Team"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:346
-msgid "The background color of the email."
-msgstr ""
-
-#: includes/CBXMCRatingReviewAdmin.php:353
-msgid "The background colour of the main body of email."
-msgstr ""
-
-#: includes/CBXMCRatingReviewAdmin.php:339
-msgid "The base color of the email."
-msgstr ""
-
-#: includes/CBXMCRatingReviewAdmin.php:360
-msgid "The body text colour of the main body of email."
-msgstr ""
-
-#: includes/CBXMCRatingReviewAdmin.php:367
-msgid "The footer text colour of the footer of email."
-msgstr ""
-
-#: includes/Controllers/FormController.php:365
+#: includes/Controllers/FormController.php:369
 msgid "The form must have at least one criteria"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:331
+#: includes/CBXMCRatingReviewAdmin.php:343
 msgid ""
 "The text to appear at the email footer. Syntax available - <code>{site_title}"
 "</code>"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:573
+#: includes/CBXMCRatingReviewPublic.php:586
 msgid "This field is required."
 msgstr ""
 
 #. %s: Shortcode name
-#: includes/CBXMCRatingReviewSettings.php:702
+#: includes/CBXMCRatingReviewSettings.php:675
 #, php-format
 msgid "This page doesn't have shortcode %s"
 msgstr ""
 
 #. %s: Shortcode name
-#: includes/CBXMCRatingReviewSettings.php:698
+#: includes/CBXMCRatingReviewSettings.php:671
 #, php-format
 msgid "This page has shortcode %s"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:346
+#: includes/CBXMCRatingReviewPublic.php:351
 msgid ""
 "This shortcode has been deprecated and the purpose of this shortcode is "
 "served by the cbxmcratingreview_userdashboard shortcode."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3513
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3524
 msgid "Thumbs Down"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3512
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3523
 msgid "Thumbs Up"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3350
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3361
 msgid "Time"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:838
-#: includes/CBXMCRatingReviewPublic.php:595
-#: includes/CBXMCRatingReviewPublic.php:619
+#: includes/CBXMCRatingReviewAdmin.php:819
+#: includes/CBXMCRatingReviewPublic.php:608
+#: includes/CBXMCRatingReviewPublic.php:632
 msgid "Tip"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:128
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3343
-#: templates/admin/email_manager_list.php:24
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:165
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:166
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:126
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3354
+#: templates/admin/email_manager_list.php:28
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:147
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:145
 msgid "Title"
 msgstr ""
 
-#: templates/emails/new_review_admin_alert.php:18
-#: templates/emails/new_review_user_alert.php:20
-#: templates/emails/review_status_change.php:18
-msgid "Title: {review_headline}"
+#: templates/emails/new_review_admin_alert.php:35
+#: templates/emails/new_review_user_alert.php:32
+#: templates/emails/review_status_change.php:32
+msgid "Title:"
 msgstr ""
 
 #. %s: Review edit Url
-#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:165
+#: includes/Emails/CBXMCRatingReviewReviewAdminAlertEmail.php:167
 msgid "To edit click this url."
 msgstr ""
 
-#: includes/CBXMCRatingReviewSettings.php:1159
+#: includes/CBXMCRatingReviewSettings.php:1151
 msgid "Toggle All Sections"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:821
+#: includes/CBXMCRatingReviewAdmin.php:802
 msgid "toggle color picker dialog"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:238
+#: includes/Helpers/CBXMCRatingReviewHelper.php:252
 msgid "Tomorrow"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:544
+#: includes/CBXMCRatingReviewAdmin.php:525
 msgid "Tools"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:286
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:284
 msgid "Tools Manager"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3495
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3506
 msgid "Total"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:1318
-#: includes/CBXMCRatingReviewAdmin.php:1319
-#: includes/CBXMCRatingReviewMisc.php:188
-#: includes/CBXMCRatingReviewMisc.php:189
+#: includes/CBXMCRatingReviewAdmin.php:1310
+#: includes/CBXMCRatingReviewAdmin.php:1311
 msgid "Try Pro Addon"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:133
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3348
-#: templates/admin/email_manager_list.php:25
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:131
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3359
+#: templates/admin/email_manager_list.php:29
 msgid "Type"
 msgstr ""
 
-#: includes/Controllers/AvgLogController.php:114
-#: includes/Controllers/DashboardController.php:116
-#: includes/Controllers/DashboardController.php:168
-#: includes/Controllers/FormController.php:154
-#: includes/Controllers/LogController.php:181
+#: includes/Controllers/AvgLogController.php:118
+#: includes/Controllers/DashboardController.php:122
+#: includes/Controllers/DashboardController.php:174
+#: includes/Controllers/FormController.php:158
+#: includes/Controllers/LogController.php:185
 msgid "Unauthorized"
 msgstr ""
 
-#: includes/Controllers/AvgLogController.php:36
-#: includes/Controllers/FormController.php:34
-#: includes/Controllers/FormController.php:122
-#: includes/Controllers/FormController.php:241
-#: includes/Controllers/LogController.php:36
-#: includes/Controllers/LogController.php:138
-#: includes/Controllers/LogFrontController.php:35
-#: includes/Controllers/LogFrontController.php:137
-#: includes/Controllers/LogFrontController.php:186
+#: includes/Controllers/AvgLogController.php:40
+#: includes/Controllers/FormController.php:38
+#: includes/Controllers/FormController.php:126
+#: includes/Controllers/FormController.php:245
+#: includes/Controllers/LogController.php:40
+#: includes/Controllers/LogController.php:142
+#: includes/Controllers/LogFrontController.php:39
+#: includes/Controllers/LogFrontController.php:141
+#: includes/Controllers/LogFrontController.php:190
 msgid "Unauthorized request"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:273
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:271
 msgid "Uncheck All"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3882
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3907
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3893
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3918
 msgid "Unnamed"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3806
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3817
 msgid "Unpublished"
 msgstr ""
 
-#: includes/CBXMCRatingReview.php:301 includes/CBXMCRatingReviewEmails.php:77
-#: includes/CBXMCRatingReviewSettings.php:69
+#: includes/CBXMCRatingReview.php:312 includes/CBXMCRatingReviewEmails.php:80
+#: includes/CBXMCRatingReviewSettings.php:72
 msgid "Unserializing instances of this class is forbidden."
 msgstr ""
 
 #. %d: Criteria ID
 #. %d: Criteria id
-#: includes/CBXMCRatingReviewPublic.php:879
-#: includes/Controllers/LogController.php:334
-#: includes/Controllers/LogFrontController.php:264
+#: includes/CBXMCRatingReviewPublic.php:900
+#: includes/Controllers/LogController.php:338
+#: includes/Controllers/LogFrontController.php:268
 msgid "Untitled criteria - %d"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3644
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3655
 msgid "Untitled criteria - 0"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3665
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3676
 msgid "Untitled criteria - 1"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3686
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3697
 msgid "Untitled criteria - 2"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3046
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3099
-#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:180
-#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:182
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3057
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3110
+#: includes/Widgets/Classic/CBXMCRatingReviewLRatingsWidget.php:162
+#: includes/Widgets/Classic/CBXMCRatingReviewMRPostsWidget.php:161
 msgid "Untitled Form"
 msgstr ""
 
-#: includes/Controllers/FormController.php:415
+#: includes/Controllers/FormController.php:419
 msgid "Untitled Option"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:235
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:283
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:324
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:357
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:408
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:463
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:234
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:282
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:323
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:356
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:407
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:462
 msgid "Untitled Option!"
 msgstr ""
 
 #. %d: Question ID
 #. %d: Question index
-#: includes/CBXMCRatingReviewPublic.php:939
-#: includes/Controllers/LogController.php:387
-#: includes/Controllers/LogFrontController.php:317
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:27
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:54
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:75
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:97
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:120
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:147
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:167
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:197
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:219
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:266
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:316
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:351
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:383
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:439
+#: includes/CBXMCRatingReviewPublic.php:960
+#: includes/Controllers/LogController.php:391
+#: includes/Controllers/LogFrontController.php:321
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:26
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:53
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:74
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:96
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:119
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:146
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:166
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:196
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:218
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:265
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:315
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:350
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:382
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:438
 msgid "Untitled Question %d"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3802
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3813
 msgid "Unverified"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:131
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3346
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:129
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3357
 msgid "Update"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3508
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3519
 msgid "Upload"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:323
-msgid ""
-"Url To email you want to show as email header.Upload Image by media uploader."
-msgstr ""
-
-#: includes/CBXMCRatingReviewAdmin.php:823
+#: includes/CBXMCRatingReviewAdmin.php:804
 msgid "use previous color"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:324
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3331
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:322
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3342
 msgid "User"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:744
-#: includes/Helpers/CBXMCRatingReviewHelper.php:757
+#: includes/Helpers/CBXMCRatingReviewHelper.php:758
+#: includes/Helpers/CBXMCRatingReviewHelper.php:771
 msgid "User role missing or at least one user role must be selected"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:124
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3334
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:122
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3345
 msgid "Value"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3803
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3814
 msgid "Verified"
 msgstr ""
 
-#: includes/CBXMCRatingReviewSettings.php:712
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3473
+#: includes/CBXMCRatingReviewSettings.php:685
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3484
 msgid "View"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3420
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3431
 msgid "View All"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:89 includes/CBXMCRatingReviewMisc.php:22
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2794
+#: templates/emails/new_review_user_alert.php:72
+#: templates/emails/review_status_change.php:72
+msgid "View Review"
+msgstr ""
+
+#: includes/CBXMCRatingReviewAdmin.php:93
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2805
 msgid "View settings"
 msgstr ""
 
-#: templates/emails/new_review_user_alert.php:15
-msgid "We got a review for email address {review_user_email}."
+#: templates/emails/new_review_user_alert.php:67
+msgid ""
+"We appreciate you taking the time to share your experience with us. Our team "
+"will review your feedback carefully and follow up if necessary."
 msgstr ""
 
-#: templates/emails/new_review_user_alert.php:24
-msgid "We will check and get back to you soon. Thank you."
-msgstr ""
-
-#: includes/CBXMCRatingReviewAdmin.php:189
+#: includes/CBXMCRatingReviewAdmin.php:195
 msgid "What will be status when a new review is written?"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:158
-#: includes/Helpers/CBXMCRatingReviewHelper.php:723
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3381
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:156
+#: includes/Helpers/CBXMCRatingReviewHelper.php:737
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3392
 msgid ""
 "Which post types can have the rating & review features. Please make sure "
 "multiple form is not associated with same post type for best performance."
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:162
-#: includes/Helpers/CBXMCRatingReviewHelper.php:750
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3385
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:160
+#: includes/Helpers/CBXMCRatingReviewHelper.php:764
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3396
 msgid "Which user role will have view capability"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:160
-#: includes/Helpers/CBXMCRatingReviewHelper.php:737
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3383
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:158
+#: includes/Helpers/CBXMCRatingReviewHelper.php:751
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3394
 msgid "Which user role will have vote capability"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:144
-#: includes/Helpers/CBXMCRatingReviewHelper.php:736
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3367
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:142
+#: includes/Helpers/CBXMCRatingReviewHelper.php:750
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3378
 msgid "Who Can give Rate & Review"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:146
-#: includes/Helpers/CBXMCRatingReviewHelper.php:749
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3369
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:144
+#: includes/Helpers/CBXMCRatingReviewHelper.php:763
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3380
 msgid "Who Can View Rating & Review"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:793
+#: includes/CBXMCRatingReviewAdmin.php:774
 msgid "Window Title"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:4216
+#: includes/Helpers/CBXMCRatingReviewHelper.php:4228
 msgid "WordPress Core Login Form"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:306
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3648
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3669
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3690
+#: includes/Helpers/CBXMCRatingReviewHelper.php:320
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3659
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3680
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3701
 msgid "Worst"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2875
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2890
-#: includes/Helpers/CBXMCRatingReviewHelper.php:2905
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3722
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2886
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2901
+#: includes/Helpers/CBXMCRatingReviewHelper.php:2916
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3733
 msgid "Write here"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:156
-#: includes/Helpers/CBXMCRatingReviewHelper.php:665
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3379
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:154
+#: includes/Helpers/CBXMCRatingReviewHelper.php:679
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3390
 msgid "Write rating form name"
 msgstr ""
 
-#: includes/CBXMCRatingReviewAdmin.php:170
-#: includes/CBXMCRatingReviewAdmin.php:182
-#: includes/CBXMCRatingReviewAdmin.php:201
-#: includes/CBXMCRatingReviewAdmin.php:212
-#: includes/CBXMCRatingReviewAdmin.php:223
-#: includes/CBXMCRatingReviewAdmin.php:234
-#: includes/CBXMCRatingReviewAdmin.php:246
-#: includes/CBXMCRatingReviewAdmin.php:272
-#: includes/CBXMCRatingReviewAdmin.php:306
-#: includes/CBXMCRatingReviewAdmin.php:437
-#: includes/CBXMCRatingReviewAdmin.php:813
-#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:187
-#: includes/Helpers/CBXMCRatingReviewHelper.php:790
-#: includes/Helpers/CBXMCRatingReviewHelper.php:803
-#: includes/Helpers/CBXMCRatingReviewHelper.php:816
-#: includes/Helpers/CBXMCRatingReviewHelper.php:829
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3410
-#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:201
+#: includes/CBXMCRatingReviewAdmin.php:176
+#: includes/CBXMCRatingReviewAdmin.php:188
+#: includes/CBXMCRatingReviewAdmin.php:207
+#: includes/CBXMCRatingReviewAdmin.php:218
+#: includes/CBXMCRatingReviewAdmin.php:229
+#: includes/CBXMCRatingReviewAdmin.php:240
+#: includes/CBXMCRatingReviewAdmin.php:252
+#: includes/CBXMCRatingReviewAdmin.php:278
+#: includes/CBXMCRatingReviewAdmin.php:312
+#: includes/CBXMCRatingReviewAdmin.php:418
+#: includes/CBXMCRatingReviewAdmin.php:794
+#: includes/Helpers/CBXMCRatingReviewAdminHelper.php:185
+#: includes/Helpers/CBXMCRatingReviewHelper.php:804
+#: includes/Helpers/CBXMCRatingReviewHelper.php:817
+#: includes/Helpers/CBXMCRatingReviewHelper.php:830
+#: includes/Helpers/CBXMCRatingReviewHelper.php:843
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3421
+#: includes/Helpers/CBXMCRatingReviewQuestionHelper.php:200
 msgid "Yes"
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:203
+#: includes/Helpers/CBXMCRatingReviewHelper.php:217
 msgid "Yesterday"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:1211
+#: includes/CBXMCRatingReviewPublic.php:1231
 msgid "You are not logged in and you don't own the review. Area you cheating?"
 msgstr ""
 
-#: includes/CBXMCRatingReviewPublic.php:1005
-#: includes/Controllers/LogController.php:458
-#: includes/Controllers/LogFrontController.php:388
+#: includes/CBXMCRatingReviewPublic.php:1026
+#: includes/Controllers/LogController.php:462
+#: includes/Controllers/LogFrontController.php:392
 msgid "You aren't currently logged in. Please login to rate."
 msgstr ""
 
-#: templates/rating-review-user-rating-readonly.php:27
+#: templates/rating-review-user-rating-readonly.php:28
 msgid "You rated this "
 msgstr ""
 
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3499
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3510
 msgid "You want to delete this."
 msgstr ""
 
-#: templates/rating-review-form.php:96
-#: includes/Helpers/CBXMCRatingReviewHelper.php:3325
+#: templates/rating-review-form.php:100
+#: includes/Helpers/CBXMCRatingReviewHelper.php:3336
 msgid "Your Review"
 msgstr ""
 
-#: templates/emails/review_status_change.php:15
-msgid "Your review has changed to {review_status}."
+#: templates/emails/review_status_change.php:21
+msgid ""
+"Your review status has been updated to <strong>{review_status}</strong>. "
+"Please find the latest details below."
 msgstr ""

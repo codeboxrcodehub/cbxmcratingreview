@@ -1,11 +1,10 @@
 <?php
 
-namespace Illuminate\Database\Eloquent\Casts;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\Eloquent\Casts;
 
-use Illuminate\Contracts\Database\Eloquent\Castable;
-use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Illuminate\Support\Collection;
-
+use CBXMCRatingReviewScoped\Illuminate\Contracts\Database\Eloquent\Castable;
+use CBXMCRatingReviewScoped\Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use CBXMCRatingReviewScoped\Illuminate\Support\Collection;
 class AsCollection implements Castable
 {
     /**
@@ -20,9 +19,8 @@ class AsCollection implements Castable
         {
             public function get($model, $key, $value, $attributes)
             {
-                return isset($attributes[$key]) ? new Collection(json_decode($attributes[$key], true)) : null;
+                return isset($attributes[$key]) ? new Collection(json_decode($attributes[$key], \true)) : null;
             }
-
             public function set($model, $key, $value, $attributes)
             {
                 return [$key => json_encode($value)];

@@ -1,10 +1,9 @@
 <?php
 
-namespace Illuminate\Support;
+namespace CBXMCRatingReviewScoped\Illuminate\Support;
 
-use Carbon\Carbon as BaseCarbon;
-use Carbon\CarbonImmutable as BaseCarbonImmutable;
-
+use CBXMCRatingReviewScoped\Carbon\Carbon as BaseCarbon;
+use CBXMCRatingReviewScoped\Carbon\CarbonImmutable as BaseCarbonImmutable;
 class Carbon extends BaseCarbon
 {
     /**

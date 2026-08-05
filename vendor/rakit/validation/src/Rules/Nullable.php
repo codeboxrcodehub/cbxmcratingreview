@@ -1,9 +1,8 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class Nullable extends Rule
 {
     /**
@@ -14,6 +13,6 @@ class Nullable extends Rule
      */
     public function check($value): bool
     {
-        return true;
+        return \true;
     }
 }

@@ -1,11 +1,11 @@
 <?php
-namespace CBX\MCRatingReview;
+namespace CBXMCRatingReview;
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 /**
  * weDevs Settings API wrapper class
@@ -52,7 +52,7 @@ class CBXMCRatingReviewSettings {
 		}
 
 		return self::$_instance;
-	}//end method clone
+	}//end method instance
 
 	/**
 	 * Cloning is forbidden.
@@ -61,7 +61,7 @@ class CBXMCRatingReviewSettings {
 	 */
 	public function __clone() {
 		cbxmcratingreview_doing_it_wrong( __FUNCTION__, esc_html__( 'Cloning is forbidden.', 'cbxmcratingreview' ), '2.0.0' );
-	}//end method wakeup
+	}//end method __clone
 
 	/**
 	 * Unserializing instances of this class is forbidden.
@@ -70,7 +70,7 @@ class CBXMCRatingReviewSettings {
 	 */
 	public function __wakeup() {
 		cbxmcratingreview_doing_it_wrong( __FUNCTION__, esc_html__( 'Unserializing instances of this class is forbidden.', 'cbxmcratingreview' ), '2.0.0' );
-	}//end constructor
+	}//end __wakeup
 
 	/**
 	 * Set settings sections
@@ -83,7 +83,7 @@ class CBXMCRatingReviewSettings {
 		$this->settings_sections = $sections;
 
 		return $this;
-	}
+	}//end method set_sections
 
 	/**
 	 * Add a single section
@@ -96,7 +96,7 @@ class CBXMCRatingReviewSettings {
 		$this->settings_sections[] = $section;
 
 		return $this;
-	}
+	}//end method add_section
 
 	/**
 	 * Set settings fields
@@ -109,7 +109,7 @@ class CBXMCRatingReviewSettings {
 		$this->settings_fields = $fields;
 
 		return $this;
-	}
+	}//end method set_fields
 
 	function add_field( $section, $field ) {
 		$defaults = [
@@ -123,11 +123,10 @@ class CBXMCRatingReviewSettings {
 		$this->settings_fields[ $section ][] = $arg;
 
 		return $this;
-	} //end add_field
+	}//end add_field
 
 
 	function admin_init() {
-
 		//register settings sections
 		foreach ( $this->settings_sections as $section ) {
 
@@ -186,7 +185,7 @@ class CBXMCRatingReviewSettings {
 					'sortable'          => isset( $option['sortable'] ) ? absint( $option['sortable'] ) : 0,
 					'allow_new'         => isset( $option['allow_new'] ) ? absint( $option['allow_new'] ) : 0,
 					//only works for repeatable
-					'allow_clear'       => isset( $option['allow_clear'] ) ? intval( $option['allow_clear'] ) : 0,
+					'allow_clear'       => isset( $option['allow_clear'] ) ? absint( $option['allow_clear'] ) : 0,
 					//for select2
 					'check_content'     => isset( $option['check_content'] ) ? $option['check_content'] : '',
 					'inline'            => isset( $option['inline'] ) ? absint( $option['inline'] ) : 1,
@@ -259,7 +258,7 @@ class CBXMCRatingReviewSettings {
 		return str_replace( '[', '_', $str );
 
 		//return $str;
-	} //end get_field_description
+	} //end settings_clean_label_for
 
 	/**
 	 * Displays a textarea for a settings field
@@ -288,7 +287,7 @@ class CBXMCRatingReviewSettings {
 		}
 
 		return $desc;
-	}//end method callback_heading
+	}//end method get_field_description
 
 /**
 	 * Displays heading field using h3
@@ -306,7 +305,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html;//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method callback_subheading
+	} //end method callback_heading
 
 /**
 	 * Displays sub heading field using h4
@@ -320,7 +319,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end callback_text
+	} //end callback_subheading
 
 	/**
 	 * Displays an url field for a settings field
@@ -357,7 +356,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method callback_number
+	} //end method callback_text
 
 	/**
 	 * alt method for get_option
@@ -370,7 +369,7 @@ class CBXMCRatingReviewSettings {
 	 */
 	function get_field( $option, $section, $default = '' ) {
 		return $this->get_option( $option, $section, $default );
-	} //end method callback_radio
+	} //end method get_field
 
 	/**
 	 * Get the value of a settings field
@@ -390,7 +389,7 @@ class CBXMCRatingReviewSettings {
 		}
 
 		return $default;
-	} //end method callback_checkbox
+	} //end method get_option
 
 	/**
 	 * Displays a number field for a settings field
@@ -418,10 +417,10 @@ class CBXMCRatingReviewSettings {
 			$type, $size, $args['section'], $args['id'], $value, $placeholder, $min, $max, $step, $html_id );
 		$html .= $this->get_field_description( $args );
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method callback_multicheck
+	} //end method callback_number
 
 /**
-	 * Displays a multicheckbox a settings field
+	 * Displays a radio a settings field
 	 *
 	 * @param array $args
 	 * @param $value
@@ -457,7 +456,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method callback_select
+	} //end method callback_radio
 
 	/**
 	 * Displays a checkbox for a settings field
@@ -494,22 +493,8 @@ class CBXMCRatingReviewSettings {
 
 
 		$html .= '</div>';
-
-
-		/*$html = '<fieldset>';
-			  $html .= sprintf( '<label for="wpuf-%1$s">', $html_id );
-			  $html .= sprintf( '<input type="hidden" name="%1$s[%2$s]" value="off" />', $args['section'], $args['id'] );
-
-			  $active_class = ( $value == 'on' ) ? 'active' : '';
-			  $html         .= '<span class="checkbox-toggle-btn ' . esc_attr( $active_class ) . '">';
-			  $html .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%4$s" name="%1$s[%2$s]" value='on' %3$s />', $args['section'], $args['id'], checked( $value, 'on', false ), $html_id );
-			  $html .= '<i class="checkbox-round-btn"></i></span>';
-
-			  $html .= sprintf( '<i class="checkbox-round-btn-text">%1$s</i></label>', $args['desc'] );
-			  $html .= '</fieldset>';*/
-
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}//end method callback_page
+	}//end method callback_checkbox
 
 	/**
 	 * Displays a multicheckbox settings field
@@ -561,14 +546,6 @@ class CBXMCRatingReviewSettings {
 				$html .= '<span class="checkbox_field_handle"></span>';
 			}
 
-			/*$html .= sprintf( '<label for="wpuf-%1$s">', $html_id );
-					 $html .= sprintf( '<input type="hidden" name="%1$s[%2$s][%3$s]" value="" />', $args['section'], $args['id'], $key );
-					 $html .= '<span class="checkbox-toggle-btn ' . esc_attr( $active_class ) . '">';
-					 $html .= sprintf( '<input type="checkbox" class="checkbox" id="wpuf-%5$s" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, $checked, $html_id );
-					 $html .= '<i class="checkbox-round-btn"></i></span>';
-
-					 $html .= sprintf( '<i class="checkbox-round-btn-text">%1$s</i></label></p>', $label );*/
-
 			$html .= sprintf( '<input type="hidden" name="%1$s[%2$s][%3$s]" value="" />', $args['section'], $args['id'],
 				$key );
 			$html .= sprintf( '<input type="checkbox" class="magic-checkbox" id="wpuf-%5$s" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />',
@@ -582,7 +559,7 @@ class CBXMCRatingReviewSettings {
 		$html .= '</div>';
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method callback_textarea
+	} //end method callback_multicheck
 
 	/**
 	 * Displays a select box for a settings field
@@ -603,11 +580,6 @@ class CBXMCRatingReviewSettings {
 		}
 
 		$allow_clear = isset( $args['allow_clear'] ) ? intval( $args['allow_clear'] ) : 0;
-
-		/*if ( ! is_array( $value ) ) {
-				  $value = [];
-			  }*/
-
 		$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular selecttwo-select';
 
 		if ( $args['placeholder'] == '' ) {
@@ -628,8 +600,6 @@ class CBXMCRatingReviewSettings {
 
 				if ( ! is_array( $option_vals ) ) {
 					$option_vals = [];
-				} else {
-					$option_vals = $option_vals;
 				}
 
 				foreach ( $option_vals as $key => $val ) {
@@ -655,7 +625,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method callback_wysiwyg
+	} //end method callback_select
 
 	/**
 	 * Displays a select box for a settings field
@@ -735,8 +705,6 @@ class CBXMCRatingReviewSettings {
 
 				if ( ! is_array( $option_vals ) ) {
 					$option_vals = [];
-				} else {
-					//$option_vals = $option_vals;
 				}
 
 				foreach ( $option_vals as $key => $val ) {
@@ -764,7 +732,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method callback_file
+	} //end method callback_page
 
 	/**
 	 * Displays a textarea for a settings field
@@ -824,33 +792,54 @@ class CBXMCRatingReviewSettings {
 		echo '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		echo $this->get_field_description( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end callback_repeat
+	} //end callback_textarea
 
-	/**
-	 * Displays a file upload field for a settings field
-	 *
-	 * @param array $args settings field args
-	 */
-	function callback_file( $args ) {
-		$value = esc_attr( $this->get_field( $args['id'], $args['section'], $args['default'] ) );
-		$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
+    /**
+     * Displays a file upload field for a settings field
+     *
+     * @param $args
+     * @param $value
+     *
+     * @return void
+     */
+    function callback_file($args, $value = null)
+    {
+        if ($value === null) {
+            $value = $this->get_option($args['id'], $args['section'], $args['default']);
+        }
 
-		//$id    = $args['section'] . '[' . $args['id'] . ']';
-		$html_id = "{$args['section']}_{$args['id']}";
-		$html_id = $this->settings_clean_label_for( $html_id );
+        //$value = esc_attr($this->get_option($args['id'], $args['section'], $args['default']));
+        $size  = isset($args['size']) && ! is_null($args['size']) ? $args['size'] : 'regular';
+        $html_id = "{$args['section']}_{$args['id']}";
+        $html_id = $this->settings_clean_label_for($html_id);
+        $id    = $args['section'].'['.$args['id'].']';
+        $label = isset($args['options']['button_label']) ? $args['options']['button_label'] : esc_html__('Choose File',
+                'cbxmcratingreview');
 
+        $html = '<div class="cbxchota-setting_input_file_wrap">';
+        $html .= sprintf('<input type="text" class="%1$s-text wpsa-url" id="%5$s" name="%2$s[%3$s]" value="%4$s"/>',
+                $size, $args['section'], $args['id'], $value, $html_id);
 
-		$label = isset( $args['options']['button_label'] ) ? $args['options']['button_label'] : esc_html__( 'Choose File', 'cbxmcratingreview' );
+        $icon_extra_class  = '';
+        $marker_icon       = '';
+        $trash_extra_class = '';
+        if ($value === '') {
+            $icon_extra_class  = 'cbxchota-setting_marker_hide';
+            $file_picked_class = 'cbxchota-setting_left_space';
+            $trash_extra_class = 'cbxchota-setting_trash_hide';
+        } else {
+            $marker_icon       = ' background-image: url(\''.esc_url($value).'\') ;';
+            $file_picked_class = 'cbxchota-setting_filepicked';
+        }
+        $html .= '<span style="'.esc_attr($marker_icon).'" class="cbxchota-setting_marker_preview '.esc_attr($icon_extra_class).'"></span>';
 
-		$html = '<div class="wpsa-browse-wrap">';
-		$html .= sprintf( '<input type="text" class="chota-inline %1$s-text wpsa-url" id="%5$s" name="%2$s[%3$s]" value="%4$s"/>',
-			$size, $args['section'], $args['id'], $value, $html_id );
-		$html .= '<input type="button" class="button outline primary wpsa-browse" value="' . $label . '" />';
-		$html .= '</div>';
-		$html .= $this->get_field_description( $args );
+        $html .= '<input type="button" class="button cbxchota-setting_filepicker_btn wpsa-browse '.esc_attr($file_picked_class).'" value="'.esc_attr($label).'" />';
+        $html .= '<span class="cbxchota-setting_trash dashicons dashicons-no-alt '.esc_attr($trash_extra_class).'"></span>';
+        $html .= '</div>';
+        $html .= $this->get_field_description($args);
 
-		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method callback_password
+        echo $html;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    }//end method callback_file
 
 /**
 	 * Displays a color picker field for a settings field
@@ -881,7 +870,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method callback_email
+	} //end method callback_color
 
 	/**
 	 * Host servers type field
@@ -996,7 +985,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end sanitize_options
+	} //end callback_repeat
 
 	/**
 	 * Displays a password field for a settings field
@@ -1015,7 +1004,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method convert_associate
+	} //end method callback_password
 
 	/**
 	 * Displays a email field for a settings field
@@ -1035,7 +1024,7 @@ class CBXMCRatingReviewSettings {
 		$html .= $this->get_field_description( $args );
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method is_associate
+	} //end method callback_email
 
 	/**
 	 * Sanitize callback for Settings API
@@ -1052,7 +1041,7 @@ class CBXMCRatingReviewSettings {
 		}
 
 		return $options;
-	} //end get_sanitize_callback
+	} //end sanitize_options
 
 	/**
 	 * Get sanitization callback for given option slug
@@ -1083,7 +1072,7 @@ class CBXMCRatingReviewSettings {
 		}
 
 		return false;
-	} //end sanitize_multi_select_check
+	} //end get_sanitize_callback
 
 	/**
 	 * Remove empty values from multi select fields (multi select and multi checkbox)
@@ -1098,7 +1087,7 @@ class CBXMCRatingReviewSettings {
 		}
 
 		return $option_value;
-	} //end settings_clean_label_for
+	} //end sanitize_multi_select_check
 
 	/**
 	 * alt method for get_option
@@ -1111,7 +1100,7 @@ class CBXMCRatingReviewSettings {
 	 */
 	function get_opt( $option, $section, $default = '' ) {
 		return $this->get_option( $option, $section, $default );
-	} //end get_option
+	} //end get_opt
 
 	/**
 	 * Show navigations as tab
@@ -1146,7 +1135,7 @@ class CBXMCRatingReviewSettings {
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		echo $mobile_navs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}//end method get_opt
+	}//end method show_navigation
 
 	/**
 	 * Show the section settings forms
@@ -1196,60 +1185,6 @@ class CBXMCRatingReviewSettings {
 		<?php
 	}//end method show_forms
 
-	/**
-	 * Displays a multi-selectbox for a settings field
-	 *
-	 * @param array $args settings field args
-	 */
-	function callback_multiselect( $args ) {
-
-
-		$value = $this->get_option( $args['id'], $args['section'], $args['default'] );
-
-		if ( ! is_array( $value ) ) {
-			$value = [];
-		}
-
-
-		$size = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular chosen-select';
-
-		$html = sprintf( '<select multiple class="%1$s" name="%2$s[%3$s][]" id="%2$s[%3$s]" style="min-width: 150px !important;"  placeholder="%4$s" data-placeholder="%4$s">', $size, $args['section'], $args['id'], $args['placeholder'] );
-
-
-		if ( isset( $args['optgroup'] ) && $args['optgroup'] ) {
-			foreach ( $args['options'] as $opt_grouplabel => $option_vals ) {
-				$html .= '<optgroup label="' . $opt_grouplabel . '">';
-
-				if ( ! is_array( $option_vals ) ) {
-					$option_vals = [];
-				} else {
-					//$option_vals = $this->convert_associate( $option_vals );
-					$option_vals = $option_vals;
-				}
-
-
-				foreach ( $option_vals as $key => $val ) {
-					$selected = in_array( $key, $value ) ? ' selected="selected" ' : '';
-					$html     .= sprintf( '<option value="%s" ' . $selected . '>%s</option>', $key, $val );
-				}
-				$html .= '<optgroup>';
-			}
-		} else {
-			//$option_vals = $this->convert_associate( $args['options'] );
-			$option_vals = $args['options'];
-
-
-			foreach ( $option_vals as $key => $val ) {
-				$selected = in_array( $key, $value ) ? ' selected="selected" ' : '';
-				$html     .= sprintf( '<option value="%s" ' . $selected . '>%s</option>', $key, $val );
-			}
-		}
-
-		$html .= sprintf( '</select>' );
-		$html .= $this->get_field_description( $args );
-
-		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end method show_navigation
 
 	/**
 	 * Displays custom file extension checker checkbox for a settings field
@@ -1275,7 +1210,7 @@ class CBXMCRatingReviewSettings {
 		}
 
 		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	} //end show_forms
+	} //end callback_file_extensions_checker
 
 	/**
 	 * Convert an array to associative if not
@@ -1296,7 +1231,7 @@ class CBXMCRatingReviewSettings {
 
 
 		return $value;
-	}//end method callback_multiselect
+	}//end method convert_associate
 
 	/**
 	 * check if any array is associative
@@ -1307,5 +1242,5 @@ class CBXMCRatingReviewSettings {
 	 */
 	private function is_associate( array $array ) {
 		return count( array_filter( array_keys( $array ), 'is_string' ) ) > 0;
-	}//end method callback_file_extensions_checker
+	}//end method is_associate
 } //end class CBXMCRatingReviewSettings

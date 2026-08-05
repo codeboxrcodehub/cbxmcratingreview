@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector;
 
-use Doctrine\Inflector\Rules\English;
-use Doctrine\Inflector\Rules\French;
-use Doctrine\Inflector\Rules\NorwegianBokmal;
-use Doctrine\Inflector\Rules\Portuguese;
-use Doctrine\Inflector\Rules\Spanish;
-use Doctrine\Inflector\Rules\Turkish;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\English;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\French;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\NorwegianBokmal;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\Portuguese;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\Spanish;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\Turkish;
 use InvalidArgumentException;
 
 use function sprintf;

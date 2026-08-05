@@ -1,12 +1,12 @@
 <?php
-namespace CBX\MCRatingReview\Models;
+namespace CBXMCRatingReview\Models;
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use Illuminate\Database\Eloquent\Model as Eloquent;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReviewScoped\Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
  * Rating log model
@@ -48,7 +48,8 @@ class RatingReviewLog extends Eloquent {
 		do_action( 'cbxmcratingreview_review_delete_before', $review );
 
 		$delete = parent::delete();
-		if ( $delete ) {
+
+		if ( $delete) {
 			do_action( 'cbxmcratingreview_review_delete_after', $review );
 		} else {
 			do_action( 'cbxmcratingreview_review_delete_failed', $review );

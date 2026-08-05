@@ -8,8 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Symfony\Component\CssSelector\XPath\Extension;
+namespace CBXMCRatingReviewScoped\Symfony\Component\CssSelector\XPath\Extension;
 
 /**
  * XPath expression translator abstract extension.
@@ -27,22 +26,18 @@ abstract class AbstractExtension implements ExtensionInterface
     {
         return [];
     }
-
     public function getCombinationTranslators(): array
     {
         return [];
     }
-
     public function getFunctionTranslators(): array
     {
         return [];
     }
-
     public function getPseudoClassTranslators(): array
     {
         return [];
     }
-
     public function getAttributeMatchingTranslators(): array
     {
         return [];

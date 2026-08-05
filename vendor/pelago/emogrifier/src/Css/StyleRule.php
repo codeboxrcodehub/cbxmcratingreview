@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace CBXMCRatingReviewScoped\Pelago\Emogrifier\Css;
 
-namespace Pelago\Emogrifier\Css;
-
-use Sabberworm\CSS\Property\Selector;
-use Sabberworm\CSS\RuleSet\DeclarationBlock;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Property\Selector;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\RuleSet\DeclarationBlock;
 /**
  * This class represents a CSS style rule, including selectors, a declaration block, and an optional containing at-rule.
  *
@@ -18,12 +16,10 @@ final class StyleRule
      * @var DeclarationBlock
      */
     private $declarationBlock;
-
     /**
      * @var string
      */
     private $containingAtRule;
-
     /**
      * @param DeclarationBlock $declarationBlock
      * @param string $containingAtRule e.g. `@media screen and (max-width: 480px)`
@@ -33,7 +29,6 @@ final class StyleRule
         $this->declarationBlock = $declarationBlock;
         $this->containingAtRule = \trim($containingAtRule);
     }
-
     /**
      * @return array<int, string> the selectors, e.g. `["h1", "p"]`
      */
@@ -41,14 +36,10 @@ final class StyleRule
     {
         /** @var array<int, Selector> $selectors */
         $selectors = $this->declarationBlock->getSelectors();
-        return \array_map(
-            static function (Selector $selector): string {
-                return (string) $selector;
-            },
-            $selectors
-        );
+        return \array_map(static function (Selector $selector): string {
+            return (string) $selector;
+        }, $selectors);
     }
-
     /**
      * @return string the CSS declarations, separated and followed by a semicolon, e.g., `color: red; height: 4px;`
      */
@@ -56,7 +47,6 @@ final class StyleRule
     {
         return \implode(' ', $this->declarationBlock->getRules());
     }
-
     /**
      * Checks whether the declaration block has at least one declaration.
      */
@@ -64,7 +54,6 @@ final class StyleRule
     {
         return $this->declarationBlock->getRules() !== [];
     }
-
     /**
      * @returns string e.g. `@media screen and (max-width: 480px)`, or an empty string
      */
@@ -72,7 +61,6 @@ final class StyleRule
     {
         return $this->containingAtRule;
     }
-
     /**
      * Checks whether the containing at-rule is non-empty and has any non-whitespace characters.
      */

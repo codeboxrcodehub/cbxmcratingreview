@@ -1,17 +1,14 @@
 <?php
 
-namespace Rakit\Validation\Rules;
+namespace CBXMCRatingReviewScoped\Rakit\Validation\Rules;
 
-use Rakit\Validation\Rule;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\Rule;
 class RequiredIf extends Required
 {
     /** @var bool */
-    protected $implicit = true;
-
+    protected $implicit = \true;
     /** @var string */
     protected $message = "The :attribute is required";
-
     /**
      * Given $params and assign the $this->params
      *
@@ -24,7 +21,6 @@ class RequiredIf extends Required
         $this->params['values'] = $params;
         return $this;
     }
-
     /**
      * Check the $value is valid
      *
@@ -34,19 +30,15 @@ class RequiredIf extends Required
     public function check($value): bool
     {
         $this->requireParameters(['field', 'values']);
-
         $anotherAttribute = $this->parameter('field');
         $definedValues = $this->parameter('values');
         $anotherValue = $this->getAttribute()->getValue($anotherAttribute);
-
         $validator = $this->validation->getValidator();
         $requiredValidator = $validator('required');
-
         if (in_array($anotherValue, $definedValues)) {
             $this->setAttributeAsRequired();
             return $requiredValidator->check($value, []);
         }
-
-        return true;
+        return \true;
     }
 }

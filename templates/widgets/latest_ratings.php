@@ -15,9 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 //post data needs to be in variable $data_posts
 ?>
 <div class="cbxmcratingreviewlratings_list_wrapper">
@@ -68,5 +68,6 @@ use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
     </ul>
 	<?php
 	do_action( 'cbxmcratingreviewlratings_list_after' );
+	// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	?>
 </div>

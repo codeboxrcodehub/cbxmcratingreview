@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\Pipeline;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Pipeline;
 
 interface Hub
 {

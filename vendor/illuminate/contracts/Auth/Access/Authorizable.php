@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\Auth\Access;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Auth\Access;
 
 interface Authorizable
 {

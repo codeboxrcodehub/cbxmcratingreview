@@ -1,13 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace CBXMCRatingReviewScoped\Pelago\Emogrifier\HtmlProcessor;
 
-namespace Pelago\Emogrifier\HtmlProcessor;
-
-use Pelago\Emogrifier\CssInliner;
-use Pelago\Emogrifier\Utilities\ArrayIntersector;
-use Pelago\Emogrifier\Utilities\Preg;
-
+use CBXMCRatingReviewScoped\Pelago\Emogrifier\CssInliner;
+use CBXMCRatingReviewScoped\Pelago\Emogrifier\Utilities\ArrayIntersector;
+use CBXMCRatingReviewScoped\Pelago\Emogrifier\Utilities\Preg;
 /**
  * This class can remove things from HTML.
  */
@@ -21,10 +19,7 @@ final class HtmlPruner extends AbstractHtmlProcessor
      *
      * @var string
      */
-    private const DISPLAY_NONE_MATCHER
-        = '//*[@style and contains(translate(translate(@style," ",""),"NOE","noe"),"display:none")'
-        . ' and not(@class and contains(concat(" ", normalize-space(@class), " "), " -emogrifier-keep "))]';
-
+    private const DISPLAY_NONE_MATCHER = '//*[@style and contains(translate(translate(@style," ",""),"NOE","noe"),"display:none")' . ' and not(@class and contains(concat(" ", normalize-space(@class), " "), " -emogrifier-keep "))]';
     /**
      * Removes elements that have a "display: none;" style.
      *
@@ -36,17 +31,14 @@ final class HtmlPruner extends AbstractHtmlProcessor
         if ($elementsWithStyleDisplayNone->length === 0) {
             return $this;
         }
-
         foreach ($elementsWithStyleDisplayNone as $element) {
             $parentNode = $element->parentNode;
             if ($parentNode !== null) {
                 $parentNode->removeChild($element);
             }
         }
-
         return $this;
     }
-
     /**
      * Removes classes that are no longer required (e.g. because there are no longer any CSS rules that reference them)
      * from `class` attributes.
@@ -63,17 +55,14 @@ final class HtmlPruner extends AbstractHtmlProcessor
     public function removeRedundantClasses(array $classesToKeep = []): self
     {
         $elementsWithClassAttribute = $this->getXPath()->query('//*[@class]');
-
         if ($classesToKeep !== []) {
             $this->removeClassesFromElements($elementsWithClassAttribute, $classesToKeep);
         } else {
             // Avoid unnecessary processing if there are no classes to keep.
             $this->removeClassAttributeFromElements($elementsWithClassAttribute);
         }
-
         return $this;
     }
-
     /**
      * Removes classes from the `class` attribute of each element in `$elements`, except any in `$classesToKeep`,
      * removing the `class` attribute itself if the resultant list is empty.
@@ -84,11 +73,10 @@ final class HtmlPruner extends AbstractHtmlProcessor
     private function removeClassesFromElements(\DOMNodeList $elements, array $classesToKeep): void
     {
         $classesToKeepIntersector = new ArrayIntersector($classesToKeep);
-
         $preg = new Preg();
         /** @var \DOMElement $element */
         foreach ($elements as $element) {
-            $elementClasses = $preg->split('/\\s++/', \trim($element->getAttribute('class')));
+            $elementClasses = $preg->split('/\s++/', \trim($element->getAttribute('class')));
             $elementClassesToKeep = $classesToKeepIntersector->intersectWith($elementClasses);
             if ($elementClassesToKeep !== []) {
                 $element->setAttribute('class', \implode(' ', $elementClassesToKeep));
@@ -97,7 +85,6 @@ final class HtmlPruner extends AbstractHtmlProcessor
             }
         }
     }
-
     /**
      * Removes the `class` attribute from each element in `$elements`.
      *
@@ -110,7 +97,6 @@ final class HtmlPruner extends AbstractHtmlProcessor
             $element->removeAttribute('class');
         }
     }
-
     /**
      * After CSS has been inlined, there will likely be some classes in `class` attributes that are no longer referenced
      * by any remaining (uninlinable) CSS.  This method removes such classes.
@@ -127,15 +113,12 @@ final class HtmlPruner extends AbstractHtmlProcessor
     public function removeRedundantClassesAfterCssInlined(CssInliner $cssInliner): self
     {
         $preg = new Preg();
-
         $classesToKeepAsKeys = [];
         foreach ($cssInliner->getMatchingUninlinableSelectors() as $selector) {
-            $preg->matchAll('/\\.(-?+[_a-zA-Z][\\w\\-]*+)/', $selector, $matches);
-            $classesToKeepAsKeys += \array_fill_keys($matches[1], true);
+            $preg->matchAll('/\.(-?+[_a-zA-Z][\w\-]*+)/', $selector, $matches);
+            $classesToKeepAsKeys += \array_fill_keys($matches[1], \true);
         }
-
         $this->removeRedundantClasses(\array_keys($classesToKeepAsKeys));
-
         return $this;
     }
 }

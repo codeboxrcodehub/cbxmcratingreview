@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\Queue;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Queue;
 
 interface ClearableQueue
 {

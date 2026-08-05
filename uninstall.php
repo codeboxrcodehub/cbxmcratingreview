@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\CBXMCRatingReviewUninstall;
+use CBXMCRatingReview\CBXMCRatingReviewUninstall;
 
 /**
  * Fired when the plugin is uninstalled.
@@ -25,11 +25,11 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 /**
  * The code that runs during plugin uninstall.
  */
-function uninstall_cbxmcratingreview() {
+function cbxmcratingreview_uninstall() {
 	require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 	CBXMCRatingReviewUninstall::uninstall();
-}//end function uninstall_cbxmcratingreview
+}//end function cbxmcratingreview_uninstall
 
 if ( ! defined( 'CBXMCRATINGREVIEW_PLUGIN_NAME' ) ) {
-	uninstall_cbxmcratingreview();
+	cbxmcratingreview_uninstall();
 }

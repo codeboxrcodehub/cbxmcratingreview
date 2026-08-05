@@ -8,12 +8,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Parser;
 
-namespace Symfony\Component\CssSelector\Parser;
-
-use Symfony\Component\CssSelector\Exception\InternalErrorException;
-use Symfony\Component\CssSelector\Exception\SyntaxErrorException;
-
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Exception\InternalErrorException;
+use CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Exception\SyntaxErrorException;
 /**
  * CSS selector token stream.
  *
@@ -30,16 +28,13 @@ class TokenStream
      * @var Token[]
      */
     private array $tokens = [];
-
     /**
      * @var Token[]
      */
     private array $used = [];
-
     private int $cursor = 0;
     private ?Token $peeked;
-    private bool $peeking = false;
-
+    private bool $peeking = \false;
     /**
      * Pushes a token.
      *
@@ -48,10 +43,8 @@ class TokenStream
     public function push(Token $token): static
     {
         $this->tokens[] = $token;
-
         return $this;
     }
-
     /**
      * Freezes stream.
      *
@@ -61,7 +54,6 @@ class TokenStream
     {
         return $this;
     }
-
     /**
      * Returns next token.
      *
@@ -70,19 +62,15 @@ class TokenStream
     public function getNext(): Token
     {
         if ($this->peeking) {
-            $this->peeking = false;
+            $this->peeking = \false;
             $this->used[] = $this->peeked;
-
             return $this->peeked;
         }
-
         if (!isset($this->tokens[$this->cursor])) {
             throw new InternalErrorException('Unexpected token stream end.');
         }
-
         return $this->tokens[$this->cursor++];
     }
-
     /**
      * Returns peeked token.
      */
@@ -90,12 +78,10 @@ class TokenStream
     {
         if (!$this->peeking) {
             $this->peeked = $this->getNext();
-            $this->peeking = true;
+            $this->peeking = \true;
         }
-
         return $this->peeked;
     }
-
     /**
      * Returns used tokens.
      *
@@ -105,7 +91,6 @@ class TokenStream
     {
         return $this->used;
     }
-
     /**
      * Returns next identifier token.
      *
@@ -114,14 +99,11 @@ class TokenStream
     public function getNextIdentifier(): string
     {
         $next = $this->getNext();
-
         if (!$next->isIdentifier()) {
             throw SyntaxErrorException::unexpectedToken('identifier', $next);
         }
-
         return $next->getValue();
     }
-
     /**
      * Returns next identifier or null if star delimiter token is found.
      *
@@ -130,25 +112,20 @@ class TokenStream
     public function getNextIdentifierOrStar(): ?string
     {
         $next = $this->getNext();
-
         if ($next->isIdentifier()) {
             return $next->getValue();
         }
-
         if ($next->isDelimiter(['*'])) {
             return null;
         }
-
         throw SyntaxErrorException::unexpectedToken('identifier or "*"', $next);
     }
-
     /**
      * Skips next whitespace if any.
      */
     public function skipWhitespace(): void
     {
         $peek = $this->getPeek();
-
         if ($peek->isWhitespace()) {
             $this->getNext();
         }

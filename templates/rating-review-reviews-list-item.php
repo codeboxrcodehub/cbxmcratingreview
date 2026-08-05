@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use CBX\MCRatingReview\CBXMCRatingReviewSettings;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\CBXMCRatingReviewSettings;
 
 /**
  * Provides review list item
@@ -20,6 +20,7 @@ use CBX\MCRatingReview\CBXMCRatingReviewSettings;
  */
 ?>
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $post_id    = absint( $post_review['post_id'] );
 $post_title = get_the_title( $post_id );
 
@@ -190,5 +191,6 @@ do_action( 'cbxmcratingreview_review_list_item_before', $post_review );
 	<?php
 	do_action( 'cbxmcratingreview_review_list_item_after_comment', $post_review );
 	do_action( 'cbxmcratingreview_review_list_item_after', $post_review );
+	// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 	?>
 </div>

@@ -1,10 +1,9 @@
 <?php
 
-namespace Sabberworm\CSS;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS;
 
-use Sabberworm\CSS\Comment\Commentable;
-use Sabberworm\CSS\Parsing\OutputException;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Comment\Commentable;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\OutputException;
 /**
  * @internal since 8.8.0
  */
@@ -14,12 +13,10 @@ class OutputFormatter
      * @var OutputFormat
      */
     private $oFormat;
-
     public function __construct(OutputFormat $oFormat)
     {
         $this->oFormat = $oFormat;
     }
-
     /**
      * @param string $sName
      * @param string|null $sType
@@ -28,7 +25,7 @@ class OutputFormatter
      */
     public function space($sName, $sType = null)
     {
-        $sSpaceString = $this->oFormat->get("Space$sName");
+        $sSpaceString = $this->oFormat->get("Space{$sName}");
         // If $sSpaceString is an array, we have multiple values configured
         // depending on the type of object the space applies to
         if (is_array($sSpaceString)) {
@@ -40,7 +37,6 @@ class OutputFormatter
         }
         return $this->prepareSpace($sSpaceString);
     }
-
     /**
      * @return string
      */
@@ -48,7 +44,6 @@ class OutputFormatter
     {
         return $this->space('AfterRuleName');
     }
-
     /**
      * @return string
      */
@@ -56,7 +51,6 @@ class OutputFormatter
     {
         return $this->space('BeforeRules');
     }
-
     /**
      * @return string
      */
@@ -64,7 +58,6 @@ class OutputFormatter
     {
         return $this->space('AfterRules');
     }
-
     /**
      * @return string
      */
@@ -72,7 +65,6 @@ class OutputFormatter
     {
         return $this->space('BetweenRules');
     }
-
     /**
      * @return string
      */
@@ -80,7 +72,6 @@ class OutputFormatter
     {
         return $this->space('BeforeBlocks');
     }
-
     /**
      * @return string
      */
@@ -88,7 +79,6 @@ class OutputFormatter
     {
         return $this->space('AfterBlocks');
     }
-
     /**
      * @return string
      */
@@ -96,7 +86,6 @@ class OutputFormatter
     {
         return $this->space('BetweenBlocks');
     }
-
     /**
      * @return string
      */
@@ -104,7 +93,6 @@ class OutputFormatter
     {
         return $this->space('BeforeSelectorSeparator');
     }
-
     /**
      * @return string
      */
@@ -112,7 +100,6 @@ class OutputFormatter
     {
         return $this->space('AfterSelectorSeparator');
     }
-
     /**
      * @param string $sSeparator
      *
@@ -124,10 +111,8 @@ class OutputFormatter
         if (isset($spaceForSeparator[$sSeparator])) {
             return $spaceForSeparator[$sSeparator];
         }
-
         return $this->space('BeforeListArgumentSeparator', $sSeparator);
     }
-
     /**
      * @param string $sSeparator
      *
@@ -139,10 +124,8 @@ class OutputFormatter
         if (isset($spaceForSeparator[$sSeparator])) {
             return $spaceForSeparator[$sSeparator];
         }
-
         return $this->space('AfterListArgumentSeparator', $sSeparator);
     }
-
     /**
      * @return string
      */
@@ -150,7 +133,6 @@ class OutputFormatter
     {
         return $this->space('BeforeOpeningBrace');
     }
-
     /**
      * Runs the given code, either swallowing or passing exceptions, depending on the `bIgnoreExceptions` setting.
      *
@@ -166,13 +148,13 @@ class OutputFormatter
                 return $cCode();
             } catch (OutputException $e) {
                 return null;
-            } // Do nothing
+            }
+            // Do nothing
         } else {
             // Run the code as-is
             return $cCode();
         }
     }
-
     /**
      * Clone of the `implode` function, but calls `render` with the current output format instead of `__toString()`.
      *
@@ -182,17 +164,17 @@ class OutputFormatter
      *
      * @return string
      */
-    public function implode($sSeparator, array $aValues, $bIncreaseLevel = false)
+    public function implode($sSeparator, array $aValues, $bIncreaseLevel = \false)
     {
         $sResult = '';
         $oFormat = $this->oFormat;
         if ($bIncreaseLevel) {
             $oFormat = $oFormat->nextLevel();
         }
-        $bIsFirst = true;
+        $bIsFirst = \true;
         foreach ($aValues as $mValue) {
             if ($bIsFirst) {
-                $bIsFirst = false;
+                $bIsFirst = \false;
             } else {
                 $sResult .= $sSeparator;
             }
@@ -204,7 +186,6 @@ class OutputFormatter
         }
         return $sResult;
     }
-
     /**
      * @param string $sString
      *
@@ -224,7 +205,6 @@ class OutputFormatter
         array_push($sString, $sNextToLast . $sLast);
         return implode(';', $sString);
     }
-
     /**
      *
      * @param array<Commentable> $aComments
@@ -236,18 +216,15 @@ class OutputFormatter
         if (!$this->oFormat->bRenderComments) {
             return '';
         }
-
         $sResult = '';
         $aComments = $oCommentable->getComments();
         $iLastCommentIndex = count($aComments) - 1;
-
         foreach ($aComments as $i => $oComment) {
             $sResult .= $oComment->render($this->oFormat);
             $sResult .= $i === $iLastCommentIndex ? $this->spaceAfterBlocks() : $this->spaceBetweenBlocks();
         }
         return $sResult;
     }
-
     /**
      * @param string $sSpaceString
      *
@@ -257,7 +234,6 @@ class OutputFormatter
     {
         return str_replace("\n", "\n" . $this->indent(), $sSpaceString);
     }
-
     /**
      * @return string
      */

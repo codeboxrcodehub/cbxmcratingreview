@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Database\Connectors;
+namespace CBXMCRatingReviewScoped\Illuminate\Database\Connectors;
 
 interface ConnectorInterface
 {

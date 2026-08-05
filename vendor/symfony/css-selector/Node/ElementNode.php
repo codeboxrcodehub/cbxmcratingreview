@@ -8,8 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Symfony\Component\CssSelector\Node;
+namespace CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Node;
 
 /**
  * Represents a "<namespace>|<element>" node.
@@ -23,31 +22,24 @@ namespace Symfony\Component\CssSelector\Node;
  */
 class ElementNode extends AbstractNode
 {
-    public function __construct(
-        private ?string $namespace = null,
-        private ?string $element = null,
-    ) {
+    public function __construct(private ?string $namespace = null, private ?string $element = null)
+    {
     }
-
     public function getNamespace(): ?string
     {
         return $this->namespace;
     }
-
     public function getElement(): ?string
     {
         return $this->element;
     }
-
     public function getSpecificity(): Specificity
     {
         return new Specificity(0, 0, $this->element ? 1 : 0);
     }
-
     public function __toString(): string
     {
         $element = $this->element ?: '*';
-
-        return \sprintf('%s[%s]', $this->getNodeName(), $this->namespace ? $this->namespace.'|'.$element : $element);
+        return \sprintf('%s[%s]', $this->getNodeName(), $this->namespace ? $this->namespace . '|' . $element : $element);
     }
 }

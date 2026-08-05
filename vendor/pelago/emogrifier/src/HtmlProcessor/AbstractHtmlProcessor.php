@@ -1,11 +1,9 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace CBXMCRatingReviewScoped\Pelago\Emogrifier\HtmlProcessor;
 
-namespace Pelago\Emogrifier\HtmlProcessor;
-
-use Pelago\Emogrifier\Utilities\Preg;
-
+use CBXMCRatingReviewScoped\Pelago\Emogrifier\Utilities\Preg;
 /**
  * Base class for HTML processor that e.g., can remove, add or modify nodes or attributes.
  *
@@ -17,12 +15,10 @@ abstract class AbstractHtmlProcessor
      * @var string
      */
     protected const DEFAULT_DOCUMENT_TYPE = '<!DOCTYPE html>';
-
     /**
      * @var string
      */
     protected const CONTENT_TYPE_META_TAG = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
-
     /**
      * @var string Regular expression part to match tag names that PHP's DOMDocument implementation is not aware are
      *      self-closing. These are mostly HTML5 elements, but for completeness <command> (obsolete) and <keygen>
@@ -31,48 +27,41 @@ abstract class AbstractHtmlProcessor
      * @see https://bugs.php.net/bug.php?id=73175
      */
     protected const PHP_UNRECOGNIZED_VOID_TAGNAME_MATCHER = '(?:command|embed|keygen|source|track|wbr)';
-
     /**
      * Regular expression part to match tag names that may appear before the start of the `<body>` element.  A start tag
      * for any other element would implicitly start the `<body>` element due to tag omission rules.
      *
      * @var string
      */
-    protected const TAGNAME_ALLOWED_BEFORE_BODY_MATCHER
-        = '(?:html|head|base|command|link|meta|noscript|script|style|template|title)';
-
+    protected const TAGNAME_ALLOWED_BEFORE_BODY_MATCHER = '(?:html|head|base|command|link|meta|noscript|script|style|template|title)';
     /**
      * regular expression pattern to match an HTML comment, including delimiters and modifiers
      *
      * @var string
      */
     protected const HTML_COMMENT_PATTERN = '/<!--[^-]*+(?:-(?!->)[^-]*+)*+(?:-->|$)/';
-
     /**
      * regular expression pattern to match an HTML `<template>` element, including delimiters and modifiers
      *
      * @var string
      */
-    protected const HTML_TEMPLATE_ELEMENT_PATTERN
-        = '%<template[\\s>][^<]*+(?:<(?!/template>)[^<]*+)*+(?:</template>|$)%i';
-
+    protected const HTML_TEMPLATE_ELEMENT_PATTERN = '%<template[\s>][^<]*+(?:<(?!/template>)[^<]*+)*+(?:</template>|$)%i';
     /**
      * @var ?\DOMDocument
      */
     protected $domDocument = null;
-
     /**
      * @var ?\DOMXPath
      */
     private $xPath = null;
-
     /**
      * The constructor.
      *
      * Please use `::fromHtml` or `::fromDomDocument` instead.
      */
-    private function __construct() {}
-
+    private function __construct()
+    {
+    }
     /**
      * Builds a new instance from the given HTML.
      *
@@ -87,13 +76,10 @@ abstract class AbstractHtmlProcessor
         if ($unprocessedHtml === '') {
             throw new \InvalidArgumentException('The provided HTML must not be empty.', 1515763647);
         }
-
         $instance = new static();
         $instance->setHtml($unprocessedHtml);
-
         return $instance;
     }
-
     /**
      * Builds a new instance from the given DOM document.
      *
@@ -105,10 +91,8 @@ abstract class AbstractHtmlProcessor
     {
         $instance = new static();
         $instance->setDomDocument($document);
-
         return $instance;
     }
-
     /**
      * Sets the HTML to process.
      *
@@ -118,7 +102,6 @@ abstract class AbstractHtmlProcessor
     {
         $this->createUnifiedDomDocument($html);
     }
-
     /**
      * Provides access to the internal DOMDocument representation of the HTML in its current state.
      *
@@ -132,10 +115,8 @@ abstract class AbstractHtmlProcessor
             $message = self::class . '::setDomDocument() has not yet been called on ' . static::class;
             throw new \UnexpectedValueException($message, 1570472239);
         }
-
         return $this->domDocument;
     }
-
     /**
      * @param \DOMDocument $domDocument
      */
@@ -144,7 +125,6 @@ abstract class AbstractHtmlProcessor
         $this->domDocument = $domDocument;
         $this->xPath = new \DOMXPath($this->domDocument);
     }
-
     /**
      * @return \DOMXPath
      *
@@ -156,10 +136,8 @@ abstract class AbstractHtmlProcessor
             $message = self::class . '::setDomDocument() has not yet been called on ' . static::class;
             throw new \UnexpectedValueException($message, 1617819086);
         }
-
         return $this->xPath;
     }
-
     /**
      * Renders the normalized and processed HTML.
      *
@@ -168,10 +146,8 @@ abstract class AbstractHtmlProcessor
     public function render(): string
     {
         $htmlWithPossibleErroneousClosingTags = $this->getDomDocument()->saveHTML();
-
         return $this->removeSelfClosingTagsClosingTags($htmlWithPossibleErroneousClosingTags);
     }
-
     /**
      * Renders the content of the BODY element of the normalized and processed HTML.
      *
@@ -181,10 +157,8 @@ abstract class AbstractHtmlProcessor
     {
         $htmlWithPossibleErroneousClosingTags = $this->getDomDocument()->saveHTML($this->getBodyElement());
         $bodyNodeHtml = $this->removeSelfClosingTagsClosingTags($htmlWithPossibleErroneousClosingTags);
-
-        return (new Preg())->replace('%</?+body(?:\\s[^>]*+)?+>%', '', $bodyNodeHtml);
+        return (new Preg())->replace('%</?+body(?:\s[^>]*+)?+>%', '', $bodyNodeHtml);
     }
-
     /**
      * Eliminates any invalid closing tags for void elements from the given HTML.
      *
@@ -196,7 +170,6 @@ abstract class AbstractHtmlProcessor
     {
         return (new Preg())->replace('%</' . self::PHP_UNRECOGNIZED_VOID_TAGNAME_MATCHER . '>%', '', $html);
     }
-
     /**
      * Returns the HTML element.
      *
@@ -210,10 +183,8 @@ abstract class AbstractHtmlProcessor
         if (!$htmlElement instanceof \DOMElement) {
             throw new \UnexpectedValueException('There is no HTML element although there should be one.', 1569930853);
         }
-
         return $htmlElement;
     }
-
     /**
      * Returns the BODY element.
      *
@@ -229,10 +200,8 @@ abstract class AbstractHtmlProcessor
         if (!$node instanceof \DOMElement) {
             throw new \RuntimeException('There is no body element.', 1617922607);
         }
-
         return $node;
     }
-
     /**
      * Creates a DOM document from the given HTML and stores it in $this->domDocument.
      *
@@ -245,7 +214,6 @@ abstract class AbstractHtmlProcessor
         $this->createRawDomDocument($html);
         $this->ensureExistenceOfBodyElement();
     }
-
     /**
      * Creates a DOMDocument instance from the given HTML and stores it in $this->domDocument.
      *
@@ -254,16 +222,14 @@ abstract class AbstractHtmlProcessor
     private function createRawDomDocument(string $html): void
     {
         $domDocument = new \DOMDocument();
-        $domDocument->strictErrorChecking = false;
-        $domDocument->formatOutput = false;
-        $libXmlState = \libxml_use_internal_errors(true);
+        $domDocument->strictErrorChecking = \false;
+        $domDocument->formatOutput = \false;
+        $libXmlState = \libxml_use_internal_errors(\true);
         $domDocument->loadHTML($this->prepareHtmlForDomConversion($html));
         \libxml_clear_errors();
         \libxml_use_internal_errors($libXmlState);
-
         $this->setDomDocument($domDocument);
     }
-
     /**
      * Returns the HTML with added document type, Content-Type meta tag, and self-closing slashes, if needed,
      * ensuring that the HTML will be good for creating a DOM document from it.
@@ -276,10 +242,8 @@ abstract class AbstractHtmlProcessor
     {
         $htmlWithSelfClosingSlashes = $this->ensurePhpUnrecognizedSelfClosingTagsAreXml($html);
         $htmlWithDocumentType = $this->ensureDocumentType($htmlWithSelfClosingSlashes);
-
         return $this->addContentTypeMetaTag($htmlWithDocumentType);
     }
-
     /**
      * Makes sure that the passed HTML has a document type, with lowercase "html".
      *
@@ -289,14 +253,12 @@ abstract class AbstractHtmlProcessor
      */
     private function ensureDocumentType(string $html): string
     {
-        $hasDocumentType = \stripos($html, '<!DOCTYPE') !== false;
+        $hasDocumentType = \stripos($html, '<!DOCTYPE') !== \false;
         if ($hasDocumentType) {
             return $this->normalizeDocumentType($html);
         }
-
         return self::DEFAULT_DOCUMENT_TYPE . $html;
     }
-
     /**
      * Makes sure the document type in the passed HTML has lowercase "html".
      *
@@ -307,14 +269,8 @@ abstract class AbstractHtmlProcessor
     private function normalizeDocumentType(string $html): string
     {
         // Limit to replacing the first occurrence: as an optimization; and in case an example exists as unescaped text.
-        return (new Preg())->replace(
-            '/<!DOCTYPE\\s++html(?=[\\s>])/i',
-            '<!DOCTYPE html',
-            $html,
-            1
-        );
+        return (new Preg())->replace('/<!DOCTYPE\s++html(?=[\s>])/i', '<!DOCTYPE html', $html, 1);
     }
-
     /**
      * Adds a Content-Type meta tag for the charset.
      *
@@ -329,31 +285,19 @@ abstract class AbstractHtmlProcessor
         if ($this->hasContentTypeMetaTagInHead($html)) {
             return $html;
         }
-
         // We are trying to insert the meta tag to the right spot in the DOM.
         // If we just prepended it to the HTML, we would lose attributes set to the HTML tag.
-        $hasHeadTag = (new Preg())->match('/<head[\\s>]/i', $html) !== 0;
-        $hasHtmlTag = \stripos($html, '<html') !== false;
-
+        $hasHeadTag = (new Preg())->match('/<head[\s>]/i', $html) !== 0;
+        $hasHtmlTag = \stripos($html, '<html') !== \false;
         if ($hasHeadTag) {
-            $reworkedHtml = (new Preg())->replace(
-                '/<head(?=[\\s>])([^>]*+)>/i',
-                '<head$1>' . self::CONTENT_TYPE_META_TAG,
-                $html
-            );
+            $reworkedHtml = (new Preg())->replace('/<head(?=[\s>])([^>]*+)>/i', '<head$1>' . self::CONTENT_TYPE_META_TAG, $html);
         } elseif ($hasHtmlTag) {
-            $reworkedHtml = (new Preg())->replace(
-                '/<html(.*?)>/is',
-                '<html$1><head>' . self::CONTENT_TYPE_META_TAG . '</head>',
-                $html
-            );
+            $reworkedHtml = (new Preg())->replace('/<html(.*?)>/is', '<html$1><head>' . self::CONTENT_TYPE_META_TAG . '</head>', $html);
         } else {
             $reworkedHtml = self::CONTENT_TYPE_META_TAG . $html;
         }
-
         return $reworkedHtml;
     }
-
     /**
      * Tests whether the given HTML has a valid `Content-Type` metadata element within the `<head>` element.  Due to tag
      * omission rules, HTML parsers are expected to end the `<head>` element and start the `<body>` element upon
@@ -365,11 +309,7 @@ abstract class AbstractHtmlProcessor
      */
     private function hasContentTypeMetaTagInHead(string $html): bool
     {
-        (new Preg())->match(
-            '%^.*?(?=<meta(?=\\s)[^>]*\\shttp-equiv=(["\']?+)Content-Type\\g{-1}[\\s/>])%is',
-            $html,
-            $matches
-        );
+        (new Preg())->match('%^.*?(?=<meta(?=\s)[^>]*\shttp-equiv=(["\']?+)Content-Type\g{-1}[\s/>])%is', $html, $matches);
         if (isset($matches[0])) {
             $htmlBefore = $matches[0];
             try {
@@ -377,15 +317,13 @@ abstract class AbstractHtmlProcessor
             } catch (\RuntimeException $exception) {
                 // If something unexpected occurs, assume the `Content-Type` that was found is valid.
                 \trigger_error($exception->getMessage());
-                $hasContentTypeMetaTagInHead = true;
+                $hasContentTypeMetaTagInHead = \true;
             }
         } else {
-            $hasContentTypeMetaTagInHead = false;
+            $hasContentTypeMetaTagInHead = \false;
         }
-
         return $hasContentTypeMetaTagInHead;
     }
-
     /**
      * Tests whether the `<head>` element ends within the given HTML.  Due to tag omission rules, HTML parsers are
      * expected to end the `<head>` element and start the `<body>` element upon encountering a start tag for any element
@@ -399,22 +337,16 @@ abstract class AbstractHtmlProcessor
      */
     private function hasEndOfHeadElement(string $html): bool
     {
-        if (
-            (new Preg())->match('%<(?!' . self::TAGNAME_ALLOWED_BEFORE_BODY_MATCHER . '[\\s/>])\\w|</head>%i', $html)
-            !== 0
-        ) {
+        if ((new Preg())->match('%<(?!' . self::TAGNAME_ALLOWED_BEFORE_BODY_MATCHER . '[\s/>])\w|</head>%i', $html) !== 0) {
             // An exception to the implicit end of the `<head>` is any content within a `<template>` element, as well in
             // comments.  As an optimization, this is only checked for if a potential `<head>` end tag is found.
             $htmlWithoutCommentsOrTemplates = $this->removeHtmlTemplateElements($this->removeHtmlComments($html));
-            $hasEndOfHeadElement = $htmlWithoutCommentsOrTemplates === $html
-                || $this->hasEndOfHeadElement($htmlWithoutCommentsOrTemplates);
+            $hasEndOfHeadElement = $htmlWithoutCommentsOrTemplates === $html || $this->hasEndOfHeadElement($htmlWithoutCommentsOrTemplates);
         } else {
-            $hasEndOfHeadElement = false;
+            $hasEndOfHeadElement = \false;
         }
-
         return $hasEndOfHeadElement;
     }
-
     /**
      * Removes comments from the given HTML, including any which are unterminated, for which the remainder of the string
      * is removed.
@@ -427,9 +359,8 @@ abstract class AbstractHtmlProcessor
      */
     private function removeHtmlComments(string $html): string
     {
-        return (new Preg())->throwExceptions(true)->replace(self::HTML_COMMENT_PATTERN, '', $html);
+        return (new Preg())->throwExceptions(\true)->replace(self::HTML_COMMENT_PATTERN, '', $html);
     }
-
     /**
      * Removes `<template>` elements from the given HTML, including any without an end tag, for which the remainder of
      * the string is removed.
@@ -442,9 +373,8 @@ abstract class AbstractHtmlProcessor
      */
     private function removeHtmlTemplateElements(string $html): string
     {
-        return (new Preg())->throwExceptions(true)->replace(self::HTML_TEMPLATE_ELEMENT_PATTERN, '', $html);
+        return (new Preg())->throwExceptions(\true)->replace(self::HTML_TEMPLATE_ELEMENT_PATTERN, '', $html);
     }
-
     /**
      * Makes sure that any self-closing tags not recognized as such by PHP's DOMDocument implementation have a
      * self-closing slash.
@@ -455,13 +385,8 @@ abstract class AbstractHtmlProcessor
      */
     private function ensurePhpUnrecognizedSelfClosingTagsAreXml(string $html): string
     {
-        return (new Preg())->replace(
-            '%<' . self::PHP_UNRECOGNIZED_VOID_TAGNAME_MATCHER . '\\b[^>]*+(?<!/)(?=>)%',
-            '$0/',
-            $html
-        );
+        return (new Preg())->replace('%<' . self::PHP_UNRECOGNIZED_VOID_TAGNAME_MATCHER . '\b[^>]*+(?<!/)(?=>)%', '$0/', $html);
     }
-
     /**
      * Checks that $this->domDocument has a BODY element and adds it if it is missing.
      *
@@ -472,7 +397,6 @@ abstract class AbstractHtmlProcessor
         if ($this->getDomDocument()->getElementsByTagName('body')->item(0) instanceof \DOMElement) {
             return;
         }
-
         $this->getHtmlElement()->appendChild($this->getDomDocument()->createElement('body'));
     }
 }

@@ -1,37 +1,27 @@
 <?php
 
-namespace Rakit\Validation;
+namespace CBXMCRatingReviewScoped\Rakit\Validation;
 
-use Rakit\Validation\MissingRequiredParameterException;
-
+use CBXMCRatingReviewScoped\Rakit\Validation\MissingRequiredParameterException;
 abstract class Rule
 {
     /** @var string */
     protected $key;
-
     /** @var \Rakit\Validation\Attribute|null */
     protected $attribute;
-
     /** @var \Rakit\Validation\Validation|null */
     protected $validation;
-
     /** @var bool */
-    protected $implicit = false;
-
+    protected $implicit = \false;
     /** @var array */
     protected $params = [];
-
     /** @var array */
     protected $paramsTexts = [];
-
     /** @var array */
     protected $fillableParams = [];
-
     /** @var string */
     protected $message = "The :attribute is invalid";
-
     abstract public function check($value): bool;
-
     /**
      * Set Validation class instance
      *
@@ -42,7 +32,6 @@ abstract class Rule
     {
         $this->validation = $validation;
     }
-
     /**
      * Set key
      *
@@ -53,7 +42,6 @@ abstract class Rule
     {
         $this->key = $key;
     }
-
     /**
      * Get key
      *
@@ -63,7 +51,6 @@ abstract class Rule
     {
         return $this->key ?: get_class($this);
     }
-
     /**
      * Set attribute
      *
@@ -74,7 +61,6 @@ abstract class Rule
     {
         $this->attribute = $attribute;
     }
-
     /**
      * Get attribute
      *
@@ -84,7 +70,6 @@ abstract class Rule
     {
         return $this->attribute;
     }
-
     /**
      * Get parameters
      *
@@ -94,7 +79,6 @@ abstract class Rule
     {
         return $this->params;
     }
-
     /**
      * Set params
      *
@@ -106,7 +90,6 @@ abstract class Rule
         $this->params = array_merge($this->params, $params);
         return $this;
     }
-
     /**
      * Set parameters
      *
@@ -119,7 +102,6 @@ abstract class Rule
         $this->params[$key] = $value;
         return $this;
     }
-
     /**
      * Fill $params to $this->params
      *
@@ -136,7 +118,6 @@ abstract class Rule
         }
         return $this;
     }
-
     /**
      * Get parameter from given $key, return null if it not exists
      *
@@ -145,9 +126,8 @@ abstract class Rule
      */
     public function parameter(string $key)
     {
-        return isset($this->params[$key])? $this->params[$key] : null;
+        return isset($this->params[$key]) ? $this->params[$key] : null;
     }
-
     /**
      * Set parameter text that can be displayed in error message using ':param_key'
      *
@@ -159,7 +139,6 @@ abstract class Rule
     {
         $this->paramsTexts[$key] = $text;
     }
-
     /**
      * Get $paramsTexts
      *
@@ -169,7 +148,6 @@ abstract class Rule
     {
         return $this->paramsTexts;
     }
-
     /**
      * Check whether this rule is implicit
      *
@@ -179,7 +157,6 @@ abstract class Rule
     {
         return $this->implicit;
     }
-
     /**
      * Just alias of setMessage
      *
@@ -190,7 +167,6 @@ abstract class Rule
     {
         return $this->setMessage($message);
     }
-
     /**
      * Set message
      *
@@ -202,7 +178,6 @@ abstract class Rule
         $this->message = $message;
         return $this;
     }
-
     /**
      * Get message
      *
@@ -212,7 +187,6 @@ abstract class Rule
     {
         return $this->message;
     }
-
     /**
      * Check given $params must be exists
      *

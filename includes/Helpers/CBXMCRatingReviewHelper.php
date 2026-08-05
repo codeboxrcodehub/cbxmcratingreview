@@ -1,21 +1,21 @@
 <?php
-namespace CBX\MCRatingReview\Helpers;
+namespace CBXMCRatingReview\Helpers;
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
 
-use CBX\MCRatingReview\CBXMCRatingReviewSettings;
-use CBX\MCRatingReview\CBXMCRatingReviewPublic;
-use CBX\MCRatingReview\Models\RatingReviewForm;
-use CBX\MCRatingReview\Models\RatingReviewLogAvg;
-use CBX\MCRatingReview\Models\RatingReviewLog;
-use CBX\MCRatingReview\MigrationManage;
+use CBXMCRatingReview\CBXMCRatingReviewSettings;
+use CBXMCRatingReview\CBXMCRatingReviewPublic;
+use CBXMCRatingReview\Models\RatingReviewForm;
+use CBXMCRatingReview\Models\RatingReviewLogAvg;
+use CBXMCRatingReview\Models\RatingReviewLog;
+use CBXMCRatingReview\MigrationManage;
 use Exception;
-use Illuminate\Database\QueryException;
+use CBXMCRatingReviewScoped\Illuminate\Database\QueryException;
 
-use Illuminate\Database\Capsule\Manager;
+use CBXMCRatingReviewScoped\Illuminate\Database\Capsule\Manager;
 
 /**
  * Helper class
@@ -40,22 +40,37 @@ class CBXMCRatingReviewHelper {
 
 		$connection_params = [
 			'driver'   => 'mysql',
-			'host'     => DB_HOST,
+			//'host'     => DB_HOST,
 			'database' => DB_NAME,
 			'username' => DB_USER,
 			'password' => DB_PASSWORD,
 			'prefix'   => $wpdb->prefix,
 		];
 
-		if ( $wpdb->has_cap( 'collation' ) ) {
-			if ( DB_CHARSET != '' ) {
-				$connection_params['charset'] = DB_CHARSET;
-			}
+		// Parse host and port
+        $host = DB_HOST;
+        $port = null;
 
-			if ( DB_COLLATE != '' ) {
-				$connection_params['collation'] = DB_COLLATE;
-			}
-		}
+        // Handle host like "localhost:3307"
+        if ( strpos( $host, ':' ) !== false ) {
+            [ $host, $port ] = explode( ':', $host, 2 );
+        }
+
+        $connection_params['host'] = $host;
+
+        if ( ! empty( $port ) ) {
+            $connection_params['port'] = (int) $port;
+        }
+
+        // Handle charset and collation
+        if ( $wpdb->has_cap( 'collation' ) ) {
+            if ( ! empty( DB_CHARSET ) ) {
+                $connection_params['charset'] = DB_CHARSET;
+            }
+            if ( ! empty( DB_COLLATE ) ) {
+                $connection_params['collation'] = DB_COLLATE;
+            }
+        }
 
 		$capsule->addConnection( apply_filters( 'cbxmcratingreview_database_connection_params', $connection_params ) );
 
@@ -110,7 +125,7 @@ class CBXMCRatingReviewHelper {
 		return $post_types_filtered;
 	}//end method post_types
 
-/**
+	/**
 	 * Returns post types as array
 	 *
 	 * @return array
@@ -336,7 +351,7 @@ class CBXMCRatingReviewHelper {
 		return apply_filters( 'cbxmcratingreview_review_form_status_options', $exprev_status_arr );
 	}//end method ratingHintsColors
 
-/**
+	/**
 	 * all posible status for a review
 	 * @return array
 	 */
@@ -371,9 +386,9 @@ class CBXMCRatingReviewHelper {
 		global $wpdb;
 
 		//tables
-		$table_rating_form = $wpdb->prefix . 'cbxmcratingreview_form';
-		$table_rating_log  = $wpdb->prefix . 'cbxmcratingreview_log';
-		$table_rating_avg  = $wpdb->prefix . 'cbxmcratingreview_log_avg';
+		$table_rating_form = esc_sql( $wpdb->prefix . 'cbxmcratingreview_form' );
+		$table_rating_log  = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log' );
+		$table_rating_avg  = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log_avg' );
 
 
 		$table_names = [];
@@ -385,7 +400,7 @@ class CBXMCRatingReviewHelper {
 		return apply_filters( 'cbxmcratingreview_table_list', $table_names );
 	}//end method ReviewPositiveScores
 
-/**
+	/**
 	 * Get all core table keys (key and names)
 	 *
 	 * @return mixed|void
@@ -452,8 +467,8 @@ class CBXMCRatingReviewHelper {
 	 */
 	public static function singleReview( $review_id = 0 ) {
 		global $wpdb;
-		$table_rating_log = $wpdb->prefix . 'cbxmcratingreview_log';
-		$table_users      = $wpdb->prefix . 'users';
+		$table_rating_log = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log' );
+		$table_users      = esc_sql( $wpdb->prefix . 'users' );
 
 		$review_id = intval( $review_id );
 
@@ -467,7 +482,7 @@ class CBXMCRatingReviewHelper {
 
 			$sql_select = "SELECT log.*, users.user_email, users.display_name FROM $table_rating_log AS log";
 
-			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 			$single_review = $wpdb->get_row( "$sql_select $join WHERE $where_sql ", 'ARRAY_A' );
 			if ( $single_review !== null ) {
 				$single_review['attachment']  = maybe_unserialize( $single_review['attachment'] );
@@ -647,7 +662,7 @@ class CBXMCRatingReviewHelper {
 
 	}//end method singleReviewRender
 
-/**
+	/**
 	 * Rating form default fields
 	 *
 	 * @return array
@@ -881,7 +896,7 @@ class CBXMCRatingReviewHelper {
 		return apply_filters( 'cbxmcratingreview_userroles', $userRoles, $plain, $include_guest );
 	}//end method postReviewsRender
 
-/**
+	/**
 	 * render Review lists data of a Post
 	 *
 	 * @param int $form_id
@@ -1020,7 +1035,7 @@ class CBXMCRatingReviewHelper {
 		return $post_reviews_html;
 	}//end method Reviews
 
-/**
+	/**
 	 * Review lists data of a Post
 	 *
 	 * @param int $form_id
@@ -1037,8 +1052,8 @@ class CBXMCRatingReviewHelper {
 	public static function postReviews( $form_id = 0, $post_id = 0, $perpage = 10, $page = 1, $status = '', $score = '', $order_by = 'id', $order = 'DESC' ) {
 
 		global $wpdb;
-		$table_rating_log = $wpdb->prefix . 'cbxmcratingreview_log';
-		$table_users      = $wpdb->prefix . 'users';
+		$table_rating_log = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log' );
+		$table_users      = esc_sql( $wpdb->prefix . 'users' );
 
 		$settings = new CBXMCRatingReviewSettings();
 
@@ -1131,7 +1146,7 @@ class CBXMCRatingReviewHelper {
 				$limit_sql   .= ' ' . $perpage;
 			}
 
-			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 			$post_reviews = $wpdb->get_results( "$sql_select $join WHERE $where_sql $sorting_order $limit_sql", 'ARRAY_A' );
 
 
@@ -1162,8 +1177,8 @@ class CBXMCRatingReviewHelper {
 	public static function Reviews( $form_id = '', $perpage = 10, $page = 1, $status = '', $order_by = 'id', $order = 'DESC', $score = '' ) {
 
 		global $wpdb;
-		$table_rating_log = $wpdb->prefix . 'cbxmcratingreview_log';
-		$table_users      = $wpdb->prefix . 'users';
+		$table_rating_log = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log' );
+		$table_users      = esc_sql( $wpdb->prefix . 'users' );
 
 
 		$post_reviews = null;
@@ -1214,7 +1229,7 @@ class CBXMCRatingReviewHelper {
 		if ( $where_sql == '' ) {
 			$where_sql = ' 1 ';
 		}
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 		$post_reviews = $wpdb->get_results( "$sql_select $join WHERE $where_sql $sorting_order $limit_sql", 'ARRAY_A' );
 
 
@@ -1234,9 +1249,9 @@ class CBXMCRatingReviewHelper {
 	 */
 	public static function ReviewsByUser( $form_id = '', $user_id = 0, $perpage = 10, $page = 1, $status = '', $order_by = 'id', $order = 'DESC', $filter_score = '' ) {
 		global $wpdb;
-		$table_rating_log = $wpdb->prefix . 'cbxmcratingreview_log';
+		$table_rating_log = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log' );
 		//$table_rating_avg_log = $wpdb->prefix . 'cbxmcratingreview_log_avg';
-		$table_users = $wpdb->prefix . 'users';
+		$table_users = esc_sql( $wpdb->prefix . 'users' );
 
 		$user_id = intval( $user_id );
 		$user_id = ( $user_id == 0 ) ? intval( get_current_user_id() ) : $user_id;
@@ -1297,7 +1312,7 @@ class CBXMCRatingReviewHelper {
 				$where_sql = ' 1 ';
 			}
 
-			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 			$post_reviews_by_user = $wpdb->get_results( "SELECT $sql_select FROM $table_rating_log AS log $join WHERE $where_sql $sorting_order $limit_sql", 'ARRAY_A' );
 		}
 
@@ -1446,7 +1461,7 @@ class CBXMCRatingReviewHelper {
 		return $is_post_rated;
 	}//end method isPostRated
 
-/**
+	/**
 	 * Total reviews count of a Post
 	 *
 	 * @param int $form_id
@@ -1617,7 +1632,7 @@ class CBXMCRatingReviewHelper {
 		return $date;
 	}//end singleAvgRatingInfo
 
-/**
+	/**
 	 * Average rating information of a post
 	 *
 	 * @param int $form_id
@@ -1717,7 +1732,7 @@ class CBXMCRatingReviewHelper {
 		//we need to calculate avg of avg and same time avg for each single criteria id/criteria
 
 		global $wpdb;
-		$table_rating_avg_log = $wpdb->prefix . 'cbxmcratingreview_log_avg';
+		$table_rating_avg_log = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log_avg' );
 		$settings             = new CBXMCRatingReviewSettings();
 
 		$post_id           = intval( $review_info['post_id'] );
@@ -1904,7 +1919,7 @@ class CBXMCRatingReviewHelper {
 
 	}//end method editPostwAvg
 
-/**
+	/**
 	 * Readjust average after delete of any review or status change to any other state than published(1)
 	 *
 	 * @param array $review_info
@@ -1912,15 +1927,17 @@ class CBXMCRatingReviewHelper {
 	 * @return false|int|null
 	 */
 	public static function adjustPostwAvg( $review_info = [] ) {
+		if($review_info === null) return null;
+		//write_log($review_info);
 		//we need to calculate avg of avg and same time avg for each single criteria id/criteria
 
 		global $wpdb;
-		$table_rating_avg = $wpdb->prefix . 'cbxmcratingreview_log_avg';
+		$table_rating_avg = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log_avg' );
 		$settings         = new CBXMCRatingReviewSettings();
 
 
-		$post_id = intval( $review_info['post_id'] );
-		$form_id = intval( $review_info['form_id'] );
+		$post_id = absint( $review_info['post_id'] );
+		$form_id = absint( $review_info['form_id'] );
 
 		$post_avg_rating = cbxmcratingreview_postAvgRatingInfo( $form_id, $post_id );
 
@@ -2047,7 +2064,7 @@ class CBXMCRatingReviewHelper {
 		return $process_status;
 	}//end method dateReadableFormat
 
-/**
+	/**
 	 * If review rating changed in published status
 	 *
 	 * @param array $review_info
@@ -2068,7 +2085,7 @@ class CBXMCRatingReviewHelper {
 
 
 		global $wpdb;
-		$table_rating_avg = $wpdb->prefix . 'cbxmcratingreview_log_avg';
+		$table_rating_avg = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log_avg' );
 		$settings         = new CBXMCRatingReviewSettings();
 
 
@@ -2245,7 +2262,7 @@ class CBXMCRatingReviewHelper {
 		return $process_status;
 	}//end method allowedHtmlTags
 
-/**
+	/**
 	 * @param $timestamp
 	 *
 	 * @return false|string
@@ -2256,7 +2273,7 @@ class CBXMCRatingReviewHelper {
 		return gmdate( $format, strtotime( $timestamp ) );
 	}//end method most_rated_posts
 
-/**
+	/**
 	 * HTML elements, attributes, and attribute values will occur in your output
 	 * @return array
 	 */
@@ -2305,8 +2322,8 @@ class CBXMCRatingReviewHelper {
 	 */
 	public static function most_rated_posts( $form_id = 0, $perpage = 10, $order_by = 'avg_rating', $order = 'DESC', $type = 'post' ) {
 		global $wpdb;
-		$table_posts          = $wpdb->prefix . 'posts';
-		$table_rating_avg_log = $wpdb->prefix . 'cbxmcratingreview_log_avg';
+		$table_posts          = esc_sql( $wpdb->prefix . 'posts' );
+		$table_rating_avg_log = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log_avg' );
 
 		$settings = new CBXMCRatingReviewSettings();
 
@@ -2346,11 +2363,11 @@ class CBXMCRatingReviewHelper {
 		$limit_sql   .= ' ' . $start_point . ',';
 		$limit_sql   .= ' ' . $perpage;
 
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 		return $wpdb->get_results( "$sql_select $join WHERE $where_sql $sorting_order $limit_sql", 'ARRAY_A' );
 	}//end method postAvgRatingRender
 
-/**
+	/**
 	 * Latest ratings
 	 *
 	 * @param int $form_id
@@ -2364,7 +2381,7 @@ class CBXMCRatingReviewHelper {
 	 */
 	public static function lastest_ratings( $form_id = 0, $perpage = 10, $order_by = 'id', $order = 'DESC', $type = 'post', $user_id = 0 ) {
 		global $wpdb;
-		$table_rating_log = $wpdb->prefix . 'cbxmcratingreview_log';
+		$table_rating_log = esc_sql( $wpdb->prefix . 'cbxmcratingreview_log' );
 
 		$settings = new CBXMCRatingReviewSettings();
 
@@ -2410,11 +2427,11 @@ class CBXMCRatingReviewHelper {
 		$limit_sql   .= ' ' . $start_point . ',';
 		$limit_sql   .= ' ' . $perpage;
 
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared , WordPress.DB.DirectDatabaseQuery.DirectQuery , WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 		return $wpdb->get_results( "$sql_select $join WHERE $where_sql $sorting_order $limit_sql", 'ARRAY_A' );
 	}//end method postAvgDetailsRatingRender
 
-/**
+	/**
 	 * Render single post avg rating for a form
 	 *
 	 * @param int $form_id
@@ -2512,7 +2529,7 @@ class CBXMCRatingReviewHelper {
 		return $avg_rating_html;
 	}//end method reviewformRender
 
-/**
+	/**
 	 * Render single post details avg rating for a form
 	 *
 	 * @param int $form_id
@@ -2710,7 +2727,7 @@ class CBXMCRatingReviewHelper {
 		return $rating_form_html;
 	}//end method setup_admin_postdata
 
-/**
+	/**
 	 * Char Length check  thinking utf8 in mind
 	 *
 	 * @param $text
@@ -2718,7 +2735,7 @@ class CBXMCRatingReviewHelper {
 	 * @return int
 	 */
 	public static function utf8_compatible_length_check( $text ) {
-		if ( seems_utf8( $text ) ) {
+		if ( wp_is_valid_utf8( $text ) ) {
 			$length = mb_strlen( $text );
 		} else {
 			$length = strlen( $text );
@@ -2741,8 +2758,8 @@ class CBXMCRatingReviewHelper {
 			global $post;
 
 			//only cache $post the first time through the loop
-			if ( ! isset( $GLOBALS['post_cache'] ) ) {
-				$GLOBALS['post_cache'] = $post;
+			if ( ! isset( $GLOBALS['cbxmcratingreview_post_cache'] ) ) {
+				$GLOBALS['cbxmcratingreview_post_cache'] = $post;
 			}
 
 			//setup the post data as usual
@@ -2760,17 +2777,17 @@ class CBXMCRatingReviewHelper {
 	public static function wp_reset_admin_postdata() {
 
 		//only on the admin and if post_cache is set
-		if ( is_admin() && ! empty( $GLOBALS['post_cache'] ) ) {
+		if ( is_admin() && ! empty( $GLOBALS['cbxmcratingreview_post_cache'] ) ) {
 
 			//globalize post as usual
 			global $post;
 
 			//set $post back to the cached version and set it up
-			$post = $GLOBALS['post_cache'];
+			$post = $GLOBALS['cbxmcratingreview_post_cache'];
 			setup_postdata( $post );
 
 			//cleanup
-			unset( $GLOBALS['post_cache'] );
+			unset( $GLOBALS['cbxmcratingreview_post_cache'] );
 		} else {
 			wp_reset_postdata();
 		}
@@ -2869,11 +2886,11 @@ class CBXMCRatingReviewHelper {
 				'placeholder'     => esc_html__( 'Write here', 'cbxmcratingreview' ),
 				'type'            => 'text',
 				'public_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'public_display_text_field'
 				],
 				'answer_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'answer_display_text_field'
 				]
 			],
@@ -2884,11 +2901,11 @@ class CBXMCRatingReviewHelper {
 				'placeholder'     => esc_html__( 'Write here', 'cbxmcratingreview' ),
 				'type'            => 'textarea',
 				'public_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'public_display_textarea_field'
 				],
 				'answer_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'answer_display_textarea_field'
 				]
 			],
@@ -2902,11 +2919,11 @@ class CBXMCRatingReviewHelper {
 				'step'            => 1,
 				'type'            => 'number',
 				'public_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'public_display_number_field'
 				],
 				'answer_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'answer_display_number_field'
 				]
 			],
@@ -2916,11 +2933,11 @@ class CBXMCRatingReviewHelper {
 				'enabled'         => 1,
 				'type'            => 'checkbox',
 				'public_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'public_display_checkbox_field'
 				],
 				'answer_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'answer_display_checkbox_field'
 				]
 			],
@@ -2938,11 +2955,11 @@ class CBXMCRatingReviewHelper {
 					'4' => [ 'text' => esc_html__( 'Option 4', 'cbxmcratingreview' ) ]
 				],
 				'public_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'public_display_multicheckbox_field'
 				],
 				'answer_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'answer_display_multicheckbox_field'
 				]
 			],
@@ -2960,11 +2977,11 @@ class CBXMCRatingReviewHelper {
 					'4' => [ 'text' => esc_html__( 'Option 4', 'cbxmcratingreview' ) ]
 				],
 				'public_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'public_display_radio_field'
 				],
 				'answer_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'answer_display_radio_field'
 				]
 			],
@@ -2984,11 +3001,11 @@ class CBXMCRatingReviewHelper {
 					'4' => [ 'text' => esc_html__( 'Option 4', 'cbxmcratingreview' ) ]
 				],
 				'public_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'public_display_select_field'
 				],
 				'answer_renderer' => [
-					'\CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
+					'\CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper',
 					'answer_display_select_field'
 				]
 			]
@@ -3016,7 +3033,7 @@ class CBXMCRatingReviewHelper {
 		return apply_filters( 'cbxmcratingreview_question_field_types', $fieldTypes );
 	}//end method form_field_types
 
-/**
+	/**
 	 * Returns Plain rating form lists with title and id as associative array
 	 *
 	 * @return array|null
@@ -3198,7 +3215,7 @@ class CBXMCRatingReviewHelper {
 	 * get monthly review count
 	 *
 	 */
-	public static function getMonthlyReviewCounts( $year = null ) {
+	public static function cbxmcratingreview_getMonthlyReviewCounts( $year = null ) {
 		// Initialize array with month names and count set to 0
 		$monthly_counts = array_fill_keys(
 			[ 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec' ],
@@ -3222,7 +3239,7 @@ class CBXMCRatingReviewHelper {
 					$monthly_counts[ $month_name ] = intval( $result->count );
 				}
 
-			} catch ( Exception ) {
+			} catch ( Exception $e ) {
 				return $monthly_counts;
 			}
 		}
@@ -3233,7 +3250,7 @@ class CBXMCRatingReviewHelper {
 	/**
 	 * Get single review review count for each day of the current week
 	 */
-	public static function getWeeklyReviewCounts( $post_id = 0 ) {
+	public static function cbxmcratingreview_getWeeklyReviewCounts( $post_id = 0 ) {
 		// Initialize array with day names and count set to 0
 		$weekly_counts = array_fill_keys(
 			[ 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat' ],
@@ -3419,7 +3436,7 @@ class CBXMCRatingReviewHelper {
 		$js_translations = array_merge_recursive( $common_js_translations, $form_js_translations );
 
 		return apply_filters( 'cbxmcratingreview_log_js_translation', $js_translations );
-	}//end function getMonthlyReviewCounts
+	}//end function cbxmcratingreview_getMonthlyReviewCounts
 
 	/**
 	 * common js translation
@@ -4074,7 +4091,7 @@ class CBXMCRatingReviewHelper {
 		}
 
 
-		$page_id = intval( $page_id );
+		$page_id = absint( $page_id );
 		if ( $page_id > 0 ) {
 			//page found
 			if ( $page_status == 'trash' ) {
@@ -4155,6 +4172,7 @@ class CBXMCRatingReviewHelper {
 			$feed->set_output_encoding( 'UTF-8' );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        // this is the encoding parameter, and can be left unchanged in almost every case
 			$feed->handle_content_type();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // this double-checks the encoding type
 			$feed->set_cache_duration( 21600 );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          // 21,600 seconds is six hours
+
 			$limit  = $feed->get_item_quantity( 10 );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     // fetches the 18 most recent RSS feed stories
 			$items  = $feed->get_items( 0, $limit );
 			$blocks = array_slice( $items, 0, 10 );
@@ -4213,4 +4231,34 @@ class CBXMCRatingReviewHelper {
 
 		return apply_filters( 'cbxmcratingreview_guest_login_forms', $forms );
 	}//end guest_login_forms
+
+	/**
+	 * Returns email template names as array
+	 *
+	 * @return mixed|null
+	 * @since 1.0.12
+	 */
+	public static function get_email_templates(){
+		$email_templates = [
+			'tpl-general'    => esc_html__( 'General Template', 'cbxmcratingreview' ),
+			'tpl-clean'      => esc_html__( 'Clean Template', 'cbxmcratingreview' ),
+		];
+
+		return apply_filters('cbxmcratingreview_email_templates', $email_templates);
+	}//end metod get_email_templates
+
+	/**
+	 * Convert regular date string to human friendly
+	 *
+	 * @param $date
+	 *
+	 * @return string
+	 */
+	public static function get_humanize_date($date = '') {
+		if($date == '') return '';
+
+		$format = get_option( 'date_format' ) . ' ' . get_option( 'time_format' );
+
+		return date_i18n( $format, strtotime( $date ) );
+	}//end method get_humanize_date
 }//end class CBXMCRatingReviewHelper

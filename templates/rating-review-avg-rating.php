@@ -14,6 +14,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 ?>
 <?php do_action( 'cbxmcratingreview_avg_rating_before', $avg_rating_info ); ?>
     <div class="cbxmcratingreview_template_avg_rating_readonly">
@@ -60,3 +61,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php endif; ?>
 
 <?php do_action( 'cbxmcratingreview_avg_rating_after', $avg_rating_info );
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

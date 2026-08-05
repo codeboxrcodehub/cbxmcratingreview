@@ -17,7 +17,7 @@
 
 namespace Html2TextCBXMCRatingReview;
 
-use Soundasleep\Html2Text as SoundasleepHtml2Text;
+use CBXMCRatingReviewScoped\Soundasleep\Html2Text as SoundasleepHtml2Text;
 
 class Html2Text {
 

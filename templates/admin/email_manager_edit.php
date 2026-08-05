@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <?php
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $list_url = admin_url( 'admin.php?page=cbxmcratingreview-emails' );
 ?>
 <div class="section_header row">
@@ -112,3 +113,5 @@ $list_url = admin_url( 'admin.php?page=cbxmcratingreview-emails' );
 
     </form>
 </div>
+<?php 
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

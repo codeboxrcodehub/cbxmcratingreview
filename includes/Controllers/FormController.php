@@ -1,19 +1,19 @@
 <?php
-namespace CBX\MCRatingReview\Controllers;
+namespace CBXMCRatingReview\Controllers;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Models\RatingReviewForm;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Models\RatingReviewForm;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
 
 use Exception;
 use WP_REST_Request;
 use WP_REST_Response;
-use Illuminate\Database\QueryException;
-use Rakit\Validation\Validator;
+use CBXMCRatingReviewScoped\Illuminate\Database\QueryException;
+use CBXMCRatingReviewScoped\Rakit\Validation\Validator;
 
 /**
  * Class Form Controller

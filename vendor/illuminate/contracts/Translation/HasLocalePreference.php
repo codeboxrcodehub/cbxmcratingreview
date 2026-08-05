@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\Translation;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Translation;
 
 interface HasLocalePreference
 {

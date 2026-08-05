@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Support\Facades;
+namespace CBXMCRatingReviewScoped\Illuminate\Support\Facades;
 
 /**
  * @method static void setUpProcess(callable $callback)
@@ -21,6 +21,6 @@ class ParallelTesting extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \Illuminate\Testing\ParallelTesting::class;
+        return \CBXMCRatingReviewScoped\Illuminate\Testing\ParallelTesting::class;
     }
 }

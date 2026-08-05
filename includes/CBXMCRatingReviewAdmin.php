@@ -1,14 +1,14 @@
 <?php
-namespace CBX\MCRatingReview;
+namespace CBXMCRatingReview;
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use CBX\MCRatingReview\Models\RatingReviewLog;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Models\RatingReviewLog;
 
 /**
  * The admin-specific functionality of the plugin.
@@ -148,6 +148,8 @@ class CBXMCRatingReviewAdmin {
 
 		$gust_login_forms = CBXMCRatingReviewHelper::guest_login_forms();
 
+		$email_templates = CBXMCRatingReviewHelper::get_email_templates();
+
 		$cbxmcratingreview_common_config_fields = [
 			'cbxmcratingreview_common_config_heading' => [
 				'name'    => 'cbxmcratingreview_common_config_heading',
@@ -168,7 +170,7 @@ class CBXMCRatingReviewAdmin {
 				'name'    => 'allow_review_delete',
 				'label'   => esc_html__( 'Allow Review Delete', 'cbxmcratingreview' ),
 				'desc'    => esc_html__( 'Allow user delete review from frontend', 'cbxmcratingreview' ),
-				'type'    => 'select',
+				'type'    => 'radio',
 				'default' => '1',
 				'options' => [
 					'1' => esc_html__( 'Yes', 'cbxmcratingreview' ),
@@ -180,7 +182,7 @@ class CBXMCRatingReviewAdmin {
 				'label'   => esc_html__( 'Allow Half Rating', 'cbxmcratingreview' ),
 				'desc'    => esc_html__( 'If half rating enabled, user can rate .5, 1.5, 2.5, 3.5, 4.5 with regular 1, 2,3,4,5 values.',
 					'cbxmcratingreview' ),
-				'type'    => 'select',
+				'type'    => 'radio',
 				'default' => 0,
 				'options' => [
 					'1' => esc_html__( 'Yes', 'cbxmcratingreview' ),
@@ -199,7 +201,7 @@ class CBXMCRatingReviewAdmin {
 				'name'    => 'show_headline',
 				'label'   => esc_html__( 'Show Headline', 'cbxmcratingreview' ),
 				'desc'    => esc_html__( 'Show/hide review headline in rating form', 'cbxmcratingreview' ),
-				'type'    => 'select',
+				'type'    => 'radio',
 				'default' => '1',
 				'options' => [
 					'1' => esc_html__( 'Yes', 'cbxmcratingreview' ),
@@ -210,7 +212,7 @@ class CBXMCRatingReviewAdmin {
 				'name'    => 'require_headline',
 				'label'   => esc_html__( 'Headline Required', 'cbxmcratingreview' ),
 				'desc'    => esc_html__( 'Is headline mandatory to write a review?', 'cbxmcratingreview' ),
-				'type'    => 'select',
+				'type'    => 'radio',
 				'default' => '1',
 				'options' => [
 					'1' => esc_html__( 'Yes', 'cbxmcratingreview' ),
@@ -221,7 +223,7 @@ class CBXMCRatingReviewAdmin {
 				'name'    => 'show_comment',
 				'label'   => esc_html__( 'Show Comment', 'cbxmcratingreview' ),
 				'desc'    => esc_html__( 'Show/hide comment in rating form', 'cbxmcratingreview' ),
-				'type'    => 'select',
+				'type'    => 'radio',
 				'default' => '1',
 				'options' => [
 					'1' => esc_html__( 'Yes', 'cbxmcratingreview' ),
@@ -232,7 +234,7 @@ class CBXMCRatingReviewAdmin {
 				'name'    => 'require_comment',
 				'label'   => esc_html__( 'Comment Required', 'cbxmcratingreview' ),
 				'desc'    => esc_html__( 'Is comment mandatory to write a review?', 'cbxmcratingreview' ),
-				'type'    => 'select',
+				'type'    => 'radio',
 				'default' => '1',
 				'options' => [
 					'1' => esc_html__( 'Yes', 'cbxmcratingreview' ),
@@ -244,7 +246,7 @@ class CBXMCRatingReviewAdmin {
 				'name'    => 'enable_positive_critical',
 				'label'   => esc_html__( 'Enable Positive/Critical Score', 'cbxmcratingreview' ),
 				'desc'    => esc_html__( 'Enable positivive or critial score functionality', 'cbxmcratingreview' ),
-				'type'    => 'select',
+				'type'    => 'radio',
 				'default' => '1',
 				'options' => [
 					'1' => esc_html__( 'Yes', 'cbxmcratingreview' ),
@@ -270,7 +272,7 @@ class CBXMCRatingReviewAdmin {
 				'name'    => 'show_review_filter',
 				'label'   => esc_html__( 'Show Review Filter', 'cbxmcratingreview' ),
 				'desc'    => esc_html__( 'Show filter box in review listing', 'cbxmcratingreview' ),
-				'type'    => 'select',
+				'type'    => 'radio',
 				'default' => '1',
 				'options' => [
 					'1' => esc_html__( 'Yes', 'cbxmcratingreview' ),
@@ -321,11 +323,17 @@ class CBXMCRatingReviewAdmin {
 				'type'    => 'heading',
 				'default' => '',
 			],
+			'selected_template'             => [
+				'name'              => 'selected_template',
+				'label'             => esc_html__( 'Email Template', 'cbxmcratingreview' ),
+				'type'              => 'select',
+				'default'           => 'tpl-general',
+				'options'           => $email_templates,
+				'sanitize_callback' => 'sanitize_text_field'
+			],
 			'headerimage'                         => [
 				'name'    => 'headerimage',
 				'label'   => esc_html__( 'Header Image', 'cbxmcratingreview' ),
-				'desc'    => esc_html__( 'Url To email you want to show as email header.Upload Image by media uploader.',
-					'cbxmcratingreview' ),
 				'type'    => 'file',
 				'default' => ''
 			],
@@ -336,42 +344,7 @@ class CBXMCRatingReviewAdmin {
 					'cbxmcratingreview' ), [ 'code' => [] ] ),
 				'type'    => 'wysiwyg',
 				'default' => '{site_title}'
-			],
-			'basecolor'                           => [
-				'name'    => 'basecolor',
-				'label'   => esc_html__( 'Base Color', 'cbxmcratingreview' ),
-				'desc'    => esc_html__( 'The base color of the email.', 'cbxmcratingreview' ),
-				'type'    => 'color',
-				'default' => '#557da1'
-			],
-			'backgroundcolor'                     => [
-				'name'    => 'backgroundcolor',
-				'label'   => esc_html__( 'Background Color', 'cbxmcratingreview' ),
-				'desc'    => esc_html__( 'The background color of the email.', 'cbxmcratingreview' ),
-				'type'    => 'color',
-				'default' => '#f5f5f5'
-			],
-			'bodybackgroundcolor'                 => [
-				'name'    => 'bodybackgroundcolor',
-				'label'   => esc_html__( 'Body Background Color', 'cbxmcratingreview' ),
-				'desc'    => esc_html__( 'The background colour of the main body of email.', 'cbxmcratingreview' ),
-				'type'    => 'color',
-				'default' => '#fdfdfd'
-			],
-			'bodytextcolor'                       => [
-				'name'    => 'bodytextcolor',
-				'label'   => esc_html__( 'Body Text Color', 'cbxmcratingreview' ),
-				'desc'    => esc_html__( 'The body text colour of the main body of email.', 'cbxmcratingreview' ),
-				'type'    => 'color',
-				'default' => '#505050'
-			],
-			'footertextcolor'                     => [
-				'name'    => 'footertextcolor',
-				'label'   => esc_html__( 'Footer Text Color', 'cbxmcratingreview' ),
-				'desc'    => esc_html__( 'The footer text colour of the footer of email.', 'cbxmcratingreview' ),
-				'type'    => 'color',
-				'default' => '#3c3c3c',
-			],
+			]
 		];
 
 		$single_review_view_id = absint( $settings->get_field( 'single_review_view_id', 'cbxmcratingreview_tools',
@@ -389,20 +362,24 @@ class CBXMCRatingReviewAdmin {
 
 		if ( $single_review_view_id > 0 ) {
 			$content_post = get_post( $single_review_view_id );
-			$content      = $content_post->post_content;
-			if ( has_shortcode( $content, 'cbxmcratingreview_singlereview' ) ) {
-				/* translators: %s: review link */
-				$single_review_view_shortcode_text = '<strong>' . esc_html__( 'Shortcode detected on the selected page.', 'cbxmcratingreview' ) . '</strong>';
+			if($content_post !== null){
+				$content      = $content_post->post_content;
+				if ( has_shortcode( $content, 'cbxmcratingreview_singlereview' ) ) {
+					/* translators: %s: review link */
+					$single_review_view_shortcode_text = '<strong>' . esc_html__( 'Shortcode detected on the selected page.', 'cbxmcratingreview' ) . '</strong>';
+				}
 			}
 		}
 
 		if ( $review_userdashboard_id > 0 ) {
 			$content_post = get_post( $review_userdashboard_id );
-			$content      = $content_post->post_content;
+			if($content_post !== null){
+				$content      = $content_post->post_content;
 
-			if ( has_shortcode( $content, 'cbxmcratingreview_userdashboard' ) ) {
-				/* translators: %s: review user dashboard link */
-				$user_dashboard_shortcode_text = '<strong>' . esc_html__( 'Shortcode detected on the selected page.', 'cbxmcratingreview' ) . '</strong>';
+				if ( has_shortcode( $content, 'cbxmcratingreview_userdashboard' ) ) {
+					/* translators: %s: review user dashboard link */
+					$user_dashboard_shortcode_text = '<strong>' . esc_html__( 'Shortcode detected on the selected page.', 'cbxmcratingreview' ) . '</strong>';
+				}
 			}
 		}
 
@@ -598,7 +575,7 @@ class CBXMCRatingReviewAdmin {
 
 	/**
 	 * Display help & support
-	 * @global type $wpdb
+	 * @global $wpdb
 	 */
 	public function display_plugin_help_support() {
 		global $wpdb;
@@ -1007,7 +984,7 @@ class CBXMCRatingReviewAdmin {
 			];
 
 			return $data;
-		} catch ( Exception ) {
+		} catch ( \Exception $e ) {
 			return [];
 		}
 	}//end method getAdminDashboardData
@@ -1158,7 +1135,7 @@ class CBXMCRatingReviewAdmin {
 
 
 		$pro_addon_version   = isset( $plugin_data['Version'] ) ? $plugin_data['Version'] : '';
-		$pro_current_version = '2.0.4';
+		$pro_current_version = CBXMCRATINGREVIEW_PRO_VERSION;
 
 
 		if ( $pro_addon_version != '' && version_compare( $pro_addon_version, $pro_current_version, '<' ) ) {
@@ -1229,12 +1206,12 @@ class CBXMCRatingReviewAdmin {
 	public function plugin_activate_upgrade_notices() {
 		// Check the transient to see if we've just activated the plugin
 		if ( get_transient( 'cbxmcratingreview_activated_notice' ) ) {
-			echo '<div style="border-left-color: #005ae0;" class="notice notice-success is-dismissible">';
-			/* translators: %s: bookmark core plugin version */
-			echo '<p>' . sprintf( wp_kses( __( 'Thanks for installing/deactivating <strong>CBX Multi Criteria Rating & Review</strong> V%s - Codeboxr Team', 'cbxmcratingreview' ), [ 'strong' => [] ] ), esc_attr( CBXMCRATINGREVIEW_PLUGIN_VERSION ) ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<div style="border-left-color: #5d5dff;" class="notice notice-success is-dismissible">';
+			/* translators: %s: core plugin version */
+			echo '<p>' . sprintf( wp_kses( __( 'Thanks for installing/deactivating <strong>CBX Multi Criteria Rating & Review</strong> V%s - Codeboxr Team', 'cbxmcratingreview' ), [ 'strong' => [] ] ), esc_attr( CBXMCRATINGREVIEW_PLUGIN_VERSION ) ) . '</p>';
 
 			/* translators: 1. Plugin setting url 2. Documentation link */
-			echo '<p>' . sprintf( wp_kses( __( 'Check <a style="color:#005ae0 !important; font-weight: bold;" href="%1$s">Plugin Setting</a> | <a style="color:#005ae0 !important; font-weight: bold;" href="%2$s" target="_blank">Documentation</a>', 'cbxmcratingreview' ), [ 'a' => [ 'href'   => [],
+			echo '<p>' . sprintf( wp_kses( __( 'Check <a style="color:#5d5dff !important; font-weight: bold;" href="%1$s">Plugin Setting</a> | <a style="color:#5d5dff !important; font-weight: bold;" href="%2$s" target="_blank">Documentation</a>', 'cbxmcratingreview' ), [ 'a' => [ 'href'   => [],
 			                                                                                                                                                                                                                                                                             'style'  => [],
 			                                                                                                                                                                                                                                                                             'target' => []
 				]
@@ -1250,12 +1227,12 @@ class CBXMCRatingReviewAdmin {
 
 		// Check the transient to see if we've just activated the plugin
 		if ( get_transient( 'cbxmcratingreview_upgraded_notice' ) ) {
-			echo '<div style="border-left-color: #005ae0;" class="notice notice-success is-dismissible">';
-			/* translators: %s: bookmark core plugin version */
-			echo '<p>' . sprintf( wp_kses( __( 'Thanks for upgrading <strong>CBX Multi Criteria Rating & Review</strong> V%s , enjoy the new features and bug fixes - Codeboxr Team', 'cbxmcratingreview' ), [ 'strong' => [] ] ), esc_attr( CBXMCRATINGREVIEW_PLUGIN_VERSION ) ) . '</p>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<div style="border-left-color: #5d5dff;" class="notice notice-success is-dismissible">';
+			/* translators: %s: core plugin version */
+			echo '<p>' . sprintf( wp_kses( __( 'Thanks for upgrading <strong>CBX Multi Criteria Rating & Review</strong> V%s , enjoy the new features and bug fixes - Codeboxr Team', 'cbxmcratingreview' ), [ 'strong' => [] ] ), esc_attr( CBXMCRATINGREVIEW_PLUGIN_VERSION ) ) . '</p>';
 
 			/* translators: 1. Plugin setting url 2. Documentation link */
-			echo '<p>' . sprintf( wp_kses( __( 'Check <a style="color:#005ae0 !important; font-weight: bold;" href="%1$s">Plugin Setting</a> | <a style="color:#005ae0 !important; font-weight: bold;" href="%2$s" target="_blank">Documentation</a>', 'cbxmcratingreview' ), [ 'a' => [ 'href'   => [],
+			echo '<p>' . sprintf( wp_kses( __( 'Check <a style="color:#5d5dff !important; font-weight: bold;" href="%1$s">Plugin Setting</a> | <a style="color:#5d5dff !important; font-weight: bold;" href="%2$s" target="_blank">Documentation</a>', 'cbxmcratingreview' ), [ 'a' => [ 'href'   => [],
 			                                                                                                                                                                                                                                                                             'style'  => [],
 			                                                                                                                                                                                                                                                                             'target' => []
 				]
@@ -1318,10 +1295,6 @@ class CBXMCRatingReviewAdmin {
 	 */
 	public function plugin_row_meta( $links_array, $plugin_file_name, $plugin_data, $status ) {
 		if ( strpos( $plugin_file_name, CBXMCRATINGREVIEW_BASE_NAME ) !== false ) {
-			if ( ! function_exists( 'is_plugin_active' ) ) {
-				include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-			}
-
 			$links_array[] = '<a target="_blank" style="color:#6044ea !important; font-weight: bold;" href="https://wordpress.org/support/plugin/cbxmcratingreview/" aria-label="' . esc_attr__( 'Free Support',
 					'cbxmcratingreview' ) . '">' . esc_html__( 'Free Support', 'cbxmcratingreview' ) . '</a>';
 
@@ -1332,10 +1305,8 @@ class CBXMCRatingReviewAdmin {
 			$links_array[] = '<a target="_blank" style="color:#6044ea !important; font-weight: bold;" href="https://codeboxr.com/doc/cbxmcratingreview-doc/" aria-label="' . esc_attr__( 'Documentation',
 					'cbxmcratingreview' ) . '">' . esc_html__( 'Documentation', 'cbxmcratingreview' ) . '</a>';
 
-			if ( defined( 'CBXMCRATINGREVIEWPRO_PLUGIN_NAME' ) && in_array( 'cbxmcratingreviewpro/cbxmcratingreviewpro.php', apply_filters( 'active_plugins',
-					get_option( 'active_plugins' ) ) ) ) {
-				//pro addon active
-			} else {
+
+			if(!defined('CBXMCRATINGREVIEWPRO_PLUGIN_NAME')){
 				$links_array[] = '<a target="_blank" style="color:#6044ea !important; font-weight: bold;" href="https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/" aria-label="' . esc_attr__( 'Try Pro Addon',
 						'cbxmcratingreview' ) . '">' . esc_html__( 'Try Pro Addon', 'cbxmcratingreview' ) . '</a>';
 			}
@@ -1352,8 +1323,9 @@ class CBXMCRatingReviewAdmin {
 	 */
 	public function check_pro_addon() {
 		//pro addon
-		cbxmcratingreview_check_version_and_deactivate_plugin( 'cbxmcratingreviewpro/cbxmcratingreviewpro.php', '2.0.0', 'cbxmcratingreview_proaddon_deactivated' );
+		cbxmcratingreview_check_version_and_deactivate_plugin( 'cbxmcratingreviewpro/cbxmcratingreviewpro.php', '2.0.5', 'cbxmcratingreview_proaddon_deactivated' );
 
+		//these two addon are deprecated now
 		cbxmcratingreview_check_and_deactivate_plugin( 'cbxmcratingreviewcomment/cbxmcratingreviewcomment.php', 'cbxmcratingreview_commentaddon_deactivated' );
 		cbxmcratingreview_check_and_deactivate_plugin( 'cbxmcratingreviewmycred/cbxmcratingreviewmycred.php', 'cbxmcratingreview_mycredaddon_deactivated' );
 	}//end method check_pro_addon

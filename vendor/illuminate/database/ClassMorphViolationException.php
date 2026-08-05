@@ -1,9 +1,8 @@
 <?php
 
-namespace Illuminate\Database;
+namespace CBXMCRatingReviewScoped\Illuminate\Database;
 
 use RuntimeException;
-
 class ClassMorphViolationException extends RuntimeException
 {
     /**
@@ -12,7 +11,6 @@ class ClassMorphViolationException extends RuntimeException
      * @var string
      */
     public $model;
-
     /**
      * Create a new exception instance.
      *
@@ -21,9 +19,7 @@ class ClassMorphViolationException extends RuntimeException
     public function __construct($model)
     {
         $class = get_class($model);
-
         parent::__construct("No morph map defined for model [{$class}].");
-
         $this->model = $class;
     }
 }

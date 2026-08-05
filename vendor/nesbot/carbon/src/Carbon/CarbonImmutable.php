@@ -8,15 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+namespace CBXMCRatingReviewScoped\Carbon;
 
-namespace Carbon;
-
-use Carbon\Traits\Date;
-use Carbon\Traits\DeprecatedProperties;
+use CBXMCRatingReviewScoped\Carbon\Traits\Date;
+use CBXMCRatingReviewScoped\Carbon\Traits\DeprecatedProperties;
 use DateTimeImmutable;
 use DateTimeInterface;
 use DateTimeZone;
-
 /**
  * A simple API extension for DateTimeImmutable.
  *
@@ -512,14 +510,12 @@ class CarbonImmutable extends DateTimeImmutable implements CarbonInterface
     use Date {
         __clone as dateTraitClone;
     }
-
     public function __clone()
     {
         $this->dateTraitClone();
-        $this->endOfTime = false;
-        $this->startOfTime = false;
+        $this->endOfTime = \false;
+        $this->startOfTime = \false;
     }
-
     /**
      * Create a very old date representing start of time.
      *
@@ -528,11 +524,9 @@ class CarbonImmutable extends DateTimeImmutable implements CarbonInterface
     public static function startOfTime(): self
     {
         $date = static::parse('0001-01-01')->years(self::getStartOfTimeYear());
-        $date->startOfTime = true;
-
+        $date->startOfTime = \true;
         return $date;
     }
-
     /**
      * Create a very far date representing end of time.
      *
@@ -541,42 +535,35 @@ class CarbonImmutable extends DateTimeImmutable implements CarbonInterface
     public static function endOfTime(): self
     {
         $date = static::parse('9999-12-31 23:59:59.999999')->years(self::getEndOfTimeYear());
-        $date->endOfTime = true;
-
+        $date->endOfTime = \true;
         return $date;
     }
-
     /**
      * @codeCoverageIgnore
      */
     private static function getEndOfTimeYear(): int
     {
-        if (version_compare(PHP_VERSION, '7.3.0-dev', '<')) {
+        if (version_compare(\PHP_VERSION, '7.3.0-dev', '<')) {
             return 145261681241552;
         }
-
         // Remove if https://bugs.php.net/bug.php?id=81107 is fixed
-        if (version_compare(PHP_VERSION, '8.1.0-dev', '>=')) {
+        if (version_compare(\PHP_VERSION, '8.1.0-dev', '>=')) {
             return 1118290769066902787;
         }
-
-        return PHP_INT_MAX;
+        return \PHP_INT_MAX;
     }
-
     /**
      * @codeCoverageIgnore
      */
     private static function getStartOfTimeYear(): int
     {
-        if (version_compare(PHP_VERSION, '7.3.0-dev', '<')) {
+        if (version_compare(\PHP_VERSION, '7.3.0-dev', '<')) {
             return -135908816449551;
         }
-
         // Remove if https://bugs.php.net/bug.php?id=81107 is fixed
-        if (version_compare(PHP_VERSION, '8.1.0-dev', '>=')) {
+        if (version_compare(\PHP_VERSION, '8.1.0-dev', '>=')) {
             return -1118290769066898816;
         }
-
-        return max(PHP_INT_MIN, -9223372036854773760);
+        return max(\PHP_INT_MIN, -9223372036854773760);
     }
 }

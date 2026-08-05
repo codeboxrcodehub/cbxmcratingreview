@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <?php
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $ratings_stars        = isset( $avg_rating_info['rating_stat'] ) ? $avg_rating_info['rating_stat'] : [];
 $criteria_stat_scores = isset( $ratings_stars['criteria_stat_scores'] ) ? $ratings_stars['criteria_stat_scores'] : [];
 $criteria_info        = isset( $ratings_stars['criteria_info'] ) ? $ratings_stars['criteria_info'] : [];
@@ -124,3 +124,4 @@ if ( isset( $form['custom_criteria'] ) && is_array( $form['custom_criteria'] ) &
 
 <?php
 do_action( 'cbxmcratingreview_details_avg_rating_after', $avg_rating_info );
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

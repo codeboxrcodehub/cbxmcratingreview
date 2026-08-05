@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\Validation;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\Validation;
 
 interface ValidatesWhenResolved
 {

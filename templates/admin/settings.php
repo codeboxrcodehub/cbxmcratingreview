@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
 
 /**
  * Provide a dashboard Setting
@@ -18,7 +18,7 @@ use CBX\MCRatingReview\Helpers\CBXMCRatingReviewAdminHelper;
  * @subpackage cbxmcratingreview/templates/admin
  */
 
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 $plugin_url = CBXMCRatingReviewAdminHelper::url_utmy( 'https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/' );
 $doc_url    = CBXMCRatingReviewAdminHelper::url_utmy( 'https://codeboxr.com/product/cbx-multi-criteria-rating-review-for-wordpress/' );
 
@@ -105,3 +105,5 @@ $save_svg   = cbxmcratingreview_esc_svg( cbxmcratingreview_load_svg( 'icon_save'
         </div>
     </div>
 </div>
+<?php 
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound

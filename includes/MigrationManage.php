@@ -1,18 +1,18 @@
 <?php
-namespace CBX\MCRatingReview;
+namespace CBXMCRatingReview;
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Models\Migrations;
+use CBXMCRatingReview\Models\Migrations;
 use Exception;
-use Illuminate\Database\Capsule\Manager as Capsule;
+use CBXMCRatingReviewScoped\Illuminate\Database\Capsule\Manager as Capsule;
 
 /**
  * Manage migration and database table
  * Class MigrationManage
- * @package CBX\MCRatingReview
+ * @package CBXMCRatingReview
  * @since 1.0.0
  */
 class MigrationManage {
@@ -69,7 +69,10 @@ class MigrationManage {
 			'2023_05_07_01_create_migrations_table',
 			'2025_01_13_create_cbxmcratingreview_form',
 			'2025_01_13_create_cbxmcratingreview_log',
-			'2025_01_13_create_cbxmcratingreview_log_avg'
+			'2025_01_13_create_cbxmcratingreview_log_avg',
+			'2026_06_17_01_add_indexes_to_ratingreview',
+			'2026_06_17_02_add_indexes_to_ratingreview_avg',
+			'2026_06_17_03_add_indexes_to_ratingreview_form'
 		];
 
 		return $migrations_dev;

@@ -4,12 +4,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\Api\CBXRoute;
-use CBX\MCRatingReview\Controllers\FormController;
-use CBX\MCRatingReview\Controllers\LogController;
-use CBX\MCRatingReview\Controllers\LogFrontController;
-use CBX\MCRatingReview\Controllers\AvgLogController;
-use CBX\MCRatingReview\Controllers\DashboardController;
+use CBXMCRatingReview\Api\CBXRoute;
+use CBXMCRatingReview\Controllers\FormController;
+use CBXMCRatingReview\Controllers\LogController;
+use CBXMCRatingReview\Controllers\LogFrontController;
+use CBXMCRatingReview\Controllers\AvgLogController;
+use CBXMCRatingReview\Controllers\DashboardController;
 
 //forms routers
 CBXRoute::middleware( 'cbxmcratingreview_form_manage' )->get( 'v1/form-list', [ FormController::class, 'getForms' ] );

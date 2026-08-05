@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use CBX\MCRatingReview\CBXMCRatingReviewSettings;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewHelper;
-use CBX\MCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper;
+use CBXMCRatingReview\CBXMCRatingReviewSettings;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewHelper;
+use CBXMCRatingReview\Helpers\CBXMCRatingReviewQuestionHelper;
 
 /**
  * Provides frontend  rating form
@@ -25,7 +25,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 ?>
 <?php
-
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 $settings              = new CBXMCRatingReviewSettings();
 $show_headline         = absint( $settings->get_field( 'show_headline', 'cbxmcratingreview_common_config', 1 ) );
@@ -159,6 +159,7 @@ $form_question_formats = CBXMCRatingReviewHelper::form_question_formats();
             </form>
 			<?php
 			do_action( 'cbxmcratingreview_review_rating_form_after', $form_id, $post_id );
+			// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 			?>
         </div>
     </div>

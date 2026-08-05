@@ -1,11 +1,10 @@
 <?php
 
-namespace Sabberworm\CSS;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS;
 
-use Sabberworm\CSS\CSSList\Document;
-use Sabberworm\CSS\Parsing\ParserState;
-use Sabberworm\CSS\Parsing\SourceException;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\CSSList\Document;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\ParserState;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Parsing\SourceException;
 /**
  * This class parses CSS from text into a data structure.
  */
@@ -15,7 +14,6 @@ class Parser
      * @var ParserState
      */
     private $oParserState;
-
     /**
      * @param string $sText the complete CSS as text (i.e., usually the contents of a CSS file)
      * @param Settings|null $oParserSettings
@@ -28,7 +26,6 @@ class Parser
         }
         $this->oParserState = new ParserState($sText, $oParserSettings, $iLineNo);
     }
-
     /**
      * Sets the charset to be used if the CSS does not contain an `@charset` declaration.
      *
@@ -42,7 +39,6 @@ class Parser
     {
         $this->oParserState->setCharset($sCharset);
     }
-
     /**
      * Returns the charset that is used if the CSS does not contain an `@charset` declaration.
      *
@@ -55,7 +51,6 @@ class Parser
         // Note: The `return` statement is missing here. This is a bug that needs to be fixed.
         $this->oParserState->getCharset();
     }
-
     /**
      * Parses the CSS provided to the constructor and creates a `Document` from it.
      *

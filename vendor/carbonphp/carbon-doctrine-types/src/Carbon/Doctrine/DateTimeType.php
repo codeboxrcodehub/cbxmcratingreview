@@ -1,19 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
+namespace CBXMCRatingReviewScoped\Carbon\Doctrine;
 
-namespace Carbon\Doctrine;
-
-use Carbon\Carbon;
+use CBXMCRatingReviewScoped\Carbon\Carbon;
 use DateTime;
-use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\VarDateTimeType;
-
+use CBXMCRatingReviewScoped\Doctrine\DBAL\Platforms\AbstractPlatform;
+use CBXMCRatingReviewScoped\Doctrine\DBAL\Types\VarDateTimeType;
 class DateTimeType extends VarDateTimeType implements CarbonDoctrineType
 {
     /** @use CarbonTypeConverter<Carbon> */
     use CarbonTypeConverter;
-
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Doctrine\Inflector\Rules\Turkish;
 
-use Doctrine\Inflector\GenericLanguageInflectorFactory;
-use Doctrine\Inflector\Rules\Ruleset;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\GenericLanguageInflectorFactory;
+use CBXMCRatingReviewScoped\Doctrine\Inflector\Rules\Ruleset;
 
 final class InflectorFactory extends GenericLanguageInflectorFactory
 {

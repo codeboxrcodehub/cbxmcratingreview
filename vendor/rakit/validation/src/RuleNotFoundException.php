@@ -1,9 +1,8 @@
 <?php
 
-namespace Rakit\Validation;
+namespace CBXMCRatingReviewScoped\Rakit\Validation;
 
 use Exception;
-
 class RuleNotFoundException extends Exception
 {
 }

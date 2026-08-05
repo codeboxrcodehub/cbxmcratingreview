@@ -8,8 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace Symfony\Component\CssSelector\Node;
+namespace CBXMCRatingReviewScoped\Symfony\Component\CssSelector\Node;
 
 /**
  * Represents a "<selector>:where(<subSelectorList>)" node.
@@ -26,24 +25,16 @@ class SpecificityAdjustmentNode extends AbstractNode
     /**
      * @param array<NodeInterface> $arguments
      */
-    public function __construct(
-        public readonly NodeInterface $selector,
-        public readonly array $arguments = [],
-    ) {
+    public function __construct(public readonly NodeInterface $selector, public readonly array $arguments = [])
+    {
     }
-
     public function getSpecificity(): Specificity
     {
         return $this->selector->getSpecificity();
     }
-
     public function __toString(): string
     {
-        $selectorArguments = array_map(
-            fn ($n) => ltrim((string) $n, '*'),
-            $this->arguments,
-        );
-
+        $selectorArguments = array_map(static fn($n) => ltrim((string) $n, '*'), $this->arguments);
         return \sprintf('%s[%s:where(%s)]', $this->getNodeName(), $this->selector, implode(', ', $selectorArguments));
     }
 }

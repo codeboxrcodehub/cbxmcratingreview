@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Contracts\View;
+namespace CBXMCRatingReviewScoped\Illuminate\Contracts\View;
 
 interface Engine
 {

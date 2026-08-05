@@ -1,22 +1,19 @@
 <?php
 
-namespace Sabberworm\CSS\CSSList;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\CSSList;
 
-use Sabberworm\CSS\OutputFormat;
-use Sabberworm\CSS\Property\AtRule;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Property\AtRule;
 class KeyFrame extends CSSList implements AtRule
 {
     /**
      * @var string|null
      */
     private $vendorKeyFrame;
-
     /**
      * @var string|null
      */
     private $animationName;
-
     /**
      * @param int $iLineNo
      */
@@ -26,7 +23,6 @@ class KeyFrame extends CSSList implements AtRule
         $this->vendorKeyFrame = null;
         $this->animationName = null;
     }
-
     /**
      * @param string $vendorKeyFrame
      */
@@ -34,7 +30,6 @@ class KeyFrame extends CSSList implements AtRule
     {
         $this->vendorKeyFrame = $vendorKeyFrame;
     }
-
     /**
      * @return string|null
      */
@@ -42,7 +37,6 @@ class KeyFrame extends CSSList implements AtRule
     {
         return $this->vendorKeyFrame;
     }
-
     /**
      * @param string $animationName
      */
@@ -50,7 +44,6 @@ class KeyFrame extends CSSList implements AtRule
     {
         $this->animationName = $animationName;
     }
-
     /**
      * @return string|null
      */
@@ -58,7 +51,6 @@ class KeyFrame extends CSSList implements AtRule
     {
         return $this->animationName;
     }
-
     /**
      * @return string
      *
@@ -68,7 +60,6 @@ class KeyFrame extends CSSList implements AtRule
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *
@@ -82,15 +73,13 @@ class KeyFrame extends CSSList implements AtRule
         $sResult .= '}';
         return $sResult;
     }
-
     /**
      * @return bool
      */
     public function isRootList()
     {
-        return false;
+        return \false;
     }
-
     /**
      * @return string|null
      */
@@ -98,7 +87,6 @@ class KeyFrame extends CSSList implements AtRule
     {
         return $this->vendorKeyFrame;
     }
-
     /**
      * @return string|null
      */

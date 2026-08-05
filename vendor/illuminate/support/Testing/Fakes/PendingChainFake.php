@@ -1,11 +1,10 @@
 <?php
 
-namespace Illuminate\Support\Testing\Fakes;
+namespace CBXMCRatingReviewScoped\Illuminate\Support\Testing\Fakes;
 
 use Closure;
-use Illuminate\Foundation\Bus\PendingChain;
-use Illuminate\Queue\CallQueuedClosure;
-
+use CBXMCRatingReviewScoped\Illuminate\Foundation\Bus\PendingChain;
+use CBXMCRatingReviewScoped\Illuminate\Queue\CallQueuedClosure;
 class PendingChainFake extends PendingChain
 {
     /**
@@ -14,7 +13,6 @@ class PendingChainFake extends PendingChain
      * @var \Illuminate\Support\Testing\Fakes\BusFake
      */
     protected $bus;
-
     /**
      * Create a new pending chain instance.
      *
@@ -29,7 +27,6 @@ class PendingChainFake extends PendingChain
         $this->job = $job;
         $this->chain = $chain;
     }
-
     /**
      * Dispatch the job with the given arguments.
      *
@@ -44,13 +41,11 @@ class PendingChainFake extends PendingChain
         } else {
             $firstJob = $this->job;
         }
-
         $firstJob->allOnConnection($this->connection);
         $firstJob->allOnQueue($this->queue);
         $firstJob->chain($this->chain);
         $firstJob->delay($this->delay);
         $firstJob->chainCatchCallbacks = $this->catchCallbacks();
-
         return $this->bus->dispatch($firstJob);
     }
 }

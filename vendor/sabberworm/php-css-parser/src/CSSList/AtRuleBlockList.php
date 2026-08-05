@@ -1,10 +1,9 @@
 <?php
 
-namespace Sabberworm\CSS\CSSList;
+namespace CBXMCRatingReviewScoped\Sabberworm\CSS\CSSList;
 
-use Sabberworm\CSS\OutputFormat;
-use Sabberworm\CSS\Property\AtRule;
-
+use CBXMCRatingReviewScoped\Sabberworm\CSS\OutputFormat;
+use CBXMCRatingReviewScoped\Sabberworm\CSS\Property\AtRule;
 /**
  * A `BlockList` constructed by an unknown at-rule. `@media` rules are rendered into `AtRuleBlockList` objects.
  */
@@ -14,12 +13,10 @@ class AtRuleBlockList extends CSSBlockList implements AtRule
      * @var string
      */
     private $sType;
-
     /**
      * @var string
      */
     private $sArgs;
-
     /**
      * @param string $sType
      * @param string $sArgs
@@ -31,7 +28,6 @@ class AtRuleBlockList extends CSSBlockList implements AtRule
         $this->sType = $sType;
         $this->sArgs = $sArgs;
     }
-
     /**
      * @return string
      */
@@ -39,7 +35,6 @@ class AtRuleBlockList extends CSSBlockList implements AtRule
     {
         return $this->sType;
     }
-
     /**
      * @return string
      */
@@ -47,7 +42,6 @@ class AtRuleBlockList extends CSSBlockList implements AtRule
     {
         return $this->sArgs;
     }
-
     /**
      * @return string
      *
@@ -57,7 +51,6 @@ class AtRuleBlockList extends CSSBlockList implements AtRule
     {
         return $this->render(new OutputFormat());
     }
-
     /**
      * @param OutputFormat|null $oOutputFormat
      *
@@ -71,18 +64,17 @@ class AtRuleBlockList extends CSSBlockList implements AtRule
         if ($sArgs) {
             $sArgs = ' ' . $sArgs;
         }
-        $sResult .= "@{$this->sType}$sArgs{$oOutputFormat->spaceBeforeOpeningBrace()}{";
+        $sResult .= "@{$this->sType}{$sArgs}{$oOutputFormat->spaceBeforeOpeningBrace()}{";
         $sResult .= $this->renderListContents($oOutputFormat);
         $sResult .= '}';
         $sResult .= $oOutputFormat->sAfterAtRuleBlock;
         return $sResult;
     }
-
     /**
      * @return bool
      */
     public function isRootList()
     {
-        return false;
+        return \false;
     }
 }

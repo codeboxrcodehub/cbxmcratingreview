@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
+use CBXMCRatingReviewScoped\Illuminate\Support\Arr;
+use CBXMCRatingReviewScoped\Illuminate\Support\Collection;
 
 if (! function_exists('collect')) {
     /**
